@@ -1,0 +1,7 @@
+@import "src/styles/utils";
+
+.headerWrapper {
+  background-image: linear-gradient(to right, #f0b90b, #fbd93a);
+  height: var(--heightHeader);
+  width: 100%;
+}

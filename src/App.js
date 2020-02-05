@@ -6,7 +6,9 @@ import styles from "./App.scss";
 //  import redux stuff
 
 //  components
-import Header from "./components/Header";
+import Router from "src/containers/Router/Router";
+import Header from "src/containers/Header";
+import Footer from "src/containers/Footer";
 
 const cx = classNames.bind(styles);
 
@@ -14,6 +16,8 @@ export default function() {
 	return (
 		<div className={cx("App")}>
 			<Header />
+			<Router />
+			<Footer />
 		</div>
 	);
 }

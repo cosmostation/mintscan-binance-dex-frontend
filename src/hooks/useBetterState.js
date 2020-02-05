@@ -6,8 +6,7 @@ export default function(init = {}) {
 
 	const handleState = updateObj => {
 		if (updateObj.isReducer === true && _.isObject(updateObj.action)) {
-			if (updateObj.action.type === undefined)
-				throw new Error("action type is not defined");
+			if (updateObj.action.type === undefined) throw new Error("action type is not defined");
 			const updateObjCopy = {
 				...updateObj,
 				isReducer: undefined,

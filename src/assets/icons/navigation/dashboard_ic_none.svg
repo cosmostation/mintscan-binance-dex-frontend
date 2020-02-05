@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="dashboard_ic_none" transform="translate(-368 -84)">
+    <g id="dash_ic" transform="translate(-104.461 -296.461)">
+      <g id="사각형_8" data-name="사각형 8" transform="translate(479.461 387.461)" fill="none" stroke="#b2b6bc" stroke-width="1.2">
+        <rect width="8" height="6" rx="1" stroke="none"/>
+        <rect x="0.6" y="0.6" width="6.8" height="4.8" rx="0.4" fill="none"/>
+      </g>
+      <g id="사각형_11" data-name="사각형 11" transform="translate(497.461 405.461) rotate(180)" fill="none" stroke="#b2b6bc" stroke-width="1.2">
+        <rect width="8" height="6" rx="1" stroke="none"/>
+        <rect x="0.6" y="0.6" width="6.8" height="4.8" rx="0.4" fill="none"/>
+      </g>
+      <g id="사각형_9" data-name="사각형 9" transform="translate(479.461 395.461)" fill="none" stroke="#b2b6bc" stroke-width="1.2">
+        <rect width="8" height="10" rx="1" stroke="none"/>
+        <rect x="0.6" y="0.6" width="6.8" height="8.8" rx="0.4" fill="none"/>
+      </g>
+      <g id="사각형_12" data-name="사각형 12" transform="translate(497.461 397.461) rotate(180)" fill="none" stroke="#b2b6bc" stroke-width="1.2">
+        <rect width="8" height="10" rx="1" stroke="none"/>
+        <rect x="0.6" y="0.6" width="6.8" height="8.8" rx="0.4" fill="none"/>
+      </g>
+    </g>
+    <rect id="사각형_181" data-name="사각형 181" width="32" height="32" transform="translate(368 84)" fill="none"/>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23" height="17" viewBox="0 0 23 17">
+  <g id="wallet_btn" transform="translate(-978 -547)">
+    <g id="사각형_4" data-name="사각형 4" transform="translate(978 547)" fill="none" stroke="#fff" stroke-width="1">
+      <rect width="23" height="17" rx="3" stroke="none"/>
+      <rect x="0.5" y="0.5" width="22" height="16" rx="2.5" fill="none"/>
+    </g>
+    <g id="타원_1" data-name="타원 1" transform="translate(993 553)" fill="none" stroke="#fff" stroke-width="1">
+      <circle cx="2.5" cy="2.5" r="2.5" stroke="none"/>
+      <circle cx="2.5" cy="2.5" r="2" fill="none"/>
+    </g>
+  </g>
+</svg>

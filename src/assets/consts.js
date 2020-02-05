@@ -19,9 +19,33 @@ export default Object.freeze({
 	},
 
 	LINK: {
-		GOOGLE:
-			"https://play.google.com/store/apps/details?id=wannabit.io.cosmostaion",
+		GOOGLE: "https://play.google.com/store/apps/details?id=wannabit.io.cosmostaion",
 		IOS: "https://apple.co/2IAM3Xm",
 		WEB: "https://wallet.cosmostation.io",
+		COSMOSTATION: "https://www.cosmostation.io/",
 	},
+
+	MENU: [
+		{
+			display: "DASHBOARD",
+			route: "/dashboard",
+			primary: true,
+		},
+		{
+			display: "BLOCKS",
+			route: "/blocks",
+		},
+		{
+			display: "TRANSACTIONS",
+			route: "/txs",
+		},
+		{
+			display: "ASSETS",
+			route: "/assets",
+		},
+		{
+			display: "BINANCE DEX",
+			route: "/dex",
+		},
+	],
 });
