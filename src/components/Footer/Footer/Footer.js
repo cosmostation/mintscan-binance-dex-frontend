@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, {useMemo} from "react";
 import styles from "./Footer.scss";
 import classNames from "classnames/bind";
 import consts from "src/assets/consts";
@@ -17,7 +17,7 @@ import cosFooterLogo from "src/assets/icons/footer/cosmostation_footer_logo.svg"
 const cx = classNames.bind(styles);
 
 export default function(props) {
-	return (
+	const render = (
 		<div className={cx("footerWrapper")}>
 			<div className={cx("footer")}>
 				<div className={cx("footer-left")}>
@@ -74,10 +74,11 @@ export default function(props) {
 						<a onClick={e => window.open(consts.LINK.COSMOSTATION)}>
 							<img src={cosFooterLogo} alt='footer' />
 						</a>
-						<div className={cx("footer-copyright")}>© COSMOSTATION 2019</div>
+						<div className={cx("footer-copyright")}>© COSMOSTATION 2020</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	);
+	return useMemo(() => render, [render]);
 }

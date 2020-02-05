@@ -12,7 +12,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import MenuIcon from "@material-ui/icons/Menu";
 
 //  assets
-import binance from "src/assets/icons/common/binance_token.svg";
+import binance from "src/assets/icons/navigation/chain_ic.svg";
 import iris from "src/assets/icons/common/iris_token.svg";
 import kava from "src/assets/icons/common/kava_token.svg";
 import cosmos from "src/assets/icons/common/atom_token.svg";
