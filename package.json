@@ -1,6 +1,6 @@
 {
   "name": "mintscan-binance",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
@@ -21,6 +21,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/lodash": "^4.14.149",
+    "@types/react-router-dom": "^5.1.3",
     "axios": "^0.19.2",
     "base64-js": "^1.3.1",
     "big.js": "^5.2.2",
@@ -58,6 +60,7 @@
     "redux-pender": "^2.0.12",
     "source-map-explorer": "^2.2.2"
   },
+  "devDependencies": {},
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -83,5 +86,9 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "include": ["src"]
 }

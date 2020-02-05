@@ -1,15 +1,19 @@
 import React from "react";
+import classNames from "classnames/bind";
+import styles from "./App.scss";
 
-import "./App.scss";
+//redux
+//  import redux stuff
 
-function App() {
+//  components
+import Header from "./components/Header";
+
+const cx = classNames.bind(styles);
+
+export default function() {
 	return (
-		<div className='App'>
-			<header className='App-header'>
-				<p>Binance Explorer {process.env.REACT_APP_SITE_TITLE}</p>
-			</header>
+		<div className={cx("App")}>
+			<Header />
 		</div>
 	);
 }
-
-export default App;

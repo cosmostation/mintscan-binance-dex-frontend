@@ -1,0 +1,198 @@
+@import "src/styles/utils";
+
+.header-root {
+  background-image: linear-gradient(to right, #f0b90b, #fbd93a);
+  height: var(--heightHeader);
+  width: 100%;
+  .AppBar {
+    background: transparent;
+    .toolbar {
+      width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+
+      display: flex;
+      justify-content: space-between;
+
+      @include media("<large") {
+        width: 86%;
+      }
+
+      @include media("<medium") {
+        width: 100%;
+        height: var(--heightHeaderInMedium);
+        padding: 0 10px;
+      }
+      .logoImg {
+        vertical-align: bottom;
+        margin-top: 15px;
+        width: 150px;
+
+        @include media("<medium") {
+          width: 120px;
+        }
+
+        @include media("<xsmall") {
+          width: 100px;
+        }
+        @include media("<xxsmall") {
+          width: 80px;
+        }
+      }
+    }
+  }
+}
+
+.select-wrapper {
+  display: flex;
+  align-items: center;
+
+  .net-select-wrapper {
+    .select-btn {
+      background: var(--colorNetSelectBg);
+      border-radius: 5px;
+      height: 35px;
+      border: 1px solid var(--colorNetSelectBorder);
+      color: var(--colorAppBarInputText);
+      width: var(--widthNetSelectBox);
+      font-size: var(--fontSizeMedium);
+      line-height: 1.2;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 8px;
+      // @include media("<large") {
+      //   display: none;
+      // }
+
+      .curr-net-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .arrow-icon {
+        margin-left: 10px;
+        width: 10px;
+        height: 10px;
+
+      }
+    }
+
+    .select-item-list {
+      position: fixed;
+      top: 55px;
+      width: var(--widthNetSelectBox);
+      background: #fff;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+
+      height: 120px;
+      border-radius: 5px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .select-item {
+        color: #222222;
+        flex: 1;
+        font-size: 15px;
+        line-height: 2.67;
+        cursor: pointer;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        padding: 0 8px;
+
+        &:hover {
+          color: var(--colorType);
+        }
+      }
+
+      .disabled {
+        color: #cacfdc;
+        cursor: no-drop;
+
+        &:hover {
+          color: #cacfdc;
+        }
+      }
+    }
+  }
+
+  .menuButton {
+    display: none;
+
+    @include media("<large") {
+      display: block;
+    }
+  }
+
+  .search {
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 35px;
+    width: 440px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-self: center;
+    background: var(--colorSearchInput);
+    border: 1px solid var(--colorSearchInput);
+
+    margin-left: 10px;
+    margin-right: 0;
+
+    @include media("<large") {
+      display: none;
+    }
+
+    .input {
+      font-size: var(--fontSizeMain);
+
+      padding: 8px 16px;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      color: var(--colorAppBarInputText);
+      background: var(--colorAppBarInputBg);
+
+      &::placeholder {
+        font-size: var(--fontSizeMain);
+        color: var(--colorAppBarInputPh);
+        line-height: inherit;
+      }
+
+      @include media("<medium") {
+        width: 320px;
+      }
+    }
+  }
+
+  .searchBtn {
+    display: block;
+    cursor: pointer;
+    border: 1px solid var(--colorSearchInput);
+    padding: 4px 8px;
+    // border-radius: 0 5px 5px 0;
+    // background: var(--colorSearchInput);
+    // outline: var(--colorSearchInput);
+  }
+}
+.hide {
+  display: none !important;
+}
+
+.net-icon {
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 8px;
+}

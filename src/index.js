@@ -5,7 +5,7 @@ import ReactGA from "react-ga";
 import Root from "./Root";
 
 //  base styles
-import "styles/base.scss";
+import "./styles/base.scss";
 
 ReactDOM.render(<Root />, document.getElementById("root"));
 
