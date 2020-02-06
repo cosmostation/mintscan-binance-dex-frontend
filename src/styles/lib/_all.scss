@@ -1,2 +1,5 @@
 @import "~include-media/dist/include-media";
-@import "mixins";
+
+//  mixins
+@import "./mixins/misc";
+@import "./mixins/table";

@@ -1,5 +1,6 @@
 import React from "react";
 import {BrowserRouter} from "react-router-dom";
+import {RestfulProvider} from "restful-react";
 
 import App from "./App";
 
@@ -31,14 +32,18 @@ const theme = createMuiTheme({
 	// xl, extra-large: 1920px or larger
 });
 
+const baseAPI = process.env.NODE_ENV === "production" ? new Error("add production api here") : "https://api-binance-testnet.cosmostation.io/";
+
 export default function(props) {
 	return (
 		<MuiThemeProvider theme={theme}>
-			<Provider store={store}>
-				<BrowserRouter>
-					<App />
-				</BrowserRouter>
-			</Provider>
+			<RestfulProvider base={baseAPI}>
+				<Provider store={store}>
+					<BrowserRouter>
+						<App />
+					</BrowserRouter>
+				</Provider>
+			</RestfulProvider>
 		</MuiThemeProvider>
 	);
 }

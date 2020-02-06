@@ -1,0 +1,20 @@
+@import 'src/styles/utils';
+
+.tableRow {
+  @include tableRow;
+
+  .tablePointerCell {
+    @include tablePointerCell;
+    padding: 10px 30px 10px 20px
+  }
+
+  .tablePointerMiniCell {
+    @include tablePointerCellWidth140;
+    padding: 10px 30px 10px 20px
+  }
+
+  .tableCell {
+    @include tableCellWidth300;
+    padding: 10px 30px 10px 20px
+  }
+}

@@ -1,0 +1,22 @@
+@import "src/styles/utils";
+
+.tableWrapper {
+  overflow-x: auto;
+
+  .table {
+    min-width: 1000px;
+
+    .tableHeaderCell {
+      @include tableHeaderCellWidth300;
+      padding: 10px 30px 10px 20px;
+      color: var(--colorMainText);
+    }
+    .heightWidth {
+      width: 150px;
+    }
+    .txsWidth {
+      width: 100px;
+    }
+
+  }
+}

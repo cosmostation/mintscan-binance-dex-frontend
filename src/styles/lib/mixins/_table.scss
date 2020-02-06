@@ -1,0 +1,73 @@
+@mixin tableRow {
+  height: var(--heightTableRow);
+  color: var(--colorTableText);
+
+  &:nth-of-type(odd) {
+    background-color: var(--colorTableBg);
+  }
+}
+
+@mixin tablePointerCell {
+  cursor: pointer;
+  color: var(--colorLink);
+  font-size: 13px;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @include media("<large") {
+    max-width: 180px;
+    min-width: 50px;
+    font-size: 12px;
+  }
+}
+
+@mixin tablePointerCellWidth140 {
+  cursor: pointer;
+  color: var(--colorLink);
+  font-size: 13px;
+  max-width: 140px;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+
+  @include media("<large") {
+    max-width: 100px;
+    min-width: 50px;
+    font-size: 12px;
+  }
+}
+
+@mixin tableCellWidth300 {
+  cursor: default;
+  color: var(--colorTableText);
+  font-size: 13px;
+  max-width: 300px;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+
+  @include media("<large") {
+    max-width: 180px;
+    min-width: 50px;
+    font-size: 12px;
+  }
+}
+
+@mixin tableHeaderCellWidth300 {
+  cursor: default;
+  color: var(--colorMainText);
+  font-size: 13px;
+  font-weight: 600;
+  max-width: 300px;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+
+  @include media("<large") {
+    max-width: 180px;
+    min-width: 50px;
+    font-size: 12px;
+  }
+}

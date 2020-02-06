@@ -58,6 +58,7 @@
     "redux": "^4.0.5",
     "redux-actions": "^2.6.5",
     "redux-pender": "^2.0.12",
+    "restful-react": "^9.11.0",
     "source-map-explorer": "^2.2.2"
   },
   "devDependencies": {},

@@ -1,0 +1,23 @@
+// rename the .json file to .js and keep in src folder
+export default Object.freeze({
+	bonded: "Total amount of bonded tokens in the network.",
+	networkBondedRate: "Amount of bonded tokens over network released tokens",
+	txsIn24h: "Total number of transactions in the past 24 hours.",
+	validators: "Active validators / Total number of validators.",
+	blockTime: "Amount of time spent creating a new block.",
+	votingPower: "Sum of self-bonded and delegated tokens.",
+	uptime: "Percentage of missed blocks in the last 100 blocks.",
+	selfBonded: "Amount of validator’s self-bonded tokens.",
+	commission: "Validator service fee charged to delegators.",
+	selfBondedRate: "Amount of self-bonded tokens over total staked tokens.",
+	bondedRate: "Amount of total staked tokens over network staked tokens.",
+	missedBlock: "Height and number of misses of missed blocks",
+	powerEvents: "List of Voting Power changes",
+	proposer: "Validator that proposed this block.",
+	txs: "Number of transactions in this block.",
+	reward: "Amount of reward from proposing this block.",
+	fee: "Amount of transaction fee from this block. ",
+	type: "Message type of transaction.",
+	operatorAddress: "Validator operator address at which token holders delegate their voting powers to.",
+	withdrawAddress: "You can edit your reward destination address. This is your current reward destination address.",
+});
