@@ -1,0 +1,23 @@
+@import "src/styles/utils";
+
+.title {
+  font-family: "Montserrat", serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.23;
+  color: var(--colorPageTitle);
+  text-transform: uppercase;
+
+  span {
+    text-transform: none;
+  }
+
+  @include media("<large") {
+    font-size: 24px;
+  }
+
+  @include media("<medium") {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+}

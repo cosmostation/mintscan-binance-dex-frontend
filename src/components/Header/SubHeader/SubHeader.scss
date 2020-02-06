@@ -104,17 +104,54 @@
         line-height: 1.22;
         padding-left: 8px;
         text-transform: uppercase;
-        color: #b2b6bc
+        color: #b2b6bc;
+        &:hover {
+          color: var(--colorMainText) !important;
+        }
       }
       img {
         height: 32px;
         width: 32px;
       }
+
+      &:hover {
+        color: var(--colorMainText) !important;
+
+        &:nth-child(1) {
+          img {
+            content: url("/assets/icons/navigation/dashboard_ic.svg");
+          }
+        }
+
+        &:nth-child(2) {
+          img {
+            content: url("/assets/icons/navigation/blocks_ic.svg");
+          }
+        }
+
+        &:nth-child(3) {
+          img {
+            content: url("/assets/icons/navigation/transations_ic.svg");
+          }
+        }
+
+        &:nth-child(4) {
+          img {
+            content: url("/assets/icons/navigation/assets_ic.svg");
+          }
+        }
+
+        &:nth-child(5) {
+          img {
+            content: url("/assets/icons/navigation/binance_ic.svg");
+          }
+        }
+      }
     }
   }
 }
 .selected {
-  color: #222222 !important;
+  color: var(--colorMainText) !important;
 }
 
 .open {

@@ -1,13 +1,13 @@
-import dashboard from "src/assets/icons/navigation/dashboard_ic_none.svg";
-import dashboardOn from "src/assets/icons/navigation/dashboard_ic.svg";
-import blocks from "src/assets/icons/navigation/blocks_ic_none.svg";
-import blocksOn from "src/assets/icons/navigation/blocks_ic.svg";
-import txs from "src/assets/icons/navigation/transations_ic_none.svg";
-import txsOn from "src/assets/icons/navigation/transations_ic.svg";
-import assets from "src/assets/icons/navigation/assets_ic_none.svg";
-import assetsOn from "src/assets/icons/navigation/assets_ic.svg";
-import dex from "src/assets/icons/navigation/binance_ic_none.svg";
-import dexOn from "src/assets/icons/navigation/binance_ic.svg";
+const dashboard = process.env.PUBLIC_URL + "/assets/icons/navigation/dashboard_ic_none.svg";
+const dashboardOn = process.env.PUBLIC_URL + "/assets/icons/navigation/dashboard_ic.svg";
+const blocks = process.env.PUBLIC_URL + "/assets/icons/navigation/blocks_ic_none.svg";
+const blocksOn = process.env.PUBLIC_URL + "/assets/icons/navigation/blocks_ic.svg";
+const txs = process.env.PUBLIC_URL + "/assets/icons/navigation/transations_ic_none.svg";
+const txsOn = process.env.PUBLIC_URL + "/assets/icons/navigation/transations_ic.svg";
+const assets = process.env.PUBLIC_URL + "/assets/icons/navigation/assets_ic_none.svg";
+const assetsOn = process.env.PUBLIC_URL + "/assets/icons/navigation/assets_ic.svg";
+const dex = process.env.PUBLIC_URL + "/assets/icons/navigation/binance_ic_none.svg";
+const dexOn = process.env.PUBLIC_URL + "/assets/icons/navigation/binance_ic.svg";
 
 export default {
 	on: [dashboardOn, blocksOn, txsOn, assetsOn, dexOn],

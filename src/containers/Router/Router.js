@@ -1,22 +1,32 @@
-import React from "react";
+import React, {Suspense, lazy} from "react";
 import cn from "classnames/bind";
+import {Switch, Route} from "react-router-dom";
 import styles from "./Router.scss";
+
+//  component
+import Loading from "src/components/common/Loading";
 
 const cx = cn.bind(styles);
 
+const Block = lazy(() => import(`src/containers/Block`));
+const BlockList = lazy(() => import(`src/containers/BlockList`));
+const Dashboard = lazy(() => import(`src/containers/Dashboard`));
+const TxList = lazy(() => import(`src/containers/TxList`));
+const AssetList = lazy(() => import(`src/containers/AssetList`));
+
 export default function(props) {
+	console.log("router rerender >>> should never happen");
 	return (
 		<main className={cx("routerContainer")}>
-			asdf asdf asdf
-			<br />
-			asdf
-			<br />
-			asdf
-			<br />
-			asdf
-			<br />
-			asdf
-			<br />
+			<Suspense fallback={<Loading />}>
+				<Switch>
+					<Route exact path='/' render={props => <Dashboard {...props} />} />
+					<Route path='/blocks/:height' render={props => <Block {...props} />} />
+					<Route path='/blocks' render={props => <BlockList {...props} />} />
+					<Route path='/txs' render={props => <TxList {...props} />} />
+					<Route path='/assets' render={props => <AssetList {...props} />} />
+				</Switch>
+			</Suspense>
 		</main>
 	);
 }

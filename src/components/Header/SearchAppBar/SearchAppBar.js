@@ -12,14 +12,14 @@ import SearchIcon from "@material-ui/icons/Search";
 import MenuIcon from "@material-ui/icons/Menu";
 
 //  assets
-import binance from "src/assets/icons/navigation/chain_ic.svg";
-import iris from "src/assets/icons/common/iris_token.svg";
-import kava from "src/assets/icons/common/kava_token.svg";
-import cosmos from "src/assets/icons/common/atom_token.svg";
+import consts from "src/constants/consts";
 
-import arrowDown from "src/assets/icons/common/arrow-down.svg";
-import logo from "src/assets/icons/common/mintscan_logo.svg";
-import consts from "src/assets/consts";
+const arrowDown = process.env.PUBLIC_URL + "/assets/icons/common/arrow-down.svg";
+const binance = process.env.PUBLIC_URL + "/assets/icons/navigation/chain_ic.svg";
+const iris = "/assets/icons/common/iris_token.svg";
+const kava = process.env.PUBLIC_URL + "/assets/icons/common/kava_token.svg";
+const cosmos = process.env.PUBLIC_URL + "/assets/icons/common/atom_token.svg";
+const logo = process.env.PUBLIC_URL + "/assets/icons/common/mintscan_logo.svg";
 
 const cx = cn.bind(styles);
 
@@ -33,12 +33,15 @@ export default function(props) {
 
 	const toMain = useCallback(() => history.push("/"), [history]);
 
-	const handleChange = network => {
-		if (network === "cosmos") window.open(consts.MINTSCAN_URL.COSMOS, "_blank");
-		else if (network === "kava") window.open(consts.MINTSCAN_URL.KAVA, "_blank");
-		else if (network === "iris") window.open(consts.MINTSCAN_URL.IRIS, "_blank");
-		setOpen(v => !v);
-	};
+	const handleChange = useCallback(
+		network => {
+			if (network === "cosmos") window.open(consts.MINTSCAN_URL.COSMOS, "_blank");
+			else if (network === "kava") window.open(consts.MINTSCAN_URL.KAVA, "_blank");
+			else if (network === "iris") window.open(consts.MINTSCAN_URL.IRIS, "_blank");
+			setOpen(v => !v);
+		},
+		[setOpen]
+	);
 
 	const handleSearch = useCallback(async searchText => {
 		alert(`searchText => ${searchText}, add logic plz`);
@@ -115,7 +118,7 @@ export default function(props) {
 				</div>
 			);
 		},
-		[clickSearch, handleKeyPress, props.hamburgerClick, toMain]
+		[clickSearch, handleKeyPress, props.hamburgerClick, toMain, handleChange]
 	);
 
 	return useMemo(() => render(search, open), [render, search, open]);

@@ -23,12 +23,13 @@ export default Object.freeze({
 		IOS: "https://apple.co/2IAM3Xm",
 		WEB: "https://wallet.cosmostation.io",
 		COSMOSTATION: "https://www.cosmostation.io/",
+		BINANCEDEX: "https://www.binance.org/",
 	},
 
 	MENU: [
 		{
 			display: "DASHBOARD",
-			route: "/dashboard",
+			route: "/",
 			primary: true,
 		},
 		{

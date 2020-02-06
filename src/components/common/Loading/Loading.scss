@@ -1,0 +1,20 @@
+@import "src/styles/utils";
+
+.loading-wrapper {
+  height: 100vh;
+  background: var(--colorPageBg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .loading-img {
+    height: 70px;
+    width: 70px;
+    opacity: 0.8;
+
+    @include media("<small") {
+      height: 50px;
+      width: 50px;
+    }
+  }
+}

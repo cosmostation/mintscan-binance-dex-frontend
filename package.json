@@ -48,6 +48,7 @@
     "react-dev-utils": "^10.1.0",
     "react-dom": "^16.12.0",
     "react-ga": "^2.7.0",
+    "react-helmet": "^5.2.1",
     "react-html-parser": "^2.0.2",
     "react-loaders": "^3.0.1",
     "react-redux": "^7.1.3",
@@ -89,5 +90,7 @@
   "compilerOptions": {
     "baseUrl": "src"
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }
