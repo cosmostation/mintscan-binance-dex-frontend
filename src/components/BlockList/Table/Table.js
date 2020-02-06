@@ -1,20 +1,21 @@
-import React, {Component} from "react";
-import PropTypes from "prop-types";
-import customStyles from "./Table.scss";
+import React from "react";
+import styles from "./Table.scss";
 import classNames from "classnames/bind";
 
 //  utils
 import _ from "lodash";
-import * as isEqual from "fast-deep-equal";
+import consts from "src/constants/consts";
+import IndexedPagination from "src/components/common/hooks/IndexedPagination";
 
 // components
 import {Table, TableBody, TableCell, TableFooter, TablePagination, TableRow, TableHead, Tooltip, Fade} from "@material-ui/core";
 
 import tooltips from "src/constants/tooltips";
 
-const cx = classNames.bind(customStyles);
+const cx = classNames.bind(styles);
 
 export default function(props) {
+	const [loading, error, pages, currentPage, setCurrentPage] = IndexedPagination(consts.API.BLOCKLIST, 20, 1, "height", 100, null);
 	return (
 		<div className={cx("tableWrapper")}>
 			<Table className={cx("table")}>
