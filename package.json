@@ -4,49 +4,86 @@
   "private": true,
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start": "REACT_APP_BUILD_ENV=prod && react-scripts start",
-    "dev": "REACT_APP_BUILD_ENV=dev && react-scripts start",
-    "build:dev": "REACT_APP_BUILD_ENV=dev && react-scripts build",
-    "build:prod": "REACT_APP_BUILD_ENV=prod && react-scripts build",
+    "start": "REACT_APP_BUILD_ENV=prod && node scripts/start.js",
+    "dev": "REACT_APP_BUILD_ENV=dev && node scripts/start.js",
+    "build:dev": "REACT_APP_BUILD_ENV=dev && node scripts/build.js",
+    "build:prod": "REACT_APP_BUILD_ENV=prod && node scripts/build.js",
     "delete-maps": "yarn run delete-references-to-map-files && yarn run delete-map-files",
     "delete-map-files": "find ./build -name '*.map' -delete",
     "delete-references-to-map-files": "find ./build -regex '.*\\.\\(js\\|css\\)' -exec sed -i -E '\\/[\\*\\/]#\\ssourceMappingURL=main(\\.[0-9a-f]+)?\\.(css|js)\\.map(\\*\\/)?/g' {} +",
-    "prettify": "prettier --write src/**/*",
-    "eject": "react-scripts eject"
+    "prettify": "prettier --write src/**/*"
   },
   "dependencies": {
+    "@babel/core": "7.7.4",
     "@material-ui/core": "^4.9.1",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.0",
+    "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/lodash": "^4.14.149",
     "@types/react-router-dom": "^5.1.3",
+    "@typescript-eslint/eslint-plugin": "^2.8.0",
+    "@typescript-eslint/parser": "^2.8.0",
     "axios": "^0.19.2",
+    "babel-eslint": "10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "8.0.6",
+    "babel-plugin-named-asset-import": "^0.3.5",
+    "babel-preset-react-app": "^9.1.0",
     "base64-js": "^1.3.1",
     "big.js": "^5.2.2",
+    "camelcase": "^5.3.1",
+    "case-sensitive-paths-webpack-plugin": "2.2.0",
     "chalk": "^3.0.0",
     "classnames": "^2.2.6",
+    "css-loader": "3.2.0",
+    "dotenv": "8.2.0",
+    "dotenv-expand": "5.1.0",
+    "eslint": "^6.6.0",
+    "eslint-config-react-app": "^5.1.0",
+    "eslint-loader": "3.0.2",
+    "eslint-plugin-flowtype": "3.13.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.16.0",
+    "eslint-plugin-react-hooks": "^1.6.1",
     "fast-deep-equal": "^3.1.1",
+    "file-loader": "4.3.0",
+    "fs-extra": "^8.1.0",
     "highcharts": "^8.0.0",
     "highcharts-react-official": "^2.2.2",
+    "html-webpack-plugin": "4.0.0-beta.5",
     "husky": "^4.2.1",
+    "identity-obj-proxy": "3.0.0",
     "include-media": "^1.4.9",
     "is-empty": "^1.2.0",
+    "jest": "24.9.0",
+    "jest-environment-jsdom-fourteen": "0.1.0",
+    "jest-resolve": "24.9.0",
+    "jest-watch-typeahead": "0.4.2",
     "js-sha256": "^0.9.0",
     "linkifyjs": "^2.1.9",
     "lint-staged": "^10.0.7",
     "lodash": "^4.17.15",
+    "mini-css-extract-plugin": "0.8.0",
     "moment": "^2.24.0",
     "node-sass": "^4.13.0",
+    "optimize-css-assets-webpack-plugin": "5.0.3",
+    "pnp-webpack-plugin": "1.5.0",
+    "postcss-flexbugs-fixes": "4.1.0",
+    "postcss-loader": "3.0.0",
+    "postcss-normalize": "8.0.1",
+    "postcss-preset-env": "6.7.0",
+    "postcss-safe-parser": "4.0.1",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
     "query-string": "^6.10.1",
     "react": "^16.12.0",
-    "react-app-polyfill": "^1.0.6",
+    "react-app-polyfill": "^1.0.5",
     "react-copy-to-clipboard": "^5.0.2",
-    "react-dev-utils": "^10.1.0",
+    "react-dev-utils": "^10.0.0",
     "react-dom": "^16.12.0",
     "react-ga": "^2.7.0",
     "react-helmet": "^5.2.1",
@@ -54,13 +91,24 @@
     "react-loaders": "^3.0.1",
     "react-redux": "^7.1.3",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0",
     "react-skeleton-loader": "^1.0.4",
     "redux": "^4.0.5",
     "redux-actions": "^2.6.5",
     "redux-pender": "^2.0.12",
+    "resolve": "1.12.2",
+    "resolve-url-loader": "3.1.1",
     "restful-react": "^9.11.0",
-    "source-map-explorer": "^2.2.2"
+    "sass-loader": "8.0.0",
+    "semver": "6.3.0",
+    "source-map-explorer": "^2.2.2",
+    "style-loader": "1.0.0",
+    "terser-webpack-plugin": "2.2.1",
+    "ts-pnp": "1.1.5",
+    "url-loader": "2.3.0",
+    "webpack": "4.41.2",
+    "webpack-dev-server": "3.9.0",
+    "webpack-manifest-plugin": "2.2.0",
+    "workbox-webpack-plugin": "4.3.1"
   },
   "devDependencies": {},
   "eslintConfig": {
@@ -94,5 +142,59 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts"
+    ],
+    "setupFiles": [
+      "react-app-polyfill/jsdom"
+    ],
+    "setupFilesAfterEnv": [],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "testEnvironment": "jest-environment-jsdom-fourteen",
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "modulePaths": [],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web",
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+      "^src/(.*)$": "<rootDir>/src/$1"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "web.ts",
+      "ts",
+      "web.tsx",
+      "tsx",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
+    ],
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  }
 }
