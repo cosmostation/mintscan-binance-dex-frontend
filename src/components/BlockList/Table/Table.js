@@ -5,17 +5,26 @@ import classNames from "classnames/bind";
 //  utils
 import _ from "lodash";
 import consts from "src/constants/consts";
-import IndexedPagination from "src/components/common/hooks/IndexedPagination";
+import useIndexedPagination from "src/components/common/hooks/useIndexedPagination";
 
 // components
-import {Table, TableBody, TableCell, TableFooter, TablePagination, TableRow, TableHead, Tooltip, Fade} from "@material-ui/core";
+import {Table, TableBody, TableCell, TableFooter, TableRow, TableHead, Tooltip, Fade} from "@material-ui/core";
 
 import tooltips from "src/constants/tooltips";
 
 const cx = classNames.bind(styles);
 
+const indexConstants = {
+	path: consts.API.BLOCKLIST,
+	pageSize: 20,
+	initialPage: 1,
+	baseProperty: "height",
+	limit: 60,
+	resolve: undefined,
+};
+
 export default function(props) {
-	const [loading, error, pages, currentPage, setCurrentPage] = IndexedPagination(consts.API.BLOCKLIST, 20, 1, "height", 100, null);
+	const [loading, error, pages, currentPage, setCurrentPage] = useIndexedPagination(...indexConstants);
 	return (
 		<div className={cx("tableWrapper")}>
 			<Table className={cx("table")}>
