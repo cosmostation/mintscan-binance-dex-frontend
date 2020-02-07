@@ -3,7 +3,7 @@ import styles from "./Table.scss";
 import classNames from "classnames/bind";
 
 //  utils
-import _ from "lodash";
+import {omitProperty, recursiveExpand} from "src/lib/scripts";
 import consts from "src/constants/consts";
 import useIndexedPagination from "src/components/common/hooks/useIndexedPagination";
 
@@ -14,17 +14,21 @@ import tooltips from "src/constants/tooltips";
 
 const cx = classNames.bind(styles);
 
-const indexConstants = {
-	path: consts.API.BLOCKLIST,
-	pageSize: 20,
-	initialPage: 1,
-	baseProperty: "height",
-	limit: 60,
-	resolve: undefined,
-};
-
 export default function(props) {
-	const [loading, error, pages, currentPage, setCurrentPage] = useIndexedPagination(...indexConstants);
+	const [loading, error, state, updateCurrentPage] = useIndexedPagination(
+		consts.API.BLOCKLIST,
+		20,
+		0,
+		"height",
+		60,
+		arr => omitProperty(arr, ["id"]),
+		"height"
+	);
+	const imsiButtonPress = (bool = false) => {
+		updateCurrentPage(bool);
+		console.log("clicked next");
+	};
+	console.log("state", state);
 	return (
 		<div className={cx("tableWrapper")}>
 			<Table className={cx("table")}>
@@ -50,12 +54,12 @@ export default function(props) {
 						</TableCell>
 					</TableRow>
 				</TableHead>
-				<TableBody>
-					add table rows
-					{/*{rows.map(row => {*/}
-					{/*	return <BlockListTableRow blockData={row} key={row.id} />;*/}
-					{/*})}*/}
-				</TableBody>
+				{/*<TableBody>*/}
+				add table rows
+				<button onClick={() => imsiButtonPress(false)}>GETMORERIGHT</button>
+				<button onClick={() => imsiButtonPress(true)}>GETMORELEFT</button>
+				<p>{state.pageData ? recursiveExpand(state.pageData, "") : "none"}</p>
+				{/*</TableBody>*/}
 				<TableFooter className={cx("table-footer")}>
 					<TableRow>add table pagination</TableRow>
 				</TableFooter>
