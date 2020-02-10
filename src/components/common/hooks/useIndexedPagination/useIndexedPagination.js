@@ -1,10 +1,17 @@
 import {useEffect, useCallback, useReducer} from "react";
 import {useGet} from "restful-react";
-
 import empty from "is-empty";
-import useHistoryByCase from "src/components/common/hooks/useHistoryByCase";
 
+import useHistoryByCase from "src/components/common/hooks/useHistoryByCase";
 import {nilCheck, _} from "src/lib/scripts";
+import reducer, {
+	initialState,
+	INITIAL_LOAD_QUERY,
+	INITIAL_LOAD,
+	EXTRA_LOAD_BEFORE,
+	EXTRA_LOAD_AFTER,
+	RESET,
+} from "src/components/common/hooks/useIndexedPagination/reducer";
 
 //  allData -> blocks where heights are in descending order
 
@@ -31,17 +38,7 @@ const getQueryParams = (arr, after, baseProperty, path, limit) => {
 	return `${path}?limit=${limit}&${after ? "after" : "before"}=${baseHeight}`;
 };
 
-const initialState = {
-	maxHeight: null,
-	curHeight: null,
-	allData: [],
-	pageData: [],
-	params: {height: null, after: true},
-	isFront: false,
-	error: false,
-};
-
-export default function(path, pageSize = 20, initialHeight = 0, baseProperty = "height", limit = 60, resolve = undefined, updateQuery = "") {
+export default function({path, pageSize = 20, initialHeight = 0, baseProperty = "height", limit = 60, resolve = undefined, updateQuery = ""}) {
 	const {data, loading, error, refetch} = useGet({
 		path: initialHeight === 0 ? `${path}?limit=${limit}` : `${path}?limit=${limit}&`,
 		resolve: resolve,
@@ -79,27 +76,3 @@ export default function(path, pageSize = 20, initialHeight = 0, baseProperty = "
 
 	return [loading, error, {...state, allData: undefined}, updateCurrentPage];
 }
-
-const INITIAL_LOAD = "INITIAL_LOAD";
-const INITIAL_LOAD_QUERY = "INITIAL_LOAD_QUERY";
-const EXTRA_LOAD_AFTER = "EXTRA_LOAD_AFTER";
-const EXTRA_LOAD_BEFORE = "EXTRA_LOAD_BEFORE";
-const RESET = "RESET";
-
-const reducer = (state, action) => {
-	switch (action.type) {
-		case INITIAL_LOAD:
-			const {data, pageSize} = action.payload;
-			const [maxHeight, allData] = [data?.[0]?.height, data];
-			const pageData = _.isArray(data) ? _.slice(data, 0, pageSize) : null;
-			if (nilCheck([maxHeight, allData, pageData])) return {...state, error: true};
-			return {...state, maxHeight, allData, isFront: true, curHeight: maxHeight, pageData};
-		case INITIAL_LOAD_QUERY:
-		case EXTRA_LOAD_AFTER:
-		case EXTRA_LOAD_BEFORE:
-		case RESET:
-			return {...initialState};
-		default:
-			throw new Error(`Undefined action type: ${action.type}`);
-	}
-};

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 
-import HeaderWrapper from "src/components/Header/HeaderWrapper/HeaderWrapper";
+import {AppBar} from "@material-ui/core";
+
 import SearchAppBar from "src/components/Header/SearchAppBar/SearchAppBar";
 import SubHeader from "src/components/Header/SubHeader/SubHeader";
 
@@ -14,11 +15,9 @@ export default function(props) {
 	}, [navBarOpen]);
 
 	return (
-		<header>
-			<HeaderWrapper>
-				<SearchAppBar hamburgerClick={hamburgerClick} />
-				<SubHeader navBarOpen={navBarOpen} setNavBarOpen={setNavBarOpen} />
-			</HeaderWrapper>
-		</header>
+		<AppBar position={"fixed"}>
+			<SearchAppBar hamburgerClick={hamburgerClick} />
+			<SubHeader navBarOpen={navBarOpen} setNavBarOpen={setNavBarOpen} />
+		</AppBar>
 	);
 }

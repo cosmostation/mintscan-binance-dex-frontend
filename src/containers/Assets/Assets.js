@@ -10,7 +10,7 @@ const cx = cn.bind(styles);
 
 export default function(props) {
 	return (
-		<div className={cx("AssetList")}>
+		<div className={cx("Assets")}>
 			<TitleWrapper>
 				<PageTitle title={"Assets"} />
 			</TitleWrapper>

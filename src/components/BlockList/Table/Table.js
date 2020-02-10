@@ -15,15 +15,15 @@ import tooltips from "src/constants/tooltips";
 const cx = classNames.bind(styles);
 
 export default function(props) {
-	const [loading, error, state, updateCurrentPage] = useIndexedPagination(
-		consts.API.BLOCKLIST,
-		20,
-		0,
-		"height",
-		60,
-		arr => omitProperty(arr, ["id"]),
-		"height"
-	);
+	const [loading, error, state, updateCurrentPage] = useIndexedPagination({
+		path: consts.API.BLOCKLIST,
+		pageSize: 20,
+		initialHeight: 0,
+		baseProperty: "height",
+		limit: 60,
+		resolve: arr => omitProperty(arr, ["id"]),
+		updateQuery: "height",
+	});
 	const imsiButtonPress = (bool = false) => {
 		updateCurrentPage(bool);
 		console.log("clicked next");

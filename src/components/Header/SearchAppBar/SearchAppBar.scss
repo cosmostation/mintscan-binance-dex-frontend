@@ -1,40 +1,40 @@
 @import "../../../styles/utils";
 
 .SearchAppBar-root {
-  .AppBar {
-    background: transparent;
-    .toolbar {
-      width: 1200px;
-      margin: 0 auto;
-      padding: 0;
+  background-image: linear-gradient(to right, #f0b90b, #fbd93a);
+  height: var(--heightHeader);
+  width: 100%;
+  .toolbar {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0;
 
-      display: flex;
-      justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 
-      @include media("<large") {
-        width: 86%;
-      }
+    @include media("<large") {
+      width: 86%;
+    }
+
+    @include media("<medium") {
+      width: 100%;
+      height: var(--heightHeaderInMedium);
+      padding: 0 10px;
+    }
+    .logoImg {
+      vertical-align: bottom;
+      margin-top: 15px;
+      width: 150px;
 
       @include media("<medium") {
-        width: 100%;
-        height: var(--heightHeaderInMedium);
-        padding: 0 10px;
+        width: 120px;
       }
-      .logoImg {
-        vertical-align: bottom;
-        margin-top: 15px;
-        width: 150px;
 
-        @include media("<medium") {
-          width: 120px;
-        }
-
-        @include media("<xsmall") {
-          width: 100px;
-        }
-        @include media("<xxsmall") {
-          width: 80px;
-        }
+      @include media("<xsmall") {
+        width: 100px;
+      }
+      @include media("<xxsmall") {
+        width: 80px;
       }
     }
   }
