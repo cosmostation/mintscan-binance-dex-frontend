@@ -1,14 +1,11 @@
-import React, {useMemo, useCallback} from "react";
+import React, {useCallback, useMemo} from "react";
 import cn from "classnames/bind";
 import styles from "./SubHeader.scss";
-import {NavLink} from "react-router-dom";
-import {useHistory} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import consts from "src/constants/consts";
 import svg from "./SubHeaderAssets";
-
 //  utils
 import _ from "lodash";
-
 //  material ui
 import {Grid} from "@material-ui/core";
 

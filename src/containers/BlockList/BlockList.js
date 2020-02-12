@@ -1,7 +1,6 @@
 import React from "react";
 import cn from "classnames/bind";
 import styles from "./BlockList.scss";
-
 //  components
 import TitleWrapper from "src/components/common/TitleWrapper";
 import PageTitle from "src/components/common/PageTitle";

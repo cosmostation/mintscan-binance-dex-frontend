@@ -1,16 +1,13 @@
-import React, {useState, useCallback, useMemo} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import cn from "classnames/bind";
 import styles from "./SearchAppBar.scss";
 import _ from "lodash";
-
 //  router
 import {NavLink, useHistory} from "react-router-dom";
-
 //  material ui
-import {AppBar, Toolbar, InputBase, IconButton} from "@material-ui/core";
+import {IconButton, InputBase, Toolbar} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import MenuIcon from "@material-ui/icons/Menu";
-
 //  assets
 import consts from "src/constants/consts";
 

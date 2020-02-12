@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import ReactGA from "react-ga";
 
 import Root from "./Root";
-
 //  base styles
 import "./styles/base.scss";
 

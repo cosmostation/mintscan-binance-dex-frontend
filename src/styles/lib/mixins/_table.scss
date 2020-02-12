@@ -1,7 +1,4 @@
 @mixin tableRow {
-  height: var(--heightTableRow);
-  color: var(--colorTableText);
-
   &:nth-of-type(odd) {
     background-color: var(--colorTableBg);
   }

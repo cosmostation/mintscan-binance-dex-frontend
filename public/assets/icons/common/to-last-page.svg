@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1{fill:#4b525d}.cls-2{fill:none}
+        </style>
+    </defs>
+    <g id="first_page-24px" transform="rotate(180 12 12)">
+        <path id="패스_2154" d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z" class="cls-1" data-name="패스 2154"/>
+        <path id="패스_2155" d="M24 24H0V0h24z" class="cls-2" data-name="패스 2155"/>
+    </g>
+</svg>

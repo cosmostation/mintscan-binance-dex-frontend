@@ -2,14 +2,13 @@ import React from "react";
 import classNames from "classnames/bind";
 import styles from "./App.scss";
 import {Helmet} from "react-helmet";
-
-//redux
-//  import redux stuff
-
 //  components
 import Router from "src/containers/Router/Router";
 import Header from "src/containers/Header";
 import Footer from "src/containers/Footer";
+
+//redux
+//  import redux stuff
 
 const cx = classNames.bind(styles);
 

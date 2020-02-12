@@ -1,15 +1,12 @@
 import React from "react";
 import {BrowserRouter} from "react-router-dom";
 import {RestfulProvider} from "restful-react"; //  Thank you Tejas
-
 //  redux
 import {Provider} from "react-redux";
 import configure from "./store/configure";
-import {MuiThemeProvider, createMuiTheme} from "@material-ui/core/styles";
-
+import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
 //  misc
 import consts from "src/constants/consts";
-
 //  app
 import App from "./App";
 

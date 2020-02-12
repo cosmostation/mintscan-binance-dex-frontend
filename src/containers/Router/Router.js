@@ -1,8 +1,7 @@
-import React, {Suspense, lazy} from "react";
+import React, {lazy, Suspense} from "react";
 import cn from "classnames/bind";
-import {Switch, Route} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import styles from "./Router.scss";
-
 //  component
 import Loading from "src/components/common/Loading";
 
