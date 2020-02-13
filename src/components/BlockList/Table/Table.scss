@@ -2,9 +2,9 @@
 
 .tableWrapper {
   overflow-x: auto;
+  min-height: 825px;
   .table {
     min-width: 1000px;
-
     .tableHeaderCell {
       @include tableHeaderCellWidth300;
       padding: 10px 30px 10px 20px;
@@ -38,14 +38,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      img {
-        content: url("/assets/icons/common/check_box_blank.svg");
+      .checkBox {
+        width: 24px;
+        height: 24px;
+        background-image: url("/assets/icons/common/check_box_blank.svg");
         &:hover {
-          content: url("/assets/icons/common/check_box_blank_hover.svg");
+          background-image: url("/assets/icons/common/check_box_blank_hover.svg");
         }
         &.clicked {
-          content: url("/assets/icons/common/check_box.svg")
+          background-image: url("/assets/icons/common/check_box.svg")
         }
+      }
+      &.inactive {
+        opacity: 0.5;
       }
       .text {
         font-family: "Open Sans", serif;

@@ -24,6 +24,7 @@ export default function(props) {
 					<Route path='/blocks' render={props => <BlockList {...props} />} />
 					<Route path='/txs' render={props => <TxList {...props} />} />
 					<Route path='/assets' render={props => <AssetList {...props} />} />
+					<Route render={props => <Dashboard {...props} />} />
 				</Switch>
 			</Suspense>
 		</main>

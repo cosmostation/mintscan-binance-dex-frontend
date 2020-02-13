@@ -8,6 +8,7 @@
     "dev": "REACT_APP_BUILD_ENV=dev && node scripts/start.js",
     "build:dev": "REACT_APP_BUILD_ENV=dev && node scripts/build.js",
     "build:prod": "REACT_APP_BUILD_ENV=prod && node scripts/build.js",
+
     "delete-maps": "yarn run delete-references-to-map-files && yarn run delete-map-files",
     "delete-map-files": "find ./build -name '*.map' -delete",
     "delete-references-to-map-files": "find ./build -regex '.*\\.\\(js\\|css\\)' -exec sed -i -E '\\/[\\*\\/]#\\ssourceMappingURL=main(\\.[0-9a-f]+)?\\.(css|js)\\.map(\\*\\/)?/g' {} +",

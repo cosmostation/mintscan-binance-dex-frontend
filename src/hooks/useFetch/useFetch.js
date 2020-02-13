@@ -20,10 +20,12 @@ export default function(inputUrl, method = "get") {
 			cancelToken: source.token,
 		})
 			.then(res => {
-				if (!unmounted) dispatch(state, {type: SUCCESS, payload: res.data});
+				console.log(res);
+				if (!unmounted) dispatch({type: SUCCESS, payload: {data: res.data}});
 			})
 			.catch(ex => {
-				if (!unmounted) dispatch(state, {type: ERROR, payload: {errorMessage: ex.message}});
+				console.warn("error during fetch", ex);
+				if (!unmounted) dispatch({type: ERROR, payload: {errorMessage: ex.message}});
 			});
 		return () => {
 			unmounted = true;
@@ -34,6 +36,5 @@ export default function(inputUrl, method = "get") {
 	const requestRefetch = useCallback(() => {
 		setFetch(v => v + 1);
 	}, [setFetch]);
-
 	return [{...state}, requestRefetch, setUrl];
 }
