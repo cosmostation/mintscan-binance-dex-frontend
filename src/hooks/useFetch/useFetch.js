@@ -20,7 +20,6 @@ export default function(inputUrl, method = "get") {
 			cancelToken: source.token,
 		})
 			.then(res => {
-				console.log(res);
 				if (!unmounted) dispatch({type: SUCCESS, payload: {data: res.data}});
 			})
 			.catch(ex => {

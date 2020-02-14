@@ -1,6 +1,6 @@
 @import "src/styles/utils";
 
-.tableWrapper {
+.txListTableWrapper {
   overflow-x: auto;
   min-height: 825px;
   .table {
@@ -18,7 +18,7 @@
     }
   }
 }
-.table-footer {
+.txList-table-footer {
   height: 50px;
   width: 100%;
 

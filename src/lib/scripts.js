@@ -26,10 +26,10 @@ export const setAgoTime = time => {
 
 	// if (duration._data.years) ret = `${duration._data.years}years`;
 	// if (duration._data.months) ret = `${duration._data.months}months`;
-	// if (duration._data.days) ret = `${duration._data.days}d`;
+	if (duration._data.days) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.days}d`;
 	if (duration._data.hours) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.hours}h`;
-	if (duration._data.minutes) ret = `${ret} ${duration._data.minutes}m`;
-	if (duration._data.seconds) ret = `${ret} ${duration._data.seconds}s`;
+	if (duration._data.minutes) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.minutes}m`;
+	if (duration._data.seconds) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.seconds}s`;
 	return ret + " ago";
 };
 

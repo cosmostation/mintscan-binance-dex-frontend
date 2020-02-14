@@ -14,7 +14,7 @@ import tooltips from "src/constants/tooltips";
 
 const cx = classNames.bind(styles);
 
-const HEIGHT_DISPLAY_DECIMAL_PLACES = 4;
+const INDEX_DISPLAY_DECIMAL_PLACES = 4;
 const BASE_PROPERTY = "height";
 
 export default function(props) {
@@ -65,7 +65,7 @@ export default function(props) {
 	const formattedMaxHeight = useMemo(() => formatNumber(state.maxIndex, 3), [state.maxIndex]);
 	// console.log("check", state.maxIndex, state.pageData[0]?.height);
 	const footerRender = (
-		<div className={cx("table-footer")}>
+		<div className={cx("blockList-table-footer")}>
 			<div className={cx("paginationWrapper")}>
 				<div className={cx("realtime", {inactive: !state.isFront})}>
 					<button onClick={realTimeButtonClick} className={cx("checkBox", {clicked: realTime})} />
@@ -74,7 +74,7 @@ export default function(props) {
 				<div className={cx("heightWrapper")}>
 					<p>
 						<span>Height </span>
-						{state.maxIndex ? getPercentage(state.pageData[0]?.[BASE_PROPERTY], state.maxIndex, HEIGHT_DISPLAY_DECIMAL_PLACES) : ""}%<span> of </span>
+						{state.maxIndex ? getPercentage(state.pageData[0]?.[BASE_PROPERTY], state.maxIndex, INDEX_DISPLAY_DECIMAL_PLACES) : ""}%<span> of </span>
 						{state.maxIndex ? formattedMaxHeight : ""}
 					</p>
 				</div>
@@ -130,7 +130,7 @@ export default function(props) {
 	);
 
 	return (
-		<div className={cx("tableWrapper")}>
+		<div className={cx("blockListtableWrapper")}>
 			<Table className={cx("table")}>
 				{tableHeaderRender}
 				{tableBodyRender}

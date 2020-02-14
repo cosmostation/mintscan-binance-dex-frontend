@@ -11,7 +11,7 @@ import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/cor
 import TxListTableRow from "../TableRow";
 import {_} from "src/lib/scripts";
 
-const HEIGHT_DISPLAY_DECIMAL_PLACES = 4;
+const INDEX_DISPLAY_DECIMAL_PLACES = 3;
 const BASE_PROPERTY = "id";
 
 const cx = classNames.bind(styles);
@@ -31,7 +31,7 @@ export default function(props) {
 	useEffect(() => {
 		if (empty(state.index)) return;
 		const isFrontToTrue = state.isFront === true && previousIsFront === false;
-		if (realTime === false && isFrontToTrue && state.pageData[state.index[0]].height === state.maxHeight) {
+		if (realTime === false && isFrontToTrue && state.pageData[state.index[0]].height === state.maxIndex) {
 			// console.log("setRealTimeTrue");
 			setRealTime(true);
 		} else if (state.index[0] !== 0 && realTime === true) {
@@ -62,7 +62,7 @@ export default function(props) {
 		// console.log("setRealTime click", !realTime);
 		setRealTime(v => !v);
 	};
-	const formattedMaxHeight = useMemo(() => formatNumber(state.maxHeight, 3), [state.maxHeight]);
+	const formattedMaxHeight = useMemo(() => formatNumber(state.maxIndex, 3), [state.maxIndex]);
 	//========================
 
 	const tableHeaderRender = useMemo(
@@ -93,7 +93,7 @@ export default function(props) {
 	);
 
 	const footerRender = (
-		<div className={cx("table-footer")}>
+		<div className={cx("txList-table-footer")}>
 			<div className={cx("paginationWrapper")}>
 				<div className={cx("realtime", {inactive: !state.isFront})}>
 					<button onClick={realTimeButtonClick} className={cx("checkBox", {clicked: realTime})} />
@@ -101,9 +101,9 @@ export default function(props) {
 				</div>
 				<div className={cx("heightWrapper")}>
 					<p>
-						<span>Height </span>
-						{state.maxHeight ? getPercentage(state.pageData[0]?.height, state.maxHeight, HEIGHT_DISPLAY_DECIMAL_PLACES) : ""}%<span> of </span>
-						{state.maxHeight ? formattedMaxHeight : ""}
+						<span>index </span>
+						{state.maxIndex ? getPercentage(state.pageData[0]?.[BASE_PROPERTY], state.maxIndex, INDEX_DISPLAY_DECIMAL_PLACES) : ""}%<span> of </span>
+						{state.maxIndex ? formattedMaxHeight : ""}
 					</p>
 				</div>
 				<div className={cx("buttonsWrapper")}>
@@ -129,7 +129,7 @@ export default function(props) {
 	}, [state.pageData, state.pageSize]);
 
 	return (
-		<div className={cx("tableWrapper")}>
+		<div className={cx("txListTableWrapper")}>
 			<Table className={cx("table")}>
 				{tableHeaderRender}
 				{tableBodyRender}
