@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start": "REACT_APP_BUILD_ENV=prod && node scripts/start.js",
-    "dev": "REACT_APP_BUILD_ENV=dev && node scripts/start.js",
-    "build:dev": "REACT_APP_BUILD_ENV=dev && node scripts/build.js",
-    "build:prod": "REACT_APP_BUILD_ENV=prod && node scripts/build.js",
+    "start": "REACT_APP_BUILD_ENV=prod REACT_APP_NODE_ENV=production node scripts/start.js",
+    "dev": "REACT_APP_BUILD_ENV=dev REACT_APP_NODE_ENV=development node scripts/start.js",
+    "build:dev": "REACT_APP_BUILD_ENV=dev REACT_APP_NODE_ENV=development node scripts/build.js && yarn run delete-maps",
+    "build:prod": "REACT_APP_BUILD_ENV=prod REACT_APP_NODE_ENV=development node scripts/build.js && yarn run delete-maps",
 
     "delete-maps": "yarn run delete-references-to-map-files && yarn run delete-map-files",
     "delete-map-files": "find ./build -name '*.map' -delete",
@@ -113,7 +113,8 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
-    "@babel/plugin-proposal-throw-expressions": "^7.8.3"
+    "@babel/plugin-proposal-throw-expressions": "^7.8.3",
+    "babel-plugin-transform-remove-console": "^6.9.4"
   },
   "eslintConfig": {
     "extends": "react-app"

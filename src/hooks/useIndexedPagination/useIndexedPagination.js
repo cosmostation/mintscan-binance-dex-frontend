@@ -1,26 +1,28 @@
 import {useCallback, useEffect, useMemo, useReducer, useState} from "react";
 import {useGet} from "restful-react";
-import {useFetch} from "src/hooks";
+import {useFetch, useTimer} from "src/hooks";
 import {useHistory} from "react-router-dom";
 
 import queryString from "query-string";
 
-import {_, empty, recursiveExpand} from "src/lib/scripts";
+import {_, empty} from "src/lib/scripts";
 import consts from "src/constants/consts";
 
 import reducer, {
 	EXTRA_LOAD,
+	EXTRA_LOAD_FAIL,
 	EXTRA_LOAD_INIT,
 	INITIAL_LOAD,
 	INITIAL_LOAD_QUERY,
-	PAGE_CHANGE,
-	UPDATE_MAX_HEIGHT,
-	UPDATE_ISFRONT,
 	initialState,
-	EXTRA_LOAD_FAIL,
+	PAGE_CHANGE,
+	RECENT_DATA_LOAD,
+	UPDATE_ISFRONT,
+	UPDATE_MAX_HEIGHT,
 } from "src/hooks/useIndexedPagination/reducer";
 
 const SPARE_PAGE_CNT = 2; //  how many pages left before a refetch is triggered
+const REAL_TIME_DELAY_MS = 2000;
 
 const blocksURL = `${consts.API_BASE()}${consts.API.BLOCKLIST}`;
 let renderCnt = 0;
@@ -44,50 +46,88 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 	// CASE !0
 	//  First use to retrieve top height block, then use to refetch cutting-edge data(if user reaches first height)
 
-	const fetchURL = useMemo(() => (refinedQuery === 1 ? "" : `${blocksURL}?limit=1`), [refinedQuery]);
+	const [recentData, requestFetch, setUrl] = useFetch("", "get");
 
-	const [recentData, requestFetch, setUrl] = useFetch(fetchURL, "get");
+	const [watch, setWatch] = useTimer(realTime, REAL_TIME_DELAY_MS);
+
+	//  for real time data
+	useEffect(() => {
+		if (error || empty(state.allData) || realTime === false) return;
+		if (recentData.loading === false && recentData.error === false) {
+			// console.log("[request recent data]");
+			//  DEBUGGING - to prevent realtime data stream
+			// return;
+			if (loading) return;
+			setUrl(blocksURL + getQueryParams(state.allData, true, pagingProperty, "", limit));
+		}
+	}, [watch]);
+	useEffect(() => {
+		if (error) return;
+		// console.log("setting setWatch", realTime);
+		setWatch(realTime);
+	}, [realTime]);
 
 	//  new data from recentData
 	useEffect(() => {
 		if (_.isNil(recentData.data?.data)) return;
 		//  if start from middle update max height
-		if (_.isNil(state.maxHeight))
-			if (!_.isNil(recentData.data.data?.[0]?.height)) dispatch({type: UPDATE_MAX_HEIGHT, payload: recentData.data.data[0].height});
-			else dispatch({type: UPDATE_MAX_HEIGHT, payload: recentData.data.data[0].height});
-		if (recentData.data.data) console.log("getRecentData", recentData.data.data[0].height);
+		if (_.isNil(state.maxIndex)) {
+			if (!_.isNil(recentData.data.data?.[0][pagingProperty]))
+				dispatch({
+					type: UPDATE_MAX_HEIGHT,
+					payload: recentData.data.data[0][pagingProperty],
+				});
+			else dispatch({type: UPDATE_MAX_HEIGHT, payload: recentData.data.data[0][pagingProperty]});
+			return;
+		}
+		if (recentData.data.data) {
+			// console.log("getRecentData", recentData.data.data[0][pagingProperty]);
+			dispatch({type: RECENT_DATA_LOAD, payload: {data: recentData.data.data}});
+			if (recentData.data.data.length > limit) {
+				console.warn(`getRecentData overflowed (${recentData.data.data.length}>${limit}[limit])`);
+				// TODO
+				//  exception handling when recentData query is insufficient
+			}
+		}
 	}, [recentData.data]);
+
+	// TODO
+	//  query for new maxIndex when user queries for value higher than maxIndex
+	//  or only after maxIndex hasn't been updated for longer than # seconds
 
 	//  appending new data
 	useEffect(() => {
-		if (_.isNil(data) && state.isFront === false && _.isBoolean(state.params.after)) {
+		if (_.isNil(data?.data) && state.isFront === false && realTime && _.isBoolean(state.params.after)) {
 			dispatch({type: UPDATE_ISFRONT});
 		}
-		if (!_.isNil(error) || (_.isNil(data) && !_.isBoolean(state.params.after))) return;
+		if (!_.isNil(error) || (_.isNil(data?.data) && !_.isBoolean(state.params.after))) return;
 
 		//  initial load
 		if (empty(state.index)) {
 			//  initial load only occurs when refinedQuery is set
-			if (refinedQuery === 1) return dispatch({type: INITIAL_LOAD, payload: {data, pageSize, index: [0, pageSize]}});
+			if (refinedQuery === 1) {
+				return dispatch({type: INITIAL_LOAD, payload: {data: data.data, pageSize, index: [0, pageSize], maxIndex: Number(data.paging.total)}});
+			}
 			// TODO
 			//  define case when query is set
 			else {
-				getInitialLoadQuery(refinedQuery, {data, pageSize, index: [0, pageSize]});
+				getInitialLoadQuery(refinedQuery, {data: data.data, maxIndex: Number(data.paging.total), pageSize, index: [0, pageSize]});
 				dispatch({type: EXTRA_LOAD_INIT, payload: {after: true}}); //  query for the ones before as well
 			}
 		}
 		//  when new data arrives, append to allData
 		else if (!empty(state.allData) && _.isBoolean(state.params.after)) {
 			//  is data new?
-			if (
-				!_.isNil(data) &&
-				((state.params.after === true && data[0]?.height > state.allData?.[0]?.height) ||
-					(state.params.after === false && data[0]?.height < state.allData?.[state.allData.length - 1]?.height))
-			) {
-				dispatch({type: EXTRA_LOAD, payload: {data, after: state.params.after}});
+			if (!_.isNil(data?.data)) {
+				if (
+					(state.params.after === true && data.data[0]?.[pagingProperty] > state.allData?.[0]?.[pagingProperty]) ||
+					(state.params.after === false && data.data[0]?.[pagingProperty] < state.allData?.[state.allData.length - 1]?.[pagingProperty])
+				) {
+					dispatch({type: EXTRA_LOAD, payload: {data: data.data, after: state.params.after, loading, maxIndex: Number(data.paging.total)}});
+				}
 			} else {
-				//  data was attempted to be loaded but none returned
-				// dispatch({type: EXTRA_LOAD_FAIL});
+				if ((state.index[0] === 0 && state.params.after === false) || (state.index[1] === state.allData.length - 1 && state.params.after === true))
+					dispatch({type: EXTRA_LOAD_FAIL});
 			}
 		}
 
@@ -137,17 +177,32 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 
 	//  update query if changed
 	useEffect(() => {
-		console.log("pageChangeCheck>>>>>>", state.isFront, realTime, refinedQuery, pageData.length);
+		// console.log("pageChangeCheck>>>>>>", {
+		// 	..._.omit(state, ["allData", "error", "isNoMore", "maxIndex"]),
+		// 	allDataSize: state.allData.length,
+		// 	realTime,
+		// });
 		if (error || empty(pageData)) return;
-		if (state.isFront && refinedQuery !== 1) {
+		// console.log("refinedQuery", refinedQuery);
+		if (realTime) {
 			setRefinedQuery(history, updateQuery, 0);
+			return;
 		}
-		if (realTime) return;
-		if (refinedQuery === pageData[0].height) return;
-		setRefinedQuery(history, updateQuery, pageData[0].height);
-	}, [pageData, realTime, state.isFront]);
 
-	return [loading, error, {...state, pageData, allData: undefined, maxIndex: state.allData.length}, updateCurrentPage, [realTime, setRealTime]];
+		if (refinedQuery === pageData[0][pagingProperty] + 1) return;
+		setRefinedQuery(history, updateQuery, pageData[0][pagingProperty]);
+	}, [pageData, state.isFront]);
+
+	const forceLoadAfter = after => dispatch({type: EXTRA_LOAD_INIT, payload: {after: after}}); //  query for the ones before as well
+
+	return [
+		loading,
+		error,
+		{...state, pageData, allData: undefined, maxIndexed: state.allData.length},
+		updateCurrentPage,
+		[realTime, setRealTime],
+		forceLoadAfter,
+	];
 }
 
 //  get query params to query from server
@@ -162,13 +217,14 @@ const setRefinedQuery = (history, queryValue, value) => {
 	const parsed = queryString.parse(history.location.search, {parseNumbers: true});
 	const parsedKeys = _.keys(parsed);
 	if (!_.isNil(value)) {
+		if (parsed[queryValue] === value) return;
 		parsed[queryValue] = value;
 		history.replace(`${window.location.pathname}?${queryString.stringify(parsed)}`, {shallow: true});
 	} else if (!(_.includes(parsedKeys, queryValue) && !empty(parsed[queryValue]) && _.isSafeInteger(parsed[queryValue]) && parsed[queryValue] >= 0)) {
 		parsed[queryValue] = 0;
 		history.replace(`${window.location.pathname}?${queryString.stringify(parsed)}`, {shallow: true});
 	}
-	//  -1 because we need the heights including the value(before returns descending)
+	//  +1 because we need the heights including the value(before returns descending)
 	return parsed[queryValue] + 1;
 };
 

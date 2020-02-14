@@ -19,7 +19,7 @@ export default function(state, action) {
 			return {...state, loading: true, error: false};
 		}
 		case SUCCESS: {
-			return {...state, loading: true, error: false, data: action.payload.data};
+			return {...state, loading: false, error: false, data: action.payload.data};
 		}
 		case ERROR: {
 			return {...state, loading: false, error: true, data: null, errorMessage: action.payload.errorMessage};

@@ -1,4 +1,4 @@
-import {nilCheck, _} from "src/lib/scripts";
+import {_, empty} from "src/lib/scripts";
 
 export const initialState = {
 	maxHeight: null,
@@ -6,7 +6,7 @@ export const initialState = {
 	//  0 -> first, 1 -> last showed on page, use these indexes to slice allData and send out
 	index: [],
 	params: {after: null},
-	isFront: false,
+	isFront: true,
 	error: false,
 	pageSize: null,
 	isNoMore: false, //  reached end
@@ -17,6 +17,7 @@ export const INITIAL_LOAD_QUERY = "INITIAL_LOAD_QUERY"; //  initial load from mi
 export const EXTRA_LOAD_INIT = "EXTRA_LOAD_INIT"; //  get ready to load
 export const EXTRA_LOAD = "EXTRA_LOAD"; //  load more
 export const EXTRA_LOAD_FAIL = "EXTRA_LOAD_FAIL"; // load more but null
+export const RECENT_DATA_LOAD = "RECENT_DATA_LOAD";
 export const PAGE_CHANGE = "PAGE_CHANGE";
 export const UPDATE_MAX_HEIGHT = "UPDATE_MAX_HEIGHT";
 export const UPDATE_ISFRONT = "UPDATE_ISFRONT";
@@ -26,35 +27,50 @@ export default function(state, action) {
 	console.log("reducer>>>", action.type);
 	switch (action.type) {
 		case INITIAL_LOAD: {
-			const {data, pageSize, index} = action.payload;
-			const [maxHeight, allData] = [data?.[0]?.height, data];
-			if (nilCheck([maxHeight, allData])) return {...state, error: true};
-			return {...state, maxHeight, allData, isFront: true, index, pageSize};
+			const {data, pageSize, index, maxIndex} = action.payload;
+			if (empty(data)) return {...state, error: true};
+			return {...state, maxIndex, allData: data, isFront: true, index, pageSize};
 		}
 		case INITIAL_LOAD_QUERY: {
-			const {data, pageSize, index} = action.payload;
+			const {data, pageSize, index, maxIndex} = action.payload;
 			const allData = data;
 			if (_.isNil(allData)) return {...state, error: true};
-			return {...state, allData, isFront: false, index, pageSize};
+			return {...state, allData, isFront: false, index, pageSize, maxIndex};
 		}
 		case EXTRA_LOAD_INIT: {
 			return {...state, params: {after: action.payload.after}};
 		}
 		case EXTRA_LOAD: {
+			const defaultParams = {params: {after: null}, maxIndex: action.payload.maxIndex};
+			if (!action.payload.loading) {
+				_.assign(defaultParams, {isFront: state.index[0] === 0 && action.payload.data.length < state.pageSize});
+			}
 			if (action.payload.after) {
 				return {
 					...state,
 					allData: [..._.reverse(action.payload.data), ...state.allData], //  reverse mutates array
 					index: [state.index[0] + action.payload.data.length, state.index[1] + action.payload.data.length],
-					params: {after: null},
-					maxHeight: action.payload.data[0]?.height > state.maxHeight ? action.payload.data[0]?.height : state.maxHeight, //  so maxHeight is first of payload.data
-					isFront: state.index[0] === 0 && action.payload.data.length < state.pageSize,
+					...defaultParams,
 				};
-			} else return {...state, allData: [...state.allData, ...action.payload.data], params: {after: null}};
+			} else {
+				return {
+					...state,
+					allData: [...state.allData, ...action.payload.data],
+					...defaultParams,
+				};
+			}
 		}
 		case EXTRA_LOAD_FAIL: {
 			if (state.params.after === true) return {...state, params: {after: null}, isFront: true};
 			return {...state, params: {after: null}, isFront: false, isNoMore: true};
+		}
+		case RECENT_DATA_LOAD: {
+			return {
+				...state,
+				params: {after: null},
+				allData: [..._.reverse(action.payload.data), ...state.allData],
+				maxIndex: action.payload.data[0]?.height > state.maxIndex ? action.payload.data[0]?.height : state.maxIndex, //  so maxIndex is first of payload.data
+			};
 		}
 		case PAGE_CHANGE: {
 			if (action.payload.after === true) {
@@ -67,7 +83,7 @@ export default function(state, action) {
 			}
 		}
 		case UPDATE_MAX_HEIGHT: {
-			return {...state, maxHeight: action.payload};
+			return {...state, maxIndex: action.payload};
 		}
 		case UPDATE_ISFRONT: {
 			return {...state, isFront: true};

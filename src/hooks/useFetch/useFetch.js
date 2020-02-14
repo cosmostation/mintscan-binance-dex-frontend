@@ -1,8 +1,8 @@
-import {useReducer, useEffect, useState, useCallback} from "react";
+import {useCallback, useEffect, useReducer, useState} from "react";
 import axios from "axios";
 import {empty} from "src/lib/scripts";
 
-import reducer, {initialState, INIT, FETCHING, SUCCESS, ERROR} from "./reducer";
+import reducer, {ERROR, FETCHING, initialState, SUCCESS} from "./reducer";
 
 export default function(inputUrl, method = "get") {
 	const [url, setUrl] = useState(inputUrl);
@@ -20,12 +20,17 @@ export default function(inputUrl, method = "get") {
 			cancelToken: source.token,
 		})
 			.then(res => {
-				console.log(res);
 				if (!unmounted) dispatch({type: SUCCESS, payload: {data: res.data}});
 			})
 			.catch(ex => {
-				console.warn("error during fetch", ex);
-				if (!unmounted) dispatch({type: ERROR, payload: {errorMessage: ex.message}});
+				if (!unmounted) {
+					if (ex.response.status === 404) {
+						dispatch({type: SUCCESS, payload: {data: []}});
+					} else {
+						console.warn("error during fetch", ex);
+						dispatch({type: ERROR, payload: {errorMessage: ex.message}});
+					}
+				}
 			});
 		return () => {
 			unmounted = true;

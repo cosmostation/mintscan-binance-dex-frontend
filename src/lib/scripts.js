@@ -51,6 +51,11 @@ export const formatNumber = (v = 0, size = 3) => {
 	return `${recursiveReverse(arr)}${substr[1] ? `.${substr[1]}` : ""}`;
 };
 
+export const getPercentage = (num1 = 0, num2 = 100, decimal = 4) => {
+	if (num2 === 0 || isNaN(num2) || isNaN(num2)) return `0.${_.repeat("0", decimal)}`;
+	return `${Math.round((num1 / num2) * 100 * Math.pow(10, decimal)) / Math.pow(10, decimal)}`;
+};
+
 // TODO
 //  make better
 //  upgrade version if you find it better

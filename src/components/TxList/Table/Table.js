@@ -5,33 +5,32 @@ import classNames from "classnames/bind";
 import consts from "src/constants/consts";
 import useIndexedPagination from "src/hooks/useIndexedPagination";
 import {usePrevious} from "src/hooks";
-import {_, empty, formatNumber, getPercentage} from "src/lib/scripts";
+import {empty, formatNumber, getPercentage} from "src/lib/scripts";
 // components
-import {Fade, Table, TableBody, TableCell, TableHead, TableRow, Tooltip} from "@material-ui/core";
-import BlockListTableRow from "../TableRow";
+import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
+import TxListTableRow from "../TableRow";
+import {_} from "src/lib/scripts";
 
-import tooltips from "src/constants/tooltips";
+const HEIGHT_DISPLAY_DECIMAL_PLACES = 4;
 
 const cx = classNames.bind(styles);
 
-const HEIGHT_DISPLAY_DECIMAL_PLACES = 4;
-const BASE_PROPERTY = "height";
-
 export default function(props) {
 	const [loading, error, state, updateCurrentPage, [realTime, setRealTime], forceLoadAfter] = useIndexedPagination({
-		path: consts.API.BLOCKLIST,
+		path: consts.API.TXLIST,
 		pageSize: 20,
-		baseProperty: BASE_PROPERTY,
+		baseProperty: "id",
 		limit: 60,
 		resolve: v => v,
-		updateQuery: "blockHeight",
+		updateQuery: "txID",
 	});
 	const previousIsFront = usePrevious(state.isFront);
-
+	//  copied from BlockList
+	//========================
 	useEffect(() => {
 		if (empty(state.index)) return;
 		const isFrontToTrue = state.isFront === true && previousIsFront === false;
-		if (realTime === false && isFrontToTrue && state.pageData[state.index[0]].height === state.maxIndex) {
+		if (realTime === false && isFrontToTrue && state.pageData[state.index[0]].height === state.maxHeight) {
 			// console.log("setRealTimeTrue");
 			setRealTime(true);
 		} else if (state.index[0] !== 0 && realTime === true) {
@@ -46,7 +45,7 @@ export default function(props) {
 			// console.log("setRealTimeFalse");
 			setRealTime(false);
 		}
-		if (!after && state.index[1] + state.pageSize > state.maxIndexed) return;
+		if (!after && state.index[1] + state.pageSize > state.maxIndex) return;
 		updateCurrentPage(after);
 		// console.log("clicked next");
 	};
@@ -62,8 +61,36 @@ export default function(props) {
 		// console.log("setRealTime click", !realTime);
 		setRealTime(v => !v);
 	};
-	const formattedMaxHeight = useMemo(() => formatNumber(state.maxIndex, 3), [state.maxIndex]);
-	// console.log("check", state.maxIndex, state.pageData[0]?.height);
+	const formattedMaxHeight = useMemo(() => formatNumber(state.maxHeight, 3), [state.maxHeight]);
+	//========================
+
+	const tableHeaderRender = useMemo(
+		() => (
+			<TableHead>
+				<TableRow>
+					<TableCell className={cx("tableHeaderCell", "heightWidth")}>Tx Hash</TableCell>
+					<TableCell className={cx("tableHeaderCell")}>Type</TableCell>
+					<TableCell className={cx("tableHeaderCell")} align='left'>
+						From
+					</TableCell>
+					<TableCell className={cx("tableHeaderCell")} align='left'>
+						To
+					</TableCell>
+					<TableCell className={cx("tableHeaderCell")} align='right'>
+						<span>Value</span>
+					</TableCell>
+					<TableCell className={cx("tableHeaderCell", "heightWidth")} align='right'>
+						<span>Height</span>
+					</TableCell>
+					<TableCell className={cx("tableHeaderCell", "txsWidth")} align='right'>
+						<span>Time</span>
+					</TableCell>
+				</TableRow>
+			</TableHead>
+		),
+		[]
+	);
+
 	const footerRender = (
 		<div className={cx("table-footer")}>
 			<div className={cx("paginationWrapper")}>
@@ -74,14 +101,14 @@ export default function(props) {
 				<div className={cx("heightWrapper")}>
 					<p>
 						<span>Height </span>
-						{state.maxIndex ? getPercentage(state.pageData[0]?.[BASE_PROPERTY], state.maxIndex, HEIGHT_DISPLAY_DECIMAL_PLACES) : ""}%<span> of </span>
-						{state.maxIndex ? formattedMaxHeight : ""}
+						{state.maxHeight ? getPercentage(state.pageData[0]?.height, state.maxHeight, HEIGHT_DISPLAY_DECIMAL_PLACES) : ""}%<span> of </span>
+						{state.maxHeight ? formattedMaxHeight : ""}
 					</p>
 				</div>
 				<div className={cx("buttonsWrapper")}>
 					<img alt={"first"} className={cx("last", "flip", {inactive: state.isFront})} onClick={() => toFrontClick(true)} />
 					<img alt={"left"} className={cx("right", "flip", {inactive: state.isFront})} onClick={() => onePageClick(true)} />
-					<img alt={"right"} className={cx("right", {inactive: state.index[1] + state.pageSize > state.maxIndexed})} onClick={() => onePageClick(false)} />
+					<img alt={"right"} className={cx("right", {inactive: state.index[1] + state.pageSize > state.maxIndex})} onClick={() => onePageClick(false)} />
 					<img alt={"last"} className={cx("last")} onClick={() => toFrontClick(false)} />
 				</div>
 			</div>
@@ -93,41 +120,12 @@ export default function(props) {
 
 		return (
 			<TableBody>
-				{_.map(pageData, (v, idx) => {
-					if (v === undefined) return <BlockListTableRow key={idx} blockData={{}} />;
-					return <BlockListTableRow key={v.height} blockData={v} />;
-				})}
+				{_.map(pageData, (v, idx) => (
+					<TxListTableRow key={v.id} blockData={v} />
+				))}
 			</TableBody>
 		);
 	}, [state.pageData, state.pageSize]);
-
-	const tableHeaderRender = useMemo(
-		() => (
-			<TableHead>
-				<TableRow>
-					<TableCell className={cx("tableHeaderCell", "heightWidth")}>Height</TableCell>
-					<TableCell className={cx("tableHeaderCell")}>Parent Hash</TableCell>
-					<TableCell className={cx("tableHeaderCell")} align='left'>
-						<Tooltip TransitionComponent={Fade} TransitionProps={{timeout: 300}} title={tooltips.proposer} disableFocusListener disableTouchListener>
-							<span>Node</span>
-						</Tooltip>
-					</TableCell>
-					<TableCell className={cx("tableHeaderCell")} align='right'>
-						Fee(no-data)
-					</TableCell>
-					<TableCell className={cx("tableHeaderCell", "txsWidth")} align='right'>
-						<Tooltip TransitionComponent={Fade} TransitionProps={{timeout: 300}} title={tooltips.txs} disableFocusListener disableTouchListener>
-							<span>Txs</span>
-						</Tooltip>
-					</TableCell>
-					<TableCell className={cx("tableHeaderCell")} align='right'>
-						Time
-					</TableCell>
-				</TableRow>
-			</TableHead>
-		),
-		[]
-	);
 
 	return (
 		<div className={cx("tableWrapper")}>

@@ -1,7 +1,9 @@
 export default Object.freeze({
-	API_BASE: () => (process.env.NODE_ENV === "production" ? throw new Error("add production api here") : "https://api-binance-testnet.cosmostation.io/v1"),
+	API_BASE: () =>
+		process.env.REACT_APP_BUILD_ENV === "production" ? "https://lcd-binance-mainnet.cosmostation.io" : "https://api-binance-testnet.cosmostation.io/v1",
 	API: {
 		BLOCKLIST: "/blocks",
+		TXLIST: "/txs",
 	},
 	NETWORK: {
 		COSMOS: "cosmos-3",

@@ -4,6 +4,7 @@
   background-image: linear-gradient(to right, #f0b90b, #fbd93a);
   height: var(--heightHeader);
   width: 100%;
+  z-index: 100;
   .toolbar {
     width: 1200px;
     margin: 0 auto;

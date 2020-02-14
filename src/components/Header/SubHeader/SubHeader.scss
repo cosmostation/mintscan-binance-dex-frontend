@@ -10,7 +10,7 @@
   background-color: white;
   border-radius: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 10;
 
   @include media("<medium") {
     top: var(--heightHeaderInMedium);
@@ -105,9 +105,6 @@
         padding-left: 8px;
         text-transform: uppercase;
         color: #b2b6bc;
-        &:hover {
-          color: var(--colorMainText) !important;
-        }
       }
       img {
         height: 32px;
@@ -115,8 +112,9 @@
       }
 
       &:hover {
-        color: var(--colorMainText) !important;
-
+        h2 {
+          color: var(--colorMainText) !important;
+        }
         &:nth-child(1) {
           img {
             content: url("/assets/icons/navigation/dashboard_ic.svg");
