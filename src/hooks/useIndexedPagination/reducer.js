@@ -69,7 +69,7 @@ export default function(state, action) {
 				...state,
 				params: {after: null},
 				allData: [..._.reverse(action.payload.data), ...state.allData],
-				maxIndex: action.payload.data[0]?.height > state.maxIndex ? action.payload.data[0]?.height : state.maxIndex, //  so maxIndex is first of payload.data
+				maxIndex: action.payload.maxIndex,
 			};
 		}
 		case PAGE_CHANGE: {

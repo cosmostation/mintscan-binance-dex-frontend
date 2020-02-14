@@ -2,6 +2,47 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap");
 
+:root {
+	//  colors
+
+	--colorHeaderBg: #222222;
+	--colorType: #9c6cff;
+	--colorTypeBg: #f6f2ff;
+	--colorMainText: #222222;
+	--colorMissedBlock: #b997ff;
+	--colorAppBarInputBg: #ffffff;
+	--colorAppBarInputText: #4b525d;
+	--colorAppBarInputPh: #b2b6bc;
+	--colorNetSelectBg: #ffffff;
+	--colorNetSelectBorder: transparent;
+	--colorSearchInput: #575c64;
+	--colorFooterBG: #222222;
+	--colorTableBg: #fbfbfc;
+
+	//  height
+	--heightTableRow: 45px;
+	--heightHeader: 65px;
+	--heightHeaderInMedium: 55px;
+	--heightSubHeader: 50px;
+	--mainDefaultPaddingTop: 30px;
+	--mainDefaultPaddingBottom: 70px;
+
+	// fontSize
+	--fontSizeDassSearchPh: 14px;
+	--fontSizeCardValue: 18px;
+	--fontSizeCardValueInMedium: 16px;
+
+	--fontSizeMain: 13px;
+	--fontSizeMedium: 14px;
+	--fontSizeMainInMedium: 12px;
+	--fontSizeDashTitle: 50px;
+	--fontSizeTabTitle: 15px;
+
+	//width
+	--widthNetSelectBox: 160px;
+}
+
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -196,44 +237,4 @@ button {
 
 	/* Corrects inability to style clickable `input` types in iOS */
 	-webkit-appearance: none;
-}
-
-:root {
-	//  colors
-
-	--colorHeaderBg: #222222;
-	--colorType: #9c6cff;
-	--colorTypeBg: #f6f2ff;
-	--colorMainText: #222222;
-	--colorMissedBlock: #b997ff;
-	--colorAppBarInputBg: #ffffff;
-	--colorAppBarInputText: #4b525d;
-	--colorAppBarInputPh: #b2b6bc;
-	--colorNetSelectBg: #ffffff;
-	--colorNetSelectBorder: transparent;
-	--colorSearchInput: #575c64;
-	--colorFooterBG: #222222;
-	--colorTableBg: #fbfbfc;
-
-	//  height
-	--heightTableRow: 45px;
-	--heightHeader: 75px;
-	--heightHeaderInMedium: 55px;
-	--heightSubHeader: 50px;
-	--mainDefaultPaddingTop: 30px;
-	--mainDefaultPaddingBottom: 70px;
-
-	// fontSize
-	--fontSizeDassSearchPh: 14px;
-	--fontSizeCardValue: 18px;
-	--fontSizeCardValueInMedium: 16px;
-
-	--fontSizeMain: 13px;
-	--fontSizeMedium: 14px;
-	--fontSizeMainInMedium: 12px;
-	--fontSizeDashTitle: 50px;
-	--fontSizeTabTitle: 15px;
-
-	//width
-	--widthNetSelectBox: 160px;
 }

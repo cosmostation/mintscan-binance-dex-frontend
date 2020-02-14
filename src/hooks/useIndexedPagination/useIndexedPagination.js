@@ -82,7 +82,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 		}
 		if (recentData.data.data) {
 			// console.log("getRecentData", recentData.data.data[0][pagingProperty]);
-			dispatch({type: RECENT_DATA_LOAD, payload: {data: recentData.data.data}});
+			dispatch({type: RECENT_DATA_LOAD, payload: {data: recentData.data.data, maxIndex: Number(recentData.data.paging.total)}});
 			if (recentData.data.data.length > limit) {
 				console.warn(`getRecentData overflowed (${recentData.data.data.length}>${limit}[limit])`);
 				// TODO
