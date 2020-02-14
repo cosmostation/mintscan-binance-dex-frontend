@@ -23,8 +23,8 @@ import reducer, {
 
 const SPARE_PAGE_CNT = 2; //  how many pages left before a refetch is triggered
 const REAL_TIME_DELAY_MS = 2000;
+const API_BASE = consts.API_BASE();
 
-const blocksURL = `${consts.API_BASE()}${consts.API.BLOCKLIST}`;
 let renderCnt = 0;
 export default function({path, pageSize = 20, pagingProperty = "height", limit = 60, resolve = undefined, updateQuery = ""}) {
 	renderCnt++;
@@ -41,11 +41,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 		resolve: resolve,
 	});
 
-	// CASE 0
 	//  Only use refetch when retrieving cutting-edge data
-	// CASE !0
-	//  First use to retrieve top height block, then use to refetch cutting-edge data(if user reaches first height)
-
 	const [recentData, requestFetch, setUrl] = useFetch("", "get");
 
 	const [watch, setWatch] = useTimer(realTime, REAL_TIME_DELAY_MS);
@@ -58,7 +54,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 			//  DEBUGGING - to prevent realtime data stream
 			// return;
 			if (loading) return;
-			setUrl(blocksURL + getQueryParams(state.allData, true, pagingProperty, "", limit));
+			setUrl(`${API_BASE}${path}` + getQueryParams(state.allData, true, pagingProperty, "", limit));
 		}
 	}, [watch]);
 	useEffect(() => {
@@ -70,18 +66,9 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 	//  new data from recentData
 	useEffect(() => {
 		if (_.isNil(recentData.data?.data)) return;
-		//  if start from middle update max height
-		if (_.isNil(state.maxIndex)) {
-			if (!_.isNil(recentData.data.data?.[0][pagingProperty]))
-				dispatch({
-					type: UPDATE_MAX_HEIGHT,
-					payload: recentData.data.data[0][pagingProperty],
-				});
-			else dispatch({type: UPDATE_MAX_HEIGHT, payload: recentData.data.data[0][pagingProperty]});
-			return;
-		}
+
 		if (recentData.data.data) {
-			// console.log("getRecentData", recentData.data.data[0][pagingProperty]);
+			// console.log("getRecentData", recentData.data);
 			dispatch({type: RECENT_DATA_LOAD, payload: {data: recentData.data.data, maxIndex: Number(recentData.data.paging.total)}});
 			if (recentData.data.data.length > limit) {
 				console.warn(`getRecentData overflowed (${recentData.data.data.length}>${limit}[limit])`);
@@ -206,10 +193,10 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 }
 
 //  get query params to query from server
-const getQueryParams = (arr, after, baseProperty, path, limit) => {
-	const baseHeight = after ? arr[0]?.[baseProperty] : arr[arr.length - 1]?.[baseProperty];
-	if (_.isNil(baseHeight)) return throw new Error("First or last element in array does not have baseProperty set");
-	return `${path}?limit=${limit}&${after ? "after" : "before"}=${baseHeight}`;
+const getQueryParams = (arr, after, pagingProperty, path, limit) => {
+	const baseIndex = after ? arr[0]?.[pagingProperty] : arr[arr.length - 1]?.[pagingProperty];
+	if (_.isNil(baseIndex)) return throw new Error("First or last element in array does not have baseProperty set");
+	return `${path}?limit=${limit}&${after ? "after" : "before"}=${baseIndex}`;
 };
 
 //  set query to 0 if not set, sets to value if value is set, returns query+1 for realistic before server query

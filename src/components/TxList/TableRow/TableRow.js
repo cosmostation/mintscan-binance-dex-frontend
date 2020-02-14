@@ -7,41 +7,35 @@ import {TableCell, TableRow} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
 import {reduceString, setAgoTime} from "src/lib/scripts";
 
-const cx = classNames.bind(customStyle);
+import pickData, {CELL_TYPES} from "./pickData";
+export const cxTableRow = classNames.bind(customStyle);
 
 export default function({blockData}) {
 	return (
-		<TableRow className={cx("tableRow")} hover={true} key={blockData.id}>
-			<TableCell className={cx("tablePointerCell", "text")} component='th' scope='row'>
-				{blockData.tx_hash ? (
-					<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height}`}>
-						{reduceString(blockData.tx_hash, 8, 5)}
-					</NavLink>
-				) : (
-					<Skeleton />
-				)}
+		<TableRow className={cxTableRow("tableRow")} hover={true} key={blockData.id}>
+			<TableCell className={cxTableRow("tablePointerCell", "text")} component='th' scope='row'>
+				{pickData(blockData, CELL_TYPES[0])}
 			</TableCell>
-			<TableCell className={cx("tablePointerCell", "text")}>{blockData.type ? <span>{blockData.type}</span> : <Skeleton />}</TableCell>
-			<TableCell className={cx("tablePointerCell", "text")} align='left'>
-				{blockData.moniker ? <NavLink to={`/validators/${blockData.proposer}`}>{blockData.moniker}</NavLink> : <Skeleton />}
+			<TableCell className={cxTableRow("tablePointerCell", "text")}>{pickData(blockData, CELL_TYPES[1])}</TableCell>
+			<TableCell className={cxTableRow("tablePointerCell", "text")} align='left'>
+				{pickData(blockData, CELL_TYPES[2])}
 			</TableCell>
-			<TableCell className={cx("tableCell", "text")} align='right'>
-				000,000.<span className={"decimal"}>00000</span>
-				<span className={"BNB"}>BNB</span>
+			<TableCell className={cxTableRow("tableCell", "text")} align='left'>
+				{pickData(blockData, CELL_TYPES[3])}
 			</TableCell>
-			<TableCell className={cx("tableCell")} align='right'>
+			<TableCell className={cxTableRow("tableCell")} align='right'>
 				{blockData.num_txs}
 			</TableCell>
-			<TableCell className={cx("tableCell")} align='right'>
+			<TableCell className={cxTableRow("tableCell")} align='right'>
 				{blockData.height ? (
-					<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height}`}>
+					<NavLink className={cxTableRow("blueColor")} to={`/blocks/${blockData.height}`}>
 						{blockData.height}{" "}
 					</NavLink>
 				) : (
 					<Skeleton />
 				)}
 			</TableCell>
-			<TableCell className={cx("tableCell")} align='right'>
+			<TableCell className={cxTableRow("tableCell")} align='right'>
 				{blockData.timestamp ? setAgoTime(blockData.timestamp) : <Skeleton />}
 			</TableCell>
 		</TableRow>

@@ -21,7 +21,7 @@ export default function(props) {
 	const [loading, error, state, updateCurrentPage, [realTime, setRealTime], forceLoadAfter] = useIndexedPagination({
 		path: consts.API.BLOCKLIST,
 		pageSize: 20,
-		baseProperty: BASE_PROPERTY,
+		pagingProperty: BASE_PROPERTY,
 		limit: 60,
 		resolve: v => v,
 		updateQuery: "blockHeight",

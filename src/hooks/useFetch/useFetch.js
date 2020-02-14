@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useReducer, useState} from "react";
 import axios from "axios";
-import {empty} from "src/lib/scripts";
+import {empty, _} from "src/lib/scripts";
 
 import reducer, {ERROR, FETCHING, initialState, SUCCESS} from "./reducer";
 
@@ -20,6 +20,7 @@ export default function(inputUrl, method = "get") {
 			cancelToken: source.token,
 		})
 			.then(res => {
+				console.log(res);
 				if (!unmounted) dispatch({type: SUCCESS, payload: {data: res.data}});
 			})
 			.catch(ex => {

@@ -12,6 +12,7 @@ import TxListTableRow from "../TableRow";
 import {_} from "src/lib/scripts";
 
 const HEIGHT_DISPLAY_DECIMAL_PLACES = 4;
+const BASE_PROPERTY = "id";
 
 const cx = classNames.bind(styles);
 
@@ -19,7 +20,7 @@ export default function(props) {
 	const [loading, error, state, updateCurrentPage, [realTime, setRealTime], forceLoadAfter] = useIndexedPagination({
 		path: consts.API.TXLIST,
 		pageSize: 20,
-		baseProperty: "id",
+		pagingProperty: BASE_PROPERTY,
 		limit: 60,
 		resolve: v => v,
 		updateQuery: "txID",
@@ -120,7 +121,7 @@ export default function(props) {
 
 		return (
 			<TableBody>
-				{_.map(pageData, (v, idx) => (
+				{_.map(pageData, v => (
 					<TxListTableRow key={v.id} blockData={v} />
 				))}
 			</TableBody>
