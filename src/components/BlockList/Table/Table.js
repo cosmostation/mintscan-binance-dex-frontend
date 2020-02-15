@@ -11,6 +11,7 @@ import {Fade, Table, TableBody, TableCell, TableHead, TableRow, Tooltip} from "@
 import BlockListTableRow from "../TableRow";
 
 import tooltips from "src/constants/tooltips";
+import {footerRender} from "src/components/common/IndexedPagination/IndexedPagination";
 
 const cx = classNames.bind(styles);
 
@@ -64,29 +65,6 @@ export default function(props) {
 	};
 	const formattedMaxHeight = useMemo(() => formatNumber(state.maxIndex, 3), [state.maxIndex]);
 	// console.log("check", state.maxIndex, state.pageData[0]?.height);
-	const footerRender = (
-		<div className={cx("blockList-table-footer")}>
-			<div className={cx("paginationWrapper")}>
-				<div className={cx("realtime", {inactive: !state.isFront})}>
-					<button onClick={realTimeButtonClick} className={cx("checkBox", {clicked: realTime})} />
-					<div className={cx("text")}>Real Time</div>
-				</div>
-				<div className={cx("heightWrapper")}>
-					<p>
-						<span>Height </span>
-						{state.maxIndex ? getPercentage(state.pageData[0]?.[BASE_PROPERTY], state.maxIndex, INDEX_DISPLAY_DECIMAL_PLACES) : ""}%<span> of </span>
-						{state.maxIndex ? formattedMaxHeight : ""}
-					</p>
-				</div>
-				<div className={cx("buttonsWrapper")}>
-					<img alt={"first"} className={cx("last", "flip", {inactive: state.isFront})} onClick={() => toFrontClick(true)} />
-					<img alt={"left"} className={cx("right", "flip", {inactive: state.isFront})} onClick={() => onePageClick(true)} />
-					<img alt={"right"} className={cx("right", {inactive: state.index[1] + state.pageSize > state.maxIndexed})} onClick={() => onePageClick(false)} />
-					<img alt={"last"} className={cx("last")} onClick={() => toFrontClick(false)} />
-				</div>
-			</div>
-		</div>
-	);
 
 	const tableBodyRender = useMemo(() => {
 		const {pageData} = state;
@@ -135,7 +113,7 @@ export default function(props) {
 				{tableHeaderRender}
 				{tableBodyRender}
 			</Table>
-			{footerRender}
+			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, toFrontClick, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, cx)}
 		</div>
 	);
 }

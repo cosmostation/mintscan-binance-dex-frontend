@@ -5,11 +5,12 @@ import classNames from "classnames/bind";
 import consts from "src/constants/consts";
 import useIndexedPagination from "src/hooks/useIndexedPagination";
 import {usePrevious} from "src/hooks";
-import {empty, formatNumber, getPercentage} from "src/lib/scripts";
+import {empty, formatNumber} from "src/lib/scripts";
 // components
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 import TxListTableRow from "../TableRow";
 import {_} from "src/lib/scripts";
+import {footerRender} from "src/components/common/IndexedPagination/IndexedPagination";
 
 const INDEX_DISPLAY_DECIMAL_PLACES = 3;
 const BASE_PROPERTY = "id";
@@ -92,30 +93,6 @@ export default function(props) {
 		[]
 	);
 
-	const footerRender = (
-		<div className={cx("txList-table-footer")}>
-			<div className={cx("paginationWrapper")}>
-				<div className={cx("realtime", {inactive: !state.isFront})}>
-					<button onClick={realTimeButtonClick} className={cx("checkBox", {clicked: realTime})} />
-					<div className={cx("text")}>Real Time</div>
-				</div>
-				<div className={cx("heightWrapper")}>
-					<p>
-						<span>index </span>
-						{state.maxIndex ? getPercentage(state.pageData[0]?.[BASE_PROPERTY], state.maxIndex, INDEX_DISPLAY_DECIMAL_PLACES) : ""}%<span> of </span>
-						{state.maxIndex ? formattedMaxHeight : ""}
-					</p>
-				</div>
-				<div className={cx("buttonsWrapper")}>
-					<img alt={"first"} className={cx("last", "flip", {inactive: state.isFront})} onClick={() => toFrontClick(true)} />
-					<img alt={"left"} className={cx("right", "flip", {inactive: state.isFront})} onClick={() => onePageClick(true)} />
-					<img alt={"right"} className={cx("right", {inactive: state.index[1] + state.pageSize > state.maxIndex})} onClick={() => onePageClick(false)} />
-					<img alt={"last"} className={cx("last")} onClick={() => toFrontClick(false)} />
-				</div>
-			</div>
-		</div>
-	);
-
 	const tableBodyRender = useMemo(() => {
 		const {pageData} = state;
 
@@ -134,7 +111,7 @@ export default function(props) {
 				{tableHeaderRender}
 				{tableBodyRender}
 			</Table>
-			{footerRender}
+			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, toFrontClick, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, cx)}
 		</div>
 	);
 }
