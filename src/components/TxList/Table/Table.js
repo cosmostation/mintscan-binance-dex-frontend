@@ -14,13 +14,14 @@ import {footerRender} from "src/components/common/IndexedPagination/IndexedPagin
 
 const INDEX_DISPLAY_DECIMAL_PLACES = 3;
 const BASE_PROPERTY = "id";
+const PAGE_SIZE = 20;
 
 const cx = classNames.bind(styles);
 
 export default function(props) {
 	const [loading, error, state, updateCurrentPage, [realTime, setRealTime], forceLoadAfter] = useIndexedPagination({
 		path: consts.API.TXLIST,
-		pageSize: 20,
+		pageSize: PAGE_SIZE,
 		pagingProperty: BASE_PROPERTY,
 		limit: 60,
 		resolve: v => v,
@@ -54,7 +55,6 @@ export default function(props) {
 
 	// TODO
 	//  Front and last click
-	const toFrontClick = (bool = true) => {};
 
 	const realTimeButtonClick = e => {
 		e.preventDefault();
@@ -81,6 +81,9 @@ export default function(props) {
 					<TableCell className={cx("tableHeaderCell")} align='right'>
 						<span>Value</span>
 					</TableCell>
+					<TableCell className={cx("tableHeaderCell", "currencyWidth")} align='left'>
+						Currency
+					</TableCell>
 					<TableCell className={cx("tableHeaderCell", "heightWidth")} align='right'>
 						<span>Height</span>
 					</TableCell>
@@ -98,7 +101,7 @@ export default function(props) {
 
 		return (
 			<TableBody>
-				{_.map(pageData, v => (
+				{_.map(empty(pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData, v => (
 					<TxListTableRow key={v.id} blockData={v} />
 				))}
 			</TableBody>
@@ -111,7 +114,7 @@ export default function(props) {
 				{tableHeaderRender}
 				{tableBodyRender}
 			</Table>
-			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, toFrontClick, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, cx)}
+			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, cx)}
 		</div>
 	);
 }

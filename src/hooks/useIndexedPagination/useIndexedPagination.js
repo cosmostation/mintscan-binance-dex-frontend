@@ -93,12 +93,12 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 		if (empty(state.index)) {
 			//  initial load only occurs when refinedQuery is set
 			if (refinedQuery === 1) {
-				return dispatch({type: INITIAL_LOAD, payload: {data: data.data, pageSize, index: [0, pageSize], maxIndex: Number(data.paging.total)}});
+				return dispatch({type: INITIAL_LOAD, payload: {data: data.data, pageSize, index: [0, pageSize - 1], maxIndex: Number(data.paging.total)}});
 			}
 			// TODO
 			//  define case when query is set
 			else {
-				getInitialLoadQuery(refinedQuery, {data: data.data, maxIndex: Number(data.paging.total), pageSize, index: [0, pageSize]});
+				getInitialLoadQuery(refinedQuery, {data: data.data, maxIndex: Number(data.paging.total), pageSize, index: [0, pageSize - 1]});
 				dispatch({type: EXTRA_LOAD_INIT, payload: {after: true}}); //  query for the ones before as well
 			}
 		}
@@ -178,10 +178,9 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 
 		if (refinedQuery === pageData[0][pagingProperty] + 1) return;
 		setRefinedQuery(history, updateQuery, pageData[0][pagingProperty]);
-	}, [pageData, state.isFront]);
+	}, [pageData, state.isFront, realTime]);
 
 	const forceLoadAfter = after => dispatch({type: EXTRA_LOAD_INIT, payload: {after: after}}); //  query for the ones before as well
-
 	return [
 		loading,
 		error,

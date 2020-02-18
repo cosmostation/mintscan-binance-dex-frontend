@@ -5,17 +5,25 @@
 
   .tablePointerCell {
     @include tablePointerCell;
-    padding: 10px 30px 10px 20px
+    @include tableElemPadding;
   }
 
   .tablePointerMiniCell {
     @include tablePointerCellWidth140;
-    padding: 10px 30px 10px 20px
+    @include tableElemPadding;
+  }
+
+  .txCell {
+    min-width: 126px + 53px;
+  }
+
+  .valueCell {
+    min-width: 150px;
   }
 
   .tableCell {
     @include tableCellWidth300;
-    padding: 10px 30px 10px 20px
+    @include tableElemPadding;
   }
 }
 
@@ -28,16 +36,26 @@
   line-height: 1.15;
   letter-spacing: normal;
   color: #4b525d;
-  min-width: 204px;
-  .decimal {
-    font-size: 11px;
-  }
-  .BNB {
-    font-size: 11px;
-    color: #f0b90b;
-  }
-  .blueColor {
-    color: #4472de
+  min-width: 160px;
+  .type {
+    padding: 2px 10px;
+    width: fit-content;
+    height: 22px;
+    border-radius: 100px;
+    background-color: #f9df67;
+    color: #222222;
   }
 }
-
+.blueColor {
+  color: #4472de
+}
+.decimal {
+  font-size: 11px;
+}
+.BNB {
+  font-size: 11px;
+  color: #f0b90b;
+}
+.currency {
+  font-size: 11px;
+}

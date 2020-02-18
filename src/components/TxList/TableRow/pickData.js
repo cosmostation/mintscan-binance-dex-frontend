@@ -3,41 +3,90 @@ import {_} from "src/lib/scripts";
 import {NavLink} from "react-router-dom";
 
 import Skeleton from "react-skeleton-loader";
-import {reduceString, setAgoTime} from "src/lib/scripts";
+import {reduceString, setAgoTime, formatNumber, empty} from "src/lib/scripts";
 import {cxTableRow} from "./TableRow";
+
+import txTypes from "src/constants/txTypes";
+import * as Big from "src/lib/Big";
+import getTxType from "src/components/TxList/TableRow/getTxType";
 
 export const CELL_TYPES = Object.freeze(["Tx Hash", "Type", "From", "To", "Value", "Height", "Time"]);
 
-//  Define this and fill 'em up
-const MESSAGE_TYPES = {
-	COSMOS_SDK_SEND: "cosmos-sdk/Send",
-};
+const BASE_MULT = Math.pow(10, 8);
 
 export default function(blockData, cell) {
 	switch (cell) {
 		case CELL_TYPES[0]:
 			if (!_.isNil(blockData.tx_hash))
 				return (
-					<NavLink className={cxTableRow("blueColor")} to={`/txs/${blockData.height}`}>
-						{reduceString(blockData.tx_hash, 9, 5)}
+					<NavLink className={cxTableRow("blueColor")} to={`/txs/${blockData.tx_hash}`}>
+						{reduceString(blockData.tx_hash, 6, 6)}
 					</NavLink>
 				);
 			return <Skeleton />;
 		case CELL_TYPES[1]:
-			if (!_.isNil(blockData?.messages?.[0]?.type)) return <span>{blockData?.messages?.[0]?.type}</span>;
+			if (!_.isNil(blockData?.messages?.[0]?.type)) return <span className={cxTableRow("type")}>{getTxType(blockData?.messages?.[0]?.type)}</span>;
 			return <Skeleton />;
-		case CELL_TYPES[2]:
+		case CELL_TYPES[2]: {
 			// TODO
 			//  pretty much divide all the cases
-			if (!_.isNil(blockData?.messages?.[0]?.value?.sender)) return <span>{reduceString(blockData?.messages?.[0]?.value?.sender, 12, 8)}</span>;
-			if (blockData?.messages?.[0]?.type === MESSAGE_TYPES.COSMOS_SDK_SEND)
-				return <span>{reduceString(blockData?.messages?.[0]?.value?.inputs?.[0]?.address, 12, 8)}</span>;
+			let address;
+			if (!_.isNil(blockData?.messages?.[0]?.value?.sender)) address = `${blockData?.messages?.[0]?.value?.sender}`;
+			else if (blockData?.messages?.[0]?.type === txTypes.COSMOS.SEND) address = `${blockData?.messages?.[0]?.value?.inputs?.[0]?.address}`;
+
+			//  remove the t in front
+			if (_.isString(address))
+				return (
+					<NavLink className={cxTableRow("blueColor")} to={`/account/${address.substring(1, address.length - 1)}`}>
+						<span>{reduceString(address.substring(1, address.length - 1), 6, 6)}</span>
+					</NavLink>
+				);
 			return <Skeleton />;
-		case CELL_TYPES[3]:
+		}
+		case CELL_TYPES[3]: {
 			// TODO
 			//  pretty much divide all the cases
-			if (blockData?.messages?.[0]?.type !== MESSAGE_TYPES.COSMOS_SDK_SEND) return <span>-</span>;
-			return <span>{reduceString(blockData?.messages?.[0]?.value?.outputs?.[0]?.address, 12, 8)}</span>;
-		case CELL_TYPES[4]:
+			if (blockData?.messages?.[0]?.type !== txTypes.COSMOS.SEND) return <span>-</span>;
+			if (blockData?.messages?.[0]?.value?.outputs.length > 1) return <span>Multiple Address</span>;
+			const address = `${blockData?.messages?.[0]?.value?.outputs?.[0]?.address}`;
+			return (
+				<NavLink className={cxTableRow("blueColor")} to={`/account/${address.substring(1, address.length - 1)}`}>
+					<span>{reduceString(address.substring(1, address.length - 1), 6, 6)}</span>
+				</NavLink>
+			);
+		}
+		case CELL_TYPES[4]: {
+			let amount;
+			if (!_.isNil(blockData?.messages?.[0].type)) {
+				const type = blockData?.messages?.[0].type;
+
+				if (type === txTypes.DEX.ORDER_NEW)
+					amount = Big.multiply(Big.divide(blockData.messages[0]?.value?.price, BASE_MULT), Big.divide(blockData.messages[0]?.value?.quantity, BASE_MULT));
+				else if (type === txTypes.COSMOS.SEND) amount = Big.divide(blockData.messages[0]?.value?.outputs?.[0]?.coins?.[0]?.amount, BASE_MULT);
+			}
+			if (!_.isNil(amount)) {
+				const split = amount.split(".");
+				return (
+					<>
+						<span className={cxTableRow("text")}>{formatNumber(split[0])}</span>.<span className={cxTableRow("text", "decimal")}>{split[1]}</span>
+					</>
+				);
+			}
+			return "-";
+		}
+		case CELL_TYPES[5]: {
+			let ret = "";
+			if (!_.isNil(blockData?.messages?.[0].type)) {
+				if (blockData?.messages?.[0].type === txTypes.DEX.ORDER_NEW) {
+					const symbol = blockData?.messages?.[0]?.value?.symbol;
+					if (_.isString(symbol)) ret = symbol.split("_")[1];
+				}
+			}
+			if (!empty(ret)) {
+				if (ret === "BNB") return <span className={cxTableRow("BNB")}>BNB</span>;
+				return <span className={cxTableRow("currency")}>{ret}</span>;
+			}
+			return "-";
+		}
 	}
 }

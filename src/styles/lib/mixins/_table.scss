@@ -4,6 +4,10 @@
   }
 }
 
+@mixin tableElemPadding {
+  padding: 12px 20px 12px 10px;
+}
+
 @mixin tablePointerCell {
   cursor: pointer;
   color: var(--colorLink);

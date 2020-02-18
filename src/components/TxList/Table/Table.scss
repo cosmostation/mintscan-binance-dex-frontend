@@ -7,11 +7,14 @@
     min-width: 1000px;
     .tableHeaderCell {
       @include tableHeaderCellWidth300;
-      padding: 10px 30px 10px 20px;
+      @include tableElemPadding;
       color: var(--colorMainText);
     }
     .heightWidth {
       width: 150px;
+    }
+    .currencyWidth {
+      width: 144px;
     }
     .txsWidth {
       width: 100px;

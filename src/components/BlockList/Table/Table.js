@@ -5,7 +5,7 @@ import classNames from "classnames/bind";
 import consts from "src/constants/consts";
 import useIndexedPagination from "src/hooks/useIndexedPagination";
 import {usePrevious} from "src/hooks";
-import {_, empty, formatNumber, getPercentage} from "src/lib/scripts";
+import {_, empty, formatNumber} from "src/lib/scripts";
 // components
 import {Fade, Table, TableBody, TableCell, TableHead, TableRow, Tooltip} from "@material-ui/core";
 import BlockListTableRow from "../TableRow";
@@ -17,11 +17,12 @@ const cx = classNames.bind(styles);
 
 const INDEX_DISPLAY_DECIMAL_PLACES = 4;
 const BASE_PROPERTY = "height";
+const PAGE_SIZE = 20;
 
 export default function(props) {
 	const [loading, error, state, updateCurrentPage, [realTime, setRealTime], forceLoadAfter] = useIndexedPagination({
 		path: consts.API.BLOCKLIST,
-		pageSize: 20,
+		pageSize: PAGE_SIZE,
 		pagingProperty: BASE_PROPERTY,
 		limit: 60,
 		resolve: v => v,
@@ -51,27 +52,14 @@ export default function(props) {
 		updateCurrentPage(after);
 		// console.log("clicked next");
 	};
-
-	// TODO
-	//  Front and last click
-	const toFrontClick = (bool = true) => {};
-
-	const realTimeButtonClick = e => {
-		e.preventDefault();
-		if (!state.isFront) return;
-		// if (realTime === true) forceLoadAfter(true);
-		// console.log("setRealTime click", !realTime);
-		setRealTime(v => !v);
-	};
 	const formattedMaxHeight = useMemo(() => formatNumber(state.maxIndex, 3), [state.maxIndex]);
 	// console.log("check", state.maxIndex, state.pageData[0]?.height);
 
 	const tableBodyRender = useMemo(() => {
 		const {pageData} = state;
-
 		return (
 			<TableBody>
-				{_.map(pageData, (v, idx) => {
+				{_.map(empty(pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData, (v, idx) => {
 					if (v === undefined) return <BlockListTableRow key={idx} blockData={{}} />;
 					return <BlockListTableRow key={v.height} blockData={v} />;
 				})}
@@ -83,7 +71,7 @@ export default function(props) {
 		() => (
 			<TableHead>
 				<TableRow>
-					<TableCell className={cx("tableHeaderCell", "heightWidth")}>Height</TableCell>
+					<TableCell className={cx("tableHeaderCell")}>Height</TableCell>
 					<TableCell className={cx("tableHeaderCell")}>Parent Hash</TableCell>
 					<TableCell className={cx("tableHeaderCell")} align='left'>
 						<Tooltip TransitionComponent={Fade} TransitionProps={{timeout: 300}} title={tooltips.proposer} disableFocusListener disableTouchListener>
@@ -107,13 +95,21 @@ export default function(props) {
 		[]
 	);
 
+	const realTimeButtonClick = e => {
+		e.preventDefault();
+		if (!state.isFront) return;
+		// if (realTime === true) forceLoadAfter(true);
+		// console.log("setRealTime click", !realTime);
+		setRealTime(v => !v);
+	};
+
 	return (
 		<div className={cx("blockListtableWrapper")}>
 			<Table className={cx("table")}>
 				{tableHeaderRender}
 				{tableBodyRender}
 			</Table>
-			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, toFrontClick, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, cx)}
+			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, cx)}
 		</div>
 	);
 }

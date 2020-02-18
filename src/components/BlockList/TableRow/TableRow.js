@@ -31,17 +31,14 @@ export default function({blockData}) {
 				)}
 			</TableCell>
 			<TableCell className={cx("tablePointerCell", "text")} align='left'>
-				{blockData.moniker ? (
-					<NavLink to={`/validators/${blockData.proposer}`}>{blockData.moniker}</NavLink>
-				) : // <Skeleton />
-				null}
+				{blockData.moniker ? <NavLink to={`/validators/${blockData.proposer}`}>{blockData.moniker}</NavLink> : <Skeleton />}
 			</TableCell>
 			<TableCell className={cx("tableCell", "text")} align='right'>
 				000,000.<span className={"decimal"}>00000</span>
 				<span className={"BNB"}>BNB</span>
 			</TableCell>
 			<TableCell className={cx("tableCell")} align='right'>
-				{blockData.num_txs}
+				{blockData.height ? blockData.num_txs ? blockData.num_txs : "0" : <Skeleton />}
 			</TableCell>
 			<TableCell className={cx("tableCell")} align='right'>
 				{blockData.timestamp ? setAgoTime(blockData.timestamp) : <Skeleton />}

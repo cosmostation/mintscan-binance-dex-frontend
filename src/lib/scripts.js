@@ -16,20 +16,19 @@ export const setAgoTime = time => {
 	const y = new moment(time);
 	const duration = moment.duration(x.diff(y));
 	let ret = 0;
-	// if (duration._data.years) ret = `${duration._data.years}years`;
-	// else if (duration._data.months) ret = `${duration._data.months}months`;
-	// else if (duration._data.days) ret = `${duration._data.days}days`;
-	// else if (duration._data.hours) ret = `${duration._data.hours}h`;
-	// else if (duration._data.minutes) ret = `${duration._data.minutes}m`;
-	// else if (duration._data.seconds) ret = `${duration._data.seconds}s`;
-	// return ret + " ago";
+	if (duration._data.years) ret = `${duration._data.years}years`;
+	else if (duration._data.months) ret = `${duration._data.months}months`;
+	else if (duration._data.days) ret = `${duration._data.days}days`;
+	else if (duration._data.hours) ret = `${duration._data.hours}h`;
+	else if (duration._data.minutes) ret = `${duration._data.minutes}m`;
+	else if (duration._data.seconds) ret = `${duration._data.seconds}s`;
 
 	// if (duration._data.years) ret = `${duration._data.years}years`;
 	// if (duration._data.months) ret = `${duration._data.months}months`;
-	if (duration._data.days) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.days}d`;
-	if (duration._data.hours) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.hours}h`;
-	if (duration._data.minutes) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.minutes}m`;
-	if (duration._data.seconds) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.seconds}s`;
+	// if (duration._data.days) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.days}d`;
+	// if (duration._data.hours) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.hours}h`;
+	// if (duration._data.minutes) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.minutes}m`;
+	// if (duration._data.seconds) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.seconds}s`;
 	return ret + " ago";
 };
 
@@ -42,7 +41,7 @@ const recursiveReverse = input => {
 	return reverseString(`${input}`);
 };
 export const formatNumber = (v = 0, size = 3) => {
-	let str = _.isNumber(v) ? `${v}` : `${Number(v)}`;
+	let str = `${v}`;
 	if (empty(str)) return "NaN";
 	let substr = str.split(".");
 	str = reverseString(substr[0]);
@@ -53,7 +52,7 @@ export const formatNumber = (v = 0, size = 3) => {
 
 export const getPercentage = (num1 = 0, num2 = 100, decimal = 4) => {
 	if (num2 === 0 || isNaN(num2) || isNaN(num2)) return `0.${_.repeat("0", decimal)}`;
-	return `${Math.round((num1 / num2) * 100 * Math.pow(10, decimal)) / Math.pow(10, decimal)}`;
+	return `${Math.floor((num1 / num2) * 100 * Math.pow(10, decimal)) / Math.pow(10, decimal)}`;
 };
 
 // TODO

@@ -24,7 +24,7 @@ export const UPDATE_ISFRONT = "UPDATE_ISFRONT";
 export const RESET = "RESET"; //  reset(to initial initial_load again
 
 export default function(state, action) {
-	console.log("reducer>>>", action.type);
+	console.log("reducer>>>", action.type, _.cloneDeep(state));
 	switch (action.type) {
 		case INITIAL_LOAD: {
 			const {data, pageSize, index, maxIndex} = action.payload;
@@ -70,12 +70,13 @@ export default function(state, action) {
 				params: {after: null},
 				allData: [..._.reverse(action.payload.data), ...state.allData],
 				maxIndex: action.payload.maxIndex,
+				index: [0, state.pageSize - 1],
 			};
 		}
 		case PAGE_CHANGE: {
 			if (action.payload.after === true) {
 				if (state.index[0] === 0) return {...state, isFront: true};
-				if (state.index[0] - state.pageSize <= 0) return {...state, index: [0, state.pageSize], isFront: true};
+				if (state.index[0] - state.pageSize <= 0) return {...state, index: [0, state.pageSize - 1], isFront: true};
 				return {...state, index: [state.index[0] - state.pageSize, state.index[1] - state.pageSize]};
 			} else {
 				//  not at front anymore
