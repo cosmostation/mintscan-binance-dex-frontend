@@ -33,7 +33,7 @@ export default function(props) {
 	useEffect(() => {
 		if (empty(state.index)) return;
 		const isFrontToTrue = state.isFront === true && previousIsFront === false;
-		if (realTime === false && isFrontToTrue && state.pageData[state.index[0]].height === state.maxIndex) {
+		if (realTime === false && isFrontToTrue && state.pageData[state.index[0]][BASE_PROPERTY] === state.maxIndex) {
 			// console.log("setRealTimeTrue");
 			setRealTime(true);
 		} else if (state.index[0] !== 0 && realTime === true) {

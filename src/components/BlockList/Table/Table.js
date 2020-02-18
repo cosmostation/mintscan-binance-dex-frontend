@@ -33,7 +33,7 @@ export default function(props) {
 	useEffect(() => {
 		if (empty(state.index)) return;
 		const isFrontToTrue = state.isFront === true && previousIsFront === false;
-		if (realTime === false && isFrontToTrue && state.pageData[state.index[0]].height === state.maxIndex) {
+		if (realTime === false && isFrontToTrue && state.pageData[state.index[0]][BASE_PROPERTY] === state.maxIndex) {
 			// console.log("setRealTimeTrue");
 			setRealTime(true);
 		} else if (state.index[0] !== 0 && realTime === true) {
@@ -53,7 +53,7 @@ export default function(props) {
 		// console.log("clicked next");
 	};
 	const formattedMaxHeight = useMemo(() => formatNumber(state.maxIndex, 3), [state.maxIndex]);
-	// console.log("check", state.maxIndex, state.pageData[0]?.height);
+	// console.log("check", state.maxIndex, state.pageData[0]?[BASE_PROPERTY]);
 
 	const tableBodyRender = useMemo(() => {
 		const {pageData} = state;
@@ -61,7 +61,7 @@ export default function(props) {
 			<TableBody>
 				{_.map(empty(pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData, (v, idx) => {
 					if (v === undefined) return <BlockListTableRow key={idx} blockData={{}} />;
-					return <BlockListTableRow key={v.height} blockData={v} />;
+					return <BlockListTableRow key={v[BASE_PROPERTY]} blockData={v} />;
 				})}
 			</TableBody>
 		);

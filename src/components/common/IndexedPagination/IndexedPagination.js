@@ -9,7 +9,7 @@ const cx = cn.bind(styles);
 //  memoize this in the future
 export const footerRender = (state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, baseProperty, indexDisplayDecimals) => {
 	const toFrontClick = () => {};
-	console.log(state.maxIndex, state.isFront, state.pageData?.[0]?.[baseProperty]);
+	// console.log(state.maxIndex, state.isFront, state.pageData?.[0]?.[baseProperty]);
 	return (
 		<div className={cx("table-footer")}>
 			<div className={cx("paginationWrapper")}>

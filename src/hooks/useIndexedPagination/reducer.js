@@ -24,7 +24,7 @@ export const UPDATE_ISFRONT = "UPDATE_ISFRONT";
 export const RESET = "RESET"; //  reset(to initial initial_load again
 
 export default function(state, action) {
-	console.log("reducer>>>", action.type, _.cloneDeep(state));
+	// console.log("reducer>>>", action.type, _.cloneDeep(state));
 	switch (action.type) {
 		case INITIAL_LOAD: {
 			const {data, pageSize, index, maxIndex} = action.payload;
