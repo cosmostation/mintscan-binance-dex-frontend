@@ -2,7 +2,7 @@
 
 .txListTableWrapper {
   overflow-x: auto;
-  min-height: 825px;
+  overflow-y: hidden;
   .table {
     min-width: 1000px;
     .tableHeaderCell {

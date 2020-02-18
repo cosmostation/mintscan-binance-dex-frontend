@@ -14,7 +14,9 @@ export const footerRender = (state, realTime, realTimeButtonClick, formattedMaxH
 		<div className={cx("table-footer")}>
 			<div className={cx("paginationWrapper")}>
 				<div className={cx("realtime", {inactive: !state.isFront || state.maxIndex !== state.pageData?.[0]?.[baseProperty]})}>
-					<button onClick={realTimeButtonClick} className={cx("checkBox", {clicked: realTime})} />
+					<button onClick={realTimeButtonClick} className={cx("checkBox")}>
+						<img alt={"checkbox"} className={cx({clicked: realTime})} />
+					</button>
 					<div className={cx("text")}>Real Time</div>
 				</div>
 				<div className={cx("heightWrapper")}>

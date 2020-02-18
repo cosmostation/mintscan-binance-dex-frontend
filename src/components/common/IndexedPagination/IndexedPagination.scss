@@ -15,7 +15,7 @@
     justify-content: space-between;
     .realtime {
       width: 91px;
-      height: 100%;
+      height: 24px;
 
       display: flex;
       align-items: center;
@@ -23,12 +23,17 @@
       .checkBox {
         width: 24px;
         height: 24px;
-        background-image: url("/assets/icons/common/check_box_blank.svg");
-        &:hover {
-          background-image: url("/assets/icons/common/check_box_blank_hover.svg");
-        }
-        &.clicked {
-          background-image: url("/assets/icons/common/check_box.svg")
+        img {
+          object-fit: fill;
+          content: url("/assets/icons/common/check_box_blank.svg");
+
+          &:hover {
+            content: url("/assets/icons/common/check_box_blank_hover.svg");
+          }
+
+          &.clicked {
+            content: url("/assets/icons/common/check_box.svg")
+          }
         }
       }
       &.inactive {

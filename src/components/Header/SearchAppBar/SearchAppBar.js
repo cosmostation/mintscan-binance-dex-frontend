@@ -13,7 +13,7 @@ import consts from "src/constants/consts";
 
 const arrowDown = process.env.PUBLIC_URL + "/assets/icons/common/arrow-down.svg";
 const binance = process.env.PUBLIC_URL + "/assets/icons/navigation/chain_ic.svg";
-const iris = "/assets/icons/common/iris_token.svg";
+const iris = process.env.PUBLIC_URL + "/assets/icons/common/iris_token.svg";
 const kava = process.env.PUBLIC_URL + "/assets/icons/common/kava_token.svg";
 const cosmos = process.env.PUBLIC_URL + "/assets/icons/common/atom_token.svg";
 const logo = process.env.PUBLIC_URL + "/assets/icons/common/mintscan_logo.svg";
@@ -62,7 +62,7 @@ export default function(props) {
 				<div className={cx("SearchAppBar-root")}>
 					<Toolbar className={cx("toolbar")}>
 						<NavLink to='/' onClick={toMain}>
-							<img src={logo} alt={"logo"} className={cx("logoImg")} />
+							<img src={logo} alt={"logo"} />
 						</NavLink>
 
 						{/* network select */}

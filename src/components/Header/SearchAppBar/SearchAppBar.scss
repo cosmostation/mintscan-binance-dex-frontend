@@ -5,6 +5,10 @@
   height: var(--heightHeader);
   width: 100%;
   z-index: 100;
+
+  display: flex;
+  align-items: center;
+
   .toolbar {
     width: 1200px;
     margin: 0 auto;
@@ -12,6 +16,7 @@
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     @include media("<large") {
       width: 86%;
@@ -22,11 +27,11 @@
       height: var(--heightHeaderInMedium);
       padding: 0 10px;
     }
-    .logoImg {
-      vertical-align: bottom;
-      margin-top: 15px;
+    a {
+      display: flex;
+      align-items: center;
       width: 150px;
-
+      height: auto;
       @include media("<medium") {
         width: 120px;
       }
