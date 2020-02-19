@@ -3,7 +3,7 @@
 .routerContainer {
 	width: 1200px;
 	margin: 0 auto;
-	padding: calc(var(--heightHeader) + var(--heightSubHeader) + var(--mainDefaultPaddingTop)) 0 0 0;
+	padding: calc(var(--heightHeader) + var(--heightSubHeader)) 0 0 0;
 
 	@include media("<large") {
 		width: 90%;

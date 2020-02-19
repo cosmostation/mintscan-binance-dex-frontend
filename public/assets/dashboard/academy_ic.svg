@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
+  <g id="academy_ic" transform="translate(-1265 -646)">
+    <g id="그룹_3843" data-name="그룹 3843" transform="translate(-3563.774 -321.66)">
+      <circle id="타원_194" data-name="타원 194" cx="1.077" cy="1.077" r="1.077" transform="translate(4832.72 988.866)" fill="#f0b90b"/>
+      <ellipse id="타원_195" data-name="타원 195" cx="1.077" cy="2.309" rx="1.077" ry="2.309" transform="translate(4832.72 990.481)" fill="#f0b90b"/>
+      <path id="패스_1991" data-name="패스 1991" d="M4859.237,1007.9l-8.3-3.3v6.941h.01c0,1.377,3.71,2.494,8.286,2.494s8.286-1.116,8.286-2.494h.01V1004.6Z" transform="translate(-13.246 -19.666)" fill="#f0b90b"/>
+      <path id="패스_1992" data-name="패스 1992" d="M4845.991,974.66l-15.217,6.257,15.217,5.818,15.217-5.818Zm0,7.058c-1.026,0-1.859-.458-1.859-1.023s.833-1.023,1.859-1.023,1.86.458,1.86,1.023S4847.018,981.718,4845.991,981.718Z" fill="#f0b90b"/>
+      <g id="그룹_3842" data-name="그룹 3842" transform="translate(4833.267 983.557)">
+        <path id="패스_1993" data-name="패스 1993" d="M4838.04,1006.886h1.058v-5.916l-1.058-.385Z" transform="translate(-4838.04 -1000.585)" fill="#f0b90b"/>
+      </g>
+    </g>
+    <rect id="사각형_1780" data-name="사각형 1780" width="34" height="34" transform="translate(1265 646)" fill="none"/>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+@import "src/styles/utils";
+
+.Dashboard {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+
+  @include media("<large") {
+    margin-top: calc(0px - var(--mainDefaultPaddingTop));
+  }
+  @include media("<medium") {
+    margin-top: var(--heightHeader);
+  }
+
+  @include media("<small") {
+    margin-top: var(--heightHeader);
+  }
+}

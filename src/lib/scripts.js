@@ -55,6 +55,11 @@ export const getPercentage = (num1 = 0, num2 = 100, decimal = 4) => {
 	return `${Math.floor((num1 / num2) * 100 * Math.pow(10, decimal)) / Math.pow(10, decimal)}`;
 };
 
+const phoneRegex = Object.freeze([/Android/i, /BlackBerry/i, /iPhone|iPad|iPod/i, /iPhone|iPad|iPod/i, /Opera Mini/i, /IEMobile/i, /WPDesktop/i]);
+export const isMobile = () => _.find(phoneRegex, regex => window.navigator.userAgent.match(regex)) !== undefined;
+
+export const isIOS = () => window.navigator.userAgent.match(/iPhone|iPad|iPod/i);
+
 // TODO
 //  make better
 //  upgrade version if you find it better
