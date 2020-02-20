@@ -1,0 +1,19 @@
+@import "~include-media/dist/include-media";
+
+@mixin card-wrapper {
+  //min-height: 100%;
+  padding: 15px 20px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+
+  @include media("<medium") {
+    padding: 10px 12px;
+  }
+}
+
+@mixin card-nopadding-wrapper {
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}

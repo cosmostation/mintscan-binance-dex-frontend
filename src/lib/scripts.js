@@ -60,6 +60,23 @@ export const isMobile = () => _.find(phoneRegex, regex => window.navigator.userA
 
 export const isIOS = () => window.navigator.userAgent.match(/iPhone|iPad|iPod/i);
 
+export const recursiveGetFirstValue = obj => {
+	if (_.isArray(obj)) return recursiveGetFirstValue(obj[0]);
+	if (_.isObject(obj)) return recursiveGetFirstValue(obj[_.keys(obj)[0]]);
+	return obj;
+};
+
+export const getUnixTimes = hour => [
+	moment()
+		.subtract(hour, "hour")
+		.unix(),
+	moment().unix(),
+];
+
+export const get24Hours = unix => moment(unix).format("HH:mm");
+
+export const getTime = unix => moment(unix).format("YYYY-MM-DD HH:mm");
+
 // TODO
 //  make better
 //  upgrade version if you find it better

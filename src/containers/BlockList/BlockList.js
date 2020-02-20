@@ -4,7 +4,6 @@ import styles from "./BlockList.scss";
 //  components
 import TitleWrapper from "src/components/common/TitleWrapper";
 import PageTitle from "src/components/common/PageTitle";
-import CardTemplate from "src/components/common/CardTemplate";
 import Table from "src/components/BlockList/Table";
 
 const cx = cn.bind(styles);
@@ -15,9 +14,9 @@ export default function(props) {
 			<TitleWrapper>
 				<PageTitle title={"Blocks"} />
 			</TitleWrapper>
-			<CardTemplate>
+			<div className={cx("Card")}>
 				<Table />
-			</CardTemplate>
+			</div>
 		</div>
 	);
 }

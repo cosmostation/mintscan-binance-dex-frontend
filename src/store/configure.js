@@ -1,5 +1,6 @@
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import penderMiddleware from "redux-pender";
+import {createLogger} from "redux-logger";
 
 import * as modules from "./modules";
 
@@ -7,6 +8,10 @@ import * as modules from "./modules";
 const reducers = combineReducers(modules);
 // 리덕스를 사용 하면서 비동기 작업 (예: 네트워크 요청) 을 다룰 때는 미들웨어가 있어야 더욱 손쉽게 상태를 관리 할 수 있다.
 const middlewares = [penderMiddleware()];
+if (process.env.REACT_APP_BUILD_ENV !== "production") {
+	const logger = createLogger({collapsed: true, level: "log"});
+	middlewares.push(logger);
+}
 
 // 개발모드일때만 redux devtools적용
 const isDev = process.env.NODE_ENV === "development";

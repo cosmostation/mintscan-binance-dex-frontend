@@ -1,4 +1,4 @@
-export {default as BlockChain} from "./BlockChain";
+export {default as blockchain} from "./blockchain";
 // 각 api 요청들의 상태가 어떤지 관리해주는 reducer
 /* {
     pending: {},

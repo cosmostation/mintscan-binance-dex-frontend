@@ -6,4 +6,9 @@
   justify-content: center;
 
   margin-top: var(--mainDefaultPaddingTop);
+  .Card {
+    @include card-wrapper;
+
+    margin-bottom: 12px;
+  }
 }

@@ -30,6 +30,7 @@ export default Object.freeze({
 		WEB: "https://wallet.cosmostation.io",
 		COSMOSTATION: "https://www.cosmostation.io/",
 		BINANCEDEX: "https://www.binance.org/",
+		COINGECKO_BINANCE: "https://www.coingecko.com/en/coins/binance-coin",
 	},
 
 	MENU: [

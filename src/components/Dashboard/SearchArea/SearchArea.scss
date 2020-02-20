@@ -2,7 +2,7 @@
 
 .SearchArea {
   width: 100vw;
-  height: 354px;
+  height: 344px;
 
   position: relative;
   overflow: hidden;
@@ -10,7 +10,7 @@
   background-size: cover;
 
   background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/assets/dashboard/main_img.png") no-repeat fixed center center;
-  background-position-y: center;
+  background-position-y: inherit;
 
   margin-left: calc((1200px - 100vw) / 2);
   @include media("<large") {
@@ -41,7 +41,7 @@
     height: 100%;
 
     @include media("<medium") {
-      width: 80%;
+      width: 82%;
     }
 
     @include media("<small") {

@@ -1,0 +1,8 @@
+@import "src/styles/utils";
+
+.GraphDisplay {
+  @include media("<medium") {
+    @include card-nopadding-wrapper;
+  }
+  padding: 20px;
+}

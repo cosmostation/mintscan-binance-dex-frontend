@@ -1,0 +1,53 @@
+@import "src/styles/utils";
+
+.DashboardContent-wrapper {
+  height: fit-content;
+  margin: 15px auto 70px;
+
+  .PriceGraphClickable-wrapper {
+    display: grid;
+    grid-template-columns: 864px 320px;
+    grid-template-rows: 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    .PriceGraph-wrapper {
+      display: grid;
+      grid-template-columns: 340px 494px;
+      grid-row-gap: 15px;
+      grid-column-gap: 30px;
+      height: 288px;
+      @include media("<large") {
+        min-width: 90vw;
+        grid-template-columns: calc((370 / 894) * 100%) calc((494 / 894) * 100%);
+        grid-column-gap: calc((30 / 894) * 100%);
+      }
+      @include media("<medium") {
+        height: 278px + 15px + 278px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+    }
+    // 832.7 31.3px 964
+    margin-bottom: 15px;
+    @include media("<large") {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+  }
+  .BlockTx-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+  }
+}
+
+.Card {
+  @include media(">medium") {
+    @include card-nopadding-wrapper;
+  }
+}
+.CardFixed {
+  @include card-nopadding-wrapper;
+}

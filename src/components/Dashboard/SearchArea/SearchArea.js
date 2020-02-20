@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./SearchArea.scss";
 
@@ -14,14 +14,17 @@ const googleIcon = process.env.PUBLIC_URL + "/assets/dashboard/playstore.svg";
 const cx = cn.bind(styles);
 
 export default function(props) {
+	const [input, setInput] = React.useState("");
+
 	const onKeyPress = e => {
-		// console.log(e.target.value);
+		if (e.key === "Enter") clickSearch();
 	};
 	const onChange = e => {
-		console.log(e.target.value);
+		setInput(e.target.value);
 	};
 	const clickSearch = e => {
-		console.log("clicked");
+		alert(`searching => ${input}`);
+		setInput("");
 	};
 	return (
 		<div className={cx("SearchArea")}>
@@ -39,6 +42,7 @@ export default function(props) {
 							placeholder='Search by Block, transaction, asset, address or orderid...'
 							onKeyPress={onKeyPress}
 							onChange={onChange}
+							value={input}
 						/>
 						<button className={cx("searchBtn")} onClick={clickSearch}>
 							<SearchIcon style={{color: "#fff"}} />
