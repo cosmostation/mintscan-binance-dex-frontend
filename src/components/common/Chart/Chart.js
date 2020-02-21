@@ -2,13 +2,10 @@ import React, {useMemo} from "react";
 import HighchartsReact from "highcharts-react-official";
 import highcharts from "highcharts";
 import moment from "moment";
-import humanFormat from "human-format";
 
-import {_, getHours, getTime, formatNumber} from "src/lib/scripts";
+import {_, getHours, getTime, formatNumber, humanFormat} from "src/lib/scripts";
 
 export default function({options, data}) {
-	const refinedData = useMemo(() => _.map(data, v => [v[0], v[1]]), [data]);
-
 	const graphOptions = useMemo(() => {
 		const [xMax, xMin, yMax, yMin] = [data[data.length - 1][0], data[0][0], _.max(_.map(data, v => v[1])), _.min(_.map(data, v => v[1]))];
 		const indexes = [
@@ -48,6 +45,7 @@ export default function({options, data}) {
 			],
 		};
 	}, [options, data]);
+	console.log(graphOptions);
 	return <HighchartsReact highcharts={highcharts} options={graphOptions} />;
 }
 
@@ -79,6 +77,9 @@ const yAxis = {
 		style: {
 			color: "#4b525d",
 			fontSize: "11px",
+		},
+		formatter: function() {
+			return `${humanFormat(this.value)}`;
 		},
 	},
 	title: {

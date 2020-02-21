@@ -16,7 +16,12 @@ export default function(props) {
 					<PriceDisplay />
 					<GraphDisplay />
 				</div>
-				<div className={cx("CardFixed")}>asdf</div>
+				<ul className={cx("LinkWrapper")}>
+					<li>a</li>
+					<li>b</li>
+					<li>c</li>
+					<li>d</li>
+				</ul>
 			</div>
 			<div className={cx("BlockTx-wrapper")}>
 				<div className={cx("CardFixed")}>asdf</div>
@@ -25,3 +30,28 @@ export default function(props) {
 		</div>
 	);
 }
+
+const cardData = Object.freeze([
+	{
+		svg: process.env.PUBLIC_URL + "/assets/dashboard/exchange_ic.svg",
+		title: "Exchange",
+		content: "Blockchain and crypto asset exchange",
+	},
+	{
+		svg: process.env.PUBLIC_URL + "/assets/dashboard/dex_ic.svg",
+		title: "Binance DEX",
+		content: "decentralized digital asset exchange",
+	},
+	{
+		svg: process.env.PUBLIC_URL + "/assets/dashboard/academy_ic.svg",
+		title: "Academy",
+		content: "Blockchain and crypto education",
+	},
+	{
+		svg: process.env.PUBLIC_URL + "/assets/dashboard/launchpad_ic.svg",
+		title: "Launchpad",
+		content: "Token launch platform",
+	},
+]);
+
+const DashboardCard = ({svg, title, content}) => <li className={cx("DashboardCard-wrapper")}></li>;

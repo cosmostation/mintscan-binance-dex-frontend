@@ -27,7 +27,7 @@ export default function(props) {
 		const times = getUnixTimes(TWO_HOURS_IN_MINUTES, "minute", "hour");
 		getMarketChartRange("binancecoin", "usd", times[0], times[1])
 			.then(res => {
-				const mapped = _.map(_.keys(res.data), key => _.map(res.data[key], v => [v[0], Math.round(v[1] * 100) / 100]));
+				const mapped = _.map(_.initial(_.keys(res.data)), key => _.map(res.data[key], v => [v[0], Math.round(v[1] * 100) / 100]));
 				console.log(mapped);
 				setData(_.map(mapped, arr => _.filter(arr, (v, idx) => idx % DATA_COUNT_DENOM === 0 || idx === 0 || idx === mapped.length - 1)));
 			})
@@ -65,7 +65,6 @@ const options = val => ({
 	},
 });
 const margin = [
-	[5, 55, 20, 10],
-	[5, 55, 20, 10],
-	[5, 55, 20, 10],
+	[5, 60, 20, 10],
+	[5, 60, 20, 10],
 ];

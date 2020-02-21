@@ -33,6 +33,17 @@
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr;
     }
+    .LinkWrapper {
+      @include card-nopadding-wrapper;
+      @include media(">=medium") {
+        padding: 16px 15px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-column-gap: 8px;
+      }
+    }
   }
   .BlockTx-wrapper {
     display: grid;
@@ -50,4 +61,8 @@
 }
 .CardFixed {
   @include card-nopadding-wrapper;
+}
+
+.DashboardCard-wrapper {
+
 }
