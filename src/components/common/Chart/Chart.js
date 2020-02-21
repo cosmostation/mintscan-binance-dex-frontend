@@ -78,9 +78,9 @@ const yAxis = {
 			color: "#4b525d",
 			fontSize: "11px",
 		},
-		formatter: function() {
-			return `${humanFormat(this.value)}`;
-		},
+		// formatter: function() {
+		// 	return `${humanFormat(this.value)}`;
+		// },
 	},
 	title: {
 		text: "",

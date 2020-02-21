@@ -1,18 +1,21 @@
 @import "src/styles/utils";
 
 .GraphDisplay {
-  @include media("<medium") {
-    @include card-nopadding-wrapper;
-  }
-  @include media(">medium") {
-    height: 288px;
-  }
   padding: 16px 30px 30px 0;
   width: 100%;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: flex-start;
+
+  @include media("<medium") {
+    @include card-nopadding-wrapper;
+    padding: 16px 20px 20px 20px;
+  }
+  @include media(">medium") {
+    height: 288px;
+  }
+
   .tab-wrapper {
     width: 188px;
     height: 30px;
