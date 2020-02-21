@@ -13,3 +13,9 @@ $breakpoints: (
 );
 
 $mainColor: #f0b90b;
+
+:export {
+	medium: 980px;
+	small: 600px;
+	xsmall: 420px;
+}

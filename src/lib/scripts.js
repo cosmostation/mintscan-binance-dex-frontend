@@ -66,14 +66,22 @@ export const recursiveGetFirstValue = obj => {
 	return obj;
 };
 
-export const getUnixTimes = hour => [
+export const getUnixTimes = (value, unit, startOf = "hour") => [
 	moment()
-		.subtract(hour, "hour")
+		.startOf(startOf)
+		.subtract(value, unit)
 		.unix(),
-	moment().unix(),
+	moment()
+		.startOf(startOf)
+		.add(3, "minute")
+		.unix(),
 ];
 
 export const get24Hours = unix => moment(unix).format("HH:mm");
+export const getHours = unix =>
+	moment(unix)
+		.add(30, "minutes")
+		.format("H[h]");
 
 export const getTime = unix => moment(unix).format("YYYY-MM-DD HH:mm");
 
