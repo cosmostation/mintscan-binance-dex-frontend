@@ -26,9 +26,7 @@ export default function(props) {
 				</ul>
 			</div>
 			<div className={cx("BlockTx-wrapper")}>
-				<div className={cx("CardFixed")}>
-					<BlocksDisplay />
-				</div>
+				<BlocksDisplay />
 				<div className={cx("CardFixed")}>
 					<TxDisplay />
 				</div>

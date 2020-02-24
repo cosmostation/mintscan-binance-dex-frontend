@@ -1,19 +1,22 @@
 @import "src/styles/utils";
 
-.table {
+// TODO
+//  534px< -> use new layout
+
+.BlocksDisplay-table {
   overflow-x: auto;
   overflow-y: hidden;
   min-width: 450px;
   .tableHeaderCell {
     @include tableHeaderCellWidth300;
-    padding: 10px 10px 10px 20px;
+    @include tableHeaderPadding;
     color: var(--colorMainText);
   }
   .heightWidth {
     min-width: 50px;
   }
   .proposerWidth {
-    min-width: 100px;
+    min-width: 70px;
   }
   .timeWidth {
     min-width: 100px;

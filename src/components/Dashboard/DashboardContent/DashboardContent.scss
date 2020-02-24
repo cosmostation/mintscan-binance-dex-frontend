@@ -67,7 +67,7 @@
     grid-template-rows: 1fr;
     grid-column-gap: 15px;
     grid-row-gap: 15px;
-    @include media("<medium") {
+    @include media("<1100px") {
       grid-template-rows: 1fr 1fr;
       grid-template-columns: 1fr;
     }

@@ -7,6 +7,6 @@
 
   margin-top: var(--mainDefaultPaddingTop);
   .Card {
-    @include card-wrapper;
+    @include card-wrapper(70px);;
   }
 }

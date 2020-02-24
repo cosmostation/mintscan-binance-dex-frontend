@@ -15,7 +15,7 @@ export default function(props) {
 			<div className={cx("CardTemplate")}>
 				<div className={cx("title-wrapper")}>
 					<h2 className={cx("title")}>{props.title}</h2>
-					<NavLink className={cx("btn")} to={props.type === 1 ? "/blocks" : "/txs"}>
+					<NavLink className={cx("btn")} to={props.type === 1 ? "/blocks?blockHeight=0" : "/txs?txID=0"}>
 						Show More
 					</NavLink>
 				</div>

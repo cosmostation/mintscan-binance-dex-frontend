@@ -4,7 +4,6 @@ import {NavLink} from "react-router-dom";
 
 import Skeleton from "react-skeleton-loader";
 import {reduceString, setAgoTime, formatNumber, empty} from "src/lib/scripts";
-import {cxTableRow} from "./TableRow";
 
 import txTypes from "src/constants/txTypes";
 import * as Big from "src/lib/Big";
@@ -14,18 +13,18 @@ export const CELL_TYPES = Object.freeze(["Tx Hash", "Type", "From", "To", "Value
 
 const BASE_MULT = Math.pow(10, 8);
 
-export default function(blockData, cell) {
+export default function(blockData, cx, cell) {
 	switch (cell) {
 		case CELL_TYPES[0]:
 			if (!_.isNil(blockData.tx_hash))
 				return (
-					<NavLink className={cxTableRow("blueColor")} to={`/txs/${blockData.tx_hash}`}>
+					<NavLink className={cx("blueColor")} to={`/txs/${blockData.tx_hash}`}>
 						{reduceString(blockData.tx_hash, 6, 6)}
 					</NavLink>
 				);
 			return <Skeleton />;
 		case CELL_TYPES[1]:
-			if (!_.isNil(blockData?.messages?.[0]?.type)) return <span className={cxTableRow("type")}>{getTxType(blockData?.messages?.[0]?.type)}</span>;
+			if (!_.isNil(blockData?.messages?.[0]?.type)) return <span className={cx("type")}>{getTxType(blockData?.messages?.[0]?.type)}</span>;
 			return <Skeleton />;
 		case CELL_TYPES[2]: {
 			// TODO
@@ -37,7 +36,7 @@ export default function(blockData, cell) {
 			//  remove the t in front
 			if (_.isString(address))
 				return (
-					<NavLink className={cxTableRow("blueColor")} to={`/account/${address.substring(1, address.length - 1)}`}>
+					<NavLink className={cx("blueColor")} to={`/account/${address.substring(1, address.length - 1)}`}>
 						<span>{reduceString(address.substring(1, address.length - 1), 6, 6)}</span>
 					</NavLink>
 				);
@@ -50,7 +49,7 @@ export default function(blockData, cell) {
 			if (blockData?.messages?.[0]?.value?.outputs.length > 1) return <span>Multiple Address</span>;
 			const address = `${blockData?.messages?.[0]?.value?.outputs?.[0]?.address}`;
 			return (
-				<NavLink className={cxTableRow("blueColor")} to={`/account/${address.substring(1, address.length - 1)}`}>
+				<NavLink className={cx("blueColor")} to={`/account/${address.substring(1, address.length - 1)}`}>
 					<span>{reduceString(address.substring(1, address.length - 1), 6, 6)}</span>
 				</NavLink>
 			);
@@ -68,7 +67,7 @@ export default function(blockData, cell) {
 				const split = amount.split(".");
 				return (
 					<>
-						<span className={cxTableRow("text")}>{formatNumber(split[0])}</span>.<span className={cxTableRow("text", "decimal")}>{split[1]}</span>
+						<span className={cx("text")}>{formatNumber(split[0])}</span>.<span className={cx("text", "decimal")}>{split[1]}</span>
 					</>
 				);
 			}
@@ -83,8 +82,8 @@ export default function(blockData, cell) {
 				}
 			}
 			if (!empty(ret)) {
-				if (ret === "BNB") return <span className={cxTableRow("BNB")}>BNB</span>;
-				return <span className={cxTableRow("currency")}>{ret}</span>;
+				if (ret === "BNB") return <span className={cx("BNB")}>BNB</span>;
+				return <span className={cx("currency")}>{ret}</span>;
 			}
 			return "-";
 		}

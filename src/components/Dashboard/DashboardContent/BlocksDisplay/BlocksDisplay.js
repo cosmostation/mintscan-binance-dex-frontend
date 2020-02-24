@@ -4,12 +4,13 @@ import styles from "./BlocksDisplay.scss";
 
 //  utils
 import consts from "src/constants/consts";
-import {empty, formatNumber} from "src/lib/scripts";
+import {empty, formatNumber, _} from "src/lib/scripts";
 import useFetch from "src/hooks/useFetch/useFetch";
 //  components
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 import ErrorPage from "src/components/common/ErrorPage";
 import TableWrapper from "src/components/Dashboard/TableWrapper";
+import BlockDisplayTableRow from "./TableRow";
 
 const cx = cn.bind(styles);
 
@@ -26,7 +27,7 @@ export default function(props) {
 					<TableCell className={cx("tableHeaderCell", "heightWidth")} align='left'>
 						<span>Height</span>
 					</TableCell>
-					<TableCell className={cx("tableHeaderCell", "proposerWidth")} align='left'>
+					<TableCell className={cx("tableHeaderCell")} align='left'>
 						Proposer
 					</TableCell>
 					<TableCell className={cx("tableHeaderCell", "middleWidth")} align='right'>
@@ -39,11 +40,27 @@ export default function(props) {
 			</TableHead>
 		);
 	}, [data.data]);
-	const tableBodyRender = React.useMemo(() => <TableBody></TableBody>, []);
+	const tableBodyRender = React.useMemo(
+		() => (
+			<TableBody>
+				{_.map(data?.data?.data, (v, i) => (
+					<BlockDisplayTableRow key={i} blockData={v} />
+				))}
+			</TableBody>
+		),
+		[data.data]
+	);
 
 	return (
 		<TableWrapper title={"BLOCKS"} type={1}>
-			{data.error ? <ErrorPage /> : <Table className={cx("table")}>{tableHeaderRender}</Table>}
+			{data.error ? (
+				<ErrorPage />
+			) : (
+				<Table className={cx("BlocksDisplay-table")}>
+					{tableHeaderRender}
+					{tableBodyRender}
+				</Table>
+			)}
 		</TableWrapper>
 	);
 }

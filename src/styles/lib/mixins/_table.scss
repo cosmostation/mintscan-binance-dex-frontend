@@ -8,6 +8,10 @@
   padding: 16px 20px 17px 19px;
 }
 
+@mixin tableHeaderPadding {
+  padding: 11.5px 20px 11.5px 10px;
+}
+
 @mixin tablePointerCell {
   cursor: pointer;
   color: var(--colorLink);

@@ -19,6 +19,8 @@ export const humanFormat = val => hF(val, {scale: currScale, separator: ""});
 // 	return 0;
 // };
 
+export const totalTime = unix => moment(unix).format("YYYY-MM-DD / HH:MM:ss");
+
 export const omitProperty = (arr, valueArray) => _.map(arr, v => _.omit(v, valueArray));
 
 export const nilCheck = arr => !_.every(arr, el => !_.isNil(el));

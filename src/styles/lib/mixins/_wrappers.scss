@@ -1,6 +1,6 @@
 @import "~include-media/dist/include-media";
 
-@mixin card-wrapper {
+@mixin card-wrapper($marginBottom) {
   //min-height: 100%;
   padding: 15px 20px;
   border-radius: 5px;
@@ -10,7 +10,7 @@
   @include media("<medium") {
     padding: 10px 12px;
   }
-  margin-bottom: 70px;
+  margin-bottom: $marginBottom;
 }
 
 @mixin card-nopadding-wrapper {
