@@ -5,17 +5,17 @@
 
   .tablePointerCell {
     @include tablePointerCell;
-    padding: 10px 30px 10px 20px
+    @include tableElemPadding;
   }
 
   .tablePointerMiniCell {
     @include tablePointerCellWidth140;
-    padding: 10px 30px 10px 20px
+    @include tableElemPadding;
   }
 
   .tableCell {
     @include tableCellWidth300;
-    padding: 10px 30px 10px 20px
+    @include tableElemPadding;
   }
 }
 

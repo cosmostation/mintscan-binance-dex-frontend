@@ -10,6 +10,7 @@
   @include media("<medium") {
     padding: 10px 12px;
   }
+  margin-bottom: 70px;
 }
 
 @mixin card-nopadding-wrapper {
