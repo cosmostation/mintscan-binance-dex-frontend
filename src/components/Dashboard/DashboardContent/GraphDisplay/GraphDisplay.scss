@@ -7,13 +7,11 @@
   flex-flow: column;
   justify-content: center;
   align-items: flex-start;
+  height: 288px;
 
   @include media("<medium") {
     @include card-nopadding-wrapper;
     padding: 16px 20px 20px 20px;
-  }
-  @include media(">medium") {
-    height: 288px;
   }
 
   .tab-wrapper {

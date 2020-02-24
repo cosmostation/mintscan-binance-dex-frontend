@@ -71,7 +71,7 @@ const yAxis = {
 	endOnTick: true,
 	gridLineColor: "#eeeeee",
 	labels: {
-		enabled: true,
+		enabled: false,
 		align: "left",
 		x: 14,
 		style: {

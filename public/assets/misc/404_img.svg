@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="222.5" height="252" viewBox="0 0 222.5 252">
+  <g id="_404_img" data-name="404_img" transform="translate(-435 -465.5)">
+    <g id="그룹_3981" data-name="그룹 3981">
+      <g id="그룹_3980" data-name="그룹 3980">
+        <g id="사각형_116" data-name="사각형 116" transform="translate(506 617)" fill="#f5f5f5" stroke="#b2b6bc" stroke-width="2">
+          <rect width="12" height="100" stroke="none"/>
+          <rect x="1" y="1" width="10" height="98" fill="none"/>
+        </g>
+        <g id="타원_50" data-name="타원 50" transform="translate(435 465.5)" fill="#f5f5f5" stroke="#b2b6bc" stroke-width="2">
+          <circle cx="76.5" cy="76.5" r="76.5" stroke="none"/>
+          <circle cx="76.5" cy="76.5" r="75.5" fill="none"/>
+        </g>
+        <g id="타원_51" data-name="타원 51" transform="translate(444 474.358)" fill="#fff" stroke="#b2b6bc" stroke-width="2">
+          <circle cx="67.642" cy="67.642" r="67.642" stroke="none"/>
+          <circle cx="67.642" cy="67.642" r="66.642" fill="none"/>
+        </g>
+        <path id="패스_2056" data-name="패스 2056" d="M35.478-13.932H28.3V-22.14H23.22v8.208H8.694L27.216-37.8H21.384L2.052-13.068v3.78H23.058V0H28.3V-9.288h7.182ZM54.162.432c8.8,0,15.39-7.02,15.39-19.332s-6.588-19.332-15.39-19.332c-8.856,0-15.444,7.02-15.444,19.332S45.306.432,54.162.432Zm0-4.806c-5.94,0-10.044-4.86-10.044-14.526s4.1-14.526,10.044-14.526c5.886,0,9.99,4.86,9.99,14.526S60.048-4.374,54.162-4.374Zm53.46-9.558H100.44V-22.14H95.364v8.208H80.838L99.36-37.8H93.528L74.2-13.068v3.78H95.2V0h5.238V-9.288h7.182Z" transform="translate(456 561)" fill="#222"/>
+        <line id="선_29" data-name="선 29" x2="222" transform="translate(435.5 716.5)" fill="none" stroke="#b2b6bc" stroke-width="2"/>
+        <path id="패스_287" data-name="패스 287" d="M16680.012-3730.5,16714-3853h24l32,122.5" transform="translate(-16138 4446)" fill="#f5f5f5" stroke="#b2b6bc" stroke-linejoin="round" stroke-width="2"/>
+        <path id="패스_289" data-name="패스 289" d="M36.824,0H-.111L-3.949,14.666h44.5Z" transform="translate(569.5 617.5)" fill="#fff" stroke="#b2b6bc" stroke-width="2"/>
+        <path id="패스_290" data-name="패스 290" d="M57.793,0H1.849l-3.8,14.666H61.43Z" transform="translate(557.816 652.5)" fill="#fff" stroke="#b2b6bc" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>

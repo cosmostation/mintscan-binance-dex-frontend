@@ -6,6 +6,8 @@ import {_} from "src/lib/scripts";
 //  components
 import GraphDisplay from "./GraphDisplay";
 import PriceDisplay from "./PriceDisplay";
+import BlocksDisplay from "./BlocksDisplay";
+import TxDisplay from "./TxDisplay";
 
 const cx = cn.bind(styles);
 
@@ -24,8 +26,12 @@ export default function(props) {
 				</ul>
 			</div>
 			<div className={cx("BlockTx-wrapper")}>
-				<div className={cx("CardFixed")}>asdf</div>
-				<div className={cx("CardFixed")}>asdf</div>
+				<div className={cx("CardFixed")}>
+					<BlocksDisplay />
+				</div>
+				<div className={cx("CardFixed")}>
+					<TxDisplay />
+				</div>
 			</div>
 		</div>
 	);

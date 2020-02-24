@@ -1,0 +1,56 @@
+/* your css code */
+@import "src/styles/utils";
+
+.table-content-wrapper {
+  flex: 1;
+  min-width: 400px;
+
+  @include media(">medium") {
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+
+  @include media("<medium") {
+    min-width: 100%;
+  }
+  .CardTemplate {
+    @include card-wrapper;
+    .title-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .title {
+        font-family: "Montserrat";
+        font-size: var(--fontSizeCardValue);
+        font-weight: 500;
+        color: var(--colorMainText);
+      }
+
+      .btn {
+        padding: 5px 10px;
+        height: 30px;
+        outline: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        line-height: 1.19;
+
+        border: 1px solid var(--colorMainText);
+        background-color: var(--colorMainText);
+        color: var(--colorWhite);
+
+        @include media("<medium") {
+          padding: 6px 12px;
+        }
+
+        &:hover {
+          border: 1px solid var(--colorMainText);
+          background-color: var(--colorWhite);
+          color: var(--colorMainText);
+          @include transition-linear;
+        }
+      }
+    }
+  }
+}

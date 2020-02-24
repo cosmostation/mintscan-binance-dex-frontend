@@ -1,0 +1,12 @@
+@import "src/styles/utils";
+
+.ErrorPage-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: flex-start;
+  div {
+    text-align: center;
+    color: red;
+  }
+}

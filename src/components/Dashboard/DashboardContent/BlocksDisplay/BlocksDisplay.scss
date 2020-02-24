@@ -1,5 +1,21 @@
 @import "src/styles/utils";
 
-.BlocksDisplay {
-
+.table {
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 450px;
+  .tableHeaderCell {
+    @include tableHeaderCellWidth300;
+    padding: 10px 10px 10px 20px;
+    color: var(--colorMainText);
+  }
+  .heightWidth {
+    min-width: 50px;
+  }
+  .proposerWidth {
+    min-width: 100px;
+  }
+  .timeWidth {
+    min-width: 100px;
+  }
 }

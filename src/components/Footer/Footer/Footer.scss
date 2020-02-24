@@ -3,7 +3,7 @@
 /* footer */
 .footerWrapper {
 	width: 100%;
-	height: 200px;
+	height: var(--heightFooter);
 	background: var(--colorFooterBG);
 
 	@include media("<medium") {
