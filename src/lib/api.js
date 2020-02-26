@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import consts from "src/constants/consts";
+
 const coinGeckoAPI = "https://api.coingecko.com/api/v3";
 
 export const getMaxHeight = cancelToken => {

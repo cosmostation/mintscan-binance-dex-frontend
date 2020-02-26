@@ -7,17 +7,21 @@
   overflow-x: auto;
   overflow-y: hidden;
   min-width: 450px;
+
   .tableHeaderCell {
     @include tableHeaderCellWidth300;
     @include tableHeaderPadding;
     color: var(--colorMainText);
   }
+
   .heightWidth {
     min-width: 50px;
   }
+
   .proposerWidth {
     min-width: 70px;
   }
+
   .timeWidth {
     min-width: 100px;
   }

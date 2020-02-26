@@ -1,9 +1,8 @@
 import React from "react";
-import {_} from "src/lib/scripts";
+import {_, empty, formatNumber, reduceString} from "src/lib/scripts";
 import {NavLink} from "react-router-dom";
 
 import Skeleton from "react-skeleton-loader";
-import {reduceString, setAgoTime, formatNumber, empty} from "src/lib/scripts";
 
 import txTypes from "src/constants/txTypes";
 import * as Big from "src/lib/Big";

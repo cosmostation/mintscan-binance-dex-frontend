@@ -3,51 +3,55 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap");
 
 :root {
-	//  colors
-	--colorWhite: #ffffff;
-	--colorMainText: #222222;
-	--colorPageTitle: #333333;
-	--colorPageBg: #f5f5f5;
-	--colorStatusBar: #e3e3e3;
+  //  colors
+  --colorWhite: #ffffff;
+  --colorMainText: #222222;
+  --colorPageTitle: #333333;
+  --colorPageBg: #f5f5f5;
+  --colorStatusBar: #e3e3e3;
 
-	--colorSearchInput: #575c64;
-	--colorDashStatusTitle: #4b525d;
+  --colorSearchInput: #575c64;
+  --colorDashStatusTitle: #4b525d;
 
 
-	--colorHeaderBg: #222222;
-	--colorType: #9c6cff;
-	--colorTypeBg: #f6f2ff;
-	--colorMissedBlock: #b997ff;
-	--colorAppBarInputBg: #ffffff;
-	--colorAppBarInputText: #4b525d;
-	--colorAppBarInputPh: #b2b6bc;
-	--colorNetSelectBg: #ffffff;
-	--colorNetSelectBorder: transparent;
-	--colorFooterBG: #222222;
-	--colorTableBg: #fbfbfc;
+  --colorHeaderBg: #222222;
+  --colorType: #9c6cff;
+  --colorTypeBg: #f6f2ff;
+  --colorMissedBlock: #b997ff;
+  --colorAppBarInputBg: #ffffff;
+  --colorAppBarInputText: #4b525d;
+  --colorAppBarInputPh: #b2b6bc;
+  --colorNetSelectBg: #ffffff;
+  --colorNetSelectBorder: transparent;
+  --colorFooterBG: #222222;
+  --colorTableBg: #fbfbfc;
 
-	//  height
-	--heightTableRow: 45px;
-	--heightHeader: 65px;
-	--heightHeaderInMedium: 55px;
-	--heightSubHeader: 50px;
-	--heightFooter: 200px;
-	--mainDefaultPaddingTop: 30px;
-	--mainDefaultPaddingBottom: 70px;
+  //  height
+  --heightTableRow: 45px;
+  --heightHeader: 65px;
+  --heightHeaderInMedium: 55px;
+  --heightSubHeader: 50px;
+  --heightFooter: 200px;
+  --mainDefaultPaddingTop: 30px;
+  --mainDefaultPaddingBottom: 70px;
 
-	// fontSize
-	--fontSizeDassSearchPh: 14px;
-	--fontSizeCardValue: 18px;
-	--fontSizeCardValueInMedium: 16px;
+  // border
+  --border: 1px solid #e6e6e6;
+  --btnBorder: 1px solid #bebebe;
 
-	--fontSizeMain: 13px;
-	--fontSizeMedium: 14px;
-	--fontSizeMainInMedium: 12px;
-	--fontSizeDashTitle: 50px;
-	--fontSizeTabTitle: 15px;
+  // fontSize
+  --fontSizeDassSearchPh: 14px;
+  --fontSizeCardValue: 18px;
+  --fontSizeCardValueInMedium: 16px;
 
-	//width
-	--widthNetSelectBox: 160px;
+  --fontSizeMain: 13px;
+  --fontSizeMedium: 14px;
+  --fontSizeMainInMedium: 12px;
+  --fontSizeDashTitle: 50px;
+  --fontSizeTabTitle: 15px;
+
+  //width
+  --widthNetSelectBox: 160px;
 }
 
 
@@ -137,12 +141,12 @@ time,
 mark,
 audio,
 video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -157,91 +161,91 @@ hgroup,
 menu,
 nav,
 section {
-	display: block;
+  display: block;
 }
 
 body {
-	font-family: Montserrat, "Open Sans", sans-serif;
-	color: #222222;
-	font-size: 14px;
-	line-height: 1.6;
-	-webkit-font-smoothing: antialiased;
-	margin: 0;
-	box-sizing: border-box;
-	overflow-y: scroll;
+  font-family: Montserrat, "Open Sans", sans-serif;
+  color: #222222;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-y: scroll;
 }
 
 ol,
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-	quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-	content: "";
-	content: none;
+  content: "";
+  content: none;
 }
 
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 input {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .font-alt {
-	font-family: "Montserrat", arial, sans-serif;
+  font-family: "Montserrat", arial, sans-serif;
 }
 
 header {
-	box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 a {
-	text-decoration: inherit;
-	color: inherit;
+  text-decoration: inherit;
+  color: inherit;
 }
 
 tbody {
-	color: #767f8d;
+  color: #767f8d;
 }
 
 button {
-	border: none;
-	margin: 0;
-	padding: 0;
-	width: auto;
-	overflow: visible;
-	outline: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  outline: none;
 
-	background: transparent;
+  background: transparent;
 
-	/* inherit font & color from ancestor */
-	color: inherit;
-	font: inherit;
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
 
-	/* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-	line-height: normal;
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
 
-	/* Corrects font smoothing for webkit */
-	-webkit-font-smoothing: inherit;
-	-moz-osx-font-smoothing: inherit;
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
 
-	/* Corrects inability to style clickable `input` types in iOS */
-	-webkit-appearance: none;
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
 }

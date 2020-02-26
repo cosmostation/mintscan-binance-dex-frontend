@@ -22,14 +22,17 @@
     display: flex;
     flex-flow: row;
     align-self: flex-end;
+
     :nth-child(1) {
       border-bottom-left-radius: 5px;
       border-top-left-radius: 5px;
     }
+
     :nth-child(2) {
       border-bottom-right-radius: 5px;
       border-top-right-radius: 5px;
     }
+
     button {
       width: 50%;
       height: 100%;
@@ -37,6 +40,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       p {
         font-family: "Open Sans", serif;
         font-size: 14px;
@@ -48,17 +52,20 @@
         text-align: left;
         color: #222222;
       }
+
       &.selected {
         background-color: #222222;
+
         p {
           color: #ffffff;
         }
       }
     }
   }
+
   .Graph-wrapper {
     width: 95%;
-    margin:auto;
+    margin: auto;
     @include media(">xxsmall") {
       width: map_get($breakpoints, xxsmall) - 40px;
     }

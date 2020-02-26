@@ -1,19 +1,19 @@
 @import 'src/styles/utils';
 
 .routerContainer {
-	width: 1200px;
-	margin: 0 auto;
-	padding: calc(var(--heightHeader) + var(--heightSubHeader)) 0 0 0;
+  width: 1200px;
+  margin: 0 auto;
+  padding: calc(var(--heightHeader) + var(--heightSubHeader)) 0 0 0;
 
-	@include media("<large") {
-		width: 100%;
-		margin-left: auto;
-		margin-right: auto;
-		padding: calc(var(--heightHeader) + var(--mainDefaultPaddingTop)) 10px 1.8rem 10px;
-	}
+  @include media("<large") {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: calc(var(--heightHeader) + var(--mainDefaultPaddingTop)) 10px 1.8rem 10px;
+  }
 
-	@include media("<medium") {
-		width: 100%;
-		padding: 0 10px 10px 10px;
-	}
+  @include media("<medium") {
+    width: 100%;
+    padding: 0 10px 10px 10px;
+  }
 }

@@ -5,11 +5,10 @@ import classNames from "classnames/bind";
 import consts from "src/constants/consts";
 import useIndexedPagination from "src/hooks/useIndexedPagination";
 import {usePrevious} from "src/hooks";
-import {empty, formatNumber} from "src/lib/scripts";
+import {_, empty, formatNumber} from "src/lib/scripts";
 // components
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 import TxListTableRow from "../TableRow";
-import {_} from "src/lib/scripts";
 import {footerRender} from "src/components/common/IndexedPagination/IndexedPagination";
 
 const INDEX_DISPLAY_DECIMAL_PLACES = 3;

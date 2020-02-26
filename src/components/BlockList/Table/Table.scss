@@ -3,12 +3,15 @@
 .blockListtableWrapper {
   overflow-x: auto;
   overflow-y: hidden;
+
   .table {
     min-width: 1000px;
+
     .tableHeaderCell {
       @include tableHeaderCellWidth300;
       color: var(--colorMainText);
     }
+
     .txsWidth {
       width: 100px;
     }

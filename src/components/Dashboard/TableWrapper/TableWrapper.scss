@@ -15,9 +15,11 @@
   @include media("<medium") {
     min-width: 100%;
   }
+
   .CardTemplate {
     @include card-wrapper(0);
     min-height: 372px;
+
     .title-wrapper {
       display: flex;
       justify-content: space-between;

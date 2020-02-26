@@ -33,7 +33,7 @@ const theme = createMuiTheme({
 export default function(props) {
 	return (
 		<MuiThemeProvider theme={theme}>
-			<RestfulProvider base={consts.API_BASE()}>
+			<RestfulProvider base={consts.API_BASE}>
 				<Provider store={store}>
 					<BrowserRouter>
 						<App />

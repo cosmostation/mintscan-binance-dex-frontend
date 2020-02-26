@@ -1,7 +1,7 @@
 import * as React from "react";
 import cn from "classnames/bind";
 
-import {getUnixTimes, get24Hours, _} from "src/lib/scripts";
+import {_, getUnixTimes} from "src/lib/scripts";
 import {getMarketChartRange} from "src/lib/api";
 
 import Chart from "src/components/common/Chart";

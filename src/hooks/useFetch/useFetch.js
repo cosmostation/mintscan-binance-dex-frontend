@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useReducer, useState} from "react";
 import axios from "axios";
-import {empty, _} from "src/lib/scripts";
+import {empty} from "src/lib/scripts";
 
 import reducer, {ERROR, FETCHING, initialState, SUCCESS} from "./reducer";
 

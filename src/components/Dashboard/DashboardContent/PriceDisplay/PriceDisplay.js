@@ -4,7 +4,6 @@ import styles from "./PriceDisplay.scss";
 import {formatNumber} from "src/lib/scripts";
 //  component
 import Skeleton from "react-skeleton-loader";
-
 //  redux
 import {useDispatch, useSelector} from "react-redux";
 import {getCryptoBasicData} from "src/store/modules/blockchain";

@@ -1,21 +1,21 @@
 @import "lib/all";
 
 $breakpoints: (
-	xxsmall: 360px,
-	xsmall: 420px,
-	small: 600px,
-	medium: 980px,
-	large: 1280px,
-	wide: 1920px,
-	img_tablet: 850px,
-	img_mobile: 500px,
-	img_pc: 1200px,
+        xxsmall: 360px,
+        xsmall: 420px,
+        small: 600px,
+        medium: 980px,
+        large: 1280px,
+        wide: 1920px,
+        img_tablet: 850px,
+        img_mobile: 500px,
+        img_pc: 1200px,
 );
 
 $mainColor: #f0b90b;
 
 :export {
-	medium: 980px;
-	small: 600px;
-	xsmall: 420px;
+  medium: 980px;
+  small: 600px;
+  xsmall: 420px;
 }

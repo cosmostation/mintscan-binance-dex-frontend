@@ -4,6 +4,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   min-width: 450px;
+
   .tableHeaderCell {
     @include tableHeaderCellWidth300;
     @include tableHeaderPadding;
@@ -11,12 +12,15 @@
     padding-bottom: 11.5px;
     color: var(--colorMainText);
   }
+
   .txHashWidth {
     min-width: 100px;
   }
+
   .typeWidth {
     min-width: 100px;
   }
+
   .timeWidth {
     min-width: 100px;
   }

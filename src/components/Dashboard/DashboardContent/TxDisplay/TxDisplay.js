@@ -1,10 +1,9 @@
 import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./TxDisplay.scss";
-
 //  utils
 import consts from "src/constants/consts";
-import {empty, formatNumber, _} from "src/lib/scripts";
+import {_} from "src/lib/scripts";
 import useFetch from "src/hooks/useFetch/useFetch";
 //  components
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
@@ -14,11 +13,8 @@ import TxDisplayTableRow from "./TableRow";
 
 const cx = cn.bind(styles);
 
-const baseURL = consts.API_BASE();
-const url = `${consts.API.TXLIST}?limit=5`;
-
 export default function(props) {
-	const [data, requestFetch, setUrl] = useFetch(`${baseURL}${url}`, "get");
+	const [data, requestFetch, setUrl] = useFetch(`${consts.API_BASE}${consts.API.TXLIST}?limit=5`, "get");
 	const tableHeaderRender = React.useMemo(
 		() => (
 			<TableHead>

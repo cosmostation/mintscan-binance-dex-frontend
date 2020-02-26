@@ -32,3 +32,16 @@
   -o-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
+
+@mixin Card-title {
+  font-family: "Montserrat", serif;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.22;
+  letter-spacing: normal;
+  text-align: left;
+  padding: 5px 18px 10px 0;
+  color: #222222;
+}

@@ -1,9 +1,8 @@
 import React, {useMemo} from "react";
 import HighchartsReact from "highcharts-react-official";
 import highcharts from "highcharts";
-import moment from "moment";
 
-import {_, getHours, getTime, formatNumber, humanFormat} from "src/lib/scripts";
+import {_, formatNumber, getHours, getTime} from "src/lib/scripts";
 
 export default function({options, data}) {
 	const graphOptions = useMemo(() => {

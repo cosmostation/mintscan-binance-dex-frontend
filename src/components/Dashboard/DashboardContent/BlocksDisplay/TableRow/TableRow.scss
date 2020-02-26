@@ -26,6 +26,7 @@ $customPadding: 8px 20px 7px 10px;
     @include tableCellWidth300;
     padding: $customPadding;
   }
+
   .time {
     line-height: 1.38;
     height: 36px;
@@ -42,13 +43,16 @@ $customPadding: 8px 20px 7px 10px;
   line-height: 1.15;
   letter-spacing: normal;
   color: #4b525d;
+
   .decimal {
     font-size: 11px;
   }
+
   .BNB {
     font-size: 11px;
     color: #f0b90b;
   }
+
   .blueColor {
     color: #4472de
   }

@@ -2,14 +2,12 @@ import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./TableRow.scss";
 import {NavLink} from "react-router-dom";
-
 //  components
 import {TableCell, TableRow} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
 import {setAgoTime, totalTime} from "src/lib/scripts";
 
 import pickData, {CELL_TYPES} from "src/components/TxList/TableRow/pickData";
-import {recursiveExpand} from "src/lib/scripts";
 
 const cx = cn.bind(styles);
 

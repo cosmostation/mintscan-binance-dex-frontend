@@ -1,0 +1,55 @@
+@import "src/styles/utils";
+
+.block-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  @include media("<medium") {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title {
+    font-family: "Montserrat", serif;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.23;
+    color: var(--colorPageTitle);
+
+    @include media("<large") {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    @include media("<medium") {
+      font-size: 22px;
+    }
+  }
+
+  .icons {
+    display: grid;
+    grid-gap: 10px;
+    grid-auto-flow: column;
+    a {
+      height: 26px;
+      width: 26px;
+      img {
+        object-fit: contain;
+        cursor: pointer;
+        color: var(--dark);
+      }
+      .flip {
+        transform: rotate(180deg);
+      }
+
+      @include media("<large") {
+        grid-gap: 8px;
+        height: 22px;
+        width: 22px;
+      }
+    }
+
+  }
+}

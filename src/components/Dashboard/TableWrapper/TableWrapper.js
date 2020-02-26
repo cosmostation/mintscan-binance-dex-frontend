@@ -1,5 +1,4 @@
-import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import styles from "./TableWrapper.scss";
 import classNames from "classnames/bind";
 

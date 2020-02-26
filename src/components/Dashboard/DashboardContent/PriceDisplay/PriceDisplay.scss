@@ -12,14 +12,17 @@
     height: 278px;
     padding: 20px;
   }
+
   .icon {
     display: flex;
     width: fit-content;
+
     img {
       width: 32px;
       height: 32px;
       content: url("/assets/icons/common/binance_token.svg");
     }
+
     .text {
       display: block;
       width: fit-content;
@@ -35,8 +38,10 @@
       text-align: left;
       color: #222222;
     }
+
     margin-bottom: 51px;
   }
+
   .price {
     height: 34px;
     align-self: flex-end;
@@ -52,6 +57,7 @@
 
     margin-bottom: 9px;
   }
+
   .volume24h-wrapper {
     width: 100%;
     height: 22px;
@@ -95,12 +101,14 @@
         cursor: pointer;
       }
     }
+
     .content {
       display: flex;
       width: fit-content;
       flex-flow: row;
       align-items: center;
       justify-content: space-between;
+
       img {
         object-fit: fill;
         width: 20px;
@@ -108,6 +116,7 @@
 
         margin-right: 4px;
       }
+
       .text {
         width: fit-content;
         font-size: 15px;
@@ -120,8 +129,10 @@
         color: #4b525d;
       }
     }
+
     margin-bottom: 17px;
   }
+
   .CapVolume-wrapper {
     width: 100%;
     height: 66px;
@@ -156,6 +167,7 @@
           margin-right: 5px;
           text-align: left;
         }
+
         &:nth-child(2) {
           text-align: right;
           font-size: 15px;

@@ -27,6 +27,7 @@
       height: var(--heightHeaderInMedium);
       padding: 0 10px;
     }
+
     a {
       display: flex;
       align-items: center;
@@ -81,6 +82,7 @@
         width: 24px;
         height: 24px;
       }
+
       .upsideDown {
         transform: rotate(180deg);
       }
@@ -189,6 +191,7 @@
     margin-top: 3px;
   }
 }
+
 .hide {
   display: none !important;
 }

@@ -37,6 +37,7 @@
       border-radius: 5px;
       padding: 7px 12px;
       cursor: pointer;
+
       img {
         margin-left: 8px;
         width: 16px;
@@ -98,6 +99,7 @@
       @include media("<large") {
         justify-content: flex-start;
       }
+
       .nav-item-title {
         font-family: "Montserrat", "Open Sans", serif;
         font-size: var(--fontSizeMain);
@@ -106,6 +108,7 @@
         text-transform: uppercase;
         color: #b2b6bc;
       }
+
       img {
         height: 32px;
         width: 32px;
@@ -115,6 +118,7 @@
         h2 {
           color: var(--colorMainText) !important;
         }
+
         &:nth-child(1) {
           img {
             content: url("/assets/icons/navigation/dashboard_ic.svg");
@@ -148,6 +152,7 @@
     }
   }
 }
+
 .selected {
   color: var(--colorMainText) !important;
 }

@@ -1,7 +1,8 @@
+const api = process.env.REACT_APP_BUILD_ENV === "production" ? "https://lcd-binance-mainnet.cosmostation.io" : "https://api-binance-testnet.cosmostation.io/v1";
+
 export default Object.freeze({
-	API_BASE: () =>
-		process.env.REACT_APP_BUILD_ENV === "production" ? "https://lcd-binance-mainnet.cosmostation.io" : "https://api-binance-testnet.cosmostation.io/v1",
-	BINANCE_API_BASE: "https://dex-asiapacific.binance.org/api/v1/",
+	API_BASE: api,
+	BINANCE_API_BASE: "https://dex-asiapacific.binance.org/api/v1/", // "?format=json" => for blocks
 	API: {
 		BLOCKLIST: "/blocks",
 		TXLIST: "/txs",

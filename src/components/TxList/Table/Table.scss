@@ -3,19 +3,24 @@
 .txListTableWrapper {
   overflow-x: auto;
   overflow-y: hidden;
+
   .table {
     min-width: 1000px;
+
     .tableHeaderCell {
       @include tableHeaderCellWidth300;
       @include tableElemPadding;
       color: var(--colorMainText);
     }
+
     .heightWidth {
       width: 150px;
     }
+
     .currencyWidth {
       width: 144px;
     }
+
     .txsWidth {
       width: 100px;
     }

@@ -18,12 +18,10 @@ import reducer, {
 	PAGE_CHANGE,
 	RECENT_DATA_LOAD,
 	UPDATE_ISFRONT,
-	UPDATE_MAX_HEIGHT,
 } from "src/hooks/useIndexedPagination/reducer";
 
 const SPARE_PAGE_CNT = 2; //  how many pages left before a refetch is triggered
 const REAL_TIME_DELAY_MS = 2000;
-const API_BASE = consts.API_BASE();
 
 let renderCnt = 0;
 export default function({path, pageSize = 20, pagingProperty = "height", limit = 60, resolve = undefined, updateQuery = ""}) {
@@ -54,7 +52,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 			//  DEBUGGING - to prevent realtime data stream
 			// return;
 			if (loading) return;
-			setUrl(`${API_BASE}${path}` + getQueryParams(state.allData, true, pagingProperty, "", limit));
+			setUrl(`${consts.API_BASE}${path}` + getQueryParams(state.allData, true, pagingProperty, "", limit));
 		}
 	}, [watch]);
 	useEffect(() => {
@@ -69,7 +67,10 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 
 		if (recentData.data.data) {
 			// console.log("getRecentData", recentData.data);
-			dispatch({type: RECENT_DATA_LOAD, payload: {data: recentData.data.data, maxIndex: Number(recentData.data.paging.total)}});
+			dispatch({
+				type: RECENT_DATA_LOAD,
+				payload: {data: recentData.data.data, maxIndex: Number(recentData.data.paging.total)},
+			});
 			if (recentData.data.data.length > limit) {
 				console.warn(`getRecentData overflowed (${recentData.data.data.length}>${limit}[limit])`);
 				// TODO
@@ -93,12 +94,20 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 		if (empty(state.index)) {
 			//  initial load only occurs when refinedQuery is set
 			if (refinedQuery === 1) {
-				return dispatch({type: INITIAL_LOAD, payload: {data: data.data, pageSize, index: [0, pageSize - 1], maxIndex: Number(data.paging.total)}});
+				return dispatch({
+					type: INITIAL_LOAD,
+					payload: {data: data.data, pageSize, index: [0, pageSize - 1], maxIndex: Number(data.paging.total)},
+				});
 			}
 			// TODO
 			//  define case when query is set
 			else {
-				getInitialLoadQuery(refinedQuery, {data: data.data, maxIndex: Number(data.paging.total), pageSize, index: [0, pageSize - 1]});
+				getInitialLoadQuery(refinedQuery, {
+					data: data.data,
+					maxIndex: Number(data.paging.total),
+					pageSize,
+					index: [0, pageSize - 1],
+				});
 				dispatch({type: EXTRA_LOAD_INIT, payload: {after: true}}); //  query for the ones before as well
 			}
 		}
@@ -110,7 +119,10 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 					(state.params.after === true && data.data[0]?.[pagingProperty] > state.allData?.[0]?.[pagingProperty]) ||
 					(state.params.after === false && data.data[0]?.[pagingProperty] < state.allData?.[state.allData.length - 1]?.[pagingProperty])
 				) {
-					dispatch({type: EXTRA_LOAD, payload: {data: data.data, after: state.params.after, loading, maxIndex: Number(data.paging.total)}});
+					dispatch({
+						type: EXTRA_LOAD,
+						payload: {data: data.data, after: state.params.after, loading, maxIndex: Number(data.paging.total)},
+					});
 				}
 			} else {
 				if ((state.index[0] === 0 && state.params.after === false) || (state.index[1] === state.allData.length - 1 && state.params.after === true))

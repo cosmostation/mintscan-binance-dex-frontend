@@ -1,7 +1,6 @@
 import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./SearchArea.scss";
-
 //  components
 import {InputBase} from "@material-ui/core";
 
