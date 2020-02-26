@@ -17,11 +17,11 @@
 	}
 	@include media("<large") {
 		margin-left: -5vw;
+		width: 105vw;
 		height: 290px;
 	}
 
 	@include media("<medium") {
-		margin-left: -10px;
 		background: #222222;
 		height: 230px;
 	}
@@ -67,6 +67,10 @@
 
 			@include media("<medium") {
 				margin: 15px 0 0 0;
+			}
+
+			@include media("<small") {
+				margin: 0;
 			}
 
 			.title {

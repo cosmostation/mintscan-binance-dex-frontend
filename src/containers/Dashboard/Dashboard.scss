@@ -5,10 +5,6 @@
 	flex-flow: column;
 	justify-content: center;
 
-	@include media("<large") {
-		margin-top: calc(0px - var(--mainDefaultPaddingTop));
-	}
-
 	@include media("<medium") {
 		margin-top: var(--heightHeader);
 	}

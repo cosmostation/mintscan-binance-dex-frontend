@@ -9,7 +9,7 @@
 		width: 100%;
 		margin-left: auto;
 		margin-right: auto;
-		padding: calc(var(--heightHeader) + var(--mainDefaultPaddingTop)) 10px 1.8rem 10px;
+		padding: var(--heightHeader) 10px 1.8rem 10px;
 	}
 
 	@include media("<medium") {
