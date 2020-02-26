@@ -6,7 +6,7 @@ import Skeleton from "react-skeleton-loader";
 
 import txTypes from "src/constants/txTypes";
 import * as Big from "src/lib/Big";
-import getTxType from "src/components/TxList/TableRow/getTxType";
+import getTxType from "src/constants/getTxType";
 
 export const CELL_TYPES = Object.freeze(["Tx Hash", "Type", "From", "To", "Value", "Height", "Time"]);
 

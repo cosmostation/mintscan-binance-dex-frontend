@@ -14,6 +14,6 @@
 
 	@include media("<medium") {
 		width: 100%;
-		padding: 0 10px 10px 10px;
+		padding: var(--heightHeader) 10px 10px 10px;
 	}
 }

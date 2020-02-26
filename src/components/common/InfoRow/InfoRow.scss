@@ -1,0 +1,35 @@
+@import "src/styles/utils";
+
+.infoRow-grid {
+	display: grid;
+	grid-template-rows: 20px;
+	grid-template-columns: 203px 1fr;
+	.label {
+		height: 20px;
+		text-transform: capitalize;
+		font-family: "Open Sans", serif;
+		font-size: 15px;
+		font-weight: 600;
+		font-stretch: normal;
+		font-style: normal;
+		letter-spacing: normal;
+		text-align: left;
+		color: #222222;
+	}
+	.value {
+		height: 20px;
+		text-transform: capitalize;
+		font-family: "Open Sans", serif;
+		font-size: 15px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		letter-spacing: normal;
+		text-align: left;
+		color: #4b525d;
+
+		display: flex;
+		align-items: center;
+	}
+	margin-bottom: 10px;
+}

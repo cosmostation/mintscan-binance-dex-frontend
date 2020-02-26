@@ -1,0 +1,37 @@
+@import "src/styles/utils";
+
+.TxInfo-wrapper {
+	@include card-wrapper(15px);
+	padding-bottom: 0;
+	.title {
+		border-bottom: var(--border);
+		@include Card-title;
+	}
+	.grid-wrapper {
+		margin: 15.5px 0 20px;
+		.status-img {
+			height: 12px;
+			width: 12px;
+			font-size: 10px;
+			overflow: visible;
+			object-fit: cover;
+			margin-right: 4px;
+		}
+		.txType-img {
+			height: 32px;
+			width: 32px;
+			font-size: 10px;
+			overflow: visible;
+			object-fit: cover;
+			margin-right: 4px;
+		}
+	}
+}
+
+.blueColor {
+	color: #4472de;
+}
+
+.BNBcolor {
+	color: var(--colorBNB);
+}
