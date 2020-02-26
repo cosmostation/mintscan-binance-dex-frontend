@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="msgsic_5" transform="translate(-393 -823)">
+    <g id="그룹_3802" data-name="그룹 3802" transform="translate(-3319.578 -431.658)">
+      <g id="그룹_3801" data-name="그룹 3801" transform="translate(3721.588 1262.964)">
+        <path id="패스_1949" data-name="패스 1949" d="M3736.584,1276.941l1.74-.839.144,1.926,1.6,1.087-1.6,1.087-.144,1.926-1.74-.839-1.74.839-.144-1.926-1.6-1.087,1.6-1.087.144-1.926Z" transform="translate(-3729.594 -1271.421)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+        <g id="그룹_3798" data-name="그룹 3798" transform="translate(4.961)">
+          <line id="선_195" data-name="선 195" y2="15.388" transform="translate(2.019)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+          <line id="선_196" data-name="선 196" y1="1.791" x2="2.015" transform="translate(2.043 1.49)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+          <line id="선_197" data-name="선 197" x1="2.015" y1="1.791" transform="translate(0 1.49)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+          <line id="선_198" data-name="선 198" x2="2.015" y2="1.791" transform="translate(2.043 12.205)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+          <line id="선_199" data-name="선 199" x1="2.015" y2="1.791" transform="translate(0 12.205)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+        </g>
+        <g id="그룹_3799" data-name="그룹 3799" transform="translate(0 2.647)">
+          <line id="선_200" data-name="선 200" x2="13.97" y2="8.065" transform="translate(0 1.02)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+          <line id="선_201" data-name="선 201" x1="0.544" y1="2.64" transform="translate(2.31)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+          <line id="선_202" data-name="선 202" x1="2.558" y2="0.849" transform="translate(0.281 2.664)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+          <line id="선_203" data-name="선 203" y1="0.849" x2="2.558" transform="translate(11.225 6.624)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+          <line id="선_204" data-name="선 204" x2="0.544" y2="2.64" transform="translate(11.211 7.498)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+        </g>
+        <g id="그룹_3800" data-name="그룹 3800" transform="translate(0.009 2.603)">
+          <line id="선_205" data-name="선 205" y1="8.065" x2="13.97" transform="translate(0 1.069)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+          <line id="선_206" data-name="선 206" x1="2.558" y1="0.849" transform="translate(0.272 6.624)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+          <line id="선_207" data-name="선 207" x1="0.544" y2="2.64" transform="translate(2.3 7.498)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+          <line id="선_208" data-name="선 208" y1="2.64" x2="0.544" transform="translate(11.202)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+          <line id="선_209" data-name="선 209" x2="2.558" y2="0.849" transform="translate(11.216 2.664)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+        </g>
+      </g>
+      <circle id="타원_188" data-name="타원 188" cx="11" cy="11" r="11" transform="translate(3717.578 1259.658)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+    </g>
+    <rect id="사각형_1747" data-name="사각형 1747" width="32" height="32" transform="translate(393 823)" fill="none"/>
+  </g>
+</svg>

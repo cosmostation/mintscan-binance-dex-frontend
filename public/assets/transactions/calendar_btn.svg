@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="calendar_btn" transform="translate(-1077 -240)">
+    <g id="그룹_3863" data-name="그룹 3863" transform="translate(786.761 -268.518)">
+      <path id="패스_1999" data-name="패스 1999" d="M309.81,514.777v13.251H294.591V514.777H309.81m.853-.853H293.738v14.957h16.925V513.924Z" transform="translate(0 -0.461)" fill="#4b525d"/>
+      <rect id="사각형_1795" data-name="사각형 1795" width="15.613" height="0.89" transform="translate(294.394 517.952)" fill="#4b525d"/>
+      <rect id="사각형_1796" data-name="사각형 1796" width="1.05" height="2.979" transform="translate(297.346 512.518)" fill="#4b525d"/>
+      <rect id="사각형_1797" data-name="사각형 1797" width="1.05" height="2.979" transform="translate(305.94 512.518)" fill="#4b525d"/>
+      <g id="그룹_3858" data-name="그룹 3858" transform="translate(296.116 520.099)">
+        <rect id="사각형_1798" data-name="사각형 1798" width="1.279" height="1.251" transform="translate(0 0)" fill="#4b525d"/>
+        <rect id="사각형_1799" data-name="사각형 1799" width="1.279" height="1.251" transform="translate(0 2.384)" fill="#4b525d"/>
+        <rect id="사각형_1800" data-name="사각형 1800" width="1.279" height="1.251" transform="translate(0 4.798)" fill="#4b525d"/>
+      </g>
+      <g id="그룹_3859" data-name="그룹 3859" transform="translate(298.806 520.085)">
+        <rect id="사각형_1801" data-name="사각형 1801" width="1.279" height="1.251" transform="translate(0)" fill="#4b525d"/>
+        <rect id="사각형_1802" data-name="사각형 1802" width="1.279" height="1.251" transform="translate(0 2.384)" fill="#4b525d"/>
+        <rect id="사각형_1803" data-name="사각형 1803" width="1.279" height="1.251" transform="translate(0 4.797)" fill="#4b525d"/>
+      </g>
+      <g id="그룹_3860" data-name="그룹 3860" transform="translate(301.561 520.07)">
+        <rect id="사각형_1804" data-name="사각형 1804" width="1.279" height="1.251" fill="#4b525d"/>
+        <rect id="사각형_1805" data-name="사각형 1805" width="1.279" height="1.251" transform="translate(0 2.384)" fill="#4b525d"/>
+        <rect id="사각형_1806" data-name="사각형 1806" width="1.279" height="1.251" transform="translate(0 4.797)" fill="#4b525d"/>
+      </g>
+      <g id="그룹_3861" data-name="그룹 3861" transform="translate(304.251 520.099)">
+        <rect id="사각형_1807" data-name="사각형 1807" width="1.279" height="1.251" transform="translate(0 0)" fill="#4b525d"/>
+        <rect id="사각형_1808" data-name="사각형 1808" width="1.279" height="1.251" transform="translate(0 2.384)" fill="#4b525d"/>
+        <rect id="사각형_1809" data-name="사각형 1809" width="1.279" height="1.251" transform="translate(0 4.798)" fill="#4b525d"/>
+      </g>
+      <g id="그룹_3862" data-name="그룹 3862" transform="translate(307.006 520.056)">
+        <rect id="사각형_1810" data-name="사각형 1810" width="1.279" height="1.251" fill="#4b525d"/>
+        <rect id="사각형_1811" data-name="사각형 1811" width="1.279" height="1.251" transform="translate(0 2.384)" fill="#4b525d"/>
+        <rect id="사각형_1812" data-name="사각형 1812" width="1.279" height="1.251" transform="translate(0 4.798)" fill="#4b525d"/>
+      </g>
+    </g>
+    <rect id="사각형_1815" data-name="사각형 1815" width="24" height="24" transform="translate(1077 240)" fill="none"/>
+  </g>
+</svg>

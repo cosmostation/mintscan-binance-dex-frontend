@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16.658" height="16.375" viewBox="0 0 16.658 16.375">
+  <g id="tx_more_btn" transform="translate(-267.5 -90.625)">
+    <line id="선_99" data-name="선 99" y1="5.302" x2="6.627" transform="translate(274.894 93.32)" fill="none" stroke="#f0b90b" stroke-linecap="round" stroke-width="1"/>
+    <path id="패스_1663" data-name="패스 1663" d="M0,2.469,2.469,0,4.939,2.469" transform="translate(279.813 91.479) rotate(45)" fill="none" stroke="#f0b90b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <path id="패스_1664" data-name="패스 1664" d="M2098.869,2661.8h-5.883v10.036h10.036v-6.566" transform="translate(-1822.835 -2567.617)" fill="none" stroke="#f0b90b" stroke-linejoin="round" stroke-width="1"/>
+    <rect id="사각형_1383" data-name="사각형 1383" width="16" height="16" transform="translate(267.5 91)" fill="none"/>
+  </g>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="msgsic_6" transform="translate(-393 -967)">
+    <g id="그룹_3796" data-name="그룹 3796" transform="translate(-3189.847 -262.667)">
+      <path id="패스_1942" data-name="패스 1942" d="M3618.706,1234.925a6.269,6.269,0,0,1,6.269,6.269" transform="translate(-17.341)" fill="none" stroke="#f0b90b" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+      <path id="패스_1943" data-name="패스 1943" d="M3632.452,1246.134l-1.6,1.6-1.6-1.6" transform="translate(-23.268 -6.298)" fill="none" stroke="#f0b90b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="패스_1944" data-name="패스 1944" d="M3598.015,1275.392a6.269,6.269,0,0,1-6.269-6.268" transform="translate(-2.191 -19.217)" fill="none" stroke="#f0b90b" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+      <path id="패스_1945" data-name="패스 1945" d="M3588.21,1270.174l1.6-1.6,1.6,1.6" transform="translate(-0.204 -18.909)" fill="none" stroke="#f0b90b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <g id="그룹_3795" data-name="그룹 3795" transform="translate(3587.846 1235.049)">
+        <circle id="타원_186" data-name="타원 186" cx="7.075" cy="7.075" r="7.075" transform="translate(0.111 0)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+        <circle id="타원_187" data-name="타원 187" cx="5.399" cy="5.399" r="5.399" transform="translate(1.786 1.676)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="선_182" data-name="선 182" y2="1.712" transform="translate(7.081 0.006)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="선_183" data-name="선 183" y2="1.658" transform="translate(7.081 12.509)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="선_184" data-name="선 184" x2="1.211" y2="1.211" transform="translate(2.074 2.08)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="선_185" data-name="선 185" x2="1.172" y2="1.172" transform="translate(10.915 10.921)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="선_186" data-name="선 186" x2="1.712" transform="translate(0 7.086)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="선_187" data-name="선 187" x2="1.658" transform="translate(12.503 7.086)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="선_188" data-name="선 188" y1="1.211" x2="1.211" transform="translate(2.074 10.882)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="선_189" data-name="선 189" y1="1.172" x2="1.172" transform="translate(10.915 2.08)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+      </g>
+      <path id="패스_1946" data-name="패스 1946" d="M3610.942,1250.637a7.075,7.075,0,1,1-7.438,7.371" transform="translate(-8.798 -8.829)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+      <path id="패스_1947" data-name="패스 1947" d="M3612.962,1254.453a5.4,5.4,0,1,1-5.641,5.573" transform="translate(-10.943 -10.973)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+      <line id="선_190" data-name="선 190" y2="1.658" transform="translate(3601.669 1254.308)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+      <line id="선_191" data-name="선 191" x2="1.172" y2="1.172" transform="translate(3605.503 1252.719)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+      <line id="선_192" data-name="선 192" x2="1.658" transform="translate(3607.092 1248.885)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+      <line id="선_193" data-name="선 193" y1="1.211" x2="1.211" transform="translate(3596.662 1252.681)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+      <line id="선_194" data-name="선 194" y1="1.172" x2="1.172" transform="translate(3605.503 1243.878)" fill="none" stroke="#f0b90b" stroke-miterlimit="10" stroke-width="1"/>
+    </g>
+    <rect id="사각형_1748" data-name="사각형 1748" width="32" height="32" transform="translate(393 967)" fill="none"/>
+  </g>
+</svg>
