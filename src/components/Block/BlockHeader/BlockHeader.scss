@@ -1,12 +1,11 @@
 @import "src/styles/utils";
 
 .BlockDetail-wrapper {
-  width: 100%;
-  color: var(--colorMainText);
+	width: 100%;
+	color: var(--colorMainText);
 
-  .title {
-    border-bottom: var(--border);
-    @include Card-title
-  }
-
+	.title {
+		border-bottom: var(--border);
+		@include Card-title;
+	}
 }

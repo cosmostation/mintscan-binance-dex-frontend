@@ -1,205 +1,204 @@
 @import "../../../styles/utils";
 
 .SearchAppBar-root {
-  background-image: linear-gradient(to right, #f0b90b, #fbd93a);
-  height: var(--heightHeader);
-  width: 100%;
-  z-index: 100;
+	background-image: linear-gradient(to right, #f0b90b, #fbd93a);
+	height: var(--heightHeader);
+	width: 100%;
+	z-index: 100;
 
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 
-  .toolbar {
-    width: 1200px;
-    margin: 0 auto;
-    padding: 0;
+	.toolbar {
+		width: 1200px;
+		margin: 0 auto;
+		padding: 0;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 
-    @include media("<large") {
-      width: 86%;
-    }
+		@include media("<large") {
+			width: 86%;
+		}
 
-    @include media("<medium") {
-      width: 100%;
-      height: var(--heightHeaderInMedium);
-      padding: 0 10px;
-    }
+		@include media("<medium") {
+			width: 100%;
+			height: var(--heightHeaderInMedium);
+			padding: 0 10px;
+		}
 
-    a {
-      display: flex;
-      align-items: center;
-      width: 150px;
-      height: auto;
-      @include media("<medium") {
-        width: 120px;
-      }
+		a {
+			display: flex;
+			align-items: center;
+			width: 150px;
+			height: auto;
+			@include media("<medium") {
+				width: 120px;
+			}
 
-      @include media("<xsmall") {
-        width: 100px;
-      }
-      @include media("<xxsmall") {
-        width: 80px;
-      }
-    }
-  }
+			@include media("<xsmall") {
+				width: 100px;
+			}
+			@include media("<xxsmall") {
+				width: 80px;
+			}
+		}
+	}
 }
 
 .select-wrapper {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 
-  .net-select-wrapper {
-    .select-btn {
-      background: var(--colorNetSelectBg);
-      border-radius: 5px;
-      height: 35px;
-      border: 1px solid var(--colorNetSelectBorder);
-      color: var(--colorAppBarInputText);
-      width: var(--widthNetSelectBox);
-      font-size: var(--fontSizeMedium);
-      line-height: 1.2;
-      outline: none;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 8px;
-      // @include media("<large") {
-      //   display: none;
-      // }
+	.net-select-wrapper {
+		.select-btn {
+			background: var(--colorNetSelectBg);
+			border-radius: 5px;
+			height: 35px;
+			border: 1px solid var(--colorNetSelectBorder);
+			color: var(--colorAppBarInputText);
+			width: var(--widthNetSelectBox);
+			font-size: var(--fontSizeMedium);
+			line-height: 1.2;
+			outline: none;
+			cursor: pointer;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 8px;
+			// @include media("<large") {
+			//   display: none;
+			// }
 
-      .curr-net-wrapper {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-      }
+			.curr-net-wrapper {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+			}
 
-      .arrow-icon {
-        margin-left: 10px;
-        width: 24px;
-        height: 24px;
-      }
+			.arrow-icon {
+				margin-left: 10px;
+				width: 24px;
+				height: 24px;
+			}
 
-      .upsideDown {
-        transform: rotate(180deg);
-      }
-    }
+			.upsideDown {
+				transform: rotate(180deg);
+			}
+		}
 
-    .select-item-list {
-      position: fixed;
-      top: 55px;
-      width: var(--widthNetSelectBox);
-      background: #fff;
-      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+		.select-item-list {
+			position: fixed;
+			top: 55px;
+			width: var(--widthNetSelectBox);
+			background: #fff;
+			box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 
-      height: 120px;
-      border-radius: 5px;
+			height: 120px;
+			border-radius: 5px;
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 
-      .select-item {
-        color: #222222;
-        flex: 1;
-        font-size: 15px;
-        line-height: 2.67;
-        cursor: pointer;
+			.select-item {
+				color: #222222;
+				flex: 1;
+				font-size: 15px;
+				line-height: 2.67;
+				cursor: pointer;
 
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-        padding: 0 8px;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				width: 100%;
+				padding: 0 8px;
 
-        &:hover {
-          color: var(--colorType);
-        }
-      }
+				&:hover {
+					color: var(--colorType);
+				}
+			}
 
-      .disabled {
-        color: #cacfdc;
-        cursor: no-drop;
+			.disabled {
+				color: #cacfdc;
+				cursor: no-drop;
 
-        &:hover {
-          color: #cacfdc;
-        }
-      }
-    }
-  }
+				&:hover {
+					color: #cacfdc;
+				}
+			}
+		}
+	}
 
-  .menuButton {
-    display: none;
+	.menuButton {
+		display: none;
 
-    @include media("<large") {
-      display: block;
-    }
-  }
+		@include media("<large") {
+			display: block;
+		}
+	}
 
-  .search {
-    position: relative;
-    border-radius: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 35px;
-    width: 450px;
-    padding: 0;
-    display: flex;
-    align-self: center;
-    background: var(--colorSearchInput);
+	.search {
+		position: relative;
+		border-radius: 5px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		height: 35px;
+		width: 450px;
+		padding: 0;
+		display: flex;
+		align-self: center;
+		background: var(--colorSearchInput);
 
+		margin: 0 0 0 10px;
 
-    margin: 0 0 0 10px;
+		@include media("<large") {
+			display: none;
+		}
 
-    @include media("<large") {
-      display: none;
-    }
+		.input {
+			font-size: var(--fontSizeMain);
 
-    .input {
-      font-size: var(--fontSizeMain);
+			padding: 9px 0 8px 12px;
+			width: 100%;
+			height: 100%;
+			background: inherit;
+			color: var(--colorAppBarInputText);
+			background: var(--colorAppBarInputBg);
 
-      padding: 9px 0 8px 12px;
-      width: 100%;
-      height: 100%;
-      background: inherit;
-      color: var(--colorAppBarInputText);
-      background: var(--colorAppBarInputBg);
+			&::placeholder {
+				font-size: var(--fontSizeMain);
+				color: var(--colorAppBarInputPh);
+				line-height: inherit;
+			}
 
-      &::placeholder {
-        font-size: var(--fontSizeMain);
-        color: var(--colorAppBarInputPh);
-        line-height: inherit;
-      }
+			@include media("<medium") {
+				width: 320px;
+			}
+		}
+	}
 
-      @include media("<medium") {
-        width: 320px;
-      }
-    }
-  }
+	.searchBtn {
+		display: block;
+		cursor: pointer;
+		border: 1px solid var(--colorSearchInput);
+		width: 45px;
+		height: 35px;
+		background: var(--colorSearchInput);
 
-  .searchBtn {
-    display: block;
-    cursor: pointer;
-    border: 1px solid var(--colorSearchInput);
-    width: 45px;
-    height: 35px;
-    background: var(--colorSearchInput);
-
-    margin-top: 3px;
-  }
+		margin-top: 3px;
+	}
 }
 
 .hide {
-  display: none !important;
+	display: none !important;
 }
 
 .net-icon {
-  width: 20px;
-  height: 20px;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 8px;
+	width: 20px;
+	height: 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-right: 8px;
 }

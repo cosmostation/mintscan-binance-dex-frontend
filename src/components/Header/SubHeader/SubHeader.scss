@@ -1,162 +1,161 @@
 @import "src/styles/utils";
 
-
 .sub-header {
-  position: fixed;
-  top: var(--heightHeader);
-  left: 0;
-  height: var(--heightSubHeader);
-  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
-  background-color: white;
-  border-radius: 0;
-  width: 100%;
-  z-index: 10;
+	position: fixed;
+	top: var(--heightHeader);
+	left: 0;
+	height: var(--heightSubHeader);
+	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+	background-color: white;
+	border-radius: 0;
+	width: 100%;
+	z-index: 10;
 
-  @include media("<medium") {
-    top: var(--heightHeaderInMedium);
-  }
+	@include media("<medium") {
+		top: var(--heightHeaderInMedium);
+	}
 
-  a {
-    height: var(--heightSubHeader);
-  }
+	a {
+		height: var(--heightSubHeader);
+	}
 
-  .network-wrapper {
-    display: none;
-    @include media("<large") {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      height: 50px;
-    }
+	.network-wrapper {
+		display: none;
+		@include media("<large") {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			height: 50px;
+		}
 
-    .network {
-      display: flex;
-      align-items: center;
-      height: 36px;
-      border: 1px solid #222222;
-      border-radius: 5px;
-      padding: 7px 12px;
-      cursor: pointer;
+		.network {
+			display: flex;
+			align-items: center;
+			height: 36px;
+			border: 1px solid #222222;
+			border-radius: 5px;
+			padding: 7px 12px;
+			cursor: pointer;
 
-      img {
-        margin-left: 8px;
-        width: 16px;
-        height: 16px;
+			img {
+				margin-left: 8px;
+				width: 16px;
+				height: 16px;
 
-        @include media("<medium") {
-          margin-left: 4px;
-          width: 8px;
-          height: 8px;
-        }
-      }
-    }
-  }
+				@include media("<medium") {
+					margin-left: 4px;
+					width: 8px;
+					height: 8px;
+				}
+			}
+		}
+	}
 
-  // 뒷배경
-  @include media("<large") {
-    width: 100%;
-    background: #fff;
-    height: 250px;
-    display: none;
-  }
+	// 뒷배경
+	@include media("<large") {
+		width: 100%;
+		background: #fff;
+		height: 250px;
+		display: none;
+	}
 
-  .nav-list {
-    width: 1200px;
-    margin: 0 auto;
+	.nav-list {
+		width: 1200px;
+		margin: 0 auto;
 
-    @include media("<large") {
-      width: 86%;
-      display: block;
-    }
+		@include media("<large") {
+			width: 86%;
+			display: block;
+		}
 
-    @include media("<medium") {
-      width: 100%;
-      padding: 0 10px;
-    }
-  }
+		@include media("<medium") {
+			width: 100%;
+			padding: 0 10px;
+		}
+	}
 
-  .navi {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+	.navi {
+		flex: 1;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
 
-    @include media("<large") {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+		@include media("<large") {
+			flex-direction: column;
+			align-items: flex-start;
+		}
 
-    .nav-item {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      min-width: 180px;
-      color: #a2a2a2;
-      border-bottom: none;
+		.nav-item {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			min-width: 180px;
+			color: #a2a2a2;
+			border-bottom: none;
 
-      @include media("<large") {
-        justify-content: flex-start;
-      }
+			@include media("<large") {
+				justify-content: flex-start;
+			}
 
-      .nav-item-title {
-        font-family: "Montserrat", "Open Sans", serif;
-        font-size: var(--fontSizeMain);
-        line-height: 1.22;
-        padding-left: 8px;
-        text-transform: uppercase;
-        color: #b2b6bc;
-      }
+			.nav-item-title {
+				font-family: "Montserrat", "Open Sans", serif;
+				font-size: var(--fontSizeMain);
+				line-height: 1.22;
+				padding-left: 8px;
+				text-transform: uppercase;
+				color: #b2b6bc;
+			}
 
-      img {
-        height: 32px;
-        width: 32px;
-      }
+			img {
+				height: 32px;
+				width: 32px;
+			}
 
-      &:hover {
-        h2 {
-          color: var(--colorMainText) !important;
-        }
+			&:hover {
+				h2 {
+					color: var(--colorMainText) !important;
+				}
 
-        &:nth-child(1) {
-          img {
-            content: url("/assets/icons/navigation/dashboard_ic.svg");
-          }
-        }
+				&:nth-child(1) {
+					img {
+						content: url("/assets/icons/navigation/dashboard_ic.svg");
+					}
+				}
 
-        &:nth-child(2) {
-          img {
-            content: url("/assets/icons/navigation/blocks_ic.svg");
-          }
-        }
+				&:nth-child(2) {
+					img {
+						content: url("/assets/icons/navigation/blocks_ic.svg");
+					}
+				}
 
-        &:nth-child(3) {
-          img {
-            content: url("/assets/icons/navigation/transations_ic.svg");
-          }
-        }
+				&:nth-child(3) {
+					img {
+						content: url("/assets/icons/navigation/transations_ic.svg");
+					}
+				}
 
-        &:nth-child(4) {
-          img {
-            content: url("/assets/icons/navigation/assets_ic.svg");
-          }
-        }
+				&:nth-child(4) {
+					img {
+						content: url("/assets/icons/navigation/assets_ic.svg");
+					}
+				}
 
-        &:nth-child(5) {
-          img {
-            content: url("/assets/icons/navigation/binance_ic.svg");
-          }
-        }
-      }
-    }
-  }
+				&:nth-child(5) {
+					img {
+						content: url("/assets/icons/navigation/binance_ic.svg");
+					}
+				}
+			}
+		}
+	}
 }
 
 .selected {
-  color: var(--colorMainText) !important;
+	color: var(--colorMainText) !important;
 }
 
 .open {
-  display: block;
+	display: block;
 }

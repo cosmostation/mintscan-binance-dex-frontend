@@ -1,13 +1,13 @@
 @import "src/styles/utils";
 
 .BlockList {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
 
-  margin-top: var(--mainDefaultPaddingTop);
+	margin-top: var(--mainDefaultPaddingTop);
 
-  .Card {
-    @include card-wrapper(70px);;
-  }
+	.Card {
+		@include card-wrapper(70px);
+	}
 }

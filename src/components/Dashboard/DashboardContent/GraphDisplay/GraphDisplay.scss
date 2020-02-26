@@ -1,82 +1,82 @@
 @import "src/styles/utils";
 
 .GraphDisplay {
-  padding: 16px 30px 30px 0;
-  width: 100%;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: flex-start;
-  height: 288px;
+	padding: 16px 30px 30px 0;
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: flex-start;
+	height: 288px;
 
-  @include media("<medium") {
-    @include card-nopadding-wrapper;
-    padding: 16px 20px 20px 20px;
-  }
+	@include media("<medium") {
+		@include card-nopadding-wrapper;
+		padding: 16px 20px 20px 20px;
+	}
 
-  .tab-wrapper {
-    width: 188px;
-    height: 30px;
+	.tab-wrapper {
+		width: 188px;
+		height: 30px;
 
-    margin-bottom: 25px;
-    display: flex;
-    flex-flow: row;
-    align-self: flex-end;
+		margin-bottom: 25px;
+		display: flex;
+		flex-flow: row;
+		align-self: flex-end;
 
-    :nth-child(1) {
-      border-bottom-left-radius: 5px;
-      border-top-left-radius: 5px;
-    }
+		:nth-child(1) {
+			border-bottom-left-radius: 5px;
+			border-top-left-radius: 5px;
+		}
 
-    :nth-child(2) {
-      border-bottom-right-radius: 5px;
-      border-top-right-radius: 5px;
-    }
+		:nth-child(2) {
+			border-bottom-right-radius: 5px;
+			border-top-right-radius: 5px;
+		}
 
-    button {
-      width: 50%;
-      height: 100%;
-      border: solid 1px #222222;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+		button {
+			width: 50%;
+			height: 100%;
+			border: solid 1px #222222;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 
-      p {
-        font-family: "Open Sans", serif;
-        font-size: 14px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.36;
-        letter-spacing: normal;
-        text-align: left;
-        color: #222222;
-      }
+			p {
+				font-family: "Open Sans", serif;
+				font-size: 14px;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.36;
+				letter-spacing: normal;
+				text-align: left;
+				color: #222222;
+			}
 
-      &.selected {
-        background-color: #222222;
+			&.selected {
+				background-color: #222222;
 
-        p {
-          color: #ffffff;
-        }
-      }
-    }
-  }
+				p {
+					color: #ffffff;
+				}
+			}
+		}
+	}
 
-  .Graph-wrapper {
-    width: 95%;
-    margin: auto;
-    @include media(">xxsmall") {
-      width: map_get($breakpoints, xxsmall) - 40px;
-    }
-    @include media(">xsmall") {
-      width: map_get($breakpoints, xsmall) - 40px;
-    }
-    @include media(">small") {
-      width: map_get($breakpoints, small) - 60px;
-    }
-    @include media(">medium") {
-      width: 487px;
-    }
-  }
+	.Graph-wrapper {
+		width: 95%;
+		margin: auto;
+		@include media(">xxsmall") {
+			width: map_get($breakpoints, xxsmall) - 40px;
+		}
+		@include media(">xsmall") {
+			width: map_get($breakpoints, xsmall) - 40px;
+		}
+		@include media(">small") {
+			width: map_get($breakpoints, small) - 60px;
+		}
+		@include media(">medium") {
+			width: 487px;
+		}
+	}
 }

@@ -8,11 +8,11 @@ import PageTitle from "src/components/common/PageTitle";
 const cx = cn.bind(styles);
 
 export default function(props) {
-  return (
-    <div className={cx("Assets")}>
-      <TitleWrapper>
-        <PageTitle title={"Assets"}/>
-      </TitleWrapper>
-    </div>
-  );
+	return (
+		<div className={cx("Assets")}>
+			<TitleWrapper>
+				<PageTitle title={"Assets"} />
+			</TitleWrapper>
+		</div>
+	);
 }

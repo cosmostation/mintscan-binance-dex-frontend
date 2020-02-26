@@ -1,27 +1,27 @@
 @import "src/styles/utils";
 
 .TxDisplay-table {
-  overflow-x: auto;
-  overflow-y: hidden;
-  min-width: 450px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	min-width: 450px;
 
-  .tableHeaderCell {
-    @include tableHeaderCellWidth300;
-    @include tableHeaderPadding;
-    padding-top: 11.5px;
-    padding-bottom: 11.5px;
-    color: var(--colorMainText);
-  }
+	.tableHeaderCell {
+		@include tableHeaderCellWidth300;
+		@include tableHeaderPadding;
+		padding-top: 11.5px;
+		padding-bottom: 11.5px;
+		color: var(--colorMainText);
+	}
 
-  .txHashWidth {
-    min-width: 100px;
-  }
+	.txHashWidth {
+		min-width: 100px;
+	}
 
-  .typeWidth {
-    min-width: 100px;
-  }
+	.typeWidth {
+		min-width: 100px;
+	}
 
-  .timeWidth {
-    min-width: 100px;
-  }
+	.timeWidth {
+		min-width: 100px;
+	}
 }

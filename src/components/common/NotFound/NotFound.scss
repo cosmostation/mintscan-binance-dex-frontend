@@ -1,31 +1,31 @@
 @import "src/styles/utils";
 
 .notFound_wrapper {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  min-height: calc(100vh - var(--heightHeader) - var(--heightSubHeader) - var(--heightFooter));
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	min-height: calc(100vh - var(--heightHeader) - var(--heightSubHeader) - var(--heightFooter));
 
-  img {
-    width: 240px;
-  }
+	img {
+		width: 240px;
+	}
 
-  h2 {
-    font-family: "Montserrat";
-    font-size: 36px;
-    line-height: 1.11;
-    color: var(--colorMainText);
-    margin-top: 20px;
-  }
+	h2 {
+		font-family: "Montserrat";
+		font-size: 36px;
+		line-height: 1.11;
+		color: var(--colorMainText);
+		margin-top: 20px;
+	}
 
-  @include media("<medium") {
-    img {
-      width: 160px;
-    }
+	@include media("<medium") {
+		img {
+			width: 160px;
+		}
 
-    h2 {
-      font-size: 20px;
-    }
-  }
+		h2 {
+			font-size: 20px;
+		}
+	}
 }

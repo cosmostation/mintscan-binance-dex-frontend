@@ -1,180 +1,180 @@
 @import "src/styles/utils";
 
 .PriceDisplay {
-  margin: 30px 0 30px 30px;
-  height: fit-content;
-  display: flex;
-  flex-flow: column;
-  @include media("<medium") {
-    @include card-nopadding-wrapper;
-    margin: 0;
-    max-width: map_get($breakpoints, medium);
-    height: 278px;
-    padding: 20px;
-  }
+	margin: 30px 0 30px 30px;
+	height: fit-content;
+	display: flex;
+	flex-flow: column;
+	@include media("<medium") {
+		@include card-nopadding-wrapper;
+		margin: 0;
+		max-width: map_get($breakpoints, medium);
+		height: 278px;
+		padding: 20px;
+	}
 
-  .icon {
-    display: flex;
-    width: fit-content;
+	.icon {
+		display: flex;
+		width: fit-content;
 
-    img {
-      width: 32px;
-      height: 32px;
-      content: url("/assets/icons/common/binance_token.svg");
-    }
+		img {
+			width: 32px;
+			height: 32px;
+			content: url("/assets/icons/common/binance_token.svg");
+		}
 
-    .text {
-      display: block;
-      width: fit-content;
-      margin-top: 4px;
-      margin-left: 8px;
+		.text {
+			display: block;
+			width: fit-content;
+			margin-top: 4px;
+			margin-left: 8px;
 
-      font-size: 20px;
-      font-weight: 500;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1.2;
-      letter-spacing: normal;
-      text-align: left;
-      color: #222222;
-    }
+			font-size: 20px;
+			font-weight: 500;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: 1.2;
+			letter-spacing: normal;
+			text-align: left;
+			color: #222222;
+		}
 
-    margin-bottom: 51px;
-  }
+		margin-bottom: 51px;
+	}
 
-  .price {
-    height: 34px;
-    align-self: flex-end;
+	.price {
+		height: 34px;
+		align-self: flex-end;
 
-    font-size: 28px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.21;
-    letter-spacing: normal;
-    text-align: left;
-    color: #222222;
+		font-size: 28px;
+		font-weight: 500;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.21;
+		letter-spacing: normal;
+		text-align: left;
+		color: #222222;
 
-    margin-bottom: 9px;
-  }
+		margin-bottom: 9px;
+	}
 
-  .volume24h-wrapper {
-    width: 100%;
-    height: 22px;
+	.volume24h-wrapper {
+		width: 100%;
+		height: 22px;
 
-    display: flex;
-    flex-flow: row;
-    align-items: center;
-    justify-content: space-between;
+		display: flex;
+		flex-flow: row;
+		align-items: center;
+		justify-content: space-between;
 
-    button {
-      width: 86px;
-      height: 22px;
-      padding: 2px 8px 4px 8px;
-      border-radius: 20px;
-      border: solid 1px #b2b6bc;
-      background-color: #ffffff;
+		button {
+			width: 86px;
+			height: 22px;
+			padding: 2px 8px 4px 8px;
+			border-radius: 20px;
+			border: solid 1px #b2b6bc;
+			background-color: #ffffff;
 
-      text-align: center;
-      font-size: 13px;
-      font-weight: 500;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1.23;
-      letter-spacing: normal;
-      color: #4b525d;
-      //.text {
-      //  width: 68px;
-      //  height: 16px;
-      //  font-size: 13px;
-      //  font-weight: 500;
-      //  font-stretch: normal;
-      //  font-style: normal;
-      //  line-height: 1.23;
-      //  letter-spacing: normal;
-      //  text-align: left;
-      //  color: #4b525d;
-      //  margin: 2px 8px 4px;
-      //}
+			text-align: center;
+			font-size: 13px;
+			font-weight: 500;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: 1.23;
+			letter-spacing: normal;
+			color: #4b525d;
+			//.text {
+			//  width: 68px;
+			//  height: 16px;
+			//  font-size: 13px;
+			//  font-weight: 500;
+			//  font-stretch: normal;
+			//  font-style: normal;
+			//  line-height: 1.23;
+			//  letter-spacing: normal;
+			//  text-align: left;
+			//  color: #4b525d;
+			//  margin: 2px 8px 4px;
+			//}
 
-      &:hover {
-        cursor: pointer;
-      }
-    }
+			&:hover {
+				cursor: pointer;
+			}
+		}
 
-    .content {
-      display: flex;
-      width: fit-content;
-      flex-flow: row;
-      align-items: center;
-      justify-content: space-between;
+		.content {
+			display: flex;
+			width: fit-content;
+			flex-flow: row;
+			align-items: center;
+			justify-content: space-between;
 
-      img {
-        object-fit: fill;
-        width: 20px;
-        height: 20px;
+			img {
+				object-fit: fill;
+				width: 20px;
+				height: 20px;
 
-        margin-right: 4px;
-      }
+				margin-right: 4px;
+			}
 
-      .text {
-        width: fit-content;
-        font-size: 15px;
-        font-weight: 500;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.27;
-        letter-spacing: normal;
-        text-align: left;
-        color: #4b525d;
-      }
-    }
+			.text {
+				width: fit-content;
+				font-size: 15px;
+				font-weight: 500;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.27;
+				letter-spacing: normal;
+				text-align: left;
+				color: #4b525d;
+			}
+		}
 
-    margin-bottom: 17px;
-  }
+		margin-bottom: 17px;
+	}
 
-  .CapVolume-wrapper {
-    width: 100%;
-    height: 66px;
-    border-radius: 5px;
-    background-color: #f5f5f5;
-    padding: 10px 15px;
+	.CapVolume-wrapper {
+		width: 100%;
+		height: 66px;
+		border-radius: 5px;
+		background-color: #f5f5f5;
+		padding: 10px 15px;
 
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
+		display: flex;
+		flex-flow: column;
+		justify-content: space-between;
 
-    ul {
-      height: 20px;
+		ul {
+			height: 20px;
 
-      display: flex;
-      flex-flow: row;
-      align-items: center;
-      justify-content: space-between;
+			display: flex;
+			flex-flow: row;
+			align-items: center;
+			justify-content: space-between;
 
-      font-family: "Open Sans", serif;
-      font-size: 13px;
-      font-weight: 600;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1.38;
-      letter-spacing: normal;
-      text-align: left;
-      color: #222222;
+			font-family: "Open Sans", serif;
+			font-size: 13px;
+			font-weight: 600;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: 1.38;
+			letter-spacing: normal;
+			text-align: left;
+			color: #222222;
 
-      li {
-        &:nth-child(1) {
-          margin-right: 5px;
-          text-align: left;
-        }
+			li {
+				&:nth-child(1) {
+					margin-right: 5px;
+					text-align: left;
+				}
 
-        &:nth-child(2) {
-          text-align: right;
-          font-size: 15px;
-          font-weight: normal;
-          line-height: 1.33;
-        }
-      }
-    }
-  }
+				&:nth-child(2) {
+					text-align: right;
+					font-size: 15px;
+					font-weight: normal;
+					line-height: 1.33;
+				}
+			}
+		}
+	}
 }

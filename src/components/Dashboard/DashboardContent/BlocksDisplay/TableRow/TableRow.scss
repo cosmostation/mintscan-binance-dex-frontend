@@ -1,60 +1,59 @@
-@import 'src/styles/utils';
+@import "src/styles/utils";
 
 $customPadding: 8px 20px 7px 10px;
 .BlocksDisplay-tableRow {
-  @include tableRow;
-  font-family: "Open Sans", serif;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 3.85;
-  letter-spacing: normal;
-  text-align: left;
-  color: #4b525d;
+	@include tableRow;
+	font-family: "Open Sans", serif;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 3.85;
+	letter-spacing: normal;
+	text-align: left;
+	color: #4b525d;
 
-  .tablePointerCell {
-    @include tablePointerCell;
-    padding: $customPadding;
-  }
+	.tablePointerCell {
+		@include tablePointerCell;
+		padding: $customPadding;
+	}
 
-  .tablePointerMiniCell {
-    @include tablePointerCellWidth140;
-    padding: $customPadding;
-  }
+	.tablePointerMiniCell {
+		@include tablePointerCellWidth140;
+		padding: $customPadding;
+	}
 
-  .tableCell {
-    @include tableCellWidth300;
-    padding: $customPadding;
-  }
+	.tableCell {
+		@include tableCellWidth300;
+		padding: $customPadding;
+	}
 
-  .time {
-    line-height: 1.38;
-    height: 36px;
-    color: #4b525d;
-  }
+	.time {
+		line-height: 1.38;
+		height: 36px;
+		color: #4b525d;
+	}
 }
 
 .text {
-  font-family: "Open Sans", serif;
-  font-size: 13px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.15;
-  letter-spacing: normal;
-  color: #4b525d;
+	font-family: "Open Sans", serif;
+	font-size: 13px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.15;
+	letter-spacing: normal;
+	color: #4b525d;
 
-  .decimal {
-    font-size: 11px;
-  }
+	.decimal {
+		font-size: 11px;
+	}
 
-  .BNB {
-    font-size: 11px;
-    color: #f0b90b;
-  }
+	.BNB {
+		font-size: 11px;
+		color: #f0b90b;
+	}
 
-  .blueColor {
-    color: #4472de
-  }
+	.blueColor {
+		color: #4472de;
+	}
 }
-

@@ -1,226 +1,225 @@
 @import "src/styles/utils";
 
 .SearchArea {
-  width: 100vw;
-  height: 344px;
+	width: 100vw;
+	height: 344px;
 
-  position: relative;
-  overflow: hidden;
+	position: relative;
+	overflow: hidden;
 
-  background-size: cover;
+	background-size: cover;
 
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/assets/dashboard/main_img.png") no-repeat fixed center center;
-  background-position-y: inherit;
-  margin-left: calc((1200px - 100vw) / 2);
-  @include media(">wide") {
-    background-size: cover;
-  }
-  @include media("<large") {
-    margin-left: -5vw;
-    height: 290px;
-  }
+	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/assets/dashboard/main_img.png") no-repeat fixed center center;
+	background-position-y: inherit;
+	margin-left: calc((1200px - 100vw) / 2);
+	@include media(">wide") {
+		background-size: cover;
+	}
+	@include media("<large") {
+		margin-left: -5vw;
+		height: 290px;
+	}
 
-  @include media("<medium") {
-    margin-left: -10px;
-    background: #222222;
-    height: 230px;
-  }
-  @include media("<small") {
-    height: 200px;
-  }
+	@include media("<medium") {
+		margin-left: -10px;
+		background: #222222;
+		height: 230px;
+	}
+	@include media("<small") {
+		height: 200px;
+	}
 
-  display: flex;
-  flex-flow: column;
-  align-items: center;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
 
-  .wrapper {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
+	.wrapper {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
 
-    background: transparent;
-    width: 708px;
-    height: 100%;
+		background: transparent;
+		width: 708px;
+		height: 100%;
 
-    @include media("<medium") {
-      width: 82%;
-    }
+		@include media("<medium") {
+			width: 82%;
+		}
 
-    @include media("<small") {
-      width: 90%;
-      justify-content: center;
-    }
+		@include media("<small") {
+			width: 90%;
+			justify-content: center;
+		}
 
-    @include media("<205px") {
-      width: 205px;
-    }
+		@include media("<205px") {
+			width: 205px;
+		}
 
-    .title-wrapper {
-      margin: 50px 0 0 0;
-      display: flex;
-      flex-flow: column;
-      justify-content: space-between;
+		.title-wrapper {
+			margin: 50px 0 0 0;
+			display: flex;
+			flex-flow: column;
+			justify-content: space-between;
 
-      @include media("<large") {
-        margin: 28px 0 0 0;
-      }
+			@include media("<large") {
+				margin: 28px 0 0 0;
+			}
 
-      @include media("<medium") {
-        margin: 15px 0 0 0;
-      }
+			@include media("<medium") {
+				margin: 15px 0 0 0;
+			}
 
-      .title {
-        font-family: Montserrat, serif;
-        font-size: 50px;
-        font-weight: 300;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.22;
-        letter-spacing: normal;
-        text-align: left;
-        color: #f1bd10;
-        word-wrap: break-word;
+			.title {
+				font-family: Montserrat, serif;
+				font-size: 50px;
+				font-weight: 300;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.22;
+				letter-spacing: normal;
+				text-align: left;
+				color: #f1bd10;
+				word-wrap: break-word;
 
-        span {
-          color: #ffffff;
-        }
+				span {
+					color: #ffffff;
+				}
 
-        @include media("<large") {
-          font-size: 40px;
-        }
+				@include media("<large") {
+					font-size: 40px;
+				}
 
-        @include media("<medium") {
-          font-size: 35px;
-        }
+				@include media("<medium") {
+					font-size: 35px;
+				}
 
-        @include media("<small") {
-          font-size: 22px;
-        }
-      }
+				@include media("<small") {
+					font-size: 22px;
+				}
+			}
 
-      .byCosmostation {
-        margin-top: 6px;
-        align-self: flex-end;
+			.byCosmostation {
+				margin-top: 6px;
+				align-self: flex-end;
 
-        height: 22px;
-        font-family: Montserrat, serif;
-        font-size: 18px;
-        font-weight: 300;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.22;
-        letter-spacing: normal;
-        text-align: left;
-        color: #b2b6bc;
+				height: 22px;
+				font-family: Montserrat, serif;
+				font-size: 18px;
+				font-weight: 300;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.22;
+				letter-spacing: normal;
+				text-align: left;
+				color: #b2b6bc;
 
+				@include media("<large") {
+					font-size: 16px;
+				}
 
-        @include media("<large") {
-          font-size: 16px;
-        }
+				@include media("<medium") {
+					font-size: 14px;
+				}
+			}
+		}
 
-        @include media("<medium") {
-          font-size: 14px;
-        }
-      }
-    }
+		.search-wrapper {
+			margin: 30px 0 0 0;
+			width: 100%;
 
-    .search-wrapper {
-      margin: 30px 0 0 0;
-      width: 100%;
+			@include media("<medium") {
+				margin: 15px 0 0 0;
+			}
 
-      @include media("<medium") {
-        margin: 15px 0 0 0;
-      }
+			.search {
+				position: relative;
+				border-radius: 5px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				height: 45px;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				align-self: center;
+				background: var(--colorSearchInput);
+				border: 1px solid var(--colorSearchInput);
 
-      .search {
-        position: relative;
-        border-radius: 5px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        height: 45px;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-self: center;
-        background: var(--colorSearchInput);
-        border: 1px solid var(--colorSearchInput);
+				@include media("<medium") {
+					width: 100%;
+					height: 40px;
+				}
 
-        @include media("<medium") {
-          width: 100%;
-          height: 40px;
-        }
+				@include media("<small") {
+					width: 100%;
+					height: 32px;
+				}
 
-        @include media("<small") {
-          width: 100%;
-          height: 32px;
-        }
+				.input {
+					padding: 8px 16px;
+					height: 100%;
+					width: 100%;
+					background: var(--colorWhite);
+					color: var(--colorMainText);
+					font-size: var(--fontSizeMain);
 
-        .input {
-          padding: 8px 16px;
-          height: 100%;
-          width: 100%;
-          background: var(--colorWhite);
-          color: var(--colorMainText);
-          font-size: var(--fontSizeMain);
+					&::placeholder {
+						font-size: var(--fontSizeMain);
+						color: var(--fontSizeDassSearchPh);
+						line-height: inherit;
+					}
+				}
 
-          &::placeholder {
-            font-size: var(--fontSizeMain);
-            color: var(--fontSizeDassSearchPh);
-            line-height: inherit;
-          }
-        }
+				.searchBtn {
+					display: block;
+					cursor: pointer;
+					border: 1px solid var(--colorSearchInput);
+					padding: 10px 12px;
+					border-radius: 0 5px 5px 0;
+					background: var(--colorSearchInput);
+					outline: var(--colorSearchInput);
 
-        .searchBtn {
-          display: block;
-          cursor: pointer;
-          border: 1px solid var(--colorSearchInput);
-          padding: 10px 12px;
-          border-radius: 0 5px 5px 0;
-          background: var(--colorSearchInput);
-          outline: var(--colorSearchInput);
+					@include media("<medium") {
+						padding: 0px 5px;
+					}
+				}
+			}
+		}
 
-          @include media("<medium") {
-            padding: 0px 5px;
-          }
-        }
-      }
-    }
+		.link-wrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
 
-    .link-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
+			margin: 30px 0 0 0;
 
-      margin: 30px 0 0 0;
+			@include media("<medium") {
+				margin: 15px 0 0 0;
+			}
 
-      @include media("<medium") {
-        margin: 15px 0 0 0;
-      }
+			p {
+				color: #ffffff;
+				font-family: "Montserrat";
+				font-size: 18px;
+				margin-bottom: 10px;
 
-      p {
-        color: #ffffff;
-        font-family: "Montserrat";
-        font-size: 18px;
-        margin-bottom: 10px;
+				@include media("<medium") {
+					font-size: 12px;
+					margin-bottom: 5px;
+				}
+			}
 
-        @include media("<medium") {
-          font-size: 12px;
-          margin-bottom: 5px;
-        }
-      }
+			.link-btn-wrapper {
+				width: 100%;
+				display: grid;
+				grid-auto-flow: column;
+				grid-gap: 10px;
+				grid-template-columns: repeat(2, 1fr);
+			}
 
-      .link-btn-wrapper {
-        width: 100%;
-        display: grid;
-        grid-auto-flow: column;
-        grid-gap: 10px;
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      @include media("<medium") {
-        grid-gap: 8px;
-      }
-    }
-  }
+			@include media("<medium") {
+				grid-gap: 8px;
+			}
+		}
+	}
 }

@@ -1,20 +1,20 @@
 @import "~include-media/dist/include-media";
 
 @mixin card-wrapper($marginBottom) {
-  //min-height: 100%;
-  padding: 15px 20px;
-  border-radius: 5px;
-  background-color: #ffffff;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+	//min-height: 100%;
+	padding: 15px 20px;
+	border-radius: 5px;
+	background-color: #ffffff;
+	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 
-  @include media("<medium") {
-    padding: 10px 12px;
-  }
-  margin-bottom: $marginBottom;
+	@include media("<medium") {
+		padding: 10px 12px;
+	}
+	margin-bottom: $marginBottom;
 }
 
 @mixin card-nopadding-wrapper {
-  border-radius: 5px;
-  background-color: #ffffff;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+	border-radius: 5px;
+	background-color: #ffffff;
+	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 }
