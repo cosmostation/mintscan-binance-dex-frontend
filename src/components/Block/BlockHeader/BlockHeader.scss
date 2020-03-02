@@ -8,4 +8,58 @@
 		border-bottom: var(--border);
 		@include Card-title;
 	}
+	.content {
+		margin: 15.5px 0 20px 0;
+	}
+}
+
+.blueLink {
+	color: #4472de;
+	cursor: pointer;
+}
+
+.rewardRow {
+	display: flex;
+	flex-flow: row;
+	.row-label {
+		width: 203px;
+		@include gridLabel;
+	}
+	.row-content {
+		padding: 20px;
+		height: 88px;
+		width: calc(100% - 203px);
+		border-radius: 5px;
+		border: solid 1px #e6e6e6;
+		background-color: #f9fafc;
+
+		.label-wrapper {
+			@include Flex_LeftRight;
+			height: 18px;
+			font-family: "Open Sans", serif;
+			font-size: 13px;
+			font-weight: normal;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: 2.31;
+			letter-spacing: normal;
+			text-align: left;
+			color: #89909b;
+
+			margin-bottom: 10px;
+		}
+		.value-wrapper {
+			@include Flex_LeftRight;
+			@include gridValue;
+			height: 20px;
+			color: #222222;
+			.decimal {
+				font-size: var(--fontSizeDecimal);
+			}
+			.BNB {
+				font-size: 11px;
+				color: #f0b90b;
+			}
+		}
+	}
 }

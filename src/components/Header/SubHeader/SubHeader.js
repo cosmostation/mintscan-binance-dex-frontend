@@ -44,7 +44,7 @@ export default function(props) {
 							const check = checkCurrentRoute(v.route, pathname);
 							return (
 								<NavLink className={cx("nav-item")} key={idx} to={v.route} onClick={e => handleClick(e, v.route)}>
-									<img className={cx("nav-item-svg")} src={check ? svg.on[idx] : svg.off[idx]} alt={"none"} />
+									<img src={check ? svg.on[idx] : svg.off[idx]} alt={"none"} />
 									<h2 className={cx("nav-item-title", {selected: check})}>{v.display}</h2>
 								</NavLink>
 							);

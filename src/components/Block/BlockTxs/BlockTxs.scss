@@ -1,0 +1,13 @@
+@import "src/styles/utils";
+
+.BlockTxs-wrapper {
+	width: 100%;
+	color: var(--colorMainText);
+
+	.title {
+		@include Card-title;
+	}
+	.table {
+		margin: 0 0 20px 0;
+	}
+}

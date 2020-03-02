@@ -4,32 +4,29 @@
 	display: grid;
 	grid-template-rows: 20px;
 	grid-template-columns: 203px 1fr;
+	margin-bottom: 10px;
+	@include media("<medium") {
+		grid-template-rows: 20px 20px;
+		grid-template-columns: 1fr;
+		grid-row-gap: 10px;
+		margin-bottom: 14px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	@include media("<650px") {
+		display: flex;
+		flex-flow: column;
+		height: fit-content;
+		:first-child {
+			margin-bottom: 5px;
+		}
+	}
+
 	.label {
-		height: 20px;
-		text-transform: capitalize;
-		font-family: "Open Sans", serif;
-		font-size: 15px;
-		font-weight: 600;
-		font-stretch: normal;
-		font-style: normal;
-		letter-spacing: normal;
-		text-align: left;
-		color: #222222;
+		@include gridLabel;
 	}
 	.value {
-		height: 20px;
-		text-transform: capitalize;
-		font-family: "Open Sans", serif;
-		font-size: 15px;
-		font-weight: normal;
-		font-stretch: normal;
-		font-style: normal;
-		letter-spacing: normal;
-		text-align: left;
-		color: #4b525d;
-
-		display: flex;
-		align-items: center;
+		@include gridValue;
 	}
-	margin-bottom: 10px;
 }

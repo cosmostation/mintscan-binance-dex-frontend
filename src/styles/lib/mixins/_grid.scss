@@ -1,0 +1,27 @@
+@mixin gridLabel {
+	height: 20px;
+	text-transform: capitalize;
+	font-family: "Open Sans", serif;
+	font-size: 15px;
+	font-weight: 600;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #222222;
+}
+
+@mixin gridValue {
+	min-width: 300px;
+	height: fit-content;
+	text-transform: capitalize;
+	font-family: "Open Sans", serif;
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #4b525d;
+	overflow-wrap: break-word;
+}

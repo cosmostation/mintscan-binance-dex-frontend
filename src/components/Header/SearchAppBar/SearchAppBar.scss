@@ -56,17 +56,24 @@
 			background: var(--colorNetSelectBg);
 			border-radius: 5px;
 			height: 35px;
+			font-family: "Open Sans", serif;
+			text-transform: capitalize;
 			border: 1px solid var(--colorNetSelectBorder);
 			color: var(--colorAppBarInputText);
 			width: var(--widthNetSelectBox);
 			font-size: var(--fontSizeMedium);
-			line-height: 1.2;
 			outline: none;
 			cursor: pointer;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			padding: 0 8px;
+			font-weight: normal;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: 1.36;
+			letter-spacing: normal;
+			text-align: left;
 			// @include media("<large") {
 			//   display: none;
 			// }

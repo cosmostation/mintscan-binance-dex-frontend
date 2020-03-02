@@ -100,17 +100,20 @@
 			}
 
 			.nav-item-title {
-				font-family: "Montserrat", "Open Sans", serif;
-				font-size: var(--fontSizeMain);
-				line-height: 1.22;
-				padding-left: 8px;
-				text-transform: uppercase;
+				font-size: var(--fontSizeAppBar);
+				font-weight: 500;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.27;
+				letter-spacing: normal;
+				text-align: left;
 				color: #b2b6bc;
 			}
 
 			img {
 				height: 32px;
 				width: 32px;
+				margin-right: 5px;
 			}
 
 			&:hover {

@@ -4,7 +4,7 @@ import styles from "./InfoRow.scss";
 
 const cx = cn.bind(styles);
 
-export default function({label, children}) {
+export default function({label, children, customClass}) {
 	return (
 		<ul className={cx("infoRow-grid")}>
 			<li className={cx("label")}>{label}</li>

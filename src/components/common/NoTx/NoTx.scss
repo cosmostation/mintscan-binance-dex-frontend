@@ -1,0 +1,31 @@
+@import 'src/styles/utils';
+
+.no-tx-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    min-height: 100%;
+
+    img {
+        height: 60px;
+        width: 60px;
+
+        @include media("<medium") {
+            height: 40px;
+            width: 40px;
+        }
+
+        @include media("<small") {
+            height: 30px;
+            width: 30px;
+        }
+    }
+
+    .no-tx {
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1.21;
+    }
+}

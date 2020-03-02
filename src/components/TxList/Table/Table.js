@@ -65,36 +65,6 @@ export default function(props) {
 	const formattedMaxHeight = useMemo(() => formatNumber(state.maxIndex, 3), [state.maxIndex]);
 	//========================
 
-	const tableHeaderRender = useMemo(
-		() => (
-			<TableHead>
-				<TableRow>
-					<TableCell className={cx("tableHeaderCell", "heightWidth")}>Tx Hash</TableCell>
-					<TableCell className={cx("tableHeaderCell")}>Type</TableCell>
-					<TableCell className={cx("tableHeaderCell")} align='left'>
-						From
-					</TableCell>
-					<TableCell className={cx("tableHeaderCell")} align='left'>
-						To
-					</TableCell>
-					<TableCell className={cx("tableHeaderCell")} align='right'>
-						<span>Value</span>
-					</TableCell>
-					<TableCell className={cx("tableHeaderCell", "currencyWidth")} align='left'>
-						Currency
-					</TableCell>
-					<TableCell className={cx("tableHeaderCell", "heightWidth")} align='right'>
-						<span>Height</span>
-					</TableCell>
-					<TableCell className={cx("tableHeaderCell", "txsWidth")} align='right'>
-						<span>Time</span>
-					</TableCell>
-				</TableRow>
-			</TableHead>
-		),
-		[]
-	);
-
 	const tableBodyRender = useMemo(() => {
 		const {pageData} = state;
 
@@ -110,10 +80,37 @@ export default function(props) {
 	return (
 		<div className={cx("txListTableWrapper")}>
 			<Table className={cx("table")}>
-				{tableHeaderRender}
+				{txTableHeader}
 				{tableBodyRender}
 			</Table>
 			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, cx)}
 		</div>
 	);
 }
+
+export const txTableHeader = (
+	<TableHead>
+		<TableRow>
+			<TableCell className={cx("tableHeaderCell", "heightWidth")}>Tx Hash</TableCell>
+			<TableCell className={cx("tableHeaderCell")}>Type</TableCell>
+			<TableCell className={cx("tableHeaderCell")} align='left'>
+				From
+			</TableCell>
+			<TableCell className={cx("tableHeaderCell")} align='left'>
+				To
+			</TableCell>
+			<TableCell className={cx("tableHeaderCell")} align='right'>
+				<span>Value</span>
+			</TableCell>
+			<TableCell className={cx("tableHeaderCell", "currencyWidth")} align='left'>
+				Currency
+			</TableCell>
+			<TableCell className={cx("tableHeaderCell", "heightWidth")} align='right'>
+				<span>Height</span>
+			</TableCell>
+			<TableCell className={cx("tableHeaderCell", "txsWidth")} align='right'>
+				<span>Time</span>
+			</TableCell>
+		</TableRow>
+	</TableHead>
+);

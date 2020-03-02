@@ -19,7 +19,7 @@
 	--colorTypeBg: #f6f2ff;
 	--colorMissedBlock: #b997ff;
 	--colorAppBarInputBg: #ffffff;
-	--colorAppBarInputText: #4b525d;
+	--colorAppBarInputText: #222222;
 	--colorAppBarInputPh: #b2b6bc;
 	--colorNetSelectBg: #ffffff;
 	--colorNetSelectBorder: transparent;
@@ -40,10 +40,11 @@
 	--btnBorder: 1px solid #bebebe;
 
 	// fontSize
+	--fontSizeDecimal: 11px;
 	--fontSizeDassSearchPh: 14px;
 	--fontSizeCardValue: 18px;
 	--fontSizeCardValueInMedium: 16px;
-
+	--fontSizeAppBar: 15px;
 	--fontSizeMain: 13px;
 	--fontSizeMedium: 14px;
 	--fontSizeMainInMedium: 12px;

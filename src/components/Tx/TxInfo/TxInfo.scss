@@ -3,6 +3,9 @@
 .TxInfo-wrapper {
 	@include card-wrapper(15px);
 	padding-bottom: 0;
+	@include media("<medium") {
+		padding-bottom: 0;
+	}
 	.title {
 		border-bottom: var(--border);
 		@include Card-title;
@@ -12,14 +15,6 @@
 		.status-img {
 			height: 12px;
 			width: 12px;
-			font-size: 10px;
-			overflow: visible;
-			object-fit: cover;
-			margin-right: 4px;
-		}
-		.txType-img {
-			height: 32px;
-			width: 32px;
 			font-size: 10px;
 			overflow: visible;
 			object-fit: cover;

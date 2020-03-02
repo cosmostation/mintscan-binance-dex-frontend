@@ -2,6 +2,9 @@ const api = process.env.REACT_APP_BUILD_ENV === "production" ? "https://lcd-bina
 
 export default Object.freeze({
 	API_BASE: api,
+	NUM: {
+		BASE_MULT: 100000000,
+	},
 	BINANCE_API_BASE: "https://dex-asiapacific.binance.org/api/v1/", // "?format=json" => for blocks
 	API: {
 		BLOCKLIST: "/blocks",

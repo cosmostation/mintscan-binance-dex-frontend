@@ -1,8 +1,0 @@
-@import "src/styles/utils";
-
-.MsgList-wrapper {
-	@include card-wrapper(64px);
-	@include media("<large") {
-		margin-bottom: 40px;
-	}
-}

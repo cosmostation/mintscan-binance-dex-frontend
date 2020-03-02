@@ -19,8 +19,8 @@ export default function(props) {
 					<GraphDisplay />
 				</div>
 				<ul className={cx("LinkWrapper")}>
-					{_.map(cardData, data => (
-						<DashboardCard {...data} />
+					{_.map(cardData, (data, i) => (
+						<DashboardCard key={i} {...data} />
 					))}
 				</ul>
 			</div>

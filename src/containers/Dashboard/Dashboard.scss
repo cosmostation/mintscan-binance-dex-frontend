@@ -4,12 +4,4 @@
 	display: flex;
 	flex-flow: column;
 	justify-content: center;
-
-	@include media("<medium") {
-		margin-top: var(--heightHeader);
-	}
-
-	@include media("<small") {
-		margin-top: var(--heightHeader);
-	}
 }

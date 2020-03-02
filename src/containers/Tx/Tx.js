@@ -2,15 +2,14 @@ import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./Tx.scss";
 
-import {_} from "src/lib/scripts";
+import {_, empty} from "src/lib/scripts";
 import consts from "src/constants/consts";
 
 //  components
 import TitleWrapper from "src/components/common/TitleWrapper";
 import TxInfo from "src/components/Tx/TxInfo";
-import MsgList from "src/components/Tx/MsgList";
+import TxData from "src/components/Tx/TxData";
 import PageTitle from "src/components/common/PageTitle";
-import NotFound from "src/components/common/NotFound";
 
 import MockData from "src/containers/Tx/MockData";
 
@@ -31,8 +30,14 @@ export default function(props) {
 			<TitleWrapper>
 				<PageTitle title={"Transaction details"} />
 			</TitleWrapper>
-			<TxInfo txData={data.data.data} />
-			<MsgList txData={data.data.data} />
+			{empty(data.data.data) ? (
+				undefined
+			) : (
+				<>
+					<TxInfo txData={data.data.data} />
+					<TxData txData={data.data.data} />
+				</>
+			)}
 		</div>
 	);
 }

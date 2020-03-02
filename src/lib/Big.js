@@ -28,6 +28,6 @@ export const multiply = (input1 = "0", input2 = "0", places = DEFAULT_DECIMALS) 
 };
 
 export const divide = (input1 = "0", input2 = "0.1", places = DEFAULT_DECIMALS) => {
-	if (!_.isFinite(input2) || input2 === "0") return "NaN";
+	if (!_.isFinite(Number(input2)) || input2 === "0") return "NaN";
 	return new B(input1).div(input2).toFixed(places);
 };
