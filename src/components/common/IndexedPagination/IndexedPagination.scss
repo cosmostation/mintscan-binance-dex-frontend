@@ -26,6 +26,7 @@
 			.checkBox {
 				width: 24px;
 				height: 24px;
+				cursor: pointer;
 
 				img {
 					object-fit: fill;
@@ -43,6 +44,7 @@
 
 			&.inactive {
 				opacity: 0.5;
+				cursor: auto;
 			}
 
 			.text {
@@ -91,6 +93,7 @@
 			justify-content: space-between;
 
 			img {
+				cursor: pointer;
 				&.flip {
 					transform: rotate(180deg);
 				}
@@ -100,6 +103,7 @@
 
 					&.inactive {
 						content: url("/assets/icons/common/to-next-page_inactive.svg");
+						cursor: auto;
 					}
 				}
 
@@ -108,6 +112,7 @@
 
 					&.inactive {
 						content: url("/assets/icons/common/to-last-page_inactive.svg");
+						cursor: auto;
 					}
 				}
 			}

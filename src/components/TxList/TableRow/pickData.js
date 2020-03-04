@@ -1,5 +1,5 @@
 import React from "react";
-import {_, empty, formatNumber, reduceString} from "src/lib/scripts";
+import {_, empty, formatNumber, reduceString, refineAddress} from "src/lib/scripts";
 import {NavLink} from "react-router-dom";
 
 import Skeleton from "react-skeleton-loader";
@@ -32,11 +32,10 @@ export default function(blockData, cx, cell) {
 			if (!_.isNil(blockData?.messages?.[0]?.value?.sender)) address = `${blockData?.messages?.[0]?.value?.sender}`;
 			else if (blockData?.messages?.[0]?.type === txTypes.COSMOS.SEND) address = `${blockData?.messages?.[0]?.value?.inputs?.[0]?.address}`;
 
-			//  remove the t in front
 			if (_.isString(address))
 				return (
 					<NavLink className={cx("blueColor")} to={`/account/${address.substring(1, address.length - 1)}`}>
-						<span>{reduceString(address.substring(1, address.length - 1), 6, 6)}</span>
+						<span>{reduceString(refineAddress(address), 6, 6)}</span>
 					</NavLink>
 				);
 			return <Skeleton />;

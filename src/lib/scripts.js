@@ -19,6 +19,9 @@ export const humanFormat = val => hF(val, {scale: currScale, separator: ""});
 // 	return 0;
 // };
 
+//  remove t from bnb address
+export const refineAddress = address => (address.charAt(0) === "t" ? address.substr(1) : address);
+
 export const totalTime = unix => moment(unix).format("YYYY-MM-DD / HH:MM:ss");
 
 export const omitProperty = (arr, valueArray) => _.map(arr, v => _.omit(v, valueArray));
@@ -32,9 +35,9 @@ export const setAgoTime = time => {
 	const y = new moment(time);
 	const duration = moment.duration(x.diff(y));
 	let ret = 0;
-	if (duration._data.years) ret = `${duration._data.years}years`;
-	else if (duration._data.months) ret = `${duration._data.months}months`;
-	else if (duration._data.days) ret = `${duration._data.days}days`;
+	if (duration._data.years) ret = `${duration._data.years} years`;
+	else if (duration._data.months) ret = `${duration._data.months} months`;
+	else if (duration._data.days) ret = `${duration._data.days} days`;
 	else if (duration._data.hours) ret = `${duration._data.hours}h`;
 	else if (duration._data.minutes) ret = `${duration._data.minutes}m`;
 	else if (duration._data.seconds) ret = `${duration._data.seconds}s`;

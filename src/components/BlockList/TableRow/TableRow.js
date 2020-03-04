@@ -11,7 +11,7 @@ const cx = classNames.bind(customStyle);
 
 export default function({blockData}) {
 	return (
-		<TableRow className={cx("BlockList-tableRow")} hover={true} key={blockData.id}>
+		<TableRow className={cx("BlockList-tableRow")} hover={true} key={blockData.height}>
 			<TableCell className={cx("tablePointerCell", "text")} component='th' scope='row'>
 				{blockData.height ? (
 					<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height}`}>

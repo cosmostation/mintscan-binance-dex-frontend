@@ -9,7 +9,7 @@ export default Object.freeze({
 	API: {
 		BLOCKLIST: "/blocks",
 		TXLIST: "/txs",
-		TX: "/tx", //  /{txhash}?format=json
+		TX: "/txs",
 	},
 	NETWORK: {
 		COSMOS: "cosmos-3",

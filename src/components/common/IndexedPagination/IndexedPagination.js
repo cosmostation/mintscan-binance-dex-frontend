@@ -7,9 +7,13 @@ const cx = cn.bind(styles);
 
 // TODO
 //  memoize this in the future
-export const footerRender = (state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, baseProperty, indexDisplayDecimals) => {
-	const toFrontClick = () => {};
+export const footerRender = (state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, baseProperty, indexDisplayDecimals, jumpToEnd) => {
 	// console.log(state.maxIndex, state.isFront, state.pageData?.[0]?.[baseProperty]);
+	const jumpFront = () => {
+		if (state.isFront) return;
+		jumpToEnd(false);
+	};
+	// console.log("footer", state);
 	return (
 		<div className={cx("table-footer")}>
 			<div className={cx("paginationWrapper")}>
@@ -30,7 +34,7 @@ export const footerRender = (state, realTime, realTimeButtonClick, formattedMaxH
 					<img
 						alt={"first"}
 						className={cx("last", "flip", {inactive: state.isFront && state.maxIndex === state.pageData?.[0]?.[baseProperty]})}
-						onClick={() => toFrontClick(true)}
+						onClick={jumpFront}
 					/>
 					<img
 						alt={"left"}
@@ -38,7 +42,7 @@ export const footerRender = (state, realTime, realTimeButtonClick, formattedMaxH
 						onClick={() => onePageClick(true)}
 					/>
 					<img alt={"right"} className={cx("right", {inactive: state.index[1] + state.pageSize > state.maxIndex})} onClick={() => onePageClick(false)} />
-					<img alt={"last"} className={cx("last")} onClick={() => toFrontClick(false)} />
+					<img alt={"last"} className={cx("last")} onClick={() => null} />
 				</div>
 			</div>
 		</div>

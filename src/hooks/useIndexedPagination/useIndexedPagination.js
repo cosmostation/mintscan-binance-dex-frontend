@@ -18,6 +18,7 @@ import reducer, {
 	PAGE_CHANGE,
 	RECENT_DATA_LOAD,
 	UPDATE_ISFRONT,
+	RESET,
 } from "src/hooks/useIndexedPagination/reducer";
 
 const SPARE_PAGE_CNT = 2; //  how many pages left before a refetch is triggered
@@ -79,29 +80,35 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 		}
 	}, [recentData.data]);
 
-	// TODO
-	//  query for new maxIndex when user queries for value higher than maxIndex
-	//  or only after maxIndex hasn't been updated for longer than # seconds
-
 	//  appending new data
 	useEffect(() => {
 		if (_.isNil(data?.data) && state.isFront === false && realTime && _.isBoolean(state.params.after)) {
 			dispatch({type: UPDATE_ISFRONT});
 		}
 		if (!_.isNil(error) || (_.isNil(data?.data) && !_.isBoolean(state.params.after))) return;
-
-		//  initial load
-		if (empty(state.index)) {
-			//  initial load only occurs when refinedQuery is set
-			if (refinedQuery === 1) {
+		if (state.reset) {
+			//  real reset data
+			if (data?.paging?.total && data?.paging?.total === data?.data?.[0]?.height) {
+				setRefinedQuery(history, updateQuery, 0);
+				if (!realTime) setRealTime(true);
 				return dispatch({
 					type: INITIAL_LOAD,
 					payload: {data: data.data, pageSize, index: [0, pageSize - 1], maxIndex: Number(data.paging.total)},
 				});
 			}
-			// TODO
-			//  define case when query is set
-			else {
+			return;
+		}
+		//  initial load
+		if (empty(state.index)) {
+			//  initial load only occurs when refinedQuery is set
+			if (refinedQuery === 1) {
+				setRefinedQuery(history, updateQuery, 0);
+				if (!realTime) setRealTime(true);
+				return dispatch({
+					type: INITIAL_LOAD,
+					payload: {data: data.data, pageSize, index: [0, pageSize - 1], maxIndex: Number(data.paging.total)},
+				});
+			} else {
 				getInitialLoadQuery(refinedQuery, {
 					data: data.data,
 					maxIndex: Number(data.paging.total),
@@ -134,6 +141,13 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 			return dispatch({type: INITIAL_LOAD_QUERY, payload: {...payload}});
 		}
 	}, [error, data, pageSize, state.index]);
+
+	//  when resetting
+	useEffect(() => {
+		if (state.reset) {
+			refetch({path: `${path}?limit=${limit}`});
+		}
+	}, [state.reset]);
 
 	//  check param change and if refetch is needed, do it! Else don't.
 	useEffect(() => {
@@ -168,10 +182,26 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 		[state.isFront]
 	);
 
+	//  initialize for data fetching on page change to front or last
+	const jumpToEnd = useCallback(
+		bool => {
+			// console.log("jumped", bool, state);
+			if (!!bool && !!state.isNoMore) return;
+			// already end
+			else if (!bool && !!state.isFront) return; // already front
+			if (!bool) {
+				dispatch({type: RESET});
+			}
+		},
+		[path, limit]
+	);
+
 	// console.log("stateCheck outside>>>", `${renderCnt} ${recursiveExpand({..._.omit(state, ["allData"]), allDataSize: state.allData.length})}`);
 
 	//  data refining process
-	const getPageData = useCallback(() => _.slice(state.allData, state.index[0], state.index[1]), [state.allData, state.index]);
+	const getPageData = useCallback(() => {
+		return _.slice(state.allData, state.index[0], state.index[1]);
+	}, [state.allData, state.index, data]);
 	const pageData = useMemo(() => getPageData(), [getPageData]);
 
 	//  update query if changed
@@ -198,6 +228,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 		error,
 		{...state, pageData, allData: undefined, maxIndexed: state.allData.length},
 		updateCurrentPage,
+		jumpToEnd,
 		[realTime, setRealTime],
 		forceLoadAfter,
 	];

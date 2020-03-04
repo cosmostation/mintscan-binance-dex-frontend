@@ -20,7 +20,7 @@ const BASE_PROPERTY = "height";
 const PAGE_SIZE = 20;
 
 export default function(props) {
-	const [loading, error, state, updateCurrentPage, [realTime, setRealTime], forceLoadAfter] = useIndexedPagination({
+	const [loading, error, state, updateCurrentPage, jumpToEnd, [realTime, setRealTime], forceLoadAfter] = useIndexedPagination({
 		path: consts.API.BLOCKLIST,
 		pageSize: PAGE_SIZE,
 		pagingProperty: BASE_PROPERTY,
@@ -61,7 +61,11 @@ export default function(props) {
 			<TableBody>
 				{_.map(empty(pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData, (v, idx) => {
 					if (v === undefined) return <BlockListTableRow key={idx} blockData={{}} />;
-					return <BlockListTableRow key={v[BASE_PROPERTY]} blockData={v} />;
+					// TODO - fix this
+					//  it is optimal to use 'v[BASE_PROPERTY]' as key but it scrolls to bottom of page
+					//  current approach rerenders entire list on each rerender - needs to be optimized
+					//  same applies to table in TxList
+					return <BlockListTableRow key={idx} blockData={v} />;
 				})}
 			</TableBody>
 		);
@@ -109,7 +113,7 @@ export default function(props) {
 				{tableHeaderRender}
 				{tableBodyRender}
 			</Table>
-			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, cx)}
+			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, jumpToEnd)}
 		</div>
 	);
 }

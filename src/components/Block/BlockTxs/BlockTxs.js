@@ -16,7 +16,7 @@ export default function({txData}) {
 		<div className={cx("BlockTxs-wrapper")}>
 			<div className={cx("title")}>Transactions</div>
 			{empty(txData) ? (
-				<NoTx />
+				<NoTx text={"No Transactions"} />
 			) : (
 				<Table className={cx("table")}>
 					{txTableHeader}

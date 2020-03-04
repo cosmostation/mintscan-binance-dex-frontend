@@ -1,14 +1,15 @@
 import {_, empty} from "src/lib/scripts";
 
 export const initialState = {
-	maxHeight: null,
+	maxIndex: null,
 	allData: [],
 	//  0 -> first, 1 -> last showed on page, use these indexes to slice allData and send out
 	index: [],
 	params: {after: null},
-	isFront: true,
+	isFront: null,
 	error: false,
 	pageSize: null,
+	reset: false,
 	isNoMore: false, //  reached end
 };
 
@@ -22,6 +23,7 @@ export const PAGE_CHANGE = "PAGE_CHANGE";
 export const UPDATE_MAX_HEIGHT = "UPDATE_MAX_HEIGHT";
 export const UPDATE_ISFRONT = "UPDATE_ISFRONT";
 export const RESET = "RESET"; //  reset(to initial initial_load again
+export const TO_END = "TO_END";
 
 export default function(state, action) {
 	// console.log("reducer>>>", action.type, _.cloneDeep(state));
@@ -29,7 +31,7 @@ export default function(state, action) {
 		case INITIAL_LOAD: {
 			const {data, pageSize, index, maxIndex} = action.payload;
 			if (empty(data)) return {...state, error: true};
-			return {...state, maxIndex, allData: data, isFront: true, index, pageSize};
+			return {...state, maxIndex, allData: data, isFront: true, index, pageSize, reset: false};
 		}
 		case INITIAL_LOAD_QUERY: {
 			const {data, pageSize, index, maxIndex} = action.payload;
@@ -83,6 +85,11 @@ export default function(state, action) {
 				return {...state, index: [state.index[0] + state.pageSize, state.index[1] + state.pageSize], isFront: false};
 			}
 		}
+		case TO_END: {
+			if (action.payload.toEnd === true) {
+				return {...state};
+			}
+		}
 		case UPDATE_MAX_HEIGHT: {
 			return {...state, maxIndex: action.payload};
 		}
@@ -90,7 +97,7 @@ export default function(state, action) {
 			return {...state, isFront: true};
 		}
 		case RESET:
-			return {...initialState};
+			return {...initialState, reset: true};
 		default:
 			return {...initialState};
 	}

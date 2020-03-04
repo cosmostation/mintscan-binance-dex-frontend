@@ -18,7 +18,7 @@ const PAGE_SIZE = 20;
 const cx = classNames.bind(styles);
 
 export default function(props) {
-	const [loading, error, state, updateCurrentPage, [realTime, setRealTime], forceLoadAfter] = useIndexedPagination({
+	const [loading, error, state, updateCurrentPage, jumpToEnd, [realTime, setRealTime], forceLoadAfter] = useIndexedPagination({
 		path: consts.API.TXLIST,
 		pageSize: PAGE_SIZE,
 		pagingProperty: BASE_PROPERTY,
@@ -70,8 +70,10 @@ export default function(props) {
 
 		return (
 			<TableBody>
-				{_.map(empty(pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData, v => (
-					<TxListTableRow key={v.id} blockData={v} />
+				{_.map(empty(pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData, (v, idx) => (
+					// TODO - comment in components/BlockList/Table.js
+					//  should use v.id
+					<TxListTableRow key={idx} blockData={v} />
 				))}
 			</TableBody>
 		);

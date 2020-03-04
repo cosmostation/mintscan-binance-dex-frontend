@@ -3,10 +3,13 @@ import styles from "./TxData.scss";
 import cn from "classnames/bind";
 
 import consts from "src/constants/consts";
-import {formatNumber, _, empty} from "src/lib/scripts";
+import {formatNumber, _, empty, refineAddress} from "src/lib/scripts";
 import {divide, multiply} from "src/lib/Big";
+import txTypes from "src/constants/txTypes";
+import {txGetOrderType, txGetSide, txGetTimeInforce, txCheckOrder, txCheckSend} from "./TxCase";
 
 //  components
+import TxGetFrom from "./TxGetFrom";
 import InfoRow from "src/components/common/InfoRow";
 import getTxTypeIcon from "src/constants/getTxTypeIcon";
 import getTxType from "src/constants/getTxType";
@@ -21,11 +24,10 @@ const cx = cn.bind("styles");
 
 const BINANCE_ASSSET_BASE = "https://explorer.binance.org/asset";
 
-const getSide = Object.freeze([null, "Buy", "Sell"]);
-const getTimeInforce = Object.freeze([null, "GTE", null, "IOC"]);
-const getOrderType = Object.freeze([null, "ORDER", "LIMIT"]);
-
 export default function({txData}) {
+	console.table(txData);
+	console.table(txData?.messages?.[0]?.value?.inputs?.[0]?.coins);
+	console.table(txData?.messages?.[0]?.value?.outputs?.[0]);
 	const value = txData?.messages?.[0]?.value;
 	const clickSymbol = React.useCallback(
 		symbol => {
@@ -34,72 +36,83 @@ export default function({txData}) {
 		},
 		[value]
 	);
+	const type = txData?.messages?.[0]?.type;
 	return (
 		<div className={cx("MsgList-wrapper")}>
 			<h2 className={cx("title")}>Data</h2>
 			<div className={cx("grid-wrapper")}>
-				<InfoRow label='Asset'>
-					<span>{_.split(value?.symbol, "-")[0]}</span>
-				</InfoRow>
+				{txCheckOrder(type) ? (
+					<InfoRow label='Asset'>
+						<span>{_.split(value?.symbol, "-")[0]}</span>
+					</InfoRow>
+				) : (
+					undefined
+				)}
 				<InfoRow label='Memo'>
 					<span>{txData.memo === "" ? "-" : txData.memo}</span>
 				</InfoRow>
 				<InfoRow label='Transaction Type'>
 					<span className={cx("txType-wrapper")}>
-						<img className={cx("txType-img")} src={getTxTypeIcon(txData.txType)} alt={"icon"} />
-						<span>{getTxType(txData.txType)}</span>
+						<img className={cx("txType-img")} src={getTxTypeIcon(type)} alt={"icon"} />
+						<span>{getTxType(type)}</span>
 					</span>
 				</InfoRow>
 				<InfoRow label='From'>
-					{empty(value.sender) ? (
-						"-"
-					) : (
-						<NavLink className={cx("blueColor")} to={`/accounts/${txData.from}`}>
-							{value.sender}
-						</NavLink>
-					)}
+					<TxGetFrom txData={txData} type={type} value={value} cx={cx} />
 				</InfoRow>
-				<InfoRow label='To'>
-					{empty(txData.to) ? (
-						"-"
-					) : (
-						<NavLink className={cx("blueColor")} to={`/accounts/${txData.to}`}>
-							{txData.to}
-						</NavLink>
-					)}
-				</InfoRow>
-				<InfoRow label='Value'>
-					<span>
-						{txData.value} <span className={cx("BNBcolor")}>BNB</span>
-					</span>
-				</InfoRow>
-				<InfoRow label='Symbol'>
-					<div className={cx("symbol-link")} onClick={() => clickSymbol(value?.symbol)}>
-						<p>{value?.symbol}</p>
-						<img src={detailSVG} alt='detail' />
-					</div>
-				</InfoRow>
-				<TradeDisplay txData={txData} value={value} />
-				<InfoRow label='Side'>
-					<span className={cx({"color-red": value?.side === 2, "color-blue": value?.side === 1})}>{getSide[value?.side]}</span>
-				</InfoRow>
-				<InfoRow label='Price'>
-					<span>
-						{divide(divide(value?.quantity, consts.NUM.BASE_MULT), value?.price)} BNB / 1 {_.split(value?.symbol, "-")[0]}
-					</span>
-				</InfoRow>
-				<InfoRow label='Order Type'>
-					<span>{getOrderType[value?.ordertype]}</span>
-				</InfoRow>
-				<InfoRow label='Time Inforce'>
-					<span>{getTimeInforce[value?.timeinforce]}</span>
-				</InfoRow>
-				<InfoRow label='Order ID'>
-					<span>{value?.id}</span>
-				</InfoRow>
+				{/*send*/}
+				{txCheckSend(type) ? (
+					<>
+						<InfoRow label='To'>
+							<NavLink className={cx("blueColor")} to={`/accounts/${txData.to}`}>
+								{value.outputs[0].address}
+							</NavLink>
+						</InfoRow>
+					</>
+				) : (
+					undefined
+				)}
+				{/*orders*/}
+				{txCheckOrder(type) ? (
+					<>
+						<InfoRow label='Symbol'>
+							<div className={cx("symbol-link")} onClick={() => clickSymbol(value?.symbol)}>
+								<p>{value?.symbol}</p>
+								<img src={detailSVG} alt='detail' />
+							</div>
+						</InfoRow>
+						{txTypes.DEX.ORDER_NEW === type ? (
+							<>
+								<TradeDisplay txData={txData} value={value} />
+								<InfoRow label='Side'>
+									<span className={cx({"color-red": value?.side === 2, "color-blue": value?.side === 1})}>{txGetSide[value?.side]}</span>
+								</InfoRow>
+								<InfoRow label='Price'>
+									<span>
+										{divide(divide(value?.quantity, consts.NUM.BASE_MULT), value?.price)} BNB / 1 {_.split(value?.symbol, "-")[0]}
+									</span>
+								</InfoRow>
+								<InfoRow label='Order Type'>
+									<span>{txGetOrderType[value?.ordertype]}</span>
+								</InfoRow>
+								<InfoRow label='Time Inforce'>
+									<span>{txGetTimeInforce[value?.timeinforce]}</span>
+								</InfoRow>
+								<InfoRow label='Order ID'>
+									<span>{value?.id}</span>
+								</InfoRow>
+							</>
+						) : (
+							undefined
+						)}
+					</>
+				) : (
+					undefined
+				)}
 			</div>
 		</div>
 	);
+	return <div>Coming soon!</div>;
 }
 
 const TradeDisplay = ({txData, value}) => (
