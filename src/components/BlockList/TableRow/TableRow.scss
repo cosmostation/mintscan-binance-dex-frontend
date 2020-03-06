@@ -17,6 +17,9 @@
 		@include tableCellWidth300;
 		@include tableElemPadding;
 	}
+	.parentHashWidth {
+		min-width: 200px;
+	}
 }
 
 .text {
@@ -37,8 +40,28 @@
 		font-size: 11px;
 		color: #f0b90b;
 	}
+}
 
-	.blueColor {
-		color: #4472de;
+.BlockList-thinTableRow {
+	.row {
+		width: 100%;
+		height: fit-content;
+		@include Flex_LeftRight;
+
+		font-family: "Open Sans", serif;
+		font-size: 13px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.38;
+		letter-spacing: normal;
+		text-align: left;
+		color: #222222;
+		padding: 5.5px 0;
 	}
+
+	padding: 4px 15px;
+}
+.blueColor {
+	color: #4472de;
 }

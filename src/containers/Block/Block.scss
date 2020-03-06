@@ -5,9 +5,9 @@
 	flex-flow: column;
 	justify-content: center;
 
-	margin-top: var(--mainDefaultPaddingTop);
+	@include page-wrapper;
 
 	.Card {
-		@include card-wrapper(70px);
+		@include card-wrapper(15px);
 	}
 }

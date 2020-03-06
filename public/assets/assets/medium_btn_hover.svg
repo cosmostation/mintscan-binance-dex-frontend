@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
+  <g id="medium_btn_hover" transform="translate(-1461 -230)">
+    <g id="타원_201" data-name="타원 201" transform="translate(1461 230)" fill="#e6e6e6" stroke="#e6e6e6" stroke-width="1">
+      <circle cx="17.5" cy="17.5" r="17.5" stroke="none"/>
+      <circle cx="17.5" cy="17.5" r="17" fill="none"/>
+    </g>
+    <g id="iconfinder_53-medium_843778" transform="translate(1467 233.091)">
+      <path id="패스_1670" data-name="패스 1670" d="M38.033,26.223l5.2,2.6.025.011a.239.239,0,0,0,0-.027V17.729Z" transform="translate(-22.847 -6.998)" fill="#222"/>
+      <path id="패스_1671" data-name="패스 1671" d="M30.176,7l-3.69,5.97,3.548,5.767,5.557-9.029Z" transform="translate(-15.316)" fill="#222"/>
+      <path id="패스_1672" data-name="패스 1672" d="M20.315,23.142l4.815,2.407-4.815-7.823Z" transform="translate(-11.292 -6.995)" fill="#222"/>
+      <path id="패스_1673" data-name="패스 1673" d="M3,19.161a.344.344,0,0,0,.153.247L8.342,22l.025.011a.232.232,0,0,0,0-.027V9.95L3,7.266Z" transform="translate(0 -0.174)" fill="#222"/>
+    </g>
+  </g>
+</svg>

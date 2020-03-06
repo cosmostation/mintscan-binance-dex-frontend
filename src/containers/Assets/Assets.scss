@@ -5,5 +5,5 @@
 	flex-flow: column;
 	justify-content: center;
 
-	margin-top: var(--mainDefaultPaddingTop);
+	@include page-wrapper;
 }

@@ -25,7 +25,7 @@ export default function(props) {
 					<TableCell className={cx("tableHeaderCell", "typeWidth")} align='left'>
 						Type
 					</TableCell>
-					<TableCell className={cx("tableHeaderCell", "middleWidth")} align='right'>
+					<TableCell className={cx("tableHeaderCell", "height")} align='right'>
 						Height
 					</TableCell>
 					<TableCell className={cx("tableHeaderCell", "timeWidth")} align='right'>

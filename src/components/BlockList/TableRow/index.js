@@ -1,1 +1,1 @@
-export {default} from "./TableRow";
+export {default, TableRowThin} from "./TableRow";

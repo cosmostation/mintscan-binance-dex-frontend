@@ -21,7 +21,7 @@ export default function({blockData}) {
 					<Skeleton />
 				)}
 			</TableCell>
-			<TableCell className={cx("tablePointerCell", "text")} align='left'>
+			<TableCell className={cx("tablePointerCell", "text", "proposer")} align='left'>
 				{blockData.moniker ? (
 					<NavLink className={cx("blueColor")} to={`/validators/${blockData.proposer}`}>
 						{blockData.moniker}
@@ -34,14 +34,7 @@ export default function({blockData}) {
 				{blockData.height ? blockData.num_txs ? blockData.num_txs : "0" : <Skeleton />}
 			</TableCell>
 			<TableCell className={cx("tableCell", "time")} align='right'>
-				{blockData.timestamp ? (
-					<>
-						{totalTime(blockData.timestamp)}
-						<br />({setAgoTime(blockData.timestamp)})
-					</>
-				) : (
-					<Skeleton />
-				)}
+				{blockData.timestamp ? <>{setAgoTime(blockData.timestamp)}</> : <Skeleton />}
 			</TableCell>
 		</TableRow>
 	);

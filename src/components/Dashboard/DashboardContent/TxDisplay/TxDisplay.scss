@@ -3,7 +3,7 @@
 .TxDisplay-table {
 	overflow-x: auto;
 	overflow-y: hidden;
-	min-width: 450px;
+	min-width: 320px;
 
 	.tableHeaderCell {
 		@include tableHeaderCellWidth300;
@@ -16,12 +16,17 @@
 	.txHashWidth {
 		min-width: 100px;
 	}
+	.height {
+		@include media("<dash_table_limit") {
+			display: none
+		}
+	}
 
 	.typeWidth {
 		min-width: 100px;
 	}
 
 	.timeWidth {
-		min-width: 100px;
+		min-width: 50px;
 	}
 }

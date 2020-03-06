@@ -9,6 +9,51 @@ import {reduceString, setAgoTime} from "src/lib/scripts";
 
 const cx = classNames.bind(customStyle);
 
+export const TableRowThin = ({blockData}) => {
+	return (
+		<>
+			<div className={cx("BlockList-thinTableRow")}>
+				<ul className={cx("row")}>
+					<li>Height</li>
+					<li>
+						{blockData.height ? (
+							<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height}`}>
+								{blockData.height}{" "}
+							</NavLink>
+						) : (
+							<Skeleton />
+						)}
+					</li>
+				</ul>
+				<ul className={cx("row")}>
+					<li>Parent Hash</li>
+					<li>
+						{blockData.parent_hash ? (
+							<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height}`}>
+								{reduceString(blockData.parent_hash, 6, 6)}
+							</NavLink>
+						) : (
+							<Skeleton />
+						)}
+					</li>
+				</ul>
+				<ul className={cx("row")}>
+					<li>Node</li>
+					<li>{blockData.moniker ? <NavLink to={`/validators/${blockData.proposer}`}>{blockData.moniker}</NavLink> : <Skeleton />}</li>
+				</ul>
+				<ul className={cx("row")}>
+					<li>Txs</li>
+					<li>{blockData.height ? blockData.num_txs ? blockData.num_txs : "0" : <Skeleton />}</li>
+				</ul>
+				<ul className={cx("row")}>
+					<li>Time</li>
+					<li>{blockData.timestamp ? setAgoTime(blockData.timestamp) : <Skeleton />}</li>
+				</ul>
+			</div>
+		</>
+	);
+};
+
 export default function({blockData}) {
 	return (
 		<TableRow className={cx("BlockList-tableRow")} hover={true} key={blockData.height}>
@@ -21,10 +66,10 @@ export default function({blockData}) {
 					<Skeleton />
 				)}
 			</TableCell>
-			<TableCell className={cx("tablePointerCell", "text")}>
+			<TableCell className={cx("tablePointerCell", "text", "parentHashWidth")}>
 				{blockData.parent_hash ? (
 					<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height}`}>
-						{reduceString(blockData.parent_hash, 12, 8)}
+						{reduceString(blockData.parent_hash, 6, 6)}
 					</NavLink>
 				) : (
 					<Skeleton />

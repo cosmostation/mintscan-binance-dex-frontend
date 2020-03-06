@@ -25,17 +25,18 @@ const handlers = {
 	...pender({
 		type: GET_BASIC_DATA,
 		onSuccess: (state, action) => {
-			const data = action.payload.data[_.keys(action.payload.data)[0]];
+			const {data} = action.payload;
 			const keys = _.keys(data);
+			console.log(data);
 			return {
 				...state,
 				status: {
 					...state.status,
-					currency: keys[0],
-					price: round(data[keys[0]]),
-					market_cap: round(data[keys[1]]),
-					vol_24h: round(data[keys[2]]),
-					change_24h: round(data[keys[3]]),
+					currency: data.currency,
+					price: round(data.current_price),
+					market_cap: round(data.market_cap),
+					vol_24h: round(data.total_volume),
+					change_24h: round(data.percent_change_24h),
 					last_updated_at: data.last_updated_at,
 				},
 			};

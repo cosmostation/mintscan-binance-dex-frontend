@@ -18,7 +18,7 @@ const cx = classNames.bind(styles);
 
 export default function(props) {
 	const render = (
-		<div className={cx("footerWrapper")}>
+		<footer className={cx("footerWrapper")}>
 			<div className={cx("footer")}>
 				<div className={cx("footer-left")}>
 					<a>
@@ -78,7 +78,7 @@ export default function(props) {
 					</div>
 				</div>
 			</div>
-		</div>
+		</footer>
 	);
 	return useMemo(() => render, [render]);
 }

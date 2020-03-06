@@ -11,6 +11,7 @@ export const footerRender = (state, realTime, realTimeButtonClick, formattedMaxH
 	// console.log(state.maxIndex, state.isFront, state.pageData?.[0]?.[baseProperty]);
 	const jumpFront = () => {
 		if (state.isFront) return;
+		console.log("jump");
 		jumpToEnd(false);
 	};
 	// console.log("footer", state);

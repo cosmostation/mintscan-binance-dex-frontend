@@ -89,6 +89,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 		if (state.reset) {
 			//  real reset data
 			if (data?.paging?.total && data?.paging?.total === data?.data?.[0]?.height) {
+				// console.log("reset");
 				setRefinedQuery(history, updateQuery, 0);
 				if (!realTime) setRealTime(true);
 				return dispatch({

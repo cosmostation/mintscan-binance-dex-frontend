@@ -1,15 +1,12 @@
 @import "src/styles/utils";
 
 .routerContainer {
-	width: 1200px;
-	margin: 0 auto;
+	width: 100%;
+	//margin: 0 auto;
 	padding: calc(var(--heightHeader) + var(--heightSubHeader)) 0 0 0;
 
 	@include media("<large") {
-		width: 100%;
-		margin-left: auto;
-		margin-right: auto;
-		padding: var(--heightHeader) 10px 1.8rem 10px;
+		padding: var(--heightHeader) 15px 1.8rem 15px;
 	}
 
 	@include media("<medium") {

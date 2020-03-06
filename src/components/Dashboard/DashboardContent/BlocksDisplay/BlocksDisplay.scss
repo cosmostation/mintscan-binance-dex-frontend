@@ -6,7 +6,7 @@
 .BlocksDisplay-table {
 	overflow-x: auto;
 	overflow-y: hidden;
-	min-width: 450px;
+	min-width: 320px;
 
 	.tableHeaderCell {
 		@include tableHeaderCellWidth300;
@@ -18,8 +18,11 @@
 		min-width: 50px;
 	}
 
-	.proposerWidth {
+	.proposer {
 		min-width: 70px;
+		@include media("<dash_table_limit") {
+			display: none;
+		}
 	}
 
 	.timeWidth {

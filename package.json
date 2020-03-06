@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start": "REACT_APP_BUILD_ENV=prod REACT_APP_NODE_ENV=production node scripts/start.js",
-    "dev": "REACT_APP_BUILD_ENV=dev REACT_APP_NODE_ENV=development node scripts/start.js",
+    "start": "REACT_APP_BUILD_ENV=prod NODE_ENV=production node scripts/start.js",
+    "dev": "REACT_APP_BUILD_ENV=dev NODE_ENV=development node scripts/start.js",
     "build:dev": "REACT_APP_BUILD_ENV=dev NODE_ENV=development node scripts/build.js && yarn run delete-maps",
     "build:prod": "REACT_APP_BUILD_ENV=prod NODE_ENV=production node scripts/build.js && yarn run delete-maps",
 

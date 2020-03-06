@@ -128,6 +128,23 @@ module.exports = function(webpackEnv) {
 		return loaders;
 	};
 
+	const babelPlugins = [
+		[
+			require.resolve("babel-plugin-named-asset-import"),
+			{
+				loaderMap: {
+					svg: {
+						ReactComponent: "@svgr/webpack?-svgo,+titleProp,+ref![path]",
+					},
+				},
+			},
+		],
+		[require.resolve("@babel/plugin-proposal-throw-expressions")],
+		[require.resolve("@babel/plugin-proposal-optional-chaining")],
+	];
+	console.log("ISENVPRODUCTION", isEnvProduction);
+	if (isEnvProduction) babelPlugins.push([require.resolve("babel-plugin-transform-remove-console")]);
+
 	return {
 		mode: isEnvProduction ? "production" : isEnvDevelopment && "development",
 		// Stop compilation early in production
@@ -160,11 +177,11 @@ module.exports = function(webpackEnv) {
 			pathinfo: isEnvDevelopment,
 			// There will be one main bundle, and one file per asynchronous chunk.
 			// In development, it does not produce real files.
-			filename: isEnvProduction ? "static/js/[name].[contenthash:8].js" : isEnvDevelopment && "static/js/bundle.js",
+			filename: isEnvProduction ? "static/js/[name].[hash:8].js" : isEnvDevelopment && "static/js/bundle.js",
 			// TODO: remove this when upgrading to webpack 5
 			futureEmitAssets: true,
 			// There are also additional JS chunk files if you use code splitting.
-			chunkFilename: isEnvProduction ? "static/js/[name].[contenthash:8].chunk.js" : isEnvDevelopment && "static/js/[name].chunk.js",
+			chunkFilename: isEnvProduction ? "static/js/[name].[hash:8].chunk.js" : isEnvDevelopment && "static/js/[name].chunk.js",
 			// We inferred the "public path" (such as / or /my-project) from homepage.
 			// We use "/" in development.
 			publicPath: publicPath,
@@ -346,20 +363,7 @@ module.exports = function(webpackEnv) {
 							options: {
 								customize: require.resolve("babel-preset-react-app/webpack-overrides"),
 
-								plugins: [
-									[
-										require.resolve("babel-plugin-named-asset-import"),
-										{
-											loaderMap: {
-												svg: {
-													ReactComponent: "@svgr/webpack?-svgo,+titleProp,+ref![path]",
-												},
-											},
-										},
-									],
-									[require.resolve("@babel/plugin-proposal-throw-expressions")],
-									[require.resolve("@babel/plugin-proposal-optional-chaining")],
-								],
+								plugins: babelPlugins,
 								// This is a feature of `babel-loader` for webpack (not Babel itself).
 								// It enables caching results in ./node_modules/.cache/babel-loader/
 								// directory for faster rebuilds.
@@ -403,7 +407,7 @@ module.exports = function(webpackEnv) {
 							exclude: cssModuleRegex,
 							use: getStyleLoaders({
 								importLoaders: 1,
-								sourceMap: isEnvProduction && shouldUseSourceMap,
+								sourceMap: shouldUseSourceMap,
 							}),
 							// Don't consider CSS imports dead code even if the
 							// containing package claims to have no side effects.
@@ -433,6 +437,9 @@ module.exports = function(webpackEnv) {
 								{
 									importLoaders: 2,
 									sourceMap: isEnvProduction && shouldUseSourceMap,
+									modules: {
+										localIdentName: "[name]__[local]--[hash:base64:5]",
+									},
 								},
 								"sass-loader"
 							),

@@ -13,8 +13,19 @@
 		@include tableElemPadding;
 	}
 
+	.padding-right10 {
+		padding-right: 10px;
+	}
+	.padding-left10 {
+		padding-left: 10px;
+	}
+
+	.addrWidth {
+		min-width: 90px;
+	}
+
 	.txCell {
-		min-width: 126px + 53px;
+		min-width: 110px;
 	}
 
 	.valueCell {
@@ -36,7 +47,6 @@
 	line-height: 1.15;
 	letter-spacing: normal;
 	color: #4b525d;
-	min-width: 160px;
 
 	.type {
 		padding: 2px 10px;
@@ -63,4 +73,25 @@
 
 .currency {
 	font-size: 11px;
+}
+
+.TxList-thinTableRow {
+	.row {
+		width: 100%;
+		height: fit-content;
+		@include Flex_LeftRight;
+
+		font-family: "Open Sans", serif;
+		font-size: 13px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.38;
+		letter-spacing: normal;
+		text-align: left;
+		color: #222222;
+		padding: 5.5px 0;
+	}
+
+	padding: 4px 15px;
 }

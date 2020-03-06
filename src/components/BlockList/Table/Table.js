@@ -4,11 +4,12 @@ import classNames from "classnames/bind";
 //  utils
 import consts from "src/constants/consts";
 import useIndexedPagination from "src/hooks/useIndexedPagination";
+import useWindowSize from "src/hooks/useWindowSize";
 import {usePrevious} from "src/hooks";
 import {_, empty, formatNumber} from "src/lib/scripts";
 // components
 import {Fade, Table, TableBody, TableCell, TableHead, TableRow, Tooltip} from "@material-ui/core";
-import BlockListTableRow from "../TableRow";
+import BlockListTableRow, {TableRowThin} from "../TableRow";
 
 import tooltips from "src/constants/tooltips";
 import {footerRender} from "src/components/common/IndexedPagination/IndexedPagination";
@@ -18,6 +19,7 @@ const cx = classNames.bind(styles);
 const INDEX_DISPLAY_DECIMAL_PLACES = 4;
 const BASE_PROPERTY = "height";
 const PAGE_SIZE = 20;
+const TABLE_LIMIT = 780;
 
 export default function(props) {
 	const [loading, error, state, updateCurrentPage, jumpToEnd, [realTime, setRealTime], forceLoadAfter] = useIndexedPagination({
@@ -71,6 +73,30 @@ export default function(props) {
 		);
 	}, [state.pageData, state.pageSize]);
 
+	const thinTableBodyRender = useMemo(() => {
+		const {pageData} = state;
+		return (
+			<ul className={cx("thinTableRows-wrapper")}>
+				<div className={cx("tableDivider")} />
+				{_.map(empty(pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData, (v, idx) => {
+					if (v === undefined)
+						return (
+							<li>
+								<TableRowThin key={idx} blockData={{}} />
+								<div className={cx("tableDivider")} />
+							</li>
+						);
+					return (
+						<li>
+							<TableRowThin key={idx} blockData={v} />
+							<div className={cx("tableDivider")} />
+						</li>
+					);
+				})}
+			</ul>
+		);
+	}, [state.pageData, state.pageSize]);
+
 	const tableHeaderRender = useMemo(
 		() => (
 			<TableHead>
@@ -114,6 +140,7 @@ export default function(props) {
 				{tableBodyRender}
 			</Table>
 			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, jumpToEnd)}
+			<div className={cx("thinTable")}>{thinTableBodyRender}</div>
 		</div>
 	);
 }

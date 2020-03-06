@@ -23,10 +23,10 @@ export default function(props) {
 					<TableCell className={cx("tableHeaderCell", "heightWidth")} align='left'>
 						<span>Height</span>
 					</TableCell>
-					<TableCell className={cx("tableHeaderCell")} align='left'>
+					<TableCell className={cx("tableHeaderCell", "proposer")} align='left'>
 						Proposer
 					</TableCell>
-					<TableCell className={cx("tableHeaderCell", "middleWidth")} align='right'>
+					<TableCell className={cx("tableHeaderCell")} align='right'>
 						Txs
 					</TableCell>
 					<TableCell className={cx("tableHeaderCell", "timeWidth")} align='right'>

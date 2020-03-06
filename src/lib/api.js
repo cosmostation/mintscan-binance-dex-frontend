@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import consts from "src/constants/consts";
 
 const coinGeckoAPI = "https://api.coingecko.com/api/v3";
@@ -9,10 +8,7 @@ export const getMaxHeight = cancelToken => {
 };
 
 export const getBasicData = (id, currency, cancelToken) => {
-	return axios.get(
-		`${coinGeckoAPI}/simple/price?ids=${id}&vs_currencies=${currency}&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`,
-		{cancelToken}
-	);
+	return axios.get(`${consts.API_BASE}/market?id=${id}`, {cancelToken});
 };
 
 export const getCoinData = (id, cancelToken) => {
@@ -22,5 +18,6 @@ export const getCoinData = (id, cancelToken) => {
 };
 
 export const getMarketChartRange = (id, currency, from, to, cancelToken) => {
-	return axios.get(`${coinGeckoAPI}/coins/binancecoin/market_chart/range?id=${id}&vs_currency=${currency}&from=${from}&to=${to}`, {cancelToken});
+	// return axios.get(`${coinGeckoAPI}/coins/binancecoin/market_chart/range?id=${id}&vs_currency=${currency}&from=${from}&to=${to}`, {cancelToken});
+	return axios.get(`${consts.API_BASE}/market/chart?id=${id}`, {cancelToken});
 };

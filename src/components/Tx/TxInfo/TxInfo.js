@@ -13,7 +13,7 @@ import InfoRow from "src/components/common/InfoRow";
 
 const successSVG = process.env.PUBLIC_URL + "/assets/transactions/success_ic.svg";
 const failSVG = process.env.PUBLIC_URL + "/assets/transactions/fail_ic.svg";
-const cx = cn.bind("styles");
+const cx = cn.bind(styles);
 
 export default function({txData}) {
 	const value = txData?.messages?.[0]?.value;

@@ -20,7 +20,7 @@ export default function({blockData}) {
 			<TableCell className={cx("tablePointerCell", "text")} align='left'>
 				{pickData(blockData, cx, CELL_TYPES[1])}
 			</TableCell>
-			<TableCell className={cx("tableCell")} align='right'>
+			<TableCell className={cx("tableCell", "height")} align='right'>
 				{blockData.height ? (
 					<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height}`}>
 						{blockData.height}{" "}
@@ -30,14 +30,7 @@ export default function({blockData}) {
 				)}
 			</TableCell>
 			<TableCell className={cx("tableCell", "time")} align='right'>
-				{blockData.timestamp ? (
-					<>
-						{totalTime(blockData.timestamp)}
-						<br />({setAgoTime(blockData.timestamp)})
-					</>
-				) : (
-					<Skeleton />
-				)}
+				{blockData.timestamp ? <>{setAgoTime(blockData.timestamp)}</> : <Skeleton />}
 			</TableCell>
 		</TableRow>
 	);

@@ -3,26 +3,59 @@
 .txListTableWrapper {
 	overflow-x: auto;
 	overflow-y: hidden;
+
+	.table {
+		@include media("<table_limit") {
+			display: none;
+		}
+		min-width: 600px;
+
+		.tableHeaderCell {
+			@include tableHeaderCellWidth300;
+			@include tableElemPadding;
+			color: var(--colorMainText);
+		}
+		.padding-right10 {
+			padding-right: 10px;
+		}
+		.padding-left10 {
+			padding-left: 10px;
+		}
+		.addrWidth {
+			min-width: 90px;
+		}
+
+		.txHashWidth {
+			width: 110px;
+		}
+
+		.currencyWidth {
+			width: 144px;
+		}
+
+		.txsWidth {
+			width: 100px;
+		}
+	}
+	.thinTable {
+		@include media(">table_limit") {
+			display: none;
+		}
+		.thinTableRows-wrapper {
+			>:nth-child(even) {
+				background-color: #fbfbfc;
+			}
+		}
+
+		margin: 20px 0;
+		width: 100%;
+		height: fit-content;
+		padding: 16px 0;
+	}
 }
 
-.table {
-	min-width: 1000px;
-
-	.tableHeaderCell {
-		@include tableHeaderCellWidth300;
-		@include tableElemPadding;
-		color: var(--colorMainText);
-	}
-
-	.heightWidth {
-		width: 150px;
-	}
-
-	.currencyWidth {
-		width: 144px;
-	}
-
-	.txsWidth {
-		width: 100px;
-	}
+.tableDivider {
+	width: 100%;
+	height: 0;
+	border: solid 1px #e6e6e6;
 }

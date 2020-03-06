@@ -8,7 +8,7 @@ import {usePrevious} from "src/hooks";
 import {_, empty, formatNumber} from "src/lib/scripts";
 // components
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
-import TxListTableRow from "../TableRow";
+import TxListTableRow, {TableRowThin} from "../TableRow";
 import {footerRender} from "src/components/common/IndexedPagination/IndexedPagination";
 
 const INDEX_DISPLAY_DECIMAL_PLACES = 3;
@@ -79,6 +79,30 @@ export default function(props) {
 		);
 	}, [state.pageData, state.pageSize]);
 
+	const thinTableBodyRender = useMemo(() => {
+		const {pageData} = state;
+		return (
+			<ul className={cx("thinTableRows-wrapper")}>
+				<div className={cx("tableDivider")} />
+				{_.map(empty(pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData, (v, idx) => {
+					if (v === undefined)
+						return (
+							<li>
+								<TableRowThin key={idx} blockData={{}} />
+								<div className={cx("tableDivider")} />
+							</li>
+						);
+					return (
+						<li>
+							<TableRowThin key={idx} blockData={v} />
+							<div className={cx("tableDivider")} />
+						</li>
+					);
+				})}
+			</ul>
+		);
+	}, [state.pageData, state.pageSize]);
+
 	return (
 		<div className={cx("txListTableWrapper")}>
 			<Table className={cx("table")}>
@@ -86,6 +110,7 @@ export default function(props) {
 				{tableBodyRender}
 			</Table>
 			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, cx)}
+			<div className={cx("thinTable")}>{thinTableBodyRender}</div>
 		</div>
 	);
 }
@@ -93,18 +118,18 @@ export default function(props) {
 export const txTableHeader = (
 	<TableHead>
 		<TableRow>
-			<TableCell className={cx("tableHeaderCell", "heightWidth")}>Tx Hash</TableCell>
+			<TableCell className={cx("tableHeaderCell", "txHashWidth")}>Tx Hash</TableCell>
 			<TableCell className={cx("tableHeaderCell")}>Type</TableCell>
-			<TableCell className={cx("tableHeaderCell")} align='left'>
+			<TableCell className={cx("tableHeaderCell", "addrWidth")} align='left'>
 				From
 			</TableCell>
-			<TableCell className={cx("tableHeaderCell")} align='left'>
+			<TableCell className={cx("tableHeaderCell", "addrWidth")} align='left'>
 				To
 			</TableCell>
-			<TableCell className={cx("tableHeaderCell")} align='right'>
+			<TableCell className={cx("tableHeaderCell", "padding-right10")} align='right'>
 				<span>Value</span>
 			</TableCell>
-			<TableCell className={cx("tableHeaderCell", "currencyWidth")} align='left'>
+			<TableCell className={cx("tableHeaderCell", "padding-left10", "currencyWidth")} align='left'>
 				Currency
 			</TableCell>
 			<TableCell className={cx("tableHeaderCell", "heightWidth")} align='right'>

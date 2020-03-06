@@ -15,6 +15,7 @@ export default function({blockData, history}) {
 	//  apply proper fee when applicable
 	const fee = "0.000000";
 	const split = fee.split(".");
+	console.log(blockData);
 
 	return React.useMemo(
 		() => (
@@ -34,26 +35,32 @@ export default function({blockData, history}) {
 					</InfoRow>
 					<InfoRow label={"Number of Tx"}>{blockData?.txs.length}</InfoRow>
 					<InfoRow label={"Node"}>{blockData?.moniker}</InfoRow>
-					<div className={cx("rewardRow")}>
-						<div className={cx("row-label")}>RewardedTo / Fee</div>
-						<div className={cx("row-content")}>
-							<ul className={cx("label-wrapper")}>
-								<li>RewardTo</li>
-								<li>Fee</li>
-							</ul>
-							<ul className={cx("value-wrapper")}>
-								<li>
-									<NavLink className={cx("blueLink")} to={"/address/bnb16k0gajcczwgymfkk0zsysjzl0sxyxdfckplxlr"}>
-										bnb16k0gajcczwgymfkk0zsysjzl0sxyxdfckplxlr
-									</NavLink>
-									- 고정값
-								</li>
-								<li>
-									<span>{formatNumber(split[0])}</span>.<span className={cx("text", "decimal")}>{split[1]}</span> <span className={cx("BNB")}>BNB</span>
-								</li>
-							</ul>
-						</div>
-					</div>
+					<InfoRow label={"Block Time"}>
+						<span className={cx("no-transform")}>in 438 ms</span>
+					</InfoRow>
+					<InfoRow label={"Fee"}>
+						<span>{formatNumber(split[0])}</span>.<span className={cx("decimal")}>{split[1]}</span> <span className={cx("BNB")}>BNB</span>
+					</InfoRow>
+					{/*<div className={cx("rewardRow")}>*/}
+					{/*	<div className={cx("row-label")}>RewardedTo / Fee</div>*/}
+					{/*	<div className={cx("row-content")}>*/}
+					{/*		<ul className={cx("label-wrapper")}>*/}
+					{/*			<li>RewardTo</li>*/}
+					{/*			<li>Fee</li>*/}
+					{/*		</ul>*/}
+					{/*		<ul className={cx("value-wrapper")}>*/}
+					{/*			<li>*/}
+					{/*				<NavLink className={cx("blueLink")} to={"/address/bnb16k0gajcczwgymfkk0zsysjzl0sxyxdfckplxlr"}>*/}
+					{/*					bnb16k0gajcczwgymfkk0zsysjzl0sxyxdfckplxlr*/}
+					{/*				</NavLink>*/}
+					{/*				- 고정값*/}
+					{/*			</li>*/}
+					{/*			<li>*/}
+					{/*				<span>{formatNumber(split[0])}</span>.<span className={cx("text", "decimal")}>{split[1]}</span> <span className={cx("BNB")}>BNB</span>*/}
+					{/*			</li>*/}
+					{/*		</ul>*/}
+					{/*	</div>*/}
+					{/*</div>*/}
 				</div>
 			</div>
 		),

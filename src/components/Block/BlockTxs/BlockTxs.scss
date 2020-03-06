@@ -9,5 +9,16 @@
 	}
 	.table {
 		margin: 0 0 20px 0;
+		@include media("<table_limit") {
+			display: none;
+		}
+	}
+	.thinTable {
+		@include media(">=table_limit") {
+			display: none;
+		}
+		>:nth-child(even) {
+			background-color: #fbfbfc;
+		}
 	}
 }

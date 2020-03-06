@@ -1,0 +1,109 @@
+@import "src/styles/utils";
+
+.statuscard-wrapper {
+  @include card-nopadding-wrapper;
+  margin-bottom: 15px;
+  .wrapper {
+    display: flex;
+    flex-flow: column;
+    width: 288.7px;
+    height: 124px;
+
+    padding: 16px 21px 15px 20px;
+
+    @include media("<medium") {
+      height: 60px;
+    }
+    .asset-graph-wrapper {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+      height: fit-content;
+      .asset {
+        display: flex;
+        height: 30px;
+
+        img {
+          object-fit: contain;
+          width: 30px;
+          margin-right: 9px;
+        }
+
+        .name {
+          margin: auto 0;
+          height: 22px;
+          font-size: 18px;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.22;
+          letter-spacing: normal;
+          text-align: left;
+          color: #222222;
+        }
+      }
+      .graph-wrapper {
+        height: 47px;
+        width: 96px;
+        text-align: center;
+      }
+
+      margin-bottom: 7px;
+    }
+    .price-percentage-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      height: 22px;
+      width: 100%;
+      .price {
+        font-size: 15px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.27;
+        letter-spacing: normal;
+        text-align: left;
+        color: #222222;
+        span {
+          font-size: 18px;
+        }
+      }
+      .percentage {
+        height: 16px;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        img {
+          height: 16px;
+          width: 16px;
+          object-fit: contain;
+          margin-right: 3px;
+        }
+        span {
+          font-size: 12px;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.25;
+          letter-spacing: normal;
+          text-align: left;
+          color: #4b525d;
+        }
+      }
+      margin-bottom: 4px;
+    }
+    .market-cap {
+      height: 16px;
+      font-size: 13px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.23;
+      letter-spacing: normal;
+      text-align: left;
+      color: #4b525d;
+    }
+  }
+}

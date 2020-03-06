@@ -1,4 +1,4 @@
-const api = process.env.REACT_APP_BUILD_ENV === "production" ? "https://lcd-binance-mainnet.cosmostation.io" : "https://api-binance-testnet.cosmostation.io/v1";
+const api = process.env.NODE_ENV === "production" ? "https://lcd-binance-mainnet.cosmostation.io" : "https://api-binance-testnet.cosmostation.io/v1";
 
 export default Object.freeze({
 	API_BASE: api,

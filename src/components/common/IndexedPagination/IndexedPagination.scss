@@ -8,6 +8,12 @@
 	align-items: flex-end;
 	justify-content: flex-end;
 
+	@include media("<table_limit") {
+		position: relative;
+		top: 15px;
+		height: 20px;
+	}
+
 	.paginationWrapper {
 		width: 496px;
 		height: 24px;
@@ -66,6 +72,10 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
+
+			@include media("<small") {
+				display: none;
+			}
 
 			& > p {
 				height: 18px;

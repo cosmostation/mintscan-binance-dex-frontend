@@ -4,36 +4,40 @@ import moment from "moment";
 const now = new moment();
 
 export default Object.freeze({
-	height: 69763802,
+	height: 71997801,
 	result: true,
-	tx_hash: "A60189E7F5265E67D317E8A5D464F044FA97B30330009DE336E98F4A1649229D",
+	tx_hash: "7577467833A9FAB21DCDE99177A8F397E820F65DEAA0A3EBC66B10717FA588F0",
 	messages: [
 		{
-			type: "dex/NewOrder",
+			type: "cosmos-sdk/MsgSubmitProposal",
 			value: {
-				id: "88E78538A4AC1EA4BAECBD46769B576B80C6DC29-198732",
-				side: 1,
-				price: "523426",
-				sender: "tbnb13rnc2w9y4s02fwhvh4r8dx6hdwqvdhpfg0w35w",
-				symbol: "AVA-645_BNB",
-				quantity: "39600000000",
-				ordertype: 2,
-				timeinforce: 1,
+				title: "list XRPBEAR-00B/BNB",
+				proposer: "bnb1ff4r0t7j8ll8lf3gm2ltdu3hjy4w690j7vvees",
+				description:
+					'{"base_asset_symbol":"XRPBEAR-00B","quote_asset_symbol":"BNB","init_price":3700000000,"description":"list XRPBEAR-00B/BNB","expire_time":"2020-03-17T19:49:51-07:00"}',
+				proposal_type: "ListTradingPair",
+				voting_period: "86400000000000",
+				initial_deposit: [
+					{
+						denom: "BNB",
+						amount: "100000000000",
+					},
+				],
 			},
 		},
 	],
 	signatures: [
 		{
-			pubkey: "bcap1addwnpepqgzm63m6yf3vvjkfhzu0cdjfgqrdf9yyncmet7qq5z5n84fweuulc5tlgd4",
-			address: "88E78538A4AC1EA4BAECBD46769B576B80C6DC29",
-			sequence: "198731",
-			signature: "cIFbID6gBlwuELG6s/Xfq1ltiCSTd8nEbXqxtg1gSLQWmPYYWzJswEpG/x3PekRZG0BHAm9X8SpD7IxiIFTgXA==",
-			account_number: "317186",
+			pubkey: "bcap1addwnpepq2jfeyf02pxsum6c65226ktp5lptvutqw98hx5unfqmfed90hlp9wwvcazk",
+			address: "4A6A37AFD23FFE7FA628DABEB6F237912AED15F2",
+			sequence: "64",
+			signature: "DELNhR11lgb1ifaPWxArGBUNmx1nyvXwXQdJiYHKWXAaU5jW6xQ7oLof7J4HblxrzZbWQsMtgfSoPjqA2fLojQ==",
+			account_number: "341626",
 		},
 	],
 	memo: "",
 	code: 0,
-	timestamp: "2020-02-21T17:45:33.411912Z",
+	timestamp: "2020-03-03T04:26:29.948035Z",
 });
 
 //  examples

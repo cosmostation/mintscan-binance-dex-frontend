@@ -5,6 +5,7 @@
 	width: 100%;
 	height: var(--heightFooter);
 	background: var(--colorFooterBG);
+	overflow-x: hidden;
 
 	@include media("<medium") {
 		height: 360px;

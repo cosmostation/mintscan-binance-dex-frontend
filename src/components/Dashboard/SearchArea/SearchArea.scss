@@ -1,7 +1,7 @@
 @import "src/styles/utils";
 
 .SearchArea {
-	width: 100vw;
+	width: 100%;
 	height: 344px;
 
 	position: relative;
@@ -11,19 +11,20 @@
 
 	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/assets/dashboard/main_img.png") no-repeat fixed center center;
 	background-position-y: inherit;
-	margin-left: calc((1200px - 100vw) / 2);
-	@include media(">wide") {
+	@include media(">1880px") {
 		background-size: cover;
 	}
 	@include media("<large") {
-		margin-left: -5vw;
-		width: 105vw;
 		height: 290px;
+		width: calc(100% + 30px);
+		margin-left: -15px;
 	}
 
 	@include media("<medium") {
 		background: #222222;
 		height: 230px;
+		width: calc(100% + 20px);
+		margin-left: -10px;
 	}
 	@include media("<small") {
 		height: 200px;
