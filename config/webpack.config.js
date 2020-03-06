@@ -142,7 +142,6 @@ module.exports = function(webpackEnv) {
 		[require.resolve("@babel/plugin-proposal-throw-expressions")],
 		[require.resolve("@babel/plugin-proposal-optional-chaining")],
 	];
-	console.log("ISENVPRODUCTION", isEnvProduction);
 	if (isEnvProduction) babelPlugins.push([require.resolve("babel-plugin-transform-remove-console")]);
 
 	return {

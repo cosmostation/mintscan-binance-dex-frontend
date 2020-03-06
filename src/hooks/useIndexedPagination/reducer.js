@@ -9,7 +9,7 @@ export const initialState = {
 	isFront: null,
 	error: false,
 	pageSize: null,
-	reset: false,
+	reset: 0, //  1 -> front, 2 -> back
 	isNoMore: false, //  reached end
 };
 
@@ -26,24 +26,25 @@ export const RESET = "RESET"; //  reset(to initial initial_load again
 export const TO_END = "TO_END";
 
 export default function(state, action) {
-	// console.log("reducer>>>", action.type, _.cloneDeep(state));
+	console.log("reducer>>>", action.type, _.cloneDeep(state));
 	switch (action.type) {
 		case INITIAL_LOAD: {
 			const {data, pageSize, index, maxIndex} = action.payload;
 			if (empty(data)) return {...state, error: true};
-			return {...state, maxIndex, allData: data, isFront: true, index, pageSize, reset: false};
+			return {...state, maxIndex, allData: data, isFront: true, index, pageSize, reset: 0};
 		}
 		case INITIAL_LOAD_QUERY: {
 			const {data, pageSize, index, maxIndex} = action.payload;
 			const allData = data;
 			if (_.isNil(allData)) return {...state, error: true};
-			return {...state, allData, isFront: false, index, pageSize, maxIndex};
+			return {...state, allData, isFront: false, index, pageSize, maxIndex, reset: 0, isNoMore: state.isNoMore === false && state.reset === 2};
 		}
 		case EXTRA_LOAD_INIT: {
 			return {...state, params: {after: action.payload.after}};
 		}
 		case EXTRA_LOAD: {
 			const defaultParams = {params: {after: null}, maxIndex: action.payload.maxIndex};
+			if (state.params.after === false && action.payload.data.length < state.pageSize) defaultParams.isNoMore = true;
 			if (!action.payload.loading) {
 				_.assign(defaultParams, {isFront: state.index[0] === 0 && action.payload.data.length < state.pageSize});
 			}
@@ -96,8 +97,9 @@ export default function(state, action) {
 		case UPDATE_ISFRONT: {
 			return {...state, isFront: true};
 		}
-		case RESET:
-			return {...initialState, reset: true};
+		case RESET: {
+			return {...initialState, reset: action.payload.reset};
+		}
 		default:
 			return {...initialState};
 	}

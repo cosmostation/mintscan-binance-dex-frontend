@@ -50,7 +50,7 @@ export default function(props) {
 			// console.log("setRealTimeFalse");
 			setRealTime(false);
 		}
-		if (!after && state.index[1] + state.pageSize > state.maxIndexed) return;
+		if (!after && state.index[1] + state.pageSize > state.maxIndex) return;
 		updateCurrentPage(after);
 		// console.log("clicked next");
 	};
@@ -61,7 +61,7 @@ export default function(props) {
 		const {pageData} = state;
 		return (
 			<TableBody>
-				{_.map(empty(pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData, (v, idx) => {
+				{_.map(empty(pageData) || pageData.length < PAGE_SIZE ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData, (v, idx) => {
 					if (v === undefined) return <BlockListTableRow key={idx} blockData={{}} />;
 					// TODO - fix this
 					//  it is optimal to use 'v[BASE_PROPERTY]' as key but it scrolls to bottom of page

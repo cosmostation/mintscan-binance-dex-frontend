@@ -79,8 +79,8 @@ export default function({blockData}) {
 				{blockData.moniker ? <NavLink to={`/validators/${blockData.proposer}`}>{blockData.moniker}</NavLink> : <Skeleton />}
 			</TableCell>
 			<TableCell className={cx("tableCell", "text")} align='right'>
-				000,000.<span className={"decimal"}>00000</span>
-				<span className={"BNB"}>BNB</span>
+				000,000.<span className={cx("decimal")}>00000</span>
+				<span className={cx("BNB")}>BNB</span>
 			</TableCell>
 			<TableCell className={cx("tableCell")} align='right'>
 				{blockData.height ? blockData.num_txs ? blockData.num_txs : "0" : <Skeleton />}

@@ -86,16 +86,32 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 			dispatch({type: UPDATE_ISFRONT});
 		}
 		if (!_.isNil(error) || (_.isNil(data?.data) && !_.isBoolean(state.params.after))) return;
-		if (state.reset) {
+		if (state.reset !== 0) {
 			//  real reset data
 			if (data?.paging?.total && data?.paging?.total === data?.data?.[0]?.height) {
-				// console.log("reset");
-				setRefinedQuery(history, updateQuery, 0);
-				if (!realTime) setRealTime(true);
-				return dispatch({
-					type: INITIAL_LOAD,
-					payload: {data: data.data, pageSize, index: [0, pageSize - 1], maxIndex: Number(data.paging.total)},
-				});
+				if (state.reset === 1) {
+					setRefinedQuery(history, updateQuery, 0);
+					if (!realTime) setRealTime(true);
+					return dispatch({
+						type: INITIAL_LOAD,
+						payload: {data: data.data, pageSize, index: [0, pageSize - 1], maxIndex: Number(data.paging.total)},
+					});
+				}
+				return;
+			} else if (data?.paging?.total && data?.data?.[0]?.height <= 3) {
+				if (state.reset === 2) {
+					setRefinedQuery(history, updateQuery, 10000003);
+					if (realTime) setRealTime(false);
+					getInitialLoadQuery(refinedQuery, {
+						data: _.reverse(data.data),
+						maxIndex: Number(data.paging.total),
+						pageSize,
+						index: [0, pageSize - 1],
+					});
+					dispatch({type: EXTRA_LOAD_INIT, payload: {after: true}}); //  query for the ones before as well
+				} else {
+					throw new Error(`state.reset is not 1 or 2 - ${state.reset}`);
+				}
 			}
 			return;
 		}
@@ -137,16 +153,17 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 					dispatch({type: EXTRA_LOAD_FAIL});
 			}
 		}
-
-		async function getInitialLoadQuery(refinedQuery, payload) {
-			return dispatch({type: INITIAL_LOAD_QUERY, payload: {...payload}});
-		}
 	}, [error, data, pageSize, state.index]);
+
+	async function getInitialLoadQuery(refinedQuery, payload) {
+		return dispatch({type: INITIAL_LOAD_QUERY, payload: {...payload}});
+	}
 
 	//  when resetting
 	useEffect(() => {
-		if (state.reset) {
-			refetch({path: `${path}?limit=${limit}`});
+		if (state.reset !== 0) {
+			if (state.reset === 1) refetch({path: `${path}?limit=${limit}`});
+			else if (state.reset === 2) refetch({path: `${path}?limit=${limit}&after=0`});
 		}
 	}, [state.reset]);
 
@@ -157,7 +174,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 		if (!(state.isFront !== true && state.params.after !== false && state.index[0] === 0)) {
 			dispatch({type: PAGE_CHANGE, payload: {after: state.params.after}});
 		}
-		if (state.params.after === false) {
+		if (state.params.after === false && !state.isNoMore) {
 			//  case, not enough left (pageSize*SPARE_PAGE_CNT) => trigger refetch
 			// console.log("compare", state.index[1] + pageSize, "??", state.allData.length - 1 - pageSize * SPARE_PAGE_CNT);
 			if (state.index[1] + pageSize > state.allData.length - 1 - pageSize * SPARE_PAGE_CNT && !state.isNoMore) {
@@ -187,11 +204,13 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 	const jumpToEnd = useCallback(
 		bool => {
 			// console.log("jumped", bool, state);
-			if (!!bool && !!state.isNoMore) return;
+			if (!!bool && state.isNoMore) return;
 			// already end
 			else if (!bool && !!state.isFront) return; // already front
-			if (!bool) {
-				dispatch({type: RESET});
+			if (bool) {
+				dispatch({type: RESET, payload: {reset: 2}});
+			} else {
+				dispatch({type: RESET, payload: {reset: 1}});
 			}
 		},
 		[path, limit]
@@ -201,7 +220,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 
 	//  data refining process
 	const getPageData = useCallback(() => {
-		return _.slice(state.allData, state.index[0], state.index[1]);
+		return _.slice(state.allData, state.index[0], state.index[1] + 1);
 	}, [state.allData, state.index, data]);
 	const pageData = useMemo(() => getPageData(), [getPageData]);
 

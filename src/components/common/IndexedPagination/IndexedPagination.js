@@ -9,10 +9,15 @@ const cx = cn.bind(styles);
 //  memoize this in the future
 export const footerRender = (state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, baseProperty, indexDisplayDecimals, jumpToEnd) => {
 	// console.log(state.maxIndex, state.isFront, state.pageData?.[0]?.[baseProperty]);
-	const jumpFront = () => {
+	const jumpEnd = bool => {
 		if (state.isFront) return;
 		console.log("jump");
-		jumpToEnd(false);
+		jumpToEnd(bool);
+	};
+	const forceInActive = state.pageData[0] === undefined;
+	const onPageClick = bool => {
+		if (forceInActive) return;
+		onePageClick(bool);
 	};
 	// console.log("footer", state);
 	return (
@@ -34,16 +39,16 @@ export const footerRender = (state, realTime, realTimeButtonClick, formattedMaxH
 				<div className={cx("buttonsWrapper")}>
 					<img
 						alt={"first"}
-						className={cx("last", "flip", {inactive: state.isFront && state.maxIndex === state.pageData?.[0]?.[baseProperty]})}
-						onClick={jumpFront}
+						className={cx("last", "flip", {inactive: forceInActive || (state.isFront && state.maxIndex === state.pageData?.[0]?.[baseProperty])})}
+						onClick={() => jumpEnd(false)}
 					/>
 					<img
 						alt={"left"}
-						className={cx("right", "flip", {inactive: state.isFront && state.maxIndex === state.pageData?.[0]?.[baseProperty]})}
-						onClick={() => onePageClick(true)}
+						className={cx("right", "flip", {inactive: forceInActive || (state.isFront && state.maxIndex === state.pageData?.[0]?.[baseProperty])})}
+						onClick={() => onPageClick(true)}
 					/>
-					<img alt={"right"} className={cx("right", {inactive: state.index[1] + state.pageSize > state.maxIndex})} onClick={() => onePageClick(false)} />
-					<img alt={"last"} className={cx("last")} onClick={() => null} />
+					<img alt={"right"} className={cx("right", {inactive: state.index[1] + state.pageSize > state.maxIndex})} onClick={() => onPageClick(false)} />
+					<img alt={"last"} className={cx("last")} onClick={() => jumpEnd(true)} />
 				</div>
 			</div>
 		</div>
