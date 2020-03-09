@@ -1,10 +1,6 @@
 @import "src/styles/utils";
 
-.TxList {
-	display: flex;
-	flex-flow: column;
-	justify-content: center;
-
+.TxList-wrapper {
 	@include page-wrapper;
 
 	.Card {

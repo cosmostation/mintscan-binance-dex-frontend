@@ -24,7 +24,7 @@ export default function(props) {
 		return <NotFound />;
 	}
 	return (
-		<div className={cx("Tx")}>
+		<div className={cx("Tx-wrapper")}>
 			<TitleWrapper>
 				<PageTitle title={"Transaction details"} />
 			</TitleWrapper>

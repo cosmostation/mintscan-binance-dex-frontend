@@ -1,9 +1,13 @@
 import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./SearchArea.scss";
-//  components
-import {InputBase} from "@material-ui/core";
 
+//  hooks
+import {useSearch} from "src/hooks";
+
+//  components
+import SearchArea from "src/components/common/SearchArea";
+import {InputBase} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import consts from "src/constants/consts";
 import LinkCard from "src/components/Dashboard/LinkCard";
@@ -14,6 +18,7 @@ const cx = cn.bind(styles);
 
 export default function(props) {
 	const [input, setInput] = React.useState("");
+	const search = useSearch();
 
 	const onKeyPress = e => {
 		if (e.key === "Enter") clickSearch();
@@ -22,7 +27,7 @@ export default function(props) {
 		setInput(e.target.value);
 	};
 	const clickSearch = e => {
-		alert(`searching => ${input}`);
+		search(input);
 		setInput("");
 	};
 	return (
@@ -35,18 +40,7 @@ export default function(props) {
 					<p className={cx("byCosmostation")}>By Cosmostation</p>
 				</div>
 				<div className={cx("search-wrapper")}>
-					<div className={cx("search")}>
-						<InputBase
-							className={cx("input")}
-							placeholder='Search by Block, transaction, asset, address or orderid...'
-							onKeyPress={onKeyPress}
-							onChange={onChange}
-							value={input}
-						/>
-						<button className={cx("searchBtn")} onClick={clickSearch}>
-							<SearchIcon style={{color: "#fff"}} />
-						</button>
-					</div>
+					<SearchArea cx={cx} />
 				</div>
 				<div className={cx("link-wrapper")}>
 					{/* googel, appstore, web wallet */}

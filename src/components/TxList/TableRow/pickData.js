@@ -77,6 +77,8 @@ export default function(blockData, cx, cell) {
 				if (blockData?.messages?.[0].type === txTypes.DEX.ORDER_NEW) {
 					const symbol = blockData?.messages?.[0]?.value?.symbol;
 					if (_.isString(symbol)) ret = symbol.split("_")[1];
+				} else if (blockData?.messages?.[0].type === txTypes.COSMOS.SEND) {
+					ret = blockData?.messages?.[0]?.value?.inputs?.[0]?.coins?.[0]?.denom;
 				}
 			}
 			if (!empty(ret)) {

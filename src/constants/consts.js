@@ -9,7 +9,7 @@ export default Object.freeze({
 	},
 	BINANCE_API_BASE: " https://explorer.binance.org/api/v1/",
 	BINANCE_API: {
-		ASSETS: "/assets",
+		ASSETS: "/assets?page=1?rows=1000",
 		ASSET: "/asset",
 		ASSET_HOLDERS: "/asset-holders",
 		ASSET_TX: "/txs",

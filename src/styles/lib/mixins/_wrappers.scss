@@ -20,6 +20,10 @@
 }
 
 @mixin page-wrapper {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+
 	width: 1200px;
 	margin: var(--mainDefaultPaddingTop) auto 0;
 

@@ -2,13 +2,13 @@ import React, {useCallback, useMemo, useState} from "react";
 import cn from "classnames/bind";
 import styles from "./SearchAppBar.scss";
 import _ from "lodash";
-//  router
 import {NavLink, useHistory} from "react-router-dom";
-//  material ui
-import {IconButton, InputBase, Toolbar} from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
+
+//  components
+import SearchArea from "src/components/common/SearchArea";
+import {IconButton, Toolbar} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-//  assets
+
 import consts from "src/constants/consts";
 
 const arrowDown = process.env.PUBLIC_URL + "/assets/icons/common/arrow-down.svg";
@@ -26,7 +26,6 @@ const tokenImg = [cosmos, kava, iris];
 export default function(props) {
 	const history = useHistory();
 	const [open, setOpen] = useState(false);
-	const [search, setSearch] = useState("");
 
 	const toMain = useCallback(() => history.push("/"), [history]);
 
@@ -40,32 +39,15 @@ export default function(props) {
 		[setOpen]
 	);
 
-	const handleSearch = useCallback(async searchText => {
-		alert(`searchText => ${searchText}, add logic plz`);
-	}, []);
-
-	const handleKeyPress = useCallback(
-		e => {
-			if ((e.which === 13 || e.keyCode === 13) && e.target.value) handleSearch(e.target.value);
-		},
-		[handleSearch]
-	);
-
-	const handleInputChange = e => setSearch(e.target.value);
-
-	const clickSearch = useCallback(() => handleSearch(search), [handleSearch, search]);
-
 	const render = useCallback(
-		(search, open) => {
-			console.log("rerender");
+		open => {
+			console.count("rerender");
 			return (
 				<div className={cx("SearchAppBar-root")}>
 					<Toolbar className={cx("toolbar")}>
 						<NavLink to='/' onClick={toMain}>
 							<img src={logo} alt={"logo"} />
 						</NavLink>
-
-						{/* network select */}
 						<div className={cx("select-wrapper")}>
 							<div className={cx("net-select-wrapper")}>
 								<button className={cx("select-btn")} onClick={() => setOpen(v => !v)}>
@@ -93,17 +75,7 @@ export default function(props) {
 									))}
 								</div>
 							</div>
-							<div className={cx("search")}>
-								<InputBase
-									className={cx("input")}
-									placeholder='Search by Block, transaction, asset, address or orderid...'
-									onKeyPress={handleKeyPress}
-									onChange={handleInputChange}
-								/>
-								<button className={cx("searchBtn")} onClick={clickSearch}>
-									<SearchIcon style={{color: "#fff"}} />
-								</button>
-							</div>
+							<SearchArea cx={cx} />
 							{/* hamburger button */}
 							<IconButton className={cx("menuButton")} color='inherit' onClick={props.hamburgerClick}>
 								<MenuIcon />
@@ -113,8 +85,7 @@ export default function(props) {
 				</div>
 			);
 		},
-		[clickSearch, handleKeyPress, props.hamburgerClick, toMain, handleChange]
+		[props.hamburgerClick, toMain, handleChange]
 	);
-
-	return useMemo(() => render(search, open), [render, search, open]);
+	return useMemo(() => render(open), [render, open]);
 }

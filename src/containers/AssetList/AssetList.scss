@@ -1,10 +1,6 @@
 @import "src/styles/utils";
 
 .AssetList {
-	display: flex;
-	flex-flow: column;
-	justify-content: center;
-
 	@include page-wrapper;
 
 	.StatusCard-grid {

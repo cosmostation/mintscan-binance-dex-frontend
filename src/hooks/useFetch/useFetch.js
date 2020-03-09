@@ -24,12 +24,8 @@ export default function(inputUrl, method = "get") {
 			})
 			.catch(ex => {
 				if (!unmounted) {
-					if (ex.response.status === 404) {
-						dispatch({type: SUCCESS, payload: {data: []}});
-					} else {
-						console.warn("error during fetch", ex);
-						dispatch({type: ERROR, payload: {errorMessage: ex.message}});
-					}
+					console.warn("error during fetch", ex);
+					dispatch({type: ERROR, payload: {errorMessage: ex.message}});
 				}
 			});
 		return () => {

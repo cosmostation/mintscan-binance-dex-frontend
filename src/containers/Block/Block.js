@@ -25,6 +25,8 @@ export default function(props) {
 			if (!_.isNil(height)) {
 				history.replace(`/blocks/${height}`);
 			}
+		} else if (data.data?.data?.[0]?.height && height !== data.data?.data?.[0]?.height) {
+			history.replace(`/blocks/${data.data?.data?.[0]?.height}`);
 		}
 		//  block navigation
 		else if (data.data?.data?.[0]?.height !== height) {

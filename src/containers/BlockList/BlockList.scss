@@ -1,10 +1,6 @@
 @import "src/styles/utils";
 
 .BlockList {
-	display: flex;
-	flex-flow: column;
-	justify-content: center;
-
 	@include page-wrapper;
 
 	.Card {
