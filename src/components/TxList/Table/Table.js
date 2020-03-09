@@ -11,11 +11,11 @@ import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/cor
 import TxListTableRow, {TableRowThin} from "../TableRow";
 import {footerRender} from "src/components/common/IndexedPagination/IndexedPagination";
 
+const cx = classNames.bind(styles);
+
 const INDEX_DISPLAY_DECIMAL_PLACES = 3;
 const BASE_PROPERTY = "id";
 const PAGE_SIZE = 20;
-
-const cx = classNames.bind(styles);
 
 export default function(props) {
 	const [loading, error, state, updateCurrentPage, jumpToEnd, [realTime, setRealTime], forceLoadAfter] = useIndexedPagination({
@@ -109,7 +109,7 @@ export default function(props) {
 				{txTableHeader}
 				{tableBodyRender}
 			</Table>
-			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, cx)}
+			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, jumpToEnd)}
 			<div className={cx("thinTable")}>{thinTableBodyRender}</div>
 		</div>
 	);

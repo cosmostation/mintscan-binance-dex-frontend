@@ -1,4 +1,5 @@
 import {_, empty} from "src/lib/scripts";
+import {SPARE_PAGE_CNT} from "./useIndexedPagination";
 
 export const initialState = {
 	maxIndex: null,
@@ -26,7 +27,7 @@ export const RESET = "RESET"; //  reset(to initial initial_load again
 export const TO_END = "TO_END";
 
 export default function(state, action) {
-	console.log("reducer>>>", action.type, _.cloneDeep(state));
+	// console.log("reducer>>>", action.type, _.cloneDeep(state));
 	switch (action.type) {
 		case INITIAL_LOAD: {
 			const {data, pageSize, index, maxIndex} = action.payload;
@@ -44,7 +45,7 @@ export default function(state, action) {
 		}
 		case EXTRA_LOAD: {
 			const defaultParams = {params: {after: null}, maxIndex: action.payload.maxIndex};
-			if (state.params.after === false && action.payload.data.length < state.pageSize) defaultParams.isNoMore = true;
+			if (state.params.after === false && action.payload.data.length < state.pageSize * (SPARE_PAGE_CNT + 1)) defaultParams.isNoMore = true;
 			if (!action.payload.loading) {
 				_.assign(defaultParams, {isFront: state.index[0] === 0 && action.payload.data.length < state.pageSize});
 			}

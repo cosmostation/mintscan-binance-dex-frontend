@@ -4,13 +4,11 @@ import classNames from "classnames/bind";
 //  utils
 import consts from "src/constants/consts";
 import useIndexedPagination from "src/hooks/useIndexedPagination";
-import useWindowSize from "src/hooks/useWindowSize";
 import {usePrevious} from "src/hooks";
 import {_, empty, formatNumber} from "src/lib/scripts";
 // components
 import {Fade, Table, TableBody, TableCell, TableHead, TableRow, Tooltip} from "@material-ui/core";
 import BlockListTableRow, {TableRowThin} from "../TableRow";
-
 import tooltips from "src/constants/tooltips";
 import {footerRender} from "src/components/common/IndexedPagination/IndexedPagination";
 
@@ -19,7 +17,6 @@ const cx = classNames.bind(styles);
 const INDEX_DISPLAY_DECIMAL_PLACES = 4;
 const BASE_PROPERTY = "height";
 const PAGE_SIZE = 20;
-const TABLE_LIMIT = 780;
 
 export default function(props) {
 	const [loading, error, state, updateCurrentPage, jumpToEnd, [realTime, setRealTime], forceLoadAfter] = useIndexedPagination({
@@ -61,14 +58,17 @@ export default function(props) {
 		const {pageData} = state;
 		return (
 			<TableBody>
-				{_.map(empty(pageData) || pageData.length < PAGE_SIZE ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData, (v, idx) => {
-					if (v === undefined) return <BlockListTableRow key={idx} blockData={{}} />;
-					// TODO - fix this
-					//  it is optimal to use 'v[BASE_PROPERTY]' as key but it scrolls to bottom of page
-					//  current approach rerenders entire list on each rerender - needs to be optimized
-					//  same applies to table in TxList
-					return <BlockListTableRow key={idx} blockData={v} />;
-				})}
+				{_.map(
+					empty(pageData) || (pageData.length < PAGE_SIZE && state.isNoMore) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData,
+					(v, idx) => {
+						if (v === undefined) return <BlockListTableRow key={idx} blockData={{}} />;
+						// TODO - fix this
+						//  it is optimal to use 'v[BASE_PROPERTY]' as key but it scrolls to bottom of page
+						//  current approach rerenders entire list on each rerender - needs to be optimized
+						//  same applies to table in TxList
+						return <BlockListTableRow key={idx} blockData={v} />;
+					}
+				)}
 			</TableBody>
 		);
 	}, [state.pageData, state.pageSize]);
@@ -97,34 +97,6 @@ export default function(props) {
 		);
 	}, [state.pageData, state.pageSize]);
 
-	const tableHeaderRender = useMemo(
-		() => (
-			<TableHead>
-				<TableRow>
-					<TableCell className={cx("tableHeaderCell")}>Height</TableCell>
-					<TableCell className={cx("tableHeaderCell")}>Parent Hash</TableCell>
-					<TableCell className={cx("tableHeaderCell")} align='left'>
-						<Tooltip TransitionComponent={Fade} TransitionProps={{timeout: 300}} title={tooltips.proposer} disableFocusListener disableTouchListener>
-							<span>Node</span>
-						</Tooltip>
-					</TableCell>
-					<TableCell className={cx("tableHeaderCell")} align='right'>
-						Fee(no-data)
-					</TableCell>
-					<TableCell className={cx("tableHeaderCell", "txsWidth")} align='right'>
-						<Tooltip TransitionComponent={Fade} TransitionProps={{timeout: 300}} title={tooltips.txs} disableFocusListener disableTouchListener>
-							<span>Txs</span>
-						</Tooltip>
-					</TableCell>
-					<TableCell className={cx("tableHeaderCell")} align='right'>
-						Time
-					</TableCell>
-				</TableRow>
-			</TableHead>
-		),
-		[]
-	);
-
 	const realTimeButtonClick = e => {
 		e.preventDefault();
 		if (!state.isFront) return;
@@ -136,7 +108,7 @@ export default function(props) {
 	return (
 		<div className={cx("blockListtableWrapper")}>
 			<Table className={cx("table")}>
-				{tableHeaderRender}
+				{blocksHeaderRender}
 				{tableBodyRender}
 			</Table>
 			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, jumpToEnd)}
@@ -144,3 +116,28 @@ export default function(props) {
 		</div>
 	);
 }
+
+export const blocksHeaderRender = (
+	<TableHead>
+		<TableRow>
+			<TableCell className={cx("tableHeaderCell")}>Height</TableCell>
+			<TableCell className={cx("tableHeaderCell")}>Parent Hash</TableCell>
+			<TableCell className={cx("tableHeaderCell")} align='left'>
+				<Tooltip TransitionComponent={Fade} TransitionProps={{timeout: 300}} title={tooltips.proposer} disableFocusListener disableTouchListener>
+					<span>Node</span>
+				</Tooltip>
+			</TableCell>
+			<TableCell className={cx("tableHeaderCell")} align='right'>
+				Fee(no-data)
+			</TableCell>
+			<TableCell className={cx("tableHeaderCell", "txsWidth")} align='right'>
+				<Tooltip TransitionComponent={Fade} TransitionProps={{timeout: 300}} title={tooltips.txs} disableFocusListener disableTouchListener>
+					<span>Txs</span>
+				</Tooltip>
+			</TableCell>
+			<TableCell className={cx("tableHeaderCell")} align='right'>
+				Time
+			</TableCell>
+		</TableRow>
+	</TableHead>
+);

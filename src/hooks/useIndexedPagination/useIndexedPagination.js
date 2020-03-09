@@ -21,7 +21,7 @@ import reducer, {
 	RESET,
 } from "src/hooks/useIndexedPagination/reducer";
 
-const SPARE_PAGE_CNT = 2; //  how many pages left before a refetch is triggered
+export const SPARE_PAGE_CNT = 2; //  how many pages left before a refetch is triggered
 const REAL_TIME_DELAY_MS = 2000;
 
 let renderCnt = 0;
@@ -64,7 +64,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 
 	//  new data from recentData
 	useEffect(() => {
-		if (_.isNil(recentData.data?.data)) return;
+		if (_.isNil(recentData.data?.data) || !realTime) return;
 
 		if (recentData.data.data) {
 			// console.log("getRecentData", recentData.data);
@@ -88,7 +88,8 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 		if (!_.isNil(error) || (_.isNil(data?.data) && !_.isBoolean(state.params.after))) return;
 		if (state.reset !== 0) {
 			//  real reset data
-			if (data?.paging?.total && data?.paging?.total === data?.data?.[0]?.height) {
+			// console.log("resetAfter>>>>", _.cloneDeep(state), data);
+			if (data?.paging?.total && data?.paging?.total === data?.data?.[0]?.[pagingProperty]) {
 				if (state.reset === 1) {
 					setRefinedQuery(history, updateQuery, 0);
 					if (!realTime) setRealTime(true);
@@ -98,7 +99,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 					});
 				}
 				return;
-			} else if (data?.paging?.total && data?.data?.[0]?.height <= 3) {
+			} else if (data?.paging?.total && data?.data?.[0]?.[pagingProperty] <= 3) {
 				if (state.reset === 2) {
 					setRefinedQuery(history, updateQuery, 10000003);
 					if (realTime) setRealTime(false);
@@ -162,6 +163,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 	//  when resetting
 	useEffect(() => {
 		if (state.reset !== 0) {
+			// console.log("resetB4>>>>", _.cloneDeep(state));
 			if (state.reset === 1) refetch({path: `${path}?limit=${limit}`});
 			else if (state.reset === 2) refetch({path: `${path}?limit=${limit}&after=0`});
 		}
@@ -227,7 +229,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 	//  update query if changed
 	useEffect(() => {
 		// console.log("pageChangeCheck>>>>>>", {
-		// 	..._.omit(state, ["allData", "error", "isNoMore", "maxIndex"]),
+		// 	..._.omit(state, ["allData"]),
 		// 	allDataSize: state.allData.length,
 		// 	realTime,
 		// });

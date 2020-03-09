@@ -7,7 +7,13 @@ export default Object.freeze({
 	NUM: {
 		BASE_MULT: 100000000,
 	},
-	BINANCE_API_BASE: "https://dex-asiapacific.binance.org/api/v1/", // "?format=json" => for blocks
+	BINANCE_API_BASE: " https://explorer.binance.org/api/v1/",
+	BINANCE_API: {
+		ASSETS: "/assets",
+		ASSET: "/asset",
+		ASSET_HOLDERS: "/asset-holders",
+		ASSET_TX: "/txs",
+	},
 	API: {
 		BLOCKLIST: "/blocks",
 		TXLIST: "/txs",

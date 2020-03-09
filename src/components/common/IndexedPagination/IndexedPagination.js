@@ -10,16 +10,16 @@ const cx = cn.bind(styles);
 export const footerRender = (state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, baseProperty, indexDisplayDecimals, jumpToEnd) => {
 	// console.log(state.maxIndex, state.isFront, state.pageData?.[0]?.[baseProperty]);
 	const jumpEnd = bool => {
-		if (state.isFront) return;
-		console.log("jump");
+		if (state.isFront && !bool) return;
 		jumpToEnd(bool);
 	};
 	const forceInActive = state.pageData[0] === undefined;
 	const onPageClick = bool => {
 		if (forceInActive) return;
+		if (state.pageData?.[state.pageData.length - 1]?.[baseProperty] <= 2 && !bool) return;
 		onePageClick(bool);
 	};
-	// console.log("footer", state);
+	// console.log("checkEnd", state);
 	return (
 		<div className={cx("table-footer")}>
 			<div className={cx("paginationWrapper")}>
@@ -47,7 +47,13 @@ export const footerRender = (state, realTime, realTimeButtonClick, formattedMaxH
 						className={cx("right", "flip", {inactive: forceInActive || (state.isFront && state.maxIndex === state.pageData?.[0]?.[baseProperty])})}
 						onClick={() => onPageClick(true)}
 					/>
-					<img alt={"right"} className={cx("right", {inactive: state.index[1] + state.pageSize > state.maxIndex})} onClick={() => onPageClick(false)} />
+					<img
+						alt={"right"}
+						className={cx("right", {
+							inactive: state.pageData?.[state.pageData.length - 1]?.[baseProperty] <= 2 || state.index[1] + state.pageSize > state.maxIndex,
+						})}
+						onClick={() => onPageClick(false)}
+					/>
 					<img alt={"last"} className={cx("last")} onClick={() => jumpEnd(true)} />
 				</div>
 			</div>
