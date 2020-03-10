@@ -55,7 +55,7 @@ to the 'rule of hooks' in many occasions.
 spewing out of this
 ```
 
-[complete muck up](https://github.com/cosmostation/mintscan-binance-dex-frontend/blob/master/src/hooks/useIndexedPagination/useIndexedPagination.js](https://github.com/cosmostation/mintscan-binance-dex-frontend/blob/master/src/hooks/useIndexedPagination/useIndexedPagination.js))
+[complete muck up](https://github.com/cosmostation/mintscan-binance-dex-frontend/blob/master/src/hooks/useIndexedPagination/useIndexedPagination.js))
 
 ###### _Ironically that single monstrosity of a file took up about 30% of the total time that I worked on this project_
 ```
