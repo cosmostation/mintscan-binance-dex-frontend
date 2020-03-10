@@ -3,7 +3,7 @@ import cn from "classnames/bind";
 import styles from "./BlockHeader.scss";
 import {NavLink} from "react-router-dom";
 
-import {setAgoTime, totalTime, _, formatNumber} from "src/lib/scripts";
+import {setAgoTime, getTotalTime, _, formatNumber} from "src/lib/scripts";
 //  components
 import InfoRow from "src/components/common/InfoRow";
 import Skeleton from "react-skeleton-loader";
@@ -15,17 +15,17 @@ export default function({blockData, history}) {
 	//  apply proper fee when applicable
 	const fee = "0.000000";
 	const split = fee.split(".");
-	console.log(blockData);
+	// console.log(blockData);
 
 	return React.useMemo(
 		() => (
 			<div className={cx("BlockDetail-wrapper")}>
-				{(() => console.table(blockData))()}
+				{/*{(() => console.table(blockData))()}*/}
 				<div className={cx("title")}>Block Data</div>
 				<div className={cx("content")}>
 					<InfoRow label={"Height"}>{blockData?.height}</InfoRow>
 					<InfoRow label={"Block Time"}>
-						{_.isNil(blockData?.timestamp) ? <Skeleton /> : `${setAgoTime(blockData?.timestamp)} (${totalTime(blockData?.timestamp)})`}
+						{_.isNil(blockData?.timestamp) ? <Skeleton /> : `${setAgoTime(blockData?.timestamp)} (${getTotalTime(blockData?.timestamp)})`}
 					</InfoRow>
 					<InfoRow label={"Block Hash"}>{blockData?.block_hash}</InfoRow>
 					<InfoRow label={"Parent Hash"}>
@@ -35,9 +35,9 @@ export default function({blockData, history}) {
 					</InfoRow>
 					<InfoRow label={"Number of Tx"}>{blockData?.txs.length}</InfoRow>
 					<InfoRow label={"Node"}>{blockData?.moniker}</InfoRow>
-					<InfoRow label={"Block Time"}>
-						<span className={cx("no-transform")}>in 438 ms</span>
-					</InfoRow>
+					{/*<InfoRow label={"Block Time"}>*/}
+					{/*	<span className={cx("no-transform")}>in 438 ms</span>*/}
+					{/*</InfoRow>*/}
 					<InfoRow label={"Fee"}>
 						<span>{formatNumber(split[0])}</span>.<span className={cx("decimal")}>{split[1]}</span> <span className={cx("BNB")}>BNB</span>
 					</InfoRow>

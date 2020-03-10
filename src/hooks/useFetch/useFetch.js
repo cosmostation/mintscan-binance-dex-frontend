@@ -15,7 +15,7 @@ export default function(inputUrl, method = "get") {
 
 		let unmounted = false;
 		let source = axios.CancelToken.source();
-		dispatch(state, {type: FETCHING});
+		dispatch({type: FETCHING});
 		axios[method](url, {
 			cancelToken: source.token,
 		})

@@ -25,7 +25,7 @@ export default function(props) {
 						<img src={footerLogo} alt='cosmostation_logo' />
 					</a>
 					<div className={cx("wallet-link-wrapper")}>
-						<p className={cx("title")}>Download Cosmostation Wallet!</p>
+						<p className={cx("title")}>Download Cosmostation Wallet</p>
 						<div className={cx("btn-wrapper")}>
 							<a href={consts.LINK.GOOGLE} target='_blank' rel='noopener noreferrer'>
 								<div className={cx("wallet-link-btn")}>

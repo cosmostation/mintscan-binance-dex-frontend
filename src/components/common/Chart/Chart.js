@@ -6,6 +6,7 @@ import {_, formatNumber, getHours, getTime} from "src/lib/scripts";
 
 export default function({options, data}) {
 	const graphOptions = useMemo(() => {
+		// console.log(data);
 		const [xMax, xMin, yMax, yMin] = [data[data.length - 1][0], data[0][0], _.max(_.map(data, v => v[1])), _.min(_.map(data, v => v[1]))];
 		const indexes = [
 			0,

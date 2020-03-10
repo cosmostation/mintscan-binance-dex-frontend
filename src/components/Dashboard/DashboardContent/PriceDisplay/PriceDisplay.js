@@ -2,6 +2,7 @@ import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./PriceDisplay.scss";
 import {formatNumber} from "src/lib/scripts";
+import axios from "axios";
 //  component
 import Skeleton from "react-skeleton-loader";
 //  redux
@@ -20,7 +21,12 @@ export default function(props) {
 	const dispatch = useDispatch();
 
 	React.useEffect(() => {
-		dispatch(getCryptoBasicData("binancecoin", "usd"));
+		const cancelToken = axios.CancelToken;
+		const source = cancelToken.source();
+		dispatch(getCryptoBasicData("binancecoin", "usd", source.token));
+		return () => {
+			source.cancel("cleanup cancel");
+		};
 	}, []);
 	return React.useMemo(
 		() => (

@@ -22,34 +22,11 @@ export const humanFormat = val => hF(val, {scale: currScale, separator: ""});
 //  remove t from bnb address
 export const refineAddress = address => (address.charAt(0) === "t" ? address.substr(1) : address);
 
-export const totalTime = unix => moment(unix).format("YYYY-MM-DD / HH:MM:ss");
-
 export const omitProperty = (arr, valueArray) => _.map(arr, v => _.omit(v, valueArray));
 
 export const nilCheck = arr => !_.every(arr, el => !_.isNil(el));
 
 export const reduceString = (str, from, end) => (str ? str.substring(0, from) + " ... " + str.substring(str.length - end) : "-");
-
-export const setAgoTime = time => {
-	const x = new moment();
-	const y = new moment(time);
-	const duration = moment.duration(x.diff(y));
-	let ret = 0;
-	if (duration._data.years) ret = `${duration._data.years} years`;
-	else if (duration._data.months) ret = `${duration._data.months} months`;
-	else if (duration._data.days) ret = `${duration._data.days} days`;
-	else if (duration._data.hours) ret = `${duration._data.hours}h`;
-	else if (duration._data.minutes) ret = `${duration._data.minutes}m`;
-	else if (duration._data.seconds) ret = `${duration._data.seconds}s`;
-
-	// if (duration._data.years) ret = `${duration._data.years}years`;
-	// if (duration._data.months) ret = `${duration._data.months}months`;
-	// if (duration._data.days) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.days}d`;
-	// if (duration._data.hours) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.hours}h`;
-	// if (duration._data.minutes) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.minutes}m`;
-	// if (duration._data.seconds) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.seconds}s`;
-	return ret + " ago";
-};
 
 const removeCommas = str => _.replace(str, new RegExp(",", "g"), "");
 const reverseString = str => removeCommas(_.toString(_.reverse(_.toArray(str))));
@@ -85,6 +62,29 @@ export const recursiveGetFirstValue = obj => {
 	return obj;
 };
 
+//  time related
+export const setAgoTime = time => {
+	const x = new moment();
+	const y = new moment(time);
+	const duration = moment.duration(x.diff(y));
+	let ret = "0s";
+	if (duration._data.years) ret = `${duration._data.years} years`;
+	else if (duration._data.months) ret = `${duration._data.months} months`;
+	else if (duration._data.days) ret = `${duration._data.days} days`;
+	else if (duration._data.hours) ret = `${duration._data.hours}h`;
+	else if (duration._data.minutes) ret = `${duration._data.minutes}m`;
+	else if (duration._data.seconds) ret = `${duration._data.seconds}s`;
+	// else if (duration._data.seconds) ret = `${duration._data.seconds <= 0 ? 0 : duration._data.seconds}s`;
+
+	// if (duration._data.years) ret = `${duration._data.years}years`;
+	// if (duration._data.months) ret = `${duration._data.months}months`;
+	// if (duration._data.days) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.days}d`;
+	// if (duration._data.hours) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.hours}h`;
+	// if (duration._data.minutes) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.minutes}m`;
+	// if (duration._data.seconds) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.seconds}s`;
+	return ret + " ago";
+};
+
 export const getUnixTimes = (value, unit, startOf = "hour") => [
 	moment()
 		.startOf(startOf)
@@ -95,7 +95,7 @@ export const getUnixTimes = (value, unit, startOf = "hour") => [
 		.add(3, "minute")
 		.unix(),
 ];
-
+export const getTotalTime = unix => moment(unix).format("YYYY-MM-DD / HH:mm:ss");
 export const get24Hours = unix => moment(unix).format("HH:mm");
 export const getHours = unix =>
 	moment(unix)

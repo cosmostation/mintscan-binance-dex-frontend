@@ -6,6 +6,8 @@ export default Object.freeze({
 	API_BASE: api,
 	NUM: {
 		BASE_MULT: 100000000,
+		REAL_TIME_DELAY_MS: 2000,
+		DASH_REAL_TIME_DELAY_MS: 3000,
 	},
 	BINANCE_API_BASE: " https://explorer.binance.org/api/v1/",
 	BINANCE_API: {

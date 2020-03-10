@@ -34,7 +34,7 @@ $customPadding: 8px 20px 7px 10px;
 	}
 
 	.proposer {
-		min-width: 70px;
+		width: 115px;
 		@include media("<dash_table_limit") {
 			display: none;
 		}

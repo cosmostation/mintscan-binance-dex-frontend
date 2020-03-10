@@ -2,13 +2,19 @@
   "name": "mintscan-binance",
   "version": "0.0.1",
   "private": true,
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "REACT_APP_BUILD_ENV=prod NODE_ENV=production node scripts/start.js",
     "dev": "REACT_APP_BUILD_ENV=dev NODE_ENV=development node scripts/start.js",
     "build:dev": "REACT_APP_BUILD_ENV=dev NODE_ENV=development node scripts/build.js && yarn run delete-maps",
     "build:prod": "REACT_APP_BUILD_ENV=prod NODE_ENV=production node scripts/build.js && yarn run delete-maps",
-
     "delete-maps": "yarn run delete-references-to-map-files && yarn run delete-map-files",
     "delete-map-files": "find ./build -name '*.map' -delete",
     "delete-references-to-map-files": "find ./build -regex '.*\\.\\(js\\|css\\)' -exec sed -i -E '\\/[\\*\\/]#\\ssourceMappingURL=main(\\.[0-9a-f]+)?\\.(css|js)\\.map(\\*\\/)?/g' {} +",

@@ -2,9 +2,10 @@ import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./BlocksDisplay.scss";
 //  utils
+import {useTimer, useFetch} from "src/hooks";
 import consts from "src/constants/consts";
 import {_} from "src/lib/scripts";
-import useFetch from "src/hooks/useFetch/useFetch";
+
 //  components
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 import ErrorPage from "src/components/common/ErrorPage";
@@ -15,6 +16,11 @@ const cx = cn.bind(styles);
 
 export default function(props) {
 	const [data, requestFetch, setUrl] = useFetch(`${consts.API_BASE}${consts.API.BLOCKLIST}?limit=5`, "get");
+	const [watching, setWatch] = useTimer(true, consts.NUM.DASH_REAL_TIME_DELAY_MS);
+
+	React.useEffect(() => {
+		requestFetch();
+	}, [watching]);
 
 	const tableHeaderRender = React.useMemo(() => {
 		return (
@@ -47,16 +53,19 @@ export default function(props) {
 		[data.data]
 	);
 
-	return (
-		<TableWrapper title={"BLOCKS"} type={1}>
-			{data.error ? (
-				<ErrorPage />
-			) : (
-				<Table className={cx("BlocksDisplay-table")}>
-					{tableHeaderRender}
-					{tableBodyRender}
-				</Table>
-			)}
-		</TableWrapper>
+	return React.useMemo(
+		() => (
+			<TableWrapper title={"BLOCKS"} type={1}>
+				{data.error ? (
+					<ErrorPage />
+				) : (
+					<Table className={cx("BlocksDisplay-table")}>
+						{tableHeaderRender}
+						{tableBodyRender}
+					</Table>
+				)}
+			</TableWrapper>
+		),
+		[data.error, tableHeaderRender, tableBodyRender]
 	);
 }

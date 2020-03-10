@@ -22,7 +22,6 @@ import reducer, {
 } from "src/hooks/useIndexedPagination/reducer";
 
 export const SPARE_PAGE_CNT = 2; //  how many pages left before a refetch is triggered
-const REAL_TIME_DELAY_MS = 2000;
 
 let renderCnt = 0;
 export default function({path, pageSize = 20, pagingProperty = "height", limit = 60, resolve = undefined, updateQuery = ""}) {
@@ -43,7 +42,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 	//  Only use refetch when retrieving cutting-edge data
 	const [recentData, requestFetch, setUrl] = useFetch("", "get");
 
-	const [watch, setWatch] = useTimer(realTime, REAL_TIME_DELAY_MS);
+	const [watch, setWatch] = useTimer(realTime, consts.NUM.REAL_TIME_DELAY_MS);
 
 	//  for real time data
 	useEffect(() => {
