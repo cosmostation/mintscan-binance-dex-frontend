@@ -67,7 +67,6 @@ without your most awaited upon help.
   
 yours sincerely, with a grain of salt *wink*  
 ```  
-  
 ## Our Services and Community   
 - [Official Website](https://www.cosmostation.io)  
 - [Mintscan Explorer](https://www.mintscan.io)  

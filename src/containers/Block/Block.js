@@ -1,6 +1,6 @@
 /*
  * WARNING
- * the code here deliberately does not adhere to the rule of hooks(probably)
+ * the code here deliberately contains missing dependencies in hooks(probably)
  * it is highly likely that A LOT of refactoring will be needed if attempted to fix.
  * You have been warned
  */
