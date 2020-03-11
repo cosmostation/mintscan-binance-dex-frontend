@@ -7,11 +7,10 @@
 	min-height: calc(100vh - var(--heightFooter));
 
 	@include media("<large") {
-		padding: var(--heightHeader) 15px 1.8rem
+		padding: calc(var(--heightHeaderInMedium) + var(--heightSubHeader)) 15px 1.8rem
 	}
 
 	@include media("<medium") {
-		width: 100%;
-		padding: var(--heightHeader) 10px 10px 10px;
+		padding: calc(var(--heightHeaderInSmall) + var(--heightSubHeaderInSmall)) 10px 10px 10px;
 	}
 }

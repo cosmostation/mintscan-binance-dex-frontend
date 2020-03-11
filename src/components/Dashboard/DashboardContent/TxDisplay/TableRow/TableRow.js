@@ -17,7 +17,7 @@ export default function({blockData}) {
 			<TableCell className={cx("tablePointerCell", "text")} component='th' scope='row'>
 				{pickData(blockData, cx, CELL_TYPES[0])}
 			</TableCell>
-			<TableCell className={cx("tablePointerCell", "text")} align='left'>
+			<TableCell className={cx("tablePointerCell", "text", "typeWidth")} align='left'>
 				{pickData(blockData, cx, CELL_TYPES[1])}
 			</TableCell>
 			<TableCell className={cx("tableCell", "height")} align='right'>

@@ -1,5 +1,6 @@
 @import "src/styles/utils";
 
+$customPadding: 11.5px 15px 11.5px 10px;
 .TxDisplay-table {
 	overflow-x: auto;
 	overflow-y: hidden;
@@ -8,8 +9,7 @@
 	.tableHeaderCell {
 		@include tableHeaderCellWidth300;
 		@include tableHeaderPadding;
-		padding-top: 11.5px;
-		padding-bottom: 11.5px;
+		padding: $customPadding;
 		color: var(--colorMainText);
 	}
 

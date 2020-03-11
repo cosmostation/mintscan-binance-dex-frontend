@@ -1,6 +1,6 @@
 @import "src/styles/utils";
 
-$customPadding: 8px 20px 7px 10px;
+$customPadding: 8px 15px 7px 10px;
 .txDisplay-tableRow {
 	@include tableRow;
 	font-family: "Open Sans", serif;
@@ -27,6 +27,10 @@ $customPadding: 8px 20px 7px 10px;
 	.tableCell {
 		@include tableCellWidth300;
 		padding: $customPadding;
+	}
+
+	.typeWidth {
+		min-width: 100px;
 	}
 
 	.time {

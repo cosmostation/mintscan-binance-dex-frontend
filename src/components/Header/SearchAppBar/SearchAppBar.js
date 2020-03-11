@@ -5,8 +5,7 @@ import _ from "lodash";
 import {NavLink, useHistory} from "react-router-dom";
 //  components
 import SearchArea from "src/components/common/SearchArea";
-import {IconButton, Toolbar} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import {Toolbar} from "@material-ui/core";
 
 import consts from "src/constants/consts";
 
@@ -76,15 +75,15 @@ export default function(props) {
 							</div>
 							<SearchArea cx={cx} />
 							{/* hamburger button */}
-							<IconButton className={cx("menuButton")} color='inherit' onClick={props.hamburgerClick}>
-								<MenuIcon />
-							</IconButton>
+							{/*<IconButton className={cx("menuButton")} color='inherit' onClick={props.hamburgerClick}>*/}
+							{/*	<MenuIcon />*/}
+							{/*</IconButton>*/}
 						</div>
 					</Toolbar>
 				</div>
 			);
 		},
-		[props.hamburgerClick, toMain, handleChange]
+		[toMain, handleChange]
 	);
 	return useMemo(() => render(open), [render, open]);
 }

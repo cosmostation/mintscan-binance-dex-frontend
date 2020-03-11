@@ -11,12 +11,23 @@
 	width: 100%;
 	z-index: 10;
 
-	@include media("<medium") {
-		top: var(--heightHeaderInMedium);
-	}
-
 	a {
 		height: var(--heightSubHeader);
+	}
+
+	@include media("<large") {
+		top: var(--heightHeaderInMedium);
+		a {
+			height: var(--heightSubHeaderInMedium);
+		}
+	}
+
+	@include media("<medium") {
+		top: var(--heightHeaderInSmall);
+		height: var(--heightSubHeaderInSmall);
+		a {
+			height: var(--heightSubHeaderInSmall);
+		}
 	}
 
 	.network-wrapper {
@@ -51,24 +62,11 @@
 		}
 	}
 
-	// 뒷배경
-	@include media("<large") {
-		width: 100%;
-		background: #fff;
-		height: 250px;
-		display: none;
-	}
-
 	.nav-list {
 		width: 1200px;
 		margin: 0 auto;
 
 		@include media("<large") {
-			width: 86%;
-			display: block;
-		}
-
-		@include media("<medium") {
 			width: 100%;
 			padding: 0 10px;
 		}
@@ -78,12 +76,17 @@
 		flex: 1;
 		display: flex;
 		flex-direction: row;
-		justify-content: flex-start;
+		justify-content: space-between;
 		align-items: center;
 
+		@include media(">large") {
+			margin: 0 25px;
+		}
 		@include media("<large") {
-			flex-direction: column;
-			align-items: flex-start;
+			margin: 0 20px;
+		}
+		@include media("<small") {
+			margin: 0;
 		}
 
 		.nav-item {
@@ -91,14 +94,10 @@
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;
+			height: var(--heightSubHeader);
 			min-width: 180px;
 			color: #a2a2a2;
 			border-bottom: none;
-
-			@include media("<large") {
-				justify-content: flex-start;
-			}
-
 			.nav-item-title {
 				font-size: var(--fontSizeAppBar);
 				font-weight: 500;
@@ -107,8 +106,26 @@
 				line-height: 1.27;
 				letter-spacing: normal;
 				text-align: left;
-				color: #b2b6bc;
+				color: #59606a;
 			}
+
+			@include media("<medium") {
+				flex-direction: column;
+				min-width: 105px;
+				.nav-item-title {
+					font-size: var(--fontSizeAppBarMedium);
+					line-height: 1.23;
+				}
+			}
+
+			@include media("<small") {
+				min-width: 50px;
+				.nav-item-title {
+					font-size: var(--fontSizeAppBarSmall);
+					line-height: 1.22;
+				}
+			}
+
 
 			img {
 				height: 32px;
@@ -116,8 +133,14 @@
 				margin-right: 5px;
 			}
 
+			.selected {
+				font-weight: 600;
+				color: var(--colorMainText) !important;
+			}
+
 			&:hover {
 				h2 {
+					font-weight: 600;
 					color: var(--colorMainText) !important;
 				}
 
@@ -153,10 +176,6 @@
 			}
 		}
 	}
-}
-
-.selected {
-	color: var(--colorMainText) !important;
 }
 
 .open {

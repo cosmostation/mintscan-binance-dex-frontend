@@ -1,6 +1,6 @@
 @import url("//cdn.jsdelivr.net/gh/velopert/font-d2coding@1.2.1/d2coding.css");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600&display=swap");
 
 :root {
 	//  colors
@@ -28,9 +28,12 @@
 
 	//  height
 	--heightTableRow: 45px;
-	--heightHeader: 65px;
-	--heightHeaderInMedium: 55px;
+	--heightHeader: 75px;
+	--heightHeaderInMedium: 64px;
+	--heightHeaderInSmall: 56px;
 	--heightSubHeader: 50px;
+	--heightSubHeaderInMedium: 64px;
+	--heightSubHeaderInSmall: 56px;
 	--heightFooter: 200px;
 	--mainDefaultPaddingTop: 25px;
 	--mainDefaultPaddingBottom: 70px;
@@ -45,6 +48,8 @@
 	--fontSizeCardValue: 18px;
 	--fontSizeCardValueInMedium: 16px;
 	--fontSizeAppBar: 15px;
+	--fontSizeAppBarMedium: 13px;
+	--fontSizeAppBarSmall: 9px;
 	--fontSizeMain: 13px;
 	--fontSizeMedium: 14px;
 	--fontSizeMainInMedium: 12px;

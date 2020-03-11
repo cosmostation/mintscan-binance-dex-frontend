@@ -11,6 +11,8 @@
 
 	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/assets/dashboard/main_img.png") no-repeat fixed center center;
 	background-position-y: inherit;
+
+	margin-top: -15px;
 	@include media(">1880px") {
 		background-size: cover;
 	}
@@ -21,6 +23,7 @@
 	}
 
 	@include media("<medium") {
+		margin-top: 0;
 		background: #222222;
 		height: 230px;
 		width: calc(100% + 20px);
@@ -166,6 +169,10 @@
 					background: var(--colorWhite);
 					color: var(--colorMainText);
 					font-size: var(--fontSizeMain);
+					@include media("<small") {
+						margin-left: -5px;
+						font-size: 10px;
+					}
 
 					&::placeholder {
 						font-size: var(--fontSizeMain);

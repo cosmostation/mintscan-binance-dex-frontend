@@ -7,10 +7,12 @@
 
 	.PriceGraphClickable-wrapper {
 		display: grid;
+
 		grid-template-columns: 864px 320px;
 		grid-template-rows: 1fr;
 		grid-column-gap: 15px;
 		grid-row-gap: 15px;
+		//grid-auto-flow: dense;
 
 		// 832.7 31.3px 964
 		@include media("<large") {
@@ -40,6 +42,7 @@
 				height: 278px + 15px + 278px;
 				grid-template-columns: 1fr;
 				grid-template-rows: 1fr 1fr;
+				margin-bottom: 10px;
 			}
 		}
 

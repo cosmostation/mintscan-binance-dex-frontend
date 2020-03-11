@@ -9,6 +9,14 @@
 	display: flex;
 	align-items: center;
 
+	@include media("<large") {
+		height: var(--heightHeaderInMedium);
+	}
+
+	@include media("<medium") {
+		height: var(--heightHeaderInSmall);
+	}
+
 	.toolbar {
 		width: 1200px;
 		margin: 0 auto;
@@ -19,7 +27,7 @@
 		align-items: center;
 
 		@include media("<large") {
-			width: 86%;
+			width: 98%;
 		}
 
 		@include media("<medium") {
@@ -31,17 +39,16 @@
 		a {
 			display: flex;
 			align-items: center;
-			width: 150px;
-			height: auto;
+			height: 34px;
+			width: auto;
 			@include media("<medium") {
-				width: 120px;
+				height: 27px;
+				margin-left: 5px;
 			}
-
-			@include media("<xsmall") {
-				width: 100px;
-			}
-			@include media("<xxsmall") {
-				width: 80px;
+			img {
+				height: 100%;
+				width: auto;
+				object-fit: contain;
 			}
 		}
 	}
@@ -74,9 +81,6 @@
 			line-height: 1.36;
 			letter-spacing: normal;
 			text-align: left;
-			// @include media("<large") {
-			//   display: none;
-			// }
 
 			.curr-net-wrapper {
 				display: flex;
@@ -135,14 +139,6 @@
 					color: #cacfdc;
 				}
 			}
-		}
-	}
-
-	.menuButton {
-		display: none;
-
-		@include media("<large") {
-			display: block;
 		}
 	}
 
@@ -209,3 +205,11 @@
 	background-position: center;
 	margin-right: 8px;
 }
+
+//.menuButton {
+//	display: none;
+//
+//	@include media("<large") {
+//		display: block;
+//	}
+//}

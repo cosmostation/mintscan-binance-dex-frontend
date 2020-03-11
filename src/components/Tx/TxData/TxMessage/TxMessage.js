@@ -97,8 +97,9 @@ export default function({msg, txData}) {
 									<span className={cx({"color-red": value?.side === 2, "color-blue": value?.side === 1})}>{txGetSide[value?.side]}</span>
 								</InfoRow>
 								<InfoRow label='Price'>
+									{(() => console.log(value))()}
 									<span>
-										{divide(divide(value?.quantity, consts.NUM.BASE_MULT), value?.price)} BNB / 1 {_.split(value?.symbol, "-")[0]}
+										{divide(value?.price, consts.NUM.BASE_MULT, 8)} BNB / 1 {_.split(value?.symbol, "-")[0]}
 									</span>
 								</InfoRow>
 								<InfoRow label='Order Type'>

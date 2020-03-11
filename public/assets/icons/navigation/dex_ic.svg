@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="dex_ic" transform="translate(2543 -3824)">
+    <circle id="타원_209" data-name="타원 209" cx="5" cy="5" r="5" transform="translate(-2526 3842.3)" fill="#ebba16"/>
+    <g id="그룹_3972" data-name="그룹 3972" transform="translate(-3581 3740)">
+      <g id="그룹_3814" data-name="그룹 3814" transform="translate(905.049 -684.312)">
+        <path id="패스_1952" data-name="패스 1952" d="M166.142,775.815,162.372,778l-2.088-1.276,5.868-3.412,5.964,3.47-2.233,1.3Z" transform="translate(-17.175 0)" fill="#222"/>
+        <path id="패스_1953" data-name="패스 1953" d="M183.783,800.25l-2.094-1.216,2.094-1.216,2.094,1.216Z" transform="translate(-34.821 -20.202)" fill="#222"/>
+        <path id="패스_1954" data-name="패스 1954" d="M160.391,841.789v2.62l2.087,1.141v-2.544Z" transform="translate(-17.262 -56.452)" fill="#222"/>
+        <path id="패스_1955" data-name="패스 1955" d="M185.705,876.8l-2.143,1.249-2.143-1.249v2.52l2.141,1.171v0h0v0l2.141-1.171Z" transform="translate(-34.597 -85.313)" fill="#222"/>
+        <path id="패스_1956" data-name="패스 1956" d="M145.233,837.195l-3.673-2.074v-4.336l-2.087-1.216V836.6l1.876,1.026h0l0,0,.206.113h0l3.673,2Z" transform="translate(-0.018 -46.378)" fill="#222"/>
+        <path id="패스_1957" data-name="패스 1957" d="M215,837.195l3.673-2.074v-4.336l2.087-1.216V836.6l-1.876,1.026h0l0,0-.206.113h0l-3.673,2Z" transform="translate(-62.279 -46.378)" fill="#222"/>
+        <path id="패스_1958" data-name="패스 1958" d="M217.532,841.789v2.62l-2.087,1.141v-2.544Z" transform="translate(-62.649 -56.452)" fill="#222"/>
+        <path id="패스_1959" data-name="패스 1959" d="M223.928,799.2l2.094-1.216,2.094,1.216v2.583L226.048,803v-2.53Z" transform="translate(-69.642 -20.338)" fill="#222"/>
+        <path id="패스_1960" data-name="패스 1960" d="M143.64,799.2l-2.094-1.216-2.094,1.216v2.583L141.52,803v-2.53Z" transform="translate(0 -20.338)" fill="#222"/>
+        <path id="패스_1961" data-name="패스 1961" d="M166.246,821.421l2.2-1.276v-4.292l3.654-2.068v-2.629l-2.165-1.237-3.693,2.194h.006l-3.693-2.194-2.165,1.237v2.629l3.654,2.068v4.292l2.2,1.276Z" transform="translate(-17.265 -30.177)" fill="#222"/>
+      </g>
+      <rect id="사각형_1844" data-name="사각형 1844" width="32" height="32" transform="translate(1038 84)" fill="none"/>
+    </g>
+  </g>
+</svg>

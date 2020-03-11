@@ -21,6 +21,10 @@
 		align-items: flex-end;
 		justify-content: space-between;
 
+		@include media("<small") {
+			width: fit-content;
+		}
+
 		.realtime {
 			width: 91px;
 			height: 24px;
@@ -28,6 +32,10 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+
+			@include media("<small") {
+				margin-right: 20px;
+			}
 
 			.checkBox {
 				width: 24px;
