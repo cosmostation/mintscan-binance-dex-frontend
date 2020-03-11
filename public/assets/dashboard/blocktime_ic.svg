@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+  <g id="blocktime_ic" transform="translate(-201 -352)">
+    <g id="history" transform="translate(201.796 320.155)">
+      <path id="패스_2174" data-name="패스 2174" d="M275.483,172.228l0,4.22a.6.6,0,0,0,.177.426l3.019,3.018.853-.853-2.842-2.842,0-3.97Z" transform="translate(-265.833 -132.957)" fill="#f0b90b"/>
+      <path id="패스_2175" data-name="패스 2175" d="M10.858,34.445a8.451,8.451,0,0,0-8.348,7.238H0L3.016,44.7l3.016-3.016h-2.3A7.226,7.226,0,1,1,5.15,47.342l-.951.742a8.445,8.445,0,1,0,6.659-13.639Z" transform="translate(0 0)" fill="#f0b90b"/>
+    </g>
+    <rect id="사각형_2020" data-name="사각형 2020" width="22" height="22" transform="translate(201 352)" fill="none"/>
+  </g>
+</svg>

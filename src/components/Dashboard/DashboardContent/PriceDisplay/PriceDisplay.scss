@@ -12,31 +12,58 @@
 		height: 278px;
 		padding: 20px;
 	}
-
-	.icon {
+	.iconBlockTime-wrapper {
 		display: flex;
-		width: fit-content;
-
-		img {
-			width: 32px;
-			height: 32px;
-			content: url("/assets/icons/common/binance_token.svg");
-		}
-
-		.text {
-			display: block;
+		flex-flow: row;
+		justify-content: space-between;
+		.icon {
+			display: flex;
 			width: fit-content;
-			margin-top: 4px;
-			margin-left: 8px;
 
-			font-size: 20px;
-			font-weight: 500;
+			img {
+				width: 32px;
+				height: 32px;
+				content: url("/assets/icons/common/binance_token.svg");
+			}
+
+			.text {
+				display: block;
+				width: fit-content;
+				margin-top: 4px;
+				margin-left: 8px;
+
+				font-size: 20px;
+				font-weight: 500;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.2;
+				letter-spacing: normal;
+				text-align: left;
+				color: #222222;
+			}
+
+		}
+		.BlockTime {
+			display: flex;
+			flex-flow: row;
+			align-items: center;
+			img {
+				margin-right: 4px;
+			}
+			font-family: "Open Sans", serif;
+			font-size: 13px;
+			font-weight: 600;
 			font-stretch: normal;
 			font-style: normal;
-			line-height: 1.2;
+			line-height: 1.38;
 			letter-spacing: normal;
 			text-align: left;
 			color: #222222;
+			p {
+				span {
+					font-weight: normal;
+				}
+			}
 		}
 
 		margin-bottom: 51px;
