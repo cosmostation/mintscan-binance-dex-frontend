@@ -17,7 +17,7 @@ const cx = cn.bind(styles);
 const baseURL = `${consts.API_BASE}${consts.API.TX}`;
 export default function(props) {
 	const txHash = props.match.params?.tx;
-	const [data, refetch, setUrl] = useFetch(txHash === "test" ? "" : `${baseURL}/${txHash}`);
+	const [data, ,] = useFetch(txHash === "test" ? "" : `${baseURL}/${txHash}`);
 	// script that will query data when data is here
 	if (data?.data?.height === 0) {
 		return <NotFound />;

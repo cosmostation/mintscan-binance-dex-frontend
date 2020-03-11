@@ -52,6 +52,7 @@ export default function(props) {
 				setUrl(`${baseURL}&before=${Number(height) + 1}`);
 			}
 		}
+		// eslint-disable-next-line
 	}, [height, state.data, history, setUrl]);
 
 	//  query after if current data is same as before
@@ -59,6 +60,7 @@ export default function(props) {
 		if (!(state.data?.paging?.before && state.data?.paging?.before === previousData?.paging?.before)) return;
 		setAfter(true);
 		setUrl(`${baseURL}&after=${Number(height)}`);
+		// eslint-disable-next-line
 	}, [state.data, setUrl]);
 
 	const goBlockDetail = React.useCallback(

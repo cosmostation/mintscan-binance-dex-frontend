@@ -12,7 +12,7 @@ const cx = cn.bind(styles);
 export default function({blockData, history}) {
 	// console.log(blockData);
 
-	const onClick = React.useCallback(() => history.replace(`/blocks/${Number(blockData?.height) - 1}`), [blockData]);
+	const onClick = React.useCallback(() => history.replace(`/blocks/${Number(blockData?.height) - 1}`), [blockData, history]);
 
 	return React.useMemo(() => {
 		// TODO

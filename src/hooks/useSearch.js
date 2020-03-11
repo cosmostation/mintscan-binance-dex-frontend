@@ -14,7 +14,7 @@ export default function useSearch() {
 		else if (type === "asset") history.push(`/asset/${search}`);
 		else if (type === "orderId") window.alert("query for tx and display that tx");
 		else history.push(`/txs/${search}`);
-	}, [search]);
+	}, [search, history]);
 
 	return setSearch;
 }

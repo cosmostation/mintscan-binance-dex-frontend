@@ -29,9 +29,7 @@ import reducer, {
 
 export const SPARE_PAGE_CNT = 2; //  how many pages left before a refetch is triggered
 
-let renderCnt = 0;
 export default function({path, pageSize = 20, pagingProperty = "height", limit = 60, resolve = undefined, updateQuery = ""}) {
-	renderCnt++;
 	const history = useHistory();
 	const [state, dispatch] = useReducer(reducer, initialState, () => initialState);
 	const refinedQuery = useMemo(() => {
@@ -46,7 +44,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 	});
 
 	//  Only use refetch when retrieving cutting-edge data
-	const [recentData, requestFetch, setUrl] = useFetch("", "get");
+	const [recentData, , setUrl] = useFetch("", "get");
 
 	const [watch, setWatch] = useTimer(realTime, consts.NUM.REAL_TIME_DELAY_MS);
 
@@ -60,11 +58,13 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 			if (loading) return;
 			setUrl(`${consts.API_BASE}${path}` + getQueryParams(state.allData, true, pagingProperty, "", limit));
 		}
+		// eslint-disable-next-line
 	}, [watch]);
 	useEffect(() => {
 		if (error) return;
 		// console.log("setting setWatch", realTime);
 		setWatch(realTime);
+		// eslint-disable-next-line
 	}, [realTime]);
 
 	//  new data from recentData
@@ -83,6 +83,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 				//  exception handling when recentData query is insufficient
 			}
 		}
+		// eslint-disable-next-line
 	}, [recentData.data]);
 
 	//  appending new data
@@ -159,6 +160,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 					dispatch({type: EXTRA_LOAD_FAIL});
 			}
 		}
+		// eslint-disable-next-line
 	}, [error, data, pageSize, state.index]);
 
 	async function getInitialLoadQuery(refinedQuery, payload) {
@@ -172,6 +174,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 			if (state.reset === 1) refetch({path: `${path}?limit=${limit}`});
 			else if (state.reset === 2) refetch({path: `${path}?limit=${limit}&after=0`});
 		}
+		// eslint-disable-next-line
 	}, [state.reset]);
 
 	//  check param change and if refetch is needed, do it! Else don't.
@@ -196,6 +199,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 					path: getQueryParams(state.allData, state.params.after, pagingProperty, path, limit),
 				});
 		}
+		// eslint-disable-next-line
 	}, [state.params]);
 
 	//  initialize for data fetching and/or page change
@@ -220,15 +224,13 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 				dispatch({type: RESET, payload: {reset: 1}});
 			}
 		},
-		[path, limit]
+		[state.isFront, state.isNoMore]
 	);
-
-	// console.log("stateCheck outside>>>", `${renderCnt} ${recursiveExpand({..._.omit(state, ["allData"]), allDataSize: state.allData.length})}`);
 
 	//  data refining process
 	const getPageData = useCallback(() => {
 		return _.slice(state.allData, state.index[0], state.index[1] + 1);
-	}, [state.allData, state.index, data]);
+	}, [state.allData, state.index]);
 	const pageData = useMemo(() => getPageData(), [getPageData]);
 
 	//  update query if changed
@@ -247,7 +249,8 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 
 		if (refinedQuery === pageData[0][pagingProperty] + 1) return;
 		setRefinedQuery(history, updateQuery, pageData[0][pagingProperty]);
-	}, [pageData, state.isFront, realTime]);
+		// eslint-disable-next-line
+	}, [pageData, state.isFront, realTime, error, history, pagingProperty]);
 
 	const forceLoadAfter = after => dispatch({type: EXTRA_LOAD_INIT, payload: {after: after}}); //  query for the ones before as well
 	return [

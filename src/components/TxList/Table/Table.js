@@ -45,6 +45,7 @@ export default function(props) {
 			// console.log("setRealTimeFalse");
 			setRealTime(false);
 		}
+		// eslint-disable-next-line
 	}, [realTime, state.isFront]);
 
 	const onePageClick = (after = false) => {
