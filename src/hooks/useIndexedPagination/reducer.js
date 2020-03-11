@@ -24,7 +24,6 @@ export const PAGE_CHANGE = "PAGE_CHANGE";
 export const UPDATE_MAX_HEIGHT = "UPDATE_MAX_HEIGHT";
 export const UPDATE_ISFRONT = "UPDATE_ISFRONT";
 export const RESET = "RESET"; //  reset(to initial initial_load again
-export const TO_END = "TO_END";
 
 export default function(state, action) {
 	// console.log("reducer>>>", action.type, _.cloneDeep(state));
@@ -85,11 +84,6 @@ export default function(state, action) {
 			} else {
 				//  not at front anymore
 				return {...state, index: [state.index[0] + state.pageSize, state.index[1] + state.pageSize], isFront: false};
-			}
-		}
-		case TO_END: {
-			if (action.payload.toEnd === true) {
-				return {...state};
 			}
 		}
 		case UPDATE_MAX_HEIGHT: {

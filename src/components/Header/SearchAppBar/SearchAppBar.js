@@ -3,7 +3,6 @@ import cn from "classnames/bind";
 import styles from "./SearchAppBar.scss";
 import _ from "lodash";
 import {NavLink, useHistory} from "react-router-dom";
-
 //  components
 import SearchArea from "src/components/common/SearchArea";
 import {IconButton, Toolbar} from "@material-ui/core";

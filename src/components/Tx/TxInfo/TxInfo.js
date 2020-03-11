@@ -4,10 +4,7 @@ import cn from "classnames/bind";
 import {NavLink} from "react-router-dom";
 import moment from "moment";
 
-import {setAgoTime, empty, _} from "src/lib/scripts";
-import getTxTypeIcon from "src/constants/getTxTypeIcon";
-import getTxType from "src/constants/getTxType";
-
+import {setAgoTime} from "src/lib/scripts";
 //  components
 import InfoRow from "src/components/common/InfoRow";
 
@@ -16,7 +13,6 @@ const failSVG = process.env.PUBLIC_URL + "/assets/transactions/fail_ic.svg";
 const cx = cn.bind(styles);
 
 export default function({txData}) {
-	const value = txData?.messages?.[0]?.value;
 	return (
 		<div className={cx("TxInfo-wrapper")}>
 			<h2 className={cx("title")}>Information</h2>

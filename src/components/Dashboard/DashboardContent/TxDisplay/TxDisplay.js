@@ -1,12 +1,10 @@
 import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./TxDisplay.scss";
-
 //  utils
 import consts from "src/constants/consts";
 import {_} from "src/lib/scripts";
-import {useTimer, useFetch} from "src/hooks";
-
+import {useFetch, useTimer} from "src/hooks";
 //  components
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 import ErrorPage from "src/components/common/ErrorPage";
@@ -16,13 +14,13 @@ import TxDisplayTableRow from "./TableRow";
 const cx = cn.bind(styles);
 
 export default function(props) {
-	const [data, requestFetch, setUrl] = useFetch(`${consts.API_BASE}${consts.API.TXLIST}?limit=5`, "get");
+	const [data, requestFetch] = useFetch(`${consts.API_BASE}${consts.API.TXLIST}?limit=5`, "get");
 
-	const [watching, setWatch] = useTimer(true, consts.NUM.DASH_REAL_TIME_DELAY_MS);
+	const [watching] = useTimer(true, consts.NUM.DASH_REAL_TIME_DELAY_MS);
 
 	React.useEffect(() => {
 		requestFetch();
-	}, [watching]);
+	}, [watching, requestFetch]);
 
 	const tableHeaderRender = React.useMemo(
 		() => (
@@ -43,7 +41,7 @@ export default function(props) {
 				</TableRow>
 			</TableHead>
 		),
-		[data.data]
+		[]
 	);
 
 	const tableBodyRender = React.useMemo(
@@ -54,7 +52,7 @@ export default function(props) {
 				))}
 			</TableBody>
 		),
-		[data.data]
+		[data]
 	);
 
 	return React.useMemo(

@@ -1,14 +1,10 @@
 import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./SearchArea.scss";
-
 //  hooks
 import {useSearch} from "src/hooks";
-
 //  components
 import SearchArea from "src/components/common/SearchArea";
-import {InputBase} from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
 import consts from "src/constants/consts";
 import LinkCard from "src/components/Dashboard/LinkCard";
 

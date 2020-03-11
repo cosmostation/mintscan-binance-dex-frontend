@@ -27,7 +27,7 @@ export default function(props) {
 		return () => {
 			source.cancel("cleanup cancel");
 		};
-	}, []);
+	}, [dispatch]);
 	return React.useMemo(
 		() => (
 			<div className={cx("PriceDisplay")}>

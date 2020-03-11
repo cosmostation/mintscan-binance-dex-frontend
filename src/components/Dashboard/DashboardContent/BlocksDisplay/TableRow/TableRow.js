@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 //  components
 import {TableCell, TableRow} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
-import {setAgoTime, getTotalTime} from "src/lib/scripts";
+import {setAgoTime} from "src/lib/scripts";
 
 const cx = cn.bind(styles);
 

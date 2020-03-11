@@ -1,9 +1,8 @@
-import React, {useEffect, useMemo} from "react";
+import React, {useMemo} from "react";
 import styles from "./Table.scss";
 import classNames from "classnames/bind";
 
 import {InputBase, Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
 
 const cx = classNames.bind(styles);
 

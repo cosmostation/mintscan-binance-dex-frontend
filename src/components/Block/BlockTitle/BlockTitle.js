@@ -6,9 +6,9 @@ const RightArrowSVG = process.env.PUBLIC_URL + "/assets/icons/common/arrow_ic.sv
 
 const cx = classNames.bind(styles);
 
-const BlockTitle = ({height, onClick, state}) => {
+const BlockTitle = ({height, onClick, loading}) => {
 	const handleClick = isPrev => () => {
-		if (state.loading) return;
+		if (loading) return;
 		onClick(isPrev);
 	};
 	return (
@@ -16,14 +16,14 @@ const BlockTitle = ({height, onClick, state}) => {
 			<h2 className={cx("title")}>
 				Details for Block <span style={{fontSize: "22px"}}>#{height}</span>
 			</h2>
-			<div className={cx("icons")}>
-				<a onClick={handleClick(true)}>
+			<ul className={cx("icons")}>
+				<li onClick={handleClick(true)}>
 					<img className={cx("flip")} src={RightArrowSVG} alt='arrow' />
-				</a>
-				<a onClick={handleClick(false)}>
+				</li>
+				<li onClick={handleClick(false)}>
 					<img src={RightArrowSVG} alt='arrow' />
-				</a>
-			</div>
+				</li>
+			</ul>
 		</div>
 	);
 };

@@ -2,11 +2,10 @@ import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./Tx.scss";
 
-import {_, empty, refineAddress} from "src/lib/scripts";
+import {empty} from "src/lib/scripts";
 import consts from "src/constants/consts";
 import useFetch from "src/hooks/useFetch/useFetch";
 import MockData from "src/containers/Tx/MockData";
-
 //  components
 import TitleWrapper from "src/components/common/TitleWrapper";
 import TxInfo from "src/components/Tx/TxInfo";

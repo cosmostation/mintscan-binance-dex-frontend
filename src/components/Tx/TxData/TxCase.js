@@ -1,7 +1,8 @@
 import {_} from "src/lib/scripts";
 import txTypes from "src/constants/txTypes";
 
-const {COSMOS, DEX, TOKENS, MISC} = txTypes;
+// const {COSMOS, DEX, TOKENS, MISC} = txTypes;
+const {COSMOS, DEX} = txTypes;
 export const txGetSide = Object.freeze([null, "Buy", "Sell"]);
 export const txGetTimeInforce = Object.freeze([null, "GTE", null, "IOC"]);
 export const txGetOrderType = Object.freeze([null, "ORDER", "LIMIT"]);

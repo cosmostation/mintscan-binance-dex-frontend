@@ -1,11 +1,10 @@
-import React, {Component} from "react";
+import React from "react";
 import styles from "./StatusCard.scss";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
 const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
-const downSVG = process.env.PUBLIC_URL + "/assets/assets/down_rd.svg";
 const upSVG = process.env.PUBLIC_URL + "/assets/assets/up_gr.svg";
 
 export default function(props) {

@@ -1,3 +1,9 @@
+/*
+ * WARNING
+ * the code here deliberately does not adhere to the rule of hooks(for my sanity's sake)
+ * A LOT of refactoring will probably be needed if attempted to fix.
+ * You have been warned
+ */
 import {useCallback, useEffect, useMemo, useReducer, useState} from "react";
 import {useGet} from "restful-react";
 import {useFetch, useTimer} from "src/hooks";
@@ -17,8 +23,8 @@ import reducer, {
 	initialState,
 	PAGE_CHANGE,
 	RECENT_DATA_LOAD,
-	UPDATE_ISFRONT,
 	RESET,
+	UPDATE_ISFRONT,
 } from "src/hooks/useIndexedPagination/reducer";
 
 export const SPARE_PAGE_CNT = 2; //  how many pages left before a refetch is triggered

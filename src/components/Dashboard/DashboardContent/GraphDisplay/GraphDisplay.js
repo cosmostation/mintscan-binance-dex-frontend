@@ -2,7 +2,7 @@ import * as React from "react";
 import cn from "classnames/bind";
 import axios from "axios";
 
-import {_, getUnixTimes, empty} from "src/lib/scripts";
+import {_, empty, getUnixTimes} from "src/lib/scripts";
 import {getMarketChartRange} from "src/lib/api";
 
 import ErrorPage from "src/components/common/ErrorPage";

@@ -28,13 +28,10 @@ export default function({msg, txData}) {
 	console.log(msg);
 	const {type, value} = msg;
 
-	const clickSymbol = React.useCallback(
-		symbol => {
-			if (_.isNil(symbol)) return;
-			window.open(`${BINANCE_ASSSET_BASE}/${_.split(symbol, "_")[0]}`, "_blank");
-		},
-		[value]
-	);
+	const clickSymbol = React.useCallback(symbol => {
+		if (_.isNil(symbol)) return;
+		window.open(`${BINANCE_ASSSET_BASE}/${_.split(symbol, "_")[0]}`, "_blank");
+	}, []);
 
 	return (
 		<div className={cx("grid-wrapper")}>

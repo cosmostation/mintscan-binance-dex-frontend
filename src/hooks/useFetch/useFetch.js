@@ -32,7 +32,7 @@ export default function(inputUrl, method = "get") {
 			unmounted = true;
 			source.cancel("Cancel cleanup");
 		};
-	}, [fetch, url]);
+	}, [fetch, url, method]);
 
 	const requestRefetch = useCallback(() => {
 		setFetch(v => v + 1);

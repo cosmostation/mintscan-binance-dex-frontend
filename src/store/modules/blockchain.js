@@ -1,7 +1,6 @@
 import {createAction, handleActions} from "redux-actions";
 import {pender} from "redux-pender";
 import * as api from "src/lib/api";
-import {_} from "src/lib/scripts";
 
 const GET_BASIC_DATA = "GET_BASIC_DATA";
 const GET_DATA = "GET_DATA";
@@ -26,7 +25,6 @@ const handlers = {
 		type: GET_BASIC_DATA,
 		onSuccess: (state, action) => {
 			const {data} = action.payload;
-			const keys = _.keys(data);
 			console.log(data);
 			return {
 				...state,

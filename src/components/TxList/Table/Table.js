@@ -1,3 +1,9 @@
+/*
+ * WARNING
+ * the code here deliberately does not adhere to the rule of hooks(probably)
+ * A LOT of refactoring will probably be needed if attempted to fix.
+ * You have been warned
+ */
 import React, {useEffect, useMemo} from "react";
 import styles from "./Table.scss";
 import classNames from "classnames/bind";
@@ -18,7 +24,7 @@ const BASE_PROPERTY = "id";
 const PAGE_SIZE = 20;
 
 export default function(props) {
-	const [loading, error, state, updateCurrentPage, jumpToEnd, [realTime, setRealTime], forceLoadAfter] = useIndexedPagination({
+	const [, , state, updateCurrentPage, jumpToEnd, [realTime, setRealTime]] = useIndexedPagination({
 		path: consts.API.TXLIST,
 		pageSize: PAGE_SIZE,
 		pagingProperty: BASE_PROPERTY,
@@ -66,25 +72,22 @@ export default function(props) {
 	//========================
 
 	const tableBodyRender = useMemo(() => {
-		const {pageData} = state;
-
 		return (
 			<TableBody>
-				{_.map(empty(pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData, (v, idx) => (
+				{_.map(empty(state.pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : state.pageData, (v, idx) => (
 					// TODO - comment in components/BlockList/Table.js
 					//  should use v.id
 					<TxListTableRow key={idx} blockData={v} />
 				))}
 			</TableBody>
 		);
-	}, [state.pageData, state.pageSize]);
+	}, [state.pageData]);
 
 	const thinTableBodyRender = useMemo(() => {
-		const {pageData} = state;
 		return (
 			<ul className={cx("thinTableRows-wrapper")}>
 				<div className={cx("tableDivider")} />
-				{_.map(empty(pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : pageData, (v, idx) => {
+				{_.map(empty(state.pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : state.pageData, (v, idx) => {
 					if (v === undefined)
 						return (
 							<li>
@@ -101,7 +104,7 @@ export default function(props) {
 				})}
 			</ul>
 		);
-	}, [state.pageData, state.pageSize]);
+	}, [state.pageData]);
 
 	return (
 		<div className={cx("txListTableWrapper")}>

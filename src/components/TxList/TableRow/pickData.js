@@ -87,5 +87,7 @@ export default function(blockData, cx, cell) {
 			}
 			return "-";
 		}
+		default:
+			return "DEFAULT";
 	}
 }

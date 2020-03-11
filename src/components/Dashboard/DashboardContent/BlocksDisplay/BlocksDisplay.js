@@ -2,10 +2,9 @@ import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./BlocksDisplay.scss";
 //  utils
-import {useTimer, useFetch} from "src/hooks";
+import {useFetch, useTimer} from "src/hooks";
 import consts from "src/constants/consts";
 import {_} from "src/lib/scripts";
-
 //  components
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 import ErrorPage from "src/components/common/ErrorPage";
@@ -15,12 +14,12 @@ import BlockDisplayTableRow from "./TableRow";
 const cx = cn.bind(styles);
 
 export default function(props) {
-	const [data, requestFetch, setUrl] = useFetch(`${consts.API_BASE}${consts.API.BLOCKLIST}?limit=5`, "get");
-	const [watching, setWatch] = useTimer(true, consts.NUM.DASH_REAL_TIME_DELAY_MS);
+	const [data, requestFetch] = useFetch(`${consts.API_BASE}${consts.API.BLOCKLIST}?limit=5`, "get");
+	const [watching] = useTimer(true, consts.NUM.DASH_REAL_TIME_DELAY_MS);
 
 	React.useEffect(() => {
 		requestFetch();
-	}, [watching]);
+	}, [watching, requestFetch]);
 
 	const tableHeaderRender = React.useMemo(() => {
 		return (
@@ -41,7 +40,7 @@ export default function(props) {
 				</TableRow>
 			</TableHead>
 		);
-	}, [data.data]);
+	}, []);
 	const tableBodyRender = React.useMemo(
 		() => (
 			<TableBody>
@@ -50,7 +49,7 @@ export default function(props) {
 				))}
 			</TableBody>
 		),
-		[data.data]
+		[data]
 	);
 
 	return React.useMemo(

@@ -1,9 +1,8 @@
 import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./BlockHeader.scss";
-import {NavLink} from "react-router-dom";
 
-import {setAgoTime, getTotalTime, _, formatNumber} from "src/lib/scripts";
+import {_, formatNumber, getTotalTime, setAgoTime} from "src/lib/scripts";
 //  components
 import InfoRow from "src/components/common/InfoRow";
 import Skeleton from "react-skeleton-loader";
@@ -11,14 +10,17 @@ import Skeleton from "react-skeleton-loader";
 const cx = cn.bind(styles);
 
 export default function({blockData, history}) {
-	// TODO
-	//  apply proper fee when applicable
-	const fee = "0.000000";
-	const split = fee.split(".");
 	// console.log(blockData);
 
-	return React.useMemo(
-		() => (
+	const onClick = React.useCallback(() => history.replace(`/blocks/${Number(blockData?.height) - 1}`), [blockData]);
+
+	return React.useMemo(() => {
+		// TODO
+		//  apply proper fee when applicable
+		const fee = "0.000000(fake)";
+		const split = fee.split(".");
+
+		return (
 			<div className={cx("BlockDetail-wrapper")}>
 				{/*{(() => console.table(blockData))()}*/}
 				<div className={cx("title")}>Block Data</div>
@@ -29,7 +31,7 @@ export default function({blockData, history}) {
 					</InfoRow>
 					<InfoRow label={"Block Hash"}>{blockData?.block_hash}</InfoRow>
 					<InfoRow label={"Parent Hash"}>
-						<span className={cx("blueLink")} onClick={() => history.replace(`/blocks/${Number(blockData?.height) - 1}`)}>
+						<span className={cx("blueLink")} onClick={onClick}>
 							{blockData?.parent_hash}
 						</span>
 					</InfoRow>
@@ -63,7 +65,6 @@ export default function({blockData, history}) {
 					{/*</div>*/}
 				</div>
 			</div>
-		),
-		[blockData]
-	);
+		);
+	}, [blockData, onClick]);
 }

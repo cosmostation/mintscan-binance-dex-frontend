@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import {_} from "src/lib/scripts";
-import {txCheckSend, txCheckOrder} from "../TxCase";
+import {txCheckOrder, txCheckSend} from "../TxCase";
 import {NavLink} from "react-router-dom";
 
 export default function({type, txData, value, cx}) {

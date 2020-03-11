@@ -1,13 +1,10 @@
 import React from "react";
 import cn from "classnames/bind";
 import styles from "./AssetList.scss";
-
 //  hooks
 import useFetch from "src/hooks/useFetch/useFetch";
-
 //  utils
 import consts from "src/constants/consts";
-
 //  components
 import TitleWrapper from "src/components/common/TitleWrapper";
 import PageTitle from "src/components/common/PageTitle";
@@ -17,7 +14,7 @@ import Table from "src/components/Assets/Table";
 const cx = cn.bind(styles);
 
 export default function(props) {
-	const [state, refetch, setUrl] = useFetch(`${consts.BINANCE_API_BASE}${consts.BINANCE_API.ASSETS}`);
+	const [state, ,] = useFetch(`${consts.BINANCE_API_BASE}${consts.BINANCE_API.ASSETS}`);
 	console.log(state);
 	return (
 		<div className={cx("AssetList")}>

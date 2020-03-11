@@ -32,9 +32,10 @@
 		display: grid;
 		grid-gap: 10px;
 		grid-auto-flow: column;
-		a {
+		li {
 			height: 26px;
 			width: 26px;
+			cursor: pointer;
 			img {
 				object-fit: contain;
 				cursor: pointer;

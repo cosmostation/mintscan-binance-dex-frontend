@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 
 import {TableCell, TableRow} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
-import {reduceString, setAgoTime} from "src/lib/scripts";
+import {setAgoTime} from "src/lib/scripts";
 
 import pickData, {CELL_TYPES} from "./pickData";
 
