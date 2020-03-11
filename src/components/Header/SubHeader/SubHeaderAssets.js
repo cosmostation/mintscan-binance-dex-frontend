@@ -6,8 +6,8 @@ const txs = process.env.PUBLIC_URL + "/assets/icons/navigation/transations_ic_no
 const txsOn = process.env.PUBLIC_URL + "/assets/icons/navigation/transations_ic.svg";
 const assets = process.env.PUBLIC_URL + "/assets/icons/navigation/assets_ic_none.svg";
 const assetsOn = process.env.PUBLIC_URL + "/assets/icons/navigation/assets_ic.svg";
-const dex = process.env.PUBLIC_URL + "/assets/icons/navigation/binance_ic_none.svg";
-const dexOn = process.env.PUBLIC_URL + "/assets/icons/navigation/binance_ic.svg";
+const dex = process.env.PUBLIC_URL + "/assets/icons/navigation/dex_ic_none.svg";
+const dexOn = process.env.PUBLIC_URL + "/assets/icons/navigation/dex_ic.svg";
 
 export default {
 	on: [dashboardOn, blocksOn, txsOn, assetsOn, dexOn],

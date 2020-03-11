@@ -6,7 +6,7 @@ import consts from "src/constants/consts";
 import svg from "./SubHeaderAssets";
 
 //  utils
-import _ from "lodash";
+import {_} from "src/lib/scripts";
 //  material ui
 import {Grid} from "@material-ui/core";
 

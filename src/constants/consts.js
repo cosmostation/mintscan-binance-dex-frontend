@@ -1,6 +1,6 @@
 // TODO : use this if prod server is ready
-// const api = process.env.NODE_ENV === "production" ? "https://lcd-binance-mainnet.cosmostation.io" : "https://api-binance-testnet.cosmostation.io/v1";
-const api = "https://api-binance-testnet.cosmostation.io/v1";
+import config from "src/config";
+const api = process.env.NODE_ENV === "production" ? config.API_PROD : config.API_DEV;
 
 export default Object.freeze({
 	API_BASE: api,
@@ -8,13 +8,6 @@ export default Object.freeze({
 		BASE_MULT: 100000000,
 		REAL_TIME_DELAY_MS: 2000,
 		DASH_REAL_TIME_DELAY_MS: 3000,
-	},
-	BINANCE_API_BASE: " https://explorer.binance.org/api/v1/",
-	BINANCE_API: {
-		ASSETS: "/assets?page=1?rows=1000",
-		ASSET: "/asset",
-		ASSET_HOLDERS: "/asset-holders",
-		ASSET_TX: "/txs",
 	},
 	API: {
 		STATUS: "/status",
