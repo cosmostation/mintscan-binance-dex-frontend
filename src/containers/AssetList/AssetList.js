@@ -1,33 +1,39 @@
-import React from "react";
+import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./AssetList.scss";
-//  hooks
-import useFetch from "src/hooks/useFetch/useFetch";
-//  utils
-import consts from "src/constants/consts";
+import {empty} from "src/lib/scripts";
+
+//  redux
+import {useSelector, useDispatch} from "react-redux";
+import {getCryptoAssets} from "src/store/modules/blockchain";
+
 //  components
 import TitleWrapper from "src/components/common/TitleWrapper";
 import PageTitle from "src/components/common/PageTitle";
-import StatusCard from "src/components/Assets/StatusCard/StatusCard";
-import Table from "src/components/Assets/Table";
+import StatusCard from "src/components/AssetList/StatusCard/StatusCard";
+import Table from "src/components/AssetList/Table";
 
 const cx = cn.bind(styles);
 
 export default function(props) {
-	const [state, ,] = useFetch(`${consts.BINANCE_API_BASE}${consts.BINANCE_API.ASSETS}`);
-	console.log(state);
+	const dispatch = useDispatch();
+	const assets = useSelector(state => state.blockchain.assets);
+
+	React.useEffect(() => {
+		if (empty(assets)) dispatch(getCryptoAssets());
+	}, [dispatch, assets]);
 	return (
 		<div className={cx("AssetList")}>
 			<TitleWrapper>
 				<PageTitle title={"Assets"} />
 			</TitleWrapper>
 			<div className={cx("StatusCard-grid")}>
-				<StatusCard />
-				<StatusCard />
-				<StatusCard />
-				<StatusCard />
+				<StatusCard asset={assets?.[0]} />
+				<StatusCard asset={assets?.[1]} />
+				<StatusCard asset={assets?.[2]} />
+				<StatusCard asset={assets?.[3]} />
 			</div>
-			<Table />
+			<Table assets={assets} />
 		</div>
 	);
 }

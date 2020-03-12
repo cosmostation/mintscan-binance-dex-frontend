@@ -1,0 +1,121 @@
+@import "src/styles/utils";
+
+$tablePadding: 11px 20px 10px 19px;
+.AssetList-tableRow {
+  @include tableRow;
+	width: map_get($breakpoints, asset_table_limit);
+
+  .tablePointerCell {
+    @include tablePointerCell;
+    padding: $tablePadding;
+  }
+
+  .tablePointerMiniCell {
+    @include tablePointerCellWidth140;
+    padding: $tablePadding;
+  }
+
+  .tableCell {
+    @include tableCellWidth300;
+    padding: $tablePadding;
+  }
+	
+	.nameCell {
+		max-width: 250px;
+	}
+}
+
+.nameImg-wrapper {
+	width: fit-content;
+	cursor: pointer;
+	
+	display: flex;
+	flex-flow: row;
+	
+	img {
+		width: 30px;
+		height: 30px;
+		object-fit: contain;
+		margin-right: 10.5px;
+	}
+	
+	.name-wrapper {
+		font-family: "Open Sans", serif;
+		font-size: 13px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.31;
+		letter-spacing: normal;
+		text-align: left;
+		color: #4472de;
+		
+		.name {
+			font-size: 11px;
+			line-height: 1.55;
+			color: #89909b;
+		}
+	}
+}
+
+.section-wrapper {
+	padding: 10.5px 0 9px 0
+}
+
+.number-wrapper {
+	font-family: "Open Sans", serif;
+	font-size: 13px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.15;
+	letter-spacing: normal;
+	text-align: right;
+	color: #4b525d;
+	span {
+		font-size: 11px;
+	}
+}
+.owner {
+	cursor: pointer;
+	font-family: "Open Sans", serif;
+	font-size: 13px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.38;
+	letter-spacing: normal;
+	text-align: left;
+	color: #4472de;
+}
+
+.AssetList-thinTableRow {
+	.row {
+		width: 100%;
+		height: fit-content;
+		@include Flex_LeftRight;
+		
+		font-family: "Open Sans", serif;
+		font-size: 13px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.38;
+		letter-spacing: normal;
+		text-align: left;
+		color: #222222;
+		padding: 5.5px 0;
+	}
+	
+	padding: 0 15px;
+}
+.blueColor {
+	color: #4472de;
+}
+
+.divider {
+	margin-left: -15px;
+	width: calc(100% + 30px);
+	height: 0;
+	border: solid 1px #e6e6e6;
+}

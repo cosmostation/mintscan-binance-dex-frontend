@@ -2,18 +2,19 @@
 
 .statuscard-wrapper {
   @include card-nopadding-wrapper;
-  margin-bottom: 15px;
+	width: 288.7px;
+	@include media("<large") {
+		width: calc((100vw - 45px) / 2);
+	}
+	@include media("<small") {
+		width: calc((100vw - 30px));
+	}
   .wrapper {
     display: flex;
     flex-flow: column;
-    width: 288.7px;
     height: 124px;
 
     padding: 16px 21px 15px 20px;
-
-    @include media("<medium") {
-      height: 60px;
-    }
     .asset-graph-wrapper {
       display: flex;
       flex-flow: row;

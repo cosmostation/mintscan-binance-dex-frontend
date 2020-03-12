@@ -1,6 +1,10 @@
 import axios from "axios";
 import consts from "src/constants/consts";
 
+export const getAssets = cancelToken => {
+	return axios.get(`${consts.API_BASE}${consts.API.ASSETS}`, {cancelToken});
+};
+
 export const getStatus = cancelToken => {
 	return axios.get(`${consts.API_BASE}${consts.API.STATUS}`, {cancelToken});
 };

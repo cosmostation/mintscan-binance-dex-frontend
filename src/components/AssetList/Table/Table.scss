@@ -3,19 +3,25 @@
 .AssetsTable-wrapper {
 	overflow-x: auto;
 	overflow-y: hidden;
-	@include card-wrapper(12px);
+	
 	display: flex;
 	flex-flow: column;
+	
+	@include card-nopadding-wrapper;
+	padding: 20px;
 	.table {
-		min-width: 1000px;
-
+		@include media("<asset_table_limit") {
+			display: none;
+		}
 		.tableHeaderCell {
 			@include tableHeaderCellWidth300;
 			color: var(--colorMainText);
 		}
+		.nameCell {
+			max-width: 250px;
+		}
 
 		.OwnerCell {
-			padding: 0 125px 0 120px;
 			width: 150px;
 		}
 	}
@@ -80,5 +86,20 @@
 				padding: 0px 5px;
 			}
 		}
+	}
+	.table-thin {
+		@include media(">asset_table_limit") {
+			display: none;
+		}
+		.thinTableRows-wrapper {
+			>:nth-child(odd) {
+				background-color: #fbfbfc;
+			}
+		}
+		
+		margin: 20px 0;
+		width: 100%;
+		height: fit-content;
+		padding: 16px 0;
 	}
 }

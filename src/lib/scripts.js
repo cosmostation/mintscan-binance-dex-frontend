@@ -52,7 +52,6 @@ export const getPercentage = (num1 = 0, num2 = 100, decimal = 4) => {
 
 const phoneRegex = Object.freeze([/Android/i, /BlackBerry/i, /iPhone|iPad|iPod/i, /iPhone|iPad|iPod/i, /Opera Mini/i, /IEMobile/i, /WPDesktop/i]);
 export const isMobile = () => _.find(phoneRegex, regex => window.navigator.userAgent.match(regex)) !== undefined;
-
 export const isIOS = () => window.navigator.userAgent.match(/iPhone|iPad|iPod/i);
 
 export const recursiveGetFirstValue = obj => {
@@ -61,7 +60,19 @@ export const recursiveGetFirstValue = obj => {
 	return obj;
 };
 
+export const searchProperties = (targetObject = {}, propertyArr = [], targetStr = "") =>
+	!_.every(propertyArr, property => !_.includes(targetObject[property], targetStr));
+
+//  this should work with letters as well -> https://javascript.info/comparison
+export const compareProperty = (a = {}, b = {}, property = "", defaultProperty = "id", asc = false) => {
+	if (a[property] > b[property]) return asc ? 1 : -1;
+	else if (a[property] < b[property]) return asc ? -1 : 1;
+	if (a[defaultProperty] <= b[defaultProperty]) return asc ? 1 : -1;
+	return asc ? -1 : 1;
+};
+
 //  time related
+
 export const setAgoTime = time => {
 	const x = new moment();
 	const y = new moment(time);
@@ -73,14 +84,6 @@ export const setAgoTime = time => {
 	else if (duration._data.hours) ret = `${duration._data.hours}h`;
 	else if (duration._data.minutes) ret = `${duration._data.minutes}m`;
 	else if (duration._data.seconds) ret = `${duration._data.seconds}s`;
-	// else if (duration._data.seconds) ret = `${duration._data.seconds <= 0 ? 0 : duration._data.seconds}s`;
-
-	// if (duration._data.years) ret = `${duration._data.years}years`;
-	// if (duration._data.months) ret = `${duration._data.months}months`;
-	// if (duration._data.days) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.days}d`;
-	// if (duration._data.hours) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.hours}h`;
-	// if (duration._data.minutes) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.minutes}m`;
-	// if (duration._data.seconds) ret = `${ret === 0 ? "" : `${ret} `}${duration._data.seconds}s`;
 	return ret + " ago";
 };
 

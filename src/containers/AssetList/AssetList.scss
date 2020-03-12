@@ -2,11 +2,23 @@
 
 .AssetList {
 	@include page-wrapper;
-
 	.StatusCard-grid {
+		width: fit-content;
+		margin: 0 auto 15px auto;
 		display: grid;
 		grid-template-rows: 1fr;
 		grid-column-gap: 15px;
+		grid-row-gap: 15px;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
+		@include media("<large") {
+			width: fit-content;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+		}
+		@include media("<small") {
+			width: fit-content;
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr 1fr 1fr 1fr;
+		}
 	}
 }
