@@ -4,7 +4,7 @@ import {empty} from "src/lib/scripts";
 
 import reducer, {ERROR, FETCHING, initialState, SUCCESS} from "./reducer";
 
-export default function(inputUrl, method = "get") {
+export default function useFetch(inputUrl, method = "get") {
 	const [url, setUrl] = useState(inputUrl);
 	const [state, dispatch] = useReducer(reducer, initialState, () => initialState);
 	const [fetch, setFetch] = useState(0);

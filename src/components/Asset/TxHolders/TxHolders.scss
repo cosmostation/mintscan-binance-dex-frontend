@@ -1,0 +1,33 @@
+@import "src/styles/utils";
+
+$widthCardTxMarginRight: 1.25%;
+$widthSelected: 84%;
+
+.TxHolders-wrapper {
+	display: flex;
+	flex-flow: row;
+	:first-child {
+		margin-right: $widthCardTxMarginRight;
+	}
+	.Card {
+		&.selected {
+			width: $widthSelected;
+			transition: all 0.5s ease;
+		}
+		&.unselected {
+			@include card-nopadding-wrapper;
+			transition: all 0.5s ease;
+			width: 100% - $widthCardTxMarginRight - $widthSelected;
+		}
+		@include card-nopadding-wrapper;
+		overflow-x: hidden;
+		padding: 20px;
+		
+		.title {
+			font-family: "Montserrat", serif;
+			font-size: var(--fontSizeCardValue);
+			font-weight: 500;
+			color: var(--colorMainText);
+		}
+	}
+}

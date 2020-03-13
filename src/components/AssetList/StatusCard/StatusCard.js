@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./StatusCard.scss";
 import classNames from "classnames/bind";
+import {useHistory} from "react-router-dom";
 import {formatNumber} from "src/lib/scripts";
 
 const cx = classNames.bind(styles);
@@ -9,9 +10,10 @@ const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none
 const upSVG = process.env.PUBLIC_URL + "/assets/assets/up_gr.svg";
 
 export default function({asset}) {
+	const history = useHistory();
 	const splitPrice = asset?.price ? formatNumber(asset.price).split(".") : ["0", "00000"];
 	return (
-		<div className={cx("statuscard-wrapper")}>
+		<div className={cx("statuscard-wrapper")} onClick={() => history.push(`/asset/${asset?.asset}`)}>
 			<div className={cx("wrapper")}>
 				<div className={cx("asset-graph-wrapper")}>
 					<div className={cx("asset")}>

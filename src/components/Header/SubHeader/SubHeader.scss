@@ -131,6 +131,9 @@
 				height: 32px;
 				width: 32px;
 				margin-right: 5px;
+				@include media("<medium") {
+					margin-right: 0;
+				}
 			}
 
 			.selected {

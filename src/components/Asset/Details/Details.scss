@@ -1,0 +1,113 @@
+@import "src/styles/utils";
+
+.AssetDetails-wrapper {
+	@include card-nopadding-wrapper();
+	padding: 15px 19px 20px;
+	margin-bottom: 15px;
+	
+	.header {
+		display: flex;
+		flex-flow: row;
+		align-items: center;
+		justify-content: space-between;
+		.asset {
+			display: flex;
+			flex-flow: row;
+			align-items: center;
+			img {
+				width: 40px;
+				height: 40px;
+				margin-right: 15px;
+			}
+			.text {
+				font-family: "Open Sans", serif;
+				font-stretch: normal;
+				font-style: normal;
+				letter-spacing: normal;
+				color: #222222;
+				p {
+					line-height: 1.36;
+					font-size: 22px;
+					font-weight: 600;
+				}
+				.currency{
+					font-size: 15px;
+					font-weight: normal;
+					line-height: 1.33;
+					color: #89909b;
+				}
+			}
+		}
+		.clickables {
+			img {
+				width: 35px;
+				height: 35px;
+				
+				object-fit: contain;
+			}
+			:not(:last-child) {
+				margin-right: 10px;
+			}
+			.Facebook {
+				content: url("/assets/assets/facebook_btn.svg");
+				&:hover {
+					content: url("/assets/assets/facebook_btn_hover.svg");
+				}
+			}
+			.Twitter {
+				content: url("/assets/assets/twitter_btn.svg");
+				&:hover {
+					content: url("/assets/assets/twitter_btn_hover.svg");
+				}
+			}
+			.Medium {
+				content: url("/assets/assets/medium_btn.svg");
+				&:hover {
+					content: url("/assets/assets/medium_btn_hover.svg");
+				}
+			}
+			.Instagram {
+				content: url("/assets/assets/instagram_btn.svg");
+				&:hover {
+					content: url("/assets/assets/instagram_btn_hover.svg");
+				}
+			}
+		}
+		margin-bottom: 15px;
+	}
+	.table {
+		padding-top: 15px;
+		
+		.number-wrapper {
+			//height: 20px;
+			font-family: "Open Sans", serif;
+			font-size: 15px;
+			font-weight: normal;
+			font-stretch: normal;
+			font-style: normal;
+			letter-spacing: normal;
+			text-align: left;
+			color: #4b525d;
+			.decimal {
+				font-size: 13px;
+			}
+			.green {
+				color: #37cc6e;
+			}
+			.red {
+				color: #ea0070;
+			}
+		}
+	}
+}
+
+.divider {
+	width: 100%;
+	height: 0;
+	border: solid 1px #e6e6e6;
+}
+
+.blueLink {
+	cursor: pointer;
+	color: #4472de;
+}

@@ -3,6 +3,7 @@
 .statuscard-wrapper {
   @include card-nopadding-wrapper;
 	width: 288.7px;
+	cursor: pointer;
 	@include media("<large") {
 		width: calc((100vw - 45px) / 2);
 	}
@@ -72,9 +73,10 @@
         }
       }
       .percentage {
-        height: 16px;
+        height: fit-content;
         display: flex;
         flex-flow: row;
+				justify-content: center;
         align-items: center;
         img {
           height: 16px;

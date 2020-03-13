@@ -11,8 +11,7 @@
 
 	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/assets/dashboard/main_img.png") no-repeat fixed center center;
 	background-position-y: inherit;
-
-	margin-top: -15px;
+	
 	@include media(">1880px") {
 		background-size: cover;
 	}

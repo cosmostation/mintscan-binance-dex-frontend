@@ -73,7 +73,7 @@ const handlers = {
 		onSuccess: (state, action) => {
 			if (!_.isArray(action.payload?.data?.assetInfoList)) return {...state};
 			const data = _.map(action.payload.data.assetInfoList, v => ({...v, marketCap: Number(multiply(v?.price, v?.supply, 5))}));
-			console.log("assets>>", data);
+			// console.log("assets>>", data);
 			//  using native array sort
 			//  since the benchmark here https://www.npmjs.com/package/fast-sort#benchmark
 			//  shows that in the case of a flat array with high randomization, arraySort is fastest at 100 items

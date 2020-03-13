@@ -1,8 +1,11 @@
-import useFetch from "src/hooks/useFetch/useFetch";
-import useBetterState from "src/hooks/useBetterState";
-import useIndexedPagination from "src/hooks/useIndexedPagination/useIndexedPagination";
-import usePrevious from "src/hooks/usePrevious";
-import useTimer from "src/hooks/useTimer";
-import useSearch from "src/hooks/useSearch";
+import useFetch from "./useFetch/useFetch";
+import useBetterState from "./useBetterState";
+import useIndexedPagination from "./useIndexedPagination/useIndexedPagination";
+import usePrevious from "./usePrevious";
+import useTimer from "./useTimer";
+import useSearch from "./useSearch";
+import useLoadedNumberedPagination from "./useLoadedNumberedPagination";
+import useDelayedInput from "./useDelayedInput";
+import useScroll from "./useScroll";
 
-export {useFetch, useBetterState, useIndexedPagination, usePrevious, useTimer, useSearch};
+export {useFetch, useBetterState, useIndexedPagination, usePrevious, useTimer, useSearch, useLoadedNumberedPagination, useDelayedInput, useScroll};

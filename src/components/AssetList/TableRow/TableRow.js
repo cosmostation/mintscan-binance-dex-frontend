@@ -15,18 +15,18 @@ const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none
 
 const cx = cn.bind(styles);
 
-export const ThinTableRow = ({asset}) => {
+export const ThinTableRow = ({asset, displayNone}) => {
 	const history = useHistory();
 
 	const formattedMarketCap = !_.isNil(asset.marketCap) ? formatNumber(Math.round(asset.marketCap)) : undefined;
 	const formattedPrice = !_.isNil(asset.price) ? formatNumber(fixed(asset.price, 6)).split(".") : undefined;
 	const formattedSupply = !_.isNil(asset.supply) ? formatNumber(fixed(asset.supply, 6)).split(".") : undefined;
 	return (
-		<div className={cx("AssetList-thinTableRow")}>
+		<div key={asset.id} className={cx("AssetList-thinTableRow", {invisible: displayNone})}>
 			<div className={cx("divider")} />
 			<div className={cx("section-wrapper")}>
 				{asset.name ? (
-					<div className={cx("nameImg-wrapper")}>
+					<div className={cx("nameImg-wrapper")} onClick={() => history.push(`/assets/${asset.asset}`)}>
 						<img src={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} alt={"alt"} />
 						<div className={cx("name-wrapper")}>
 							<div>{asset.mappedAsset}</div>
@@ -82,23 +82,23 @@ export const ThinTableRow = ({asset}) => {
 			</ul>
 			<ul className={cx("row")}>
 				<li>Owner</li>
-				<li className={cx("owner")}>{asset.owner ? reduceString(asset.owner, 7, 5) : <Skeleton />}</li>
+				<li className={cx("owner")}>{asset.owner ? reduceString(asset.owner, 6, 6) : <Skeleton />}</li>
 			</ul>
 		</div>
 	);
 };
 
-export default function({asset}) {
+export default function({asset, displayNone}) {
 	const history = useHistory();
 
 	const formattedMarketCap = !_.isNil(asset.marketCap) ? formatNumber(Math.round(asset.marketCap)) : undefined;
 	const formattedPrice = !_.isNil(asset.price) ? formatNumber(fixed(asset.price, 6)).split(".") : undefined;
 	const formattedSupply = !_.isNil(asset.supply) ? formatNumber(fixed(asset.supply, 6)).split(".") : undefined;
 	return (
-		<TableRow className={cx("AssetList-tableRow")} key={asset.id}>
+		<TableRow className={cx("AssetList-tableRow", {invisible: displayNone})} key={asset.id}>
 			<TableCell className={cx("tableCell", "nameCell")} component='th' scope='row' alignt='left'>
 				{asset.name ? (
-					<div className={cx("nameImg-wrapper")}>
+					<div className={cx("nameImg-wrapper")} onClick={() => history.push(`/assets/${asset.asset}`)}>
 						<img src={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} alt={"alt"} />
 						<div className={cx("name-wrapper")}>
 							<div>{asset.mappedAsset}</div>
@@ -144,9 +144,9 @@ export default function({asset}) {
 					<Skeleton />
 				)}
 			</TableCell>
-			<TableCell className={cx("tableCell")} component='th' scope='row' align='left'>
+			<TableCell className={cx("tableCell")} component='th' scope='row' align='right'>
 				<div className={cx("owner")} onClick={() => history.push(`/account/${asset.owner}`)}>
-					{asset.owner ? reduceString(asset.owner, 7, 5) : <Skeleton />}
+					{asset.owner ? reduceString(asset.owner, 6, 6) : <Skeleton />}
 				</div>
 			</TableCell>
 		</TableRow>

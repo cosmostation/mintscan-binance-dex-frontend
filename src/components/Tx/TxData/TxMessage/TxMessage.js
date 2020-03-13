@@ -2,7 +2,7 @@ import * as React from "react";
 import styles from "./TxMessage.scss";
 import cn from "classnames/bind";
 
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import {divide, multiply} from "src/lib/Big";
 import {_, formatNumber} from "src/lib/scripts";
 
@@ -20,18 +20,17 @@ const symbolNone = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.sv
 const bnbSVG = process.env.PUBLIC_URL + "/assets/icons/common/binance_token.svg";
 const detailSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_detail_btn.svg";
 
-const BINANCE_ASSSET_BASE = "https://explorer.binance.org/asset";
-
 const cx = cn.bind(styles);
 
 export default function({msg, txData}) {
-	console.log(msg);
+	const history = useHistory();
 	const {type, value} = msg;
 
 	const clickSymbol = React.useCallback(symbol => {
 		if (_.isNil(symbol)) return;
-		window.open(`${BINANCE_ASSSET_BASE}/${_.split(symbol, "_")[0]}`, "_blank");
-	}, []);
+		const split = symbol.split("_");
+		history.push(`/assets/${split[0] === "BNB" ? split[1] : split[0]}`);
+	}, [history]);
 
 	return (
 		<div className={cx("grid-wrapper")}>

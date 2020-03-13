@@ -60,8 +60,9 @@ export const recursiveGetFirstValue = obj => {
 	return obj;
 };
 
+//  uppercases everything
 export const searchProperties = (targetObject = {}, propertyArr = [], targetStr = "") =>
-	!_.every(propertyArr, property => !_.includes(targetObject[property], targetStr));
+	!_.every(propertyArr, property => !_.includes(targetObject[property].toUpperCase(), targetStr));
 
 //  this should work with letters as well -> https://javascript.info/comparison
 export const compareProperty = (a = {}, b = {}, property = "", defaultProperty = "id", asc = false) => {

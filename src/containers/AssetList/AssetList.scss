@@ -16,9 +16,7 @@
 			grid-template-rows: 1fr 1fr;
 		}
 		@include media("<small") {
-			width: fit-content;
-			grid-template-columns: 1fr;
-			grid-template-rows: 1fr 1fr 1fr 1fr;
+			display: none;
 		}
 	}
 }

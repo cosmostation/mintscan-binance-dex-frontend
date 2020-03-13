@@ -15,6 +15,8 @@ export default Object.freeze({
 		TXLIST: "/txs",
 		TX: "/txs",
 		ASSETS: "/assets?page=1&rows=1000",
+		ASSET: "/asset?asset=",
+		ASSET_HOLDERS: "/asset-holders?page=1&"
 	},
 	NETWORK: {
 		COSMOS: "cosmos-3",

@@ -77,6 +77,8 @@ $tablePadding: 11px 20px 10px 19px;
 	}
 }
 .owner {
+	min-width: 150px;
+	
 	cursor: pointer;
 	font-family: "Open Sans", serif;
 	font-size: 13px;
@@ -85,7 +87,7 @@ $tablePadding: 11px 20px 10px 19px;
 	font-style: normal;
 	line-height: 1.38;
 	letter-spacing: normal;
-	text-align: left;
+	text-align: right;
 	color: #4472de;
 }
 
@@ -118,4 +120,8 @@ $tablePadding: 11px 20px 10px 19px;
 	width: calc(100% + 30px);
 	height: 0;
 	border-bottom: solid 1px #e6e6e6;
+}
+
+.invisible {
+	display: none !important;
 }
