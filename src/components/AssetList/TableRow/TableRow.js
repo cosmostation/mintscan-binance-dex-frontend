@@ -40,22 +40,7 @@ export const ThinTableRow = ({asset}) => {
 			<div className={cx("divider")} />
 			<ul className={cx("row")}>
 				<li>Market Cap(USD)</li>
-				<li className={cx("number-wrapper")}>
-					{formattedSupply ? (
-						<>
-							{formattedSupply[0]}
-							{formattedSupply[1] ? (
-								<>
-									.<span>{formattedSupply[1]}</span>
-								</>
-							) : (
-								undefined
-							)}
-						</>
-					) : (
-						<Skeleton />
-					)}
-				</li>
+				<li className={cx("number-wrapper")}>{formattedMarketCap ? <>$ {formattedMarketCap}</> : <Skeleton />}</li>
 			</ul>
 			<ul className={cx("row")}>
 				<li>Price</li>
