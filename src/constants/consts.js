@@ -4,6 +4,7 @@ const api = process.env.NODE_ENV === "production" ? config.API_PROD : config.API
 
 export default Object.freeze({
 	API_BASE: api,
+	API_BIANCE_DEX : "https://www.binance.org/en/trade/",
 	NUM: {
 		BASE_MULT: 100000000,
 		REAL_TIME_DELAY_MS: 2000,

@@ -17,7 +17,6 @@ import TxGetFrom from "src/components/Tx/TxData/TxGetFrom/TxGetFrom";
 
 const arrowSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_arrow.svg";
 const symbolNone = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
-const bnbSVG = process.env.PUBLIC_URL + "/assets/icons/common/binance_token.svg";
 const detailSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_detail_btn.svg";
 
 const cx = cn.bind(styles);
@@ -28,10 +27,15 @@ export default function({msg, txData}) {
 
 	const clickSymbol = React.useCallback(symbol => {
 		if (_.isNil(symbol)) return;
-		const split = symbol.split("_");
-		history.push(`/assets/${split[0] === "BNB" ? split[1] : split[0]}`);
+		window.open(`${consts.API_BIANCE_DEX}${symbol}`);
 	}, [history]);
 
+	const displaySymbol = () => {
+		if(!value.symbol) return "";
+		const split = value.symbol.split("_");
+		return split[0].split("-")[0] + "_" + split[1].split("-")[0];
+ 	};
+	console.log(txData);
 	return (
 		<div className={cx("grid-wrapper")}>
 			<div className={cx("type-wrapper")}>
@@ -39,19 +43,6 @@ export default function({msg, txData}) {
 				<span>{getTxType(type)}</span>
 			</div>
 			<div className={cx("grid")}>
-				{txCheckOrder(type) || txCheckSend(type) ? (
-					<InfoRow label='Asset'>
-						<span>{txCheckOrder(type) ? _.split(value?.symbol, "-")[0] : _.split(msg?.value?.inputs?.[0]?.coins?.[0]?.denom, "-")[0]}</span>
-					</InfoRow>
-				) : (
-					undefined
-				)}
-				<InfoRow label='Memo'>
-					<span>{txData.memo === "" ? "-" : txData.memo}</span>
-				</InfoRow>
-				<InfoRow label='From'>
-					<TxGetFrom txData={txData} type={type} value={value} cx={cx} />
-				</InfoRow>
 				{txCheckSend(type) ? (
 					<>
 						<div className={cx("toValue-row")}>
@@ -80,30 +71,34 @@ export default function({msg, txData}) {
 				) : (
 					undefined
 				)}
-				{/*orders*/}
 				{txCheckOrder(type) ? (
 					<>
+						{txTypes.DEX.ORDER_NEW === type ?
+							<InfoRow label='Side'>
+								<span className={cx({"color-red": value?.side === 2, "color-blue": value?.side === 1})}>{txGetSide[value?.side]} </span>
+								{value?.symbol.split("-")[0]}
+							</InfoRow>
+							: undefined
+						}
 						<InfoRow label='Symbol'>
 							<div className={cx("symbol-link")} onClick={() => clickSymbol(value?.symbol)}>
-								<p>{value?.symbol}</p>
+								<p>{displaySymbol()}</p>
 								<img src={detailSVG} alt='detail' />
 							</div>
 						</InfoRow>
 						{txTypes.DEX.ORDER_NEW === type ? (
 							<>
-								<TradeDisplay txData={txData} value={value} />
-								<InfoRow label='Side'>
-									<span className={cx({"color-red": value?.side === 2, "color-blue": value?.side === 1})}>{txGetSide[value?.side]}</span>
-								</InfoRow>
+								<TradeDisplay value={value} />
 								<InfoRow label='Price'>
 									{(() => console.log(value))()}
 									<span>
 										{divide(value?.price, consts.NUM.BASE_MULT, 8)} BNB / 1 {_.split(value?.symbol, "-")[0]}
 									</span>
 								</InfoRow>
-								<InfoRow label='Order Type'>
-									<span>{txGetOrderType[value?.ordertype]}</span>
-								</InfoRow>
+								{/*Removed because only one type is possible ATM*/}
+								{/*<InfoRow label='Order Type'>*/}
+								{/*	<span>{txGetOrderType[value?.ordertype]}</span>*/}
+								{/*</InfoRow>*/}
 								<InfoRow label='Time Inforce'>
 									<span>{txGetTimeInforce[value?.timeinforce]}</span>
 								</InfoRow>
@@ -118,24 +113,38 @@ export default function({msg, txData}) {
 				) : (
 					undefined
 				)}
+				<InfoRow label='From'>
+					<TxGetFrom txData={txData} type={type} value={value} cx={cx} />
+				</InfoRow>
+				<InfoRow label='Memo'>
+					<span>{txData.memo === "" ? "-" : txData.memo}</span>
+				</InfoRow>
 			</div>
 		</div>
 	);
 }
 
-const TradeDisplay = ({txData, value}) => (
-	<div className={cx("trade-wrapper")}>
-		<TradeBox symbolSrc={txData.symbolSrc} symbol={value?.symbol} value={divide(value?.quantity, consts.NUM.BASE_MULT, 0)} />
-		<div className={cx("symbol-wrapper")}>
-			<img src={arrowSVG} alt='arrow' />
+const TradeDisplay = ({value}) => {
+	let [left, right] = [{}, {}];
+	[left.symbol, right.symbol] = _.split(value.symbol, "_");
+	[left.value, right.value] = [divide(value?.quantity, consts.NUM.BASE_MULT, 8), divide(multiply(value?.price, value?.quantity), multiply(consts.NUM.BASE_MULT, consts.NUM.BASE_MULT), 8)]
+	// TODO
+	//  set symbol source when backend provides
+	if(value.side === 1) [left, right] = [right, left];
+	return (
+		<div className={cx("trade-wrapper")}>
+			<TradeBox symbolSrc={left.symbolSrc} symbol={left.symbol.split("-")[0]} value={left.value} />
+			<div className={cx("symbol-wrapper")}>
+				<img src={arrowSVG} alt='arrow' />
+			</div>
+			<TradeBox
+				symbolSrc={right.symbolSrc}
+				symbol={right.symbol.split("-")[0]}
+				value={right.value}
+			/>
 		</div>
-		<TradeBox
-			symbolSrc={bnbSVG}
-			symbol={"BNB"}
-			value={divide(multiply(value?.price, value?.quantity), multiply(consts.NUM.BASE_MULT, consts.NUM.BASE_MULT), 8)}
-		/>
-	</div>
-);
+	);
+}
 
 const TradeBox = ({symbolSrc, symbol, value}) => {
 	const formattedArr = React.useMemo(() => formatNumber(value).split("."), [value]);
@@ -144,7 +153,7 @@ const TradeBox = ({symbolSrc, symbol, value}) => {
 		<div className={cx("box-wrapper")}>
 			<div className={cx("icon-wrapper")}>
 				<img src={symbolSrc ? symbolSrc : symbolNone} alt={"ic"} />
-				<div className={cx("icon")}>{_.split(symbol, "-")[0]}</div>
+				<div className={cx("icon")}>{symbol}</div>
 			</div>
 			<div className={cx("value")}>
 				{formattedArr[0]}
