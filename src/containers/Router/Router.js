@@ -5,6 +5,9 @@ import styles from "./Router.scss";
 //  component
 import Loading from "src/components/common/Loading";
 
+//  hooks
+import {usePreload} from "src/hooks";
+
 const cx = cn.bind(styles);
 
 const Block = lazy(() => import(`src/containers/Block`));
@@ -18,6 +21,8 @@ const Account = lazy(() => import(`src/containers/Account`));
 const Asset = lazy(() => import(`src/containers/Asset`));
 
 export default function(props) {
+	//  preload stuff that needs preloading
+	usePreload();
 	console.log("router rerender >>> should never happen");
 	return (
 		<main className={cx("routerContainer")}>

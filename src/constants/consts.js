@@ -5,6 +5,7 @@ const api = process.env.NODE_ENV === "production" ? config.API_PROD : config.API
 export default Object.freeze({
 	API_BASE: api,
 	API_BIANCE_DEX : "https://www.binance.org/en/trade/",
+	GET_LOGO_LINK: (symbol) => `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/binance/assets/${symbol}/logo.png`,
 	NUM: {
 		BASE_MULT: 100000000,
 		REAL_TIME_DELAY_MS: 2000,
@@ -15,6 +16,7 @@ export default Object.freeze({
 		BLOCKLIST: "/blocks",
 		TXLIST: "/txs",
 		TX: "/txs",
+		ASSET_IMAGES: "/assets-images?page=1&rows=1000",
 		ASSETS: "/assets?page=1&rows=1000",
 		ASSET: "/asset?asset=",
 		ASSET_HOLDERS: "/asset-holders?page=1&"

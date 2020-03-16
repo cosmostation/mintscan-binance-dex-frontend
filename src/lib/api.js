@@ -17,3 +17,7 @@ export const getMarketChartRange = (id, currency, from, to, cancelToken) => {
 	// return axios.get(`${coinGeckoAPI}/coins/binancecoin/market_chart/range?id=${id}&vs_currency=${currency}&from=${from}&to=${to}`, {cancelToken});
 	return axios.get(`${consts.API_BASE}/market/chart?id=${id}`, {cancelToken});
 };
+
+export const getAssetImages = (cancelToken) => {
+	return axios.get(`${consts.API_BASE}${consts.API.ASSET_IMAGES}`, {cancelToken});
+}

@@ -1,23 +1,33 @@
 import * as React from "react";
 import styles from "./TxMessage.scss";
 import cn from "classnames/bind";
-
 import {NavLink, useHistory} from "react-router-dom";
 import {divide, multiply} from "src/lib/Big";
 import {_, formatNumber} from "src/lib/scripts";
 
+//  redux
+import {useSelector} from "react-redux";
+
+//  hooks
+import {useGetImage} from "src/hooks";
+
+//  constants
 import getTxTypeIcon from "src/constants/getTxTypeIcon";
 import consts from "src/constants/consts";
 import txTypes from "src/constants/txTypes";
 import getTxType from "src/constants/getTxType";
 
-import {txCheckOrder, txCheckSend, txGetOrderType, txGetSide, txGetTimeInforce} from "src/components/Tx/TxData/TxCase";
+//  components
+import {txCheckOrder, txCheckSend, txGetSide, txGetTimeInforce} from "src/components/Tx/TxData/TxCase";
 import InfoRow from "src/components/common/InfoRow/InfoRow";
 import TxGetFrom from "src/components/Tx/TxData/TxGetFrom/TxGetFrom";
+import {useEffect} from "react";
+
 
 const arrowSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_arrow.svg";
 const symbolNone = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
 const detailSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_detail_btn.svg";
+const bnbSVG = process.env.PUBLIC_URL + "/assets/icons/common/binance_token.svg";
 
 const cx = cn.bind(styles);
 
@@ -133,27 +143,34 @@ const TradeDisplay = ({value}) => {
 	if(value.side === 1) [left, right] = [right, left];
 	return (
 		<div className={cx("trade-wrapper")}>
-			<TradeBox symbolSrc={left.symbolSrc} symbol={left.symbol.split("-")[0]} value={left.value} />
+			<TradeBox symbol={left.symbol} value={left.value} />
 			<div className={cx("symbol-wrapper")}>
 				<img src={arrowSVG} alt='arrow' />
 			</div>
 			<TradeBox
-				symbolSrc={right.symbolSrc}
-				symbol={right.symbol.split("-")[0]}
+				symbol={right.symbol}
 				value={right.value}
 			/>
 		</div>
 	);
-}
+};
 
-const TradeBox = ({symbolSrc, symbol, value}) => {
+const TradeBox = ({symbol, value}) => {
+	const images = useSelector(state => state.assets.images);
 	const formattedArr = React.useMemo(() => formatNumber(value).split("."), [value]);
+	const [image, setLinkArr] = useGetImage([], symbolNone);
 	// console.log(formattedArr);
+	useEffect(() => {
+		if(!_.isNil(symbol) && image === symbolNone) {
+			if(symbol === "BNB") setLinkArr([bnbSVG]);
+			else setLinkArr([consts.GET_LOGO_LINK(symbol), images[symbol]]);
+		}
+	}, [setLinkArr, symbol, value]);
 	return (
 		<div className={cx("box-wrapper")}>
 			<div className={cx("icon-wrapper")}>
-				<img src={symbolSrc ? symbolSrc : symbolNone} alt={"ic"} />
-				<div className={cx("icon")}>{symbol}</div>
+				<img src={image} alt={"ic"} />
+				<div className={cx("icon")}>{symbol.split("-")[0]}</div>
 			</div>
 			<div className={cx("value")}>
 				{formattedArr[0]}

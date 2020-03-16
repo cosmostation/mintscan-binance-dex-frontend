@@ -1,0 +1,20 @@
+@import "src/styles/utils"
+
+.TxTable-wrapper {
+	overflow-x: auto;
+	overflow-y: hidden;
+	
+	@include media("<table_limit") {
+		display: none;
+	}
+	min-width: 600px;
+	
+	.tableHeaderCell {
+		@include tableHeaderCellWidth300;
+		color: var(--colorMainText);
+	}
+	
+	.txsWidth {
+		width: 100px;
+	}
+}

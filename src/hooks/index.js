@@ -7,5 +7,7 @@ import useSearch from "./useSearch";
 import useLoadedNumberedPagination from "./useLoadedNumberedPagination";
 import useDelayedInput from "./useDelayedInput";
 import useScroll from "./useScroll";
+import usePreload from "./usePreload";
+import useGetImage from "./useGetImage";
 
-export {useFetch, useBetterState, useIndexedPagination, usePrevious, useTimer, useSearch, useLoadedNumberedPagination, useDelayedInput, useScroll};
+export {useFetch, useBetterState, useIndexedPagination, usePrevious, useTimer, useSearch, useLoadedNumberedPagination, useDelayedInput, useScroll, usePreload, useGetImage};
