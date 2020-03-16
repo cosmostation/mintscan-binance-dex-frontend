@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
+  <g id="linkedin_btn" transform="translate(-1760 -218)">
+    <g id="타원_201" data-name="타원 201" transform="translate(1760 218)" fill="none" stroke="#e6e6e6" stroke-width="1">
+      <circle cx="17.5" cy="17.5" r="17.5" stroke="none"/>
+      <circle cx="17.5" cy="17.5" r="17" fill="none"/>
+    </g>
+    <g id="linkedin" transform="translate(1770 226)">
+      <path id="패스_2178" data-name="패스 2178" d="M18.482,18.16h0V12.487c0-2.775-.6-4.913-3.842-4.913A3.368,3.368,0,0,0,11.61,9.241h-.045V7.833H8.489V18.16h3.2V13.046c0-1.346.255-2.648,1.923-2.648,1.643,0,1.667,1.536,1.667,2.735V18.16Z" transform="translate(-3.018 -2.693)"/>
+      <path id="패스_2179" data-name="패스 2179" d="M.4,7.977H3.6V18.3H.4Z" transform="translate(-0.141 -2.836)"/>
+      <path id="패스_2180" data-name="패스 2180" d="M1.857,0A1.866,1.866,0,1,0,3.715,1.857,1.858,1.858,0,0,0,1.857,0Z"/>
+    </g>
+  </g>
+</svg>

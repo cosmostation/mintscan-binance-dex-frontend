@@ -3,7 +3,7 @@ import styles from "./TxMessage.scss";
 import cn from "classnames/bind";
 import {NavLink, useHistory} from "react-router-dom";
 import {divide, multiply} from "src/lib/Big";
-import {_, formatNumber} from "src/lib/scripts";
+import {_, formatNumber, empty, refineAddress} from "src/lib/scripts";
 
 //  redux
 import {useSelector} from "react-redux";
@@ -45,7 +45,7 @@ export default function({msg, txData}) {
 		const split = value.symbol.split("_");
 		return split[0].split("-")[0] + "_" + split[1].split("-")[0];
  	};
-	console.log(txData);
+	// console.log(txData);
 	return (
 		<div className={cx("grid-wrapper")}>
 			<div className={cx("type-wrapper")}>
@@ -65,7 +65,7 @@ export default function({msg, txData}) {
 								<ul className={cx("value-wrapper")}>
 									<li>
 										<NavLink className={cx("blueColor")} to={`/accounts/${txData.to}`}>
-											{value.outputs[0].address}
+											{refineAddress(value.outputs[0].address)}
 										</NavLink>
 									</li>
 									<li>
@@ -100,7 +100,7 @@ export default function({msg, txData}) {
 							<>
 								<TradeDisplay value={value} />
 								<InfoRow label='Price'>
-									{(() => console.log(value))()}
+									{/*{(() => console.log(value))()}*/}
 									<span>
 										{divide(value?.price, consts.NUM.BASE_MULT, 8)} BNB / 1 {_.split(value?.symbol, "-")[0]}
 									</span>
@@ -159,13 +159,14 @@ const TradeBox = ({symbol, value}) => {
 	const images = useSelector(state => state.assets.images);
 	const formattedArr = React.useMemo(() => formatNumber(value).split("."), [value]);
 	const [image, setLinkArr] = useGetImage([], symbolNone);
-	// console.log(formattedArr);
+
 	useEffect(() => {
-		if(!_.isNil(symbol) && image === symbolNone) {
+		if(!empty(images) && !_.isNil(symbol) && image === symbolNone) {
 			if(symbol === "BNB") setLinkArr([bnbSVG]);
 			else setLinkArr([consts.GET_LOGO_LINK(symbol), images[symbol]]);
 		}
-	}, [setLinkArr, symbol, value]);
+	}, [images, setLinkArr, symbol, value]);
+
 	return (
 		<div className={cx("box-wrapper")}>
 			<div className={cx("icon-wrapper")}>

@@ -34,7 +34,7 @@ export default function(blockData, cx, cell) {
 
 			if (_.isString(address))
 				return (
-					<NavLink className={cx("blueColor")} to={`/account/${address.substring(1, address.length - 1)}`}>
+					<NavLink className={cx("blueColor")} to={`/account/${refineAddress(address)}`}>
 						<span>{reduceString(refineAddress(address), 6, 6)}</span>
 					</NavLink>
 				);
@@ -47,8 +47,8 @@ export default function(blockData, cx, cell) {
 			if (blockData?.messages?.[0]?.value?.outputs.length > 1) return <span>Multiple Address</span>;
 			const address = `${blockData?.messages?.[0]?.value?.outputs?.[0]?.address}`;
 			return (
-				<NavLink className={cx("blueColor")} to={`/account/${address.substring(1, address.length - 1)}`}>
-					<span>{reduceString(address.substring(1, address.length - 1), 6, 6)}</span>
+				<NavLink className={cx("blueColor")} to={`/account/${refineAddress(address)}`}>
+					<span>{reduceString(refineAddress(address), 6, 6)}</span>
 				</NavLink>
 			);
 		}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
+  <g id="email_btn" transform="translate(-1715 -218)">
+    <g id="타원_201" data-name="타원 201" transform="translate(1715 218)" fill="none" stroke="#e6e6e6" stroke-width="1">
+      <circle cx="17.5" cy="17.5" r="17.5" stroke="none"/>
+      <circle cx="17.5" cy="17.5" r="17" fill="none"/>
+    </g>
+    <path id="iconfinder_contact_126567" d="M8.6,10.6a2.492,2.492,0,0,1-1.074-.361L0,6.3v7.521a1.078,1.078,0,0,0,1.074,1.074H16.117a1.078,1.078,0,0,0,1.074-1.074V6.3L9.67,10.235A2.492,2.492,0,0,1,8.6,10.6ZM16.117,2H1.074A1.078,1.078,0,0,0,0,3.074v.814L8.6,8.407l8.6-4.518V3.074A1.078,1.078,0,0,0,16.117,2Z" transform="translate(1723.881 227)"/>
+  </g>
+</svg>
