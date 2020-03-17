@@ -10,6 +10,14 @@
 		flex-flow: row;
 		align-items: center;
 		justify-content: space-between;
+		@include media("<small") {
+			flex-flow: column;
+			align-items: flex-start;
+			justify-content: center;
+			.asset {
+				margin-bottom: 15.3px;
+			}
+		}
 		.asset {
 			display: flex;
 			flex-flow: row;
@@ -39,6 +47,7 @@
 			}
 		}
 		.clickables {
+			height: 35px;
 			img {
 				width: 35px;
 				height: 35px;
@@ -48,6 +57,20 @@
 			:not(:last-child) {
 				margin-right: 10px;
 			}
+			
+			@include media("<small") {
+				height: 30.5px;
+				img {
+					max-width: 30.5px;
+					max-height: 30.5px;
+					object-fit: contain;
+				}
+				:not(:last-child) {
+					margin-right: 8px;
+				}
+			}
+			
+			
 			.Facebook {
 				content: url("/assets/assets/facebook_btn.svg");
 				&:hover {
@@ -118,6 +141,12 @@
 				content: url("/assets/assets/discord_btn.svg");
 				&:hover {
 					content: url("/assets/assets/discord_btn_hover.svg");
+				}
+			}
+			.Coinmarketcap {
+				content: url("/assets/assets/coinmarketcap_btn.svg");
+				&:hover {
+					content: url("/assets/assets/coinmarketcap_btn_hover.svg");
 				}
 			}
 		}

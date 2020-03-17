@@ -7,7 +7,7 @@ import {NavLink} from "react-router-dom";
 export default function({type, txData, value, cx}) {
 	let from = null;
 	if (txCheckSend(type)) from = refineAddress(value?.outputs?.[0]?.address);
-	else if (txCheckOrder(type)) from = value.sender;
+	else if (txCheckOrder(type)) from = refineAddress(value.sender);
 	if (_.isString(from))
 		return (
 			<NavLink className={cx("blueColor")} to={`/accounts/${from}`}>

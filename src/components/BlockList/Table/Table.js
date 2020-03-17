@@ -84,19 +84,16 @@ export default function(props) {
 	const thinTableBodyRender = useMemo(() => {
 		return (
 			<ul className={cx("thinTableRows-wrapper")}>
-				<div className={cx("tableDivider")} />
 				{_.map(empty(state.pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : state.pageData, (v, idx) => {
 					if (v === undefined)
 						return (
 							<li>
 								<TableRowThin key={idx} blockData={{}} />
-								<div className={cx("tableDivider")} />
 							</li>
 						);
 					return (
 						<li>
 							<TableRowThin key={idx} blockData={v} />
-							<div className={cx("tableDivider")} />
 						</li>
 					);
 				})}

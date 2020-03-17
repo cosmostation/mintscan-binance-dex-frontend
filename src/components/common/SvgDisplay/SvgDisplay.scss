@@ -1,0 +1,16 @@
+@import "src/styles/utils";
+
+.Svg-wrapper {
+	height: 100%;
+	width: auto;
+	img {
+		height: 100%;
+		object-fit: contain;
+	}
+}
+
+.upsideDown {
+	img {
+		transform: rotate(180deg);
+	}
+}

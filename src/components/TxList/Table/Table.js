@@ -125,13 +125,10 @@ export const txTableHeader = (
 			<TableCell className={cx("tableHeaderCell", "txHashWidth")}>Tx Hash</TableCell>
 			<TableCell className={cx("tableHeaderCell")}>Type</TableCell>
 			<TableCell className={cx("tableHeaderCell", "addrWidth")} align='left'>
-				From
-			</TableCell>
-			<TableCell className={cx("tableHeaderCell", "addrWidth")} align='left'>
-				To
+				Address
 			</TableCell>
 			<TableCell className={cx("tableHeaderCell", "padding-right10")} align='right'>
-				<span>Value</span>
+				Value
 			</TableCell>
 			<TableCell className={cx("tableHeaderCell", "padding-left10", "currencyWidth")} align='left'>
 				Currency

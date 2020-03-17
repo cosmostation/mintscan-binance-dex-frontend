@@ -90,10 +90,8 @@
 		}
 
 		.nav-item {
-			display: flex;
+			@include Flex_center();
 			flex-direction: row;
-			justify-content: center;
-			align-items: center;
 			height: var(--heightSubHeader);
 			min-width: 180px;
 			color: #a2a2a2;

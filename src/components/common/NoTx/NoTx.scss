@@ -1,10 +1,8 @@
 @import 'src/styles/utils';
 
 .no-tx-wrapper {
-    display: flex;
+		@include Flex_center();
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 40px 0;
     min-height: 100%;
 

@@ -112,10 +112,10 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			font-family: "Open Sans", serif;
 
 			.select-item {
-				color: #222222;
-				flex: 1;
+				color: #59606A;
 				font-size: 15px;
 				line-height: 2.67;
 				cursor: pointer;
@@ -127,7 +127,8 @@
 				padding: 0 8px;
 
 				&:hover {
-					color: var(--colorType);
+					color: #222222;
+					font-weight: 600;
 				}
 			}
 
@@ -201,8 +202,7 @@
 .net-icon {
 	width: 20px;
 	height: 20px;
-	background-repeat: no-repeat;
-	background-position: center;
+	background-size: contain;
 	margin-right: 8px;
 }
 

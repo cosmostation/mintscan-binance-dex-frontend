@@ -27,6 +27,12 @@
 			>:nth-child(even) {
 				background-color: #fbfbfc;
 			}
+			>:first-child {
+				border-top: solid 1px #e6e6e6;
+			}
+			>li {
+				border-bottom: solid 1px #e6e6e6;
+			}
 		}
 
 		margin: 20px 0;

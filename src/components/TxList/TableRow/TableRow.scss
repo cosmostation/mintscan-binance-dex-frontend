@@ -12,16 +12,9 @@
 		@include tablePointerCellWidth140;
 		@include tableElemPadding;
 	}
-
-	.padding-right10 {
-		padding-right: 10px;
-	}
-	.padding-left10 {
-		padding-left: 10px;
-	}
-
+	
 	.addrWidth {
-		min-width: 90px;
+		min-width: 250px;
 	}
 
 	.txCell {
@@ -35,6 +28,21 @@
 	.tableCell {
 		@include tableCellWidth300;
 		@include tableElemPadding;
+	}
+	.padding-right10 {
+		padding-right: 10px;
+	}
+	.padding-left10 {
+		padding-left: 10px;
+	}
+}
+
+.flexit {
+	display: flex;
+	align-items: center;
+	height: 17px;
+	>*:not(last-child) {
+		margin-right: 8px;
 	}
 }
 

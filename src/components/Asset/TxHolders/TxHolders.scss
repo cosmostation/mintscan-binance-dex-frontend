@@ -18,6 +18,7 @@ $widthSelected: 84%;
 			@include card-nopadding-wrapper;
 			transition: all 0.5s ease;
 			width: 100% - $widthCardTxMarginRight - $widthSelected;
+			opacity: 0.5;
 		}
 		@include card-nopadding-wrapper;
 		overflow-x: hidden;

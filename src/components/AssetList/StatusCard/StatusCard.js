@@ -13,7 +13,7 @@ export default function({asset}) {
 	const history = useHistory();
 	const splitPrice = asset?.price ? formatNumber(asset.price).split(".") : ["0", "00000"];
 	return (
-		<div className={cx("statuscard-wrapper")} onClick={() => history.push(`/asset/${asset?.asset}`)}>
+		<div className={cx("statuscard-wrapper")} onClick={() => history.push(`/assets/${asset?.asset}`)}>
 			<div className={cx("wrapper")}>
 				<div className={cx("asset-graph-wrapper")}>
 					<div className={cx("asset")}>

@@ -105,9 +105,7 @@
 					}
 
 					.web {
-						display: flex;
-						align-items: center;
-						justify-content: center;
+						@include Flex_center
 
 						.web-icon {
 							width: unset;

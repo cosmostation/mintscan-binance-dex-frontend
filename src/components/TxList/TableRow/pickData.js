@@ -2,14 +2,17 @@ import React from "react";
 import {_, empty, formatNumber, reduceString, refineAddress} from "src/lib/scripts";
 import {NavLink} from "react-router-dom";
 
-import Skeleton from "react-skeleton-loader";
-
 import txTypes from "src/constants/txTypes";
 import * as Big from "src/lib/Big";
 import getTxType from "src/constants/getTxType";
 
+//  components
+import Skeleton from "react-skeleton-loader";
+import SvgDisplay from "src/components/common/SvgDisplay";
+
 export const CELL_TYPES = Object.freeze(["Tx Hash", "Type", "From", "To", "Value", "Height", "Time"]);
 
+const greenArrowSVG = process.env.PUBLIC_URL + "/assets/icons/common/transferarrow_gr.svg";
 const BASE_MULT = Math.pow(10, 8);
 
 export default function(blockData, cx, cell) {
@@ -43,13 +46,16 @@ export default function(blockData, cx, cell) {
 		case CELL_TYPES[3]: {
 			// TODO
 			//  pretty much divide all the cases
-			if (blockData?.messages?.[0]?.type !== txTypes.COSMOS.SEND) return <span>-</span>;
+			if (blockData?.messages?.[0]?.type !== txTypes.COSMOS.SEND) return "";
 			if (blockData?.messages?.[0]?.value?.outputs.length > 1) return <span>Multiple Address</span>;
 			const address = `${blockData?.messages?.[0]?.value?.outputs?.[0]?.address}`;
 			return (
-				<NavLink className={cx("blueColor")} to={`/account/${refineAddress(address)}`}>
-					<span>{reduceString(refineAddress(address), 6, 6)}</span>
-				</NavLink>
+				<>
+					<SvgDisplay svgSrc={greenArrowSVG} customClass={"upsideDown"}/>
+					<NavLink className={cx("blueColor")} to={`/account/${refineAddress(address)}`}>
+						<span>{reduceString(refineAddress(address), 6, 6)}</span>
+					</NavLink>
+				</>
 			);
 		}
 		case CELL_TYPES[4]: {

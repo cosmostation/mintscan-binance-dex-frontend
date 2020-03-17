@@ -4,3 +4,9 @@
 	align-items: center;
 	justify-content: space-between;
 }
+
+@mixin Flex_center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

@@ -24,12 +24,8 @@ export const TableRowThin = ({blockData}) => {
 					<li>{pickData(blockData, cx, CELL_TYPES[1])}</li>
 				</ul>
 				<ul className={cx("row")}>
-					<li>From</li>
-					<li>{pickData(blockData, cx, CELL_TYPES[2])}</li>
-				</ul>
-				<ul className={cx("row")}>
-					<li>To</li>
-					<li>{pickData(blockData, cx, CELL_TYPES[3])}</li>
+					<li>Address</li>
+					<li className={cx("flexit")}>{pickData(blockData, cx, CELL_TYPES[2])}{pickData(blockData, cx, CELL_TYPES[3])}</li>
 				</ul>
 				<ul className={cx("row")}>
 					<li>Value</li>
@@ -66,12 +62,11 @@ export default function({blockData}) {
 			</TableCell>
 			<TableCell className={cx("tablePointerCell", "text")}>{pickData(blockData, cx, CELL_TYPES[1])}</TableCell>
 			<TableCell className={cx("tablePointerCell", "text", "addrWidth")} align='left'>
-				{pickData(blockData, cx, CELL_TYPES[2])}
+				<span className={cx("flexit")}>
+					{pickData(blockData, cx, CELL_TYPES[2])}{pickData(blockData, cx, CELL_TYPES[3])}
+				</span>
 			</TableCell>
-			<TableCell className={cx("tablePointerCell", "text", "addrWidth")} align='left'>
-				{pickData(blockData, cx, CELL_TYPES[3])}
-			</TableCell>
-			<TableCell className={cx("tableCell", "padding-right10", "valueCell")} align='right'>
+			<TableCell className={cx("tableCell", "valueCell", "padding-right10")} align='right'>
 				{pickData(blockData, cx, CELL_TYPES[4])}
 			</TableCell>
 			<TableCell className={cx("tablePointerMiniCell", "padding-left10")} align='left'>

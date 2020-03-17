@@ -3,9 +3,7 @@
 .loading-wrapper {
 	height: 100vh;
 	background: var(--colorPageBg);
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include Flex_center();
 
 	.loading-img {
 		height: 70px;
