@@ -52,6 +52,7 @@ export const searchProperties = (targetObject = {}, propertyArr = [], targetStr 
 
 //  this should work with letters as well -> https://javascript.info/comparison
 export const compareProperty = (a = {}, b = {}, property = "", defaultProperty = "id", asc = false) => {
+	if(_.isString(a[property])) return asc ? a[property].toLowerCase().localeCompare(b[property]) : b[property].toLowerCase().localeCompare(a[property].toLowerCase());
 	if (a[property] > b[property]) return asc ? 1 : -1;
 	else if (a[property] < b[property]) return asc ? -1 : 1;
 	if (a[defaultProperty] <= b[defaultProperty]) return asc ? 1 : -1;

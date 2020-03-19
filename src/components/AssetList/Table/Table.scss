@@ -15,7 +15,15 @@
 		}
 		.tableHeaderCell {
 			@include tableHeaderCellWidth300;
+			padding: 20px 20px 14px 20px;
 			color: var(--colorMainText);
+			.header-content {
+				display: flex;
+				align-items: center;
+				span {
+					margin-right: 6px;
+				}
+			}
 		}
 		.nameCell {
 			max-width: 250px;

@@ -44,7 +44,7 @@ export default function TxTable({asset=""}) {
 
 	return (
 		<div className={cx("TxTable-wrapper")}>
-			<Table className={cx("table")}>
+			<Table>
 				{tableHeaderRender}
 				<TableBody>
 					{tableBodyRender}

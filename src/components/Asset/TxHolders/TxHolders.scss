@@ -3,7 +3,58 @@
 $widthCardTxMarginRight: 1.25%;
 $widthSelected: 84%;
 
+.TxHolders-wrapper-thin {
+	@include media(">=asset_details_table_limit") {
+		display: none;
+	}
+	.Tabs {
+		height: 62px;
+		display: flex;
+		width: 100%;
+		.Tab {
+			width: 200px;
+			@include media("<small") {
+				width: 150px;
+			}
+			
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: flex-end;
+			padding-bottom: 10px;
+			
+			font-family: "Montserrat", serif;
+			font-size: 15px;
+			font-weight: 500;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: 1.27;
+			letter-spacing: normal;
+			text-align: left;
+			color: #b2b6bc;
+			
+			&.selected {
+				color: #222222;
+				border-bottom: solid 3px #222222;
+			}
+		}
+		border-bottom: solid 2px #d6d6d6;
+		margin-bottom: 15px;
+	}
+	.Card {
+		position: relative;
+		@include card-nopadding-wrapper;
+		padding: 30px 20px;
+		.unselected {
+			display: none;
+		}
+	}
+}
+
 .TxHolders-wrapper {
+	@include media("<asset_details_table_limit") {
+		display: none;
+	}
 	display: flex;
 	flex-flow: row;
 	height: fit-content;
@@ -91,7 +142,6 @@ $widthSelected: 84%;
 			}
 		}
 	}
-	
 	margin-bottom: 70px;
 }
 .preventClick {

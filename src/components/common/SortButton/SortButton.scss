@@ -1,0 +1,11 @@
+@import "src/styles/utils";
+
+.sort-wrapper {
+	display: grid;
+	grid-template-columns: 8px;
+	grid-template-rows: 4.5px 4.5px;
+	grid-row-gap: 2.6px;
+	.flip {
+		transform: rotate(180deg);
+	}
+}

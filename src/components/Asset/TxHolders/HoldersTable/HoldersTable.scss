@@ -2,8 +2,7 @@
 .HoldersTable-wrapper {
 	overflow-x: auto;
 	overflow-y: hidden;
-	min-width: 600px;
-	
+	min-width: 300px;
 	.tableHeaderCell {
 		@include tableHeaderCellWidth300;
 		@include tableElemPadding;

@@ -5,12 +5,13 @@ import {_, searchProperties, compareProperty} from "src/lib/scripts";
 
 //  components
 import {TableBody, Table, TableCell, TableHead, TableRow} from "@material-ui/core";
+import SortButton from "src/components/common/SortButton";
 import AssetTableRow, {ThinTableRow} from "../TableRow";
 import Search from "../Search";
 
 const cx = classNames.bind(styles);
 
-const ORDER_COMPARE = Object.freeze(["name", "marketCap", "price", "supply"]);
+const ORDER_COMPARE = Object.freeze(["mappedAsset", "marketCap", "price", "supply"]);
 const SEARCH_PROPERTY = Object.freeze(["asset", "mappedAsset", "name"]);
 
 // TODO
@@ -18,30 +19,48 @@ const SEARCH_PROPERTY = Object.freeze(["asset", "mappedAsset", "name"]);
 
 export default function({assets}) {
 	const [search, setSearch] = React.useState("");
-	const [orderBy, setOrderBy] = React.useState(1);
-	const [asc, setAsc] = React.useState(false);
+	const [sort, setSort] = React.useState({orderBy: 1, asc: false});
 
 	const displayAssets = React.useMemo(() => {
-		let filteredAssets = assets;
-		if (orderBy === 1) return asc ? _.reverse(filteredAssets) : filteredAssets;
-		else if (_.includes([0, 2, 3], orderBy)) return filteredAssets.sort((a, b) => compareProperty(a, b, ORDER_COMPARE[orderBy]), asc);
-		console.error(`orderBy is not a possible value - ${orderBy}`);
+		let filteredAssets = [...assets];
+		if (sort.orderBy === 1) return sort.asc ? _.reverse(filteredAssets) : filteredAssets;
+		else if (_.includes([0, 2, 3], sort.orderBy)) return filteredAssets.sort((a, b) => compareProperty(a, b, ORDER_COMPARE[sort.orderBy], "id", sort.asc));
+		console.error(`orderBy is not a possible value - ${sort.orderBy}`);
+
 		return filteredAssets;
-	}, [assets, orderBy, asc]);
+	}, [assets, sort]);
+
+	const clickHeader = React.useCallback( num => {
+		console.log("headerClicked - num", num);
+		if(sort.orderBy === num) setSort(v => ({...v, asc: !sort.asc}));
+		else {
+			setSort({orderBy: num, asc: false});
+		}
+	}, [sort]);
 
 	const tableHeaderRender = React.useMemo(
 		() => (
 			<TableHead>
 				<TableRow>
-					<TableCell className={cx("tableHeaderCell", "nameCell")}>Name</TableCell>
-					<TableCell className={cx("tableHeaderCell")} align='right'>
-						Market Cap(USD)
+					<TableCell className={cx("tableHeaderCell", "nameCell")}>
+						<div className={cx("header-content")} onClick={e => clickHeader(0)}>
+							<span>Name</span><SortButton asc={sort.asc} active={sort.orderBy === 0}/>
+						</div>
 					</TableCell>
 					<TableCell className={cx("tableHeaderCell")} align='right'>
-						Price(USD)
+						<div className={cx("header-content")} onClick={e => clickHeader(1)}>
+							<span>Market Cap(USD)</span><SortButton asc={sort.asc} active={sort.orderBy === 1}/>
+						</div>
 					</TableCell>
 					<TableCell className={cx("tableHeaderCell")} align='right'>
-						Supply
+						<div className={cx("header-content")} onClick={e => clickHeader(2)}>
+							<span>Price(USD)</span><SortButton asc={sort.asc} active={sort.orderBy === 2}/>
+						</div>
+					</TableCell>
+					<TableCell className={cx("tableHeaderCell")} align='right'>
+						<div className={cx("header-content")} onClick={e => clickHeader(3)}>
+							<span>Supply</span><SortButton asc={sort.asc} active={sort.orderBy === 3}/>
+						</div>
 					</TableCell>
 					<TableCell className={cx("tableHeaderCell", "OwnerCell")} align='right'>
 						Owner
@@ -49,7 +68,7 @@ export default function({assets}) {
 				</TableRow>
 			</TableHead>
 		),
-		[]
+		[sort, clickHeader]
 	);
 	const tableBodyRender = React.useMemo(() => {
 		return (
@@ -61,7 +80,7 @@ export default function({assets}) {
 				})}
 			</TableBody>
 		);
-	}, [displayAssets, search]);
+	}, [displayAssets, search, sort]);
 
 	const thinTableBodyRender = React.useMemo(() => {
 		return (
@@ -73,7 +92,7 @@ export default function({assets}) {
 				</div>
 			</div>
 		);
-	}, [displayAssets, search]);
+	}, [displayAssets, search, sort]);
 
 	return (
 		<div className={cx("AssetsTable-wrapper")}>

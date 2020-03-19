@@ -3,45 +3,37 @@
 .TxTable-wrapper {
 	overflow-x: auto;
 	overflow-y: hidden;
-	width: 100%;
-	min-width: 900px;
-	.table {
-		@include media("<asset_details_table_limit") {
-			display: none;
+	min-width: 300px;
+	.tableHeaderCell {
+		@include tableHeaderCellWidth300;
+		color: var(--colorMainText);
+		@include tableElemPadding;
+	}
+		
+	.header {
+		
+		.txHash {
+			min-width: 145px;
 		}
 		
-		.tableHeaderCell {
-			@include tableHeaderCellWidth300;
-			color: var(--colorMainText);
-			@include tableElemPadding;
+		.type {
+			min-width: 140px;
 		}
 		
-		.header {
-			width: 100%;
-			
-			.txHash {
-				min-width: 145px;
-			}
-			
-			.type {
-				min-width: 140px;
-			}
-			
-			.address {
-				min-width: 280px;
-			}
-			
-			.value {
-				min-width: 140px;
-			}
-			
-			.currency {
-				min-width: 82px;
-			}
-			
-			.time {
-				min-width: 88px;
-			}
+		.address {
+			min-width: 280px;
+		}
+		
+		.value {
+			min-width: 140px;
+		}
+		
+		.currency {
+			min-width: 82px;
+		}
+		
+		.time {
+			min-width: 88px;
 		}
 	}
 }

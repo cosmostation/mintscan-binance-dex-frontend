@@ -2,11 +2,14 @@ import React from "react";
 import styles from "./StatusCard.scss";
 import classNames from "classnames/bind";
 import {_, empty, formatNumber, getUnixTimes} from "src/lib/scripts";
-import {useHistory} from "src/hooks";
-import {getGeckoMarketChartRange, getMarketChartRange} from "src/lib/api";
+import {divide} from "src/lib/Big";
+import {getGeckoMarketChartRange} from "src/lib/api";
 import axios from "axios";
-import ErrorPage from "src/components/common/ErrorPage/ErrorPage";
+import {useHistory} from "src/hooks";
+
+//  components
 import Chart from "src/components/common/Chart/Chart";
+
 
 const cx = classNames.bind(styles);
 
@@ -17,15 +20,15 @@ const downSVG = process.env.PUBLIC_URL + "/assets/assets/down_rd.svg";
 const DAY_IN_MINUTES = 24 * 60;
 const DATA_COUNT_DENOM = 16;
 
-export default function({asset}) {
+export default function({asset, id}) {
 	const [data, setData] = React.useState(null);
 	const history = useHistory();
-
 	React.useEffect(() => {
+		if(_.isNil(id) || !_.isNil(data)) return;
 		const times = getUnixTimes(DAY_IN_MINUTES, "minute", "hour");
 		const cancelToken = axios.CancelToken;
 		const source = cancelToken.source();
-		getGeckoMarketChartRange("binancecoin", "usd", times[0], times[1], source.token)
+		getGeckoMarketChartRange(id, "usd", times[0], times[1], source.token)
 			.then(res => {
 				const mapped = _.map(_.initial(_.keys(res.data)), key => _.map(res.data[key], v => [v[0], Math.round(v[1] * 100) / 100]));
 				setData(_.map(mapped, arr => _.filter(arr, (v, idx) => idx % DATA_COUNT_DENOM === 0 || idx === 0 || idx === mapped.length - 1)));
@@ -36,10 +39,11 @@ export default function({asset}) {
 		return () => {
 			source.cancel("cleanup cancel");
 		}
-	}, []);
+	}, [data, id]);
 
 
 	const splitPrice = asset?.price ? formatNumber(asset.price).split(".") : ["0", "00000"];
+	const diffPercent = asset?.changeRange ? divide(asset.changeRange, 100, 2) : undefined;
 	return (
 		<div className={cx("statuscard-wrapper")} onClick={() => history.push(`/assets/${asset?.asset}`)}>
 			<div className={cx("wrapper")}>
@@ -52,7 +56,7 @@ export default function({asset}) {
 						{_.isNil(data) ? (
 							undefined
 						) : empty(data?.[0]) || empty(data?.[0]) ? (
-							<ErrorPage />
+							<div>Error loading Chart</div>
 						) : (
 							<Chart key={0} options={options} data={data[0]} showAxis={false} displayMax={true}/>
 						)}
@@ -64,11 +68,16 @@ export default function({asset}) {
 						{splitPrice[1]}
 					</div>
 					<div className={cx("percentage")}>
-						<img src={upSVG} alt='direc' />
-						9.17%
+						{diffPercent ?
+							<>
+								<img src={asset?.changeRange > 0 ? upSVG : downSVG} alt='direc'/>
+								{diffPercent}%
+							</>
+							: undefined
+						}
 					</div>
 				</div>
-				{/*<div className={cx("market-cap")}>$ {formatNumber(asset?.marketCap)}</div>*/}
+				<div className={cx("market-cap")}>$ {formatNumber(asset?.marketCap)}</div>
 			</div>
 		</div>
 	);

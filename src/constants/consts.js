@@ -28,7 +28,8 @@ export default Object.freeze({
 		ASSETS: "/assets?page=1&rows=1000",
 		ASSET: "/asset?asset=",
 		ASSET_TXS: "/assets/txs?page=1&rows=20&txAsset=",
-		ASSET_HOLDERS: "/asset-holders?&page=1&rows=20&asset="
+		ASSET_HOLDERS: "/asset-holders?&page=1&rows=20&asset=",
+		TOP_ASSETS: "/market/coin/list"
 	},
 	NETWORK: {
 		COSMOS: "cosmos-3",
