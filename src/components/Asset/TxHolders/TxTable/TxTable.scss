@@ -6,7 +6,7 @@
 	width: 100%;
 	min-width: 900px;
 	.table {
-		@include media("<asset_tx_table_limit") {
+		@include media("<asset_details_table_limit") {
 			display: none;
 		}
 		

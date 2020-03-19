@@ -51,7 +51,7 @@ export default function TxTableRows({asset={}}) {
 											{reduceString(refineAddress(asset.toAddr), 6, 6)}
 										</NavLink>
 										:
-										<span>{reduceString(refineAddress(asset.fromAddr), 6, 6)}</span>
+										undefined
 									}
 								</>
 						}

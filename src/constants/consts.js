@@ -3,9 +3,11 @@ import config from "src/config";
 const api = process.env.NODE_ENV === "production" ? config.API_PROD : config.API_DEV;
 
 export default Object.freeze({
-	API_BASE: api,
-	API_BIANCE_DEX : "https://www.binance.org/en/trade/",
-	GET_LOGO_LINK: (symbol) => `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/binance/assets/${symbol}/logo.png`,
+	API_BIANCE_DEX : "https://www.binance.org/en/trade",
+	API_COINGECKO: {
+		BASE: "https://api.coingecko.com/api/v3",
+		GET_MARKET_CHART_RANGE: (id="BNB", from, to) => `/coins/${id}/market_chart/range?vs_currency=usd&from=${from}&to=${to}`
+	},
 	NUM: {
 		BASE_MULT: 100000000,
 		REAL_TIME_DELAY_MS: 2000, //  real-time refetch interval
@@ -15,6 +17,8 @@ export default Object.freeze({
 		BINANCE_API_PAGES_LIMIT: 100, //  max page binance api allows
 		ASSET_REFETCH_INTERVAL_MS: 10000
 	},
+	GET_LOGO_LINK: (symbol) => `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/binance/assets/${symbol}/logo.png`,
+	API_BASE: api,
 	API: {
 		STATUS: "/status",
 		BLOCKLIST: "/blocks",
@@ -32,7 +36,6 @@ export default Object.freeze({
 		KAVA: "kava-2",
 		BINANCE: "binance",
 	},
-
 	PREFIX: {
 		COSMOS: "cosmos",
 		IRIS: "iris",

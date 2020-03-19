@@ -31,9 +31,9 @@ export default function(props) {
 			</TitleWrapper>
 			<div className={cx("StatusCard-grid")}>
 				<StatusCard asset={assets?.[0]} />
-				<StatusCard asset={assets?.[1]} />
-				<StatusCard asset={assets?.[2]} />
-				<StatusCard asset={assets?.[3]} />
+				{/*<StatusCard asset={assets?.[1]} />*/}
+				{/*<StatusCard asset={assets?.[2]} />*/}
+				{/*<StatusCard asset={assets?.[3]} />*/}
 			</div>
 			<Table assets={assets} />
 			<ScrollTop />

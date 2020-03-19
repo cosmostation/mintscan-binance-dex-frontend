@@ -1,22 +1,8 @@
 import _ from "lodash";
 import empty from "is-empty";
 import moment from "moment";
-import hF from "human-format";
 
 export {_, empty};
-
-const currScale = new hF.Scale({
-	"": 1,
-	k: 1000,
-	mil: 1000000,
-	bil: 1000000000,
-	tril: 1000000000000,
-});
-export const humanFormat = val => hF(val, {scale: currScale, separator: ""});
-// export const humanFormat = val => {
-// 	console.log(humanFormats(val));
-// 	return 0;
-// };
 
 //  remove t from bnb address
 export const refineAddress = address => (address.charAt(0) === "t" ? address.substr(1) : address);

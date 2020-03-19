@@ -50,6 +50,7 @@
 		:last-child {
 			margin-bottom: 0;
 		}
+		
 		.trade-wrapper {
 			margin-left: 209px;
 			width: 465px;
@@ -156,20 +157,33 @@
 .toValue-row {
 	display: flex;
 	flex-flow: row;
+	height: fit-content;
+	@include Flex_LeftRight();
+	align-items: flex-start;
+	@include media("<large") {
+		flex-flow: column;
+		.row-label {
+			margin-bottom: 10px;
+		}
+	}
 	.row-label {
-		width: 203px;
 		@include gridLabel;
 	}
 	.row-content {
 		padding: 20px;
-		height: 88px;
+		height: 100%;
 		width: calc(100% - 203px);
 		border-radius: 5px;
-		border: solid 1px #e6e6e6;
 		background-color: #f9fafc;
-
-		.label-wrapper {
-			@include Flex_LeftRight;
+		@include Flex_LeftRight;
+		
+		@include media("<large") {
+			width: 100%;
+		}
+		.To-wrapper {
+			height: fit-content;
+		}
+		.label {
 			height: 18px;
 			font-family: "Open Sans", serif;
 			font-size: 13px;
@@ -180,13 +194,11 @@
 			letter-spacing: normal;
 			text-align: left;
 			color: #89909b;
-
 			margin-bottom: 10px;
 		}
-		.value-wrapper {
-			@include Flex_LeftRight;
+		.value {
 			@include gridValue;
-			min-width: 100px;
+			min-width: 50px;
 			height: 20px;
 			color: #222222;
 			word-break: break-word;
@@ -198,7 +210,26 @@
 				color: #f0b90b;
 			}
 		}
+		.value-wrapper {
+			> * {
+				text-align: right;
+			}
+		}
 	}
+	@include media("<small") {
+		height: 175px;
+		.row-content {
+			height: 100%;
+			flex-flow: column;
+			>:nth-child(1) {
+				align-self: flex-start;
+			}
+			>:nth-child(2) {
+				align-self: flex-end;
+			}
+		}
+	}
+	margin-bottom: 8px;
 }
 
 .symbol-link {

@@ -4,7 +4,7 @@ import highcharts from "highcharts";
 
 import {_, formatNumber, getHours, getTime} from "src/lib/scripts";
 
-export default function({options, data}) {
+export default function({options, data, showAxis=true, displayMax=false}) {
 	const graphOptions = useMemo(() => {
 		// console.log(data);
 		const [xMax, xMin, yMax, yMin] = [data[data.length - 1][0], data[0][0], _.max(_.map(data, v => v[1])), _.min(_.map(data, v => v[1]))];
@@ -20,7 +20,6 @@ export default function({options, data}) {
 		const tickPositions = [..._.map(indexes, idx => data[idx][0])];
 		return {
 			...defaultOptions,
-			...options,
 			series: [
 				{
 					...series,
@@ -30,22 +29,26 @@ export default function({options, data}) {
 			yAxis: [
 				{
 					...yAxis,
-					max: yMax + (yMax + yMin) / 200,
-					min: yMin - (yMax + yMin) / 200,
+					visible: showAxis,
+					max: displayMax ? yMax : yMax + (yMax + yMin) / 200,
+					min: displayMax ? yMin : yMin - (yMax + yMin) / 200,
 					tickPixelInterval: 100,
+					tickAmount: displayMax ? 100 : 5
 				},
 			],
 			xAxis: [
 				{
 					...xAxis,
+					visible: showAxis,
 					max: xMax,
 					min: xMin,
 					tickPositions,
 				},
 			],
+			...options,
 		};
 	}, [options, data]);
-	console.log(graphOptions);
+	// console.log(graphOptions);
 	return <HighchartsReact highcharts={highcharts} options={graphOptions} />;
 }
 
@@ -152,6 +155,27 @@ const defaultOptions = {
 				},
 				select: {
 					enabled: false,
+				},
+			},
+			plotOptions: {
+				series: {
+					states: {
+						hover: {
+							enabled: true,
+							lineWidthPlus: 0,
+							halo: {
+								size: 0,
+								opacity: 0,
+							},
+						},
+						select: {
+							enabled: false,
+						},
+					},
+					allowPointSelect: false,
+					marker: {
+						enabled: false,
+					},
 				},
 			},
 			allowPointSelect: false,

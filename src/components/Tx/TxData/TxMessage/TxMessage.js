@@ -3,7 +3,7 @@ import styles from "./TxMessage.scss";
 import cn from "classnames/bind";
 import {NavLink} from "react-router-dom";
 import {divide, multiply} from "src/lib/Big";
-import {_, formatNumber, empty, refineAddress} from "src/lib/scripts";
+import {_, formatNumber, empty, refineAddress, reduceString} from "src/lib/scripts";
 
 //  redux
 import {useSelector} from "react-redux";
@@ -60,17 +60,17 @@ export default function({msg, txData}) {
 						<div className={cx("toValue-row")}>
 							<div className={cx("row-label")}>To / Value</div>
 							<div className={cx("row-content")}>
-								<ul className={cx("label-wrapper")}>
-									<li>To</li>
-									<li>Value</li>
-								</ul>
-								<ul className={cx("value-wrapper")}>
-									<li>
+								<ul className={cx("To-wrapper")}>
+									<li className={cx("label")}>To</li>
+									<li className={cx("value")}>
 										<NavLink className={cx("blueColor")} to={`/accounts/${txData.to}`}>
-											{refineAddress(value.outputs[0].address)}
+											{reduceString(refineAddress(value.outputs[0].address), 10, 10)}
 										</NavLink>
 									</li>
-									<li>
+								</ul>
+								<ul className={cx("value-wrapper")}>
+									<li className={cx("label")}>Value</li>
+									<li className={cx("value")}>
 										<span>
 											{/*<span>{formatNumber(split[0])}</span>.<span className={cx("decimal")}>{split[1]}</span>*/}
 											{divide(msg?.value?.inputs?.[0]?.coins?.[0]?.amount, consts.NUM.BASE_MULT)} {msg?.value?.inputs?.[0]?.coins?.[0]?.denom}

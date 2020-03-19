@@ -8,13 +8,14 @@ import {_, formatNumber, reduceString, refineAddress, setAgoTime} from "src/lib/
 import {TableCell, TableRow} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
 import {NavLink} from "react-router-dom";
-import {fixed} from "src/lib/Big";
+import {fixed,multiply} from "src/lib/Big";
 
 const cx = cn.bind(styles);
 
 export default function HoldersTableRows({holder={}, rank=null}) {
-	const formattedQuantity = !_.isNil(holder.quantity) ? formatNumber(fixed(holder.quantity, 6)).split(".") : undefined;
-	const formattedPercentage = !_.isNil(holder.percentage) ? formatNumber(fixed(holder.percentage, 6)).split(".") : undefined;
+	const formattedQuantity = !_.isNil(holder.quantity) ? formatNumber(fixed(holder.quantity, 2)).split(".") : undefined;
+	const formattedPercentage = !_.isNil(holder.percentage) ?
+		holder.percentage === 0 ? [">0","01"] : formatNumber(fixed(multiply(holder.percentage, 100), 2)).split(".") : undefined;
 	return (
 		<TableRow className={cx("HoldersTableRows-wrapper")} hover={true} key={holder.address}>
 			<TableCell className={cx("tableCell", "text", "rankPadding")} component='th' scope='row' align="center">
