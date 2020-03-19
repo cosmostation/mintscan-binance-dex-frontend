@@ -24,6 +24,13 @@
 	}
 }
 
+@mixin transition($cssElement, $easeMethod, $time) {
+	-webkit-transition: $cssElement $time $easeMethod;
+	-moz-transition: $cssElement $time $easeMethod;
+	-o-transition: $cssElement $time $easeMethod;
+	transition: $cssElement $time $easeMethod;
+}
+
 @mixin transition-linear {
 	-moz-transition: all 0.3s linear;
 	-webkit-transition: all 0.3s linear;

@@ -87,11 +87,6 @@
 		@include media(">asset_table_limit") {
 			display: none;
 		}
-		.thinTableRows-wrapper {
-			>:nth-child(odd) {
-				background-color: #fbfbfc;
-			}
-		}
 		
 		width: 100%;
 		height: fit-content;

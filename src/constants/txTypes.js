@@ -1,4 +1,4 @@
-export default {
+const txTypes = {
 	//  COSMOS
 	COSMOS: {
 		SEND: "cosmos-sdk/Send",
@@ -38,3 +38,5 @@ export default {
 		ACCOUNTFLAG_SET: "scripts/SetAccountFlagsMsg",
 	},
 };
+
+export default txTypes;

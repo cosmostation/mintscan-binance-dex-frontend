@@ -16,7 +16,7 @@ const cx = cn.bind(style);
 
 export default function Account(props) {
 	const {asset} = props.match.params;
-	const [state, refetch, setUrl] = useFetch(`${consts.API_BASE}${consts.API.ASSET}${asset}`);
+	const [state, , ] = useFetch(`${consts.API_BASE}${consts.API.ASSET}${asset}`);
 	if (!state.loading && state?.data?.asset === "") return <NotFound />;
 	const data = state.data ? state.data : {};
 	return (
@@ -25,8 +25,7 @@ export default function Account(props) {
 				<PageTitle title={"Asset Details"} />
 			</TitleWrapper>
 			<AssetDetails asset={data}/>
-			<TxHolders asset={data}/>
-			Work here - {asset}
+			<TxHolders asset={asset}/>
 		</div>
 	);
 }

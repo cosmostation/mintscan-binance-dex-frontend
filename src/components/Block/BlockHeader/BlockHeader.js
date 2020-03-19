@@ -52,7 +52,7 @@ export default function({blockData, history}) {
 					{/*		</ul>*/}
 					{/*		<ul className={cx("value-wrapper")}>*/}
 					{/*			<li>*/}
-					{/*				<NavLink className={cx("blueLink")} to={"/address/bnb16k0gajcczwgymfkk0zsysjzl0sxyxdfckplxlr"}>*/}
+					{/*				<NavLink className={cx("blueLink")} to={"/account/bnb16k0gajcczwgymfkk0zsysjzl0sxyxdfckplxlr"}>*/}
 					{/*					bnb16k0gajcczwgymfkk0zsysjzl0sxyxdfckplxlr*/}
 					{/*				</NavLink>*/}
 					{/*				- 고정값*/}

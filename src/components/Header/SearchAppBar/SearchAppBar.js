@@ -2,7 +2,8 @@ import React, {useCallback, useMemo, useState} from "react";
 import cn from "classnames/bind";
 import styles from "./SearchAppBar.scss";
 import _ from "lodash";
-import {NavLink, useHistory} from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import {useHistory} from "src/hooks";
 //  components
 import SearchArea from "src/components/common/SearchArea";
 import {Toolbar} from "@material-ui/core";

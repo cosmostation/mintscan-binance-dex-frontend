@@ -10,8 +10,7 @@
 	height: 288px;
 
 	@include media("<medium") {
-		@include card-nopadding-wrapper;
-		padding: 16px 20px 20px 20px;
+		display: none;
 	}
 
 	.tab-wrapper {
@@ -66,16 +65,16 @@
 	.Graph-wrapper {
 		width: 95%;
 		margin: auto;
-		@include media(">xxsmall") {
+		@include media(">=xxsmall") {
 			width: map_get($breakpoints, xxsmall) - 40px;
 		}
-		@include media(">xsmall") {
+		@include media(">=xsmall") {
 			width: map_get($breakpoints, xsmall) - 40px;
 		}
-		@include media(">small") {
+		@include media(">=small") {
 			width: map_get($breakpoints, small) - 60px;
 		}
-		@include media(">medium") {
+		@include media(">=medium") {
 			width: 487px;
 		}
 	}

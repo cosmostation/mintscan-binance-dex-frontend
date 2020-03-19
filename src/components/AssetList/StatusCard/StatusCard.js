@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./StatusCard.scss";
 import classNames from "classnames/bind";
-import {useHistory} from "react-router-dom";
 import {formatNumber} from "src/lib/scripts";
+import {useHistory} from "src/hooks";
 
 const cx = classNames.bind(styles);
 
@@ -29,10 +29,10 @@ export default function({asset}) {
 					</div>
 					<div className={cx("percentage")}>
 						<img src={upSVG} alt='direc' />
-						9.17% (24h)
+						9.17%
 					</div>
 				</div>
-				<div className={cx("market-cap")}>Market Cap : $ {formatNumber(asset?.marketCap)}</div>
+				{/*<div className={cx("market-cap")}>$ {formatNumber(asset?.marketCap)}</div>*/}
 			</div>
 		</div>
 	);

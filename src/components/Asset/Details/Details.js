@@ -1,8 +1,8 @@
 import * as React from "react";
 import cn from "classnames/bind";
 import style from "./Details.scss";
-import {useHistory} from "react-router-dom";
 
+import {useHistory} from "src/hooks";
 //  utils
 import {_, formatNumber, empty} from "src/lib/scripts";
 import {fixed} from "src/lib/Big";
@@ -98,45 +98,45 @@ export default function Details({asset}) {
 	)
 }
 
-const assetDef = {
-	"id": 44,
-	"asset": "USDSB-1AC",
-	"mappedAsset": "USDSB",
-	"name": "USDS",
-	"assetImg": "https://static.binance.org/icon/7df5e4de406a4764971244909ae9fcbf",
-	"supply": 90000000000,
-	"price": 0.97689466,
-	"quoteUnit": "USD",
-	"changeRange": 286.11,
-	"owner": "bnb1nf5qjthrmxwxnfct4j0w4ct03fghthq24qt990",
-	"mintable": 0,
-	"visible": null,
-	"description": "",
-	"assetCreateTime": 1560404783743,
-	"transactions": 1586906,
-	"holders": 1067,
-	"officialSiteUrl": "https://www.stably.io",
-	"contactEmail": "@",
-	"mediaList": [
-		{
-			"mediaName": "Facebook",
-			"mediaUrl": "https://www.facebook.com/stablycoin",
-			"mediaImg": "2f1f2622872c4b9c80c6546d797606fd"
-		},
-		{
-			"mediaName": "Twitter",
-			"mediaUrl": "https://twitter.com/stablycoin",
-			"mediaImg": "871bf290593148a2bd2eccaa26ee9808"
-		},
-		{
-			"mediaName": "Medium",
-			"mediaUrl": "https://medium.com/stably-blog",
-			"mediaImg": "56345f7a9fb744e98b1d72caacd0944c"
-		},
-		{
-			"mediaName": "Instagram",
-			"mediaUrl": "https://www.instagram.com/stableusd/",
-			"mediaImg": "6ce578a63b14443ab7779a67694e7ccf"
-		}
-	]
-}
+// const assetDef = {
+// 	"id": 44,
+// 	"asset": "USDSB-1AC",
+// 	"mappedAsset": "USDSB",
+// 	"name": "USDS",
+// 	"assetImg": "https://static.binance.org/icon/7df5e4de406a4764971244909ae9fcbf",
+// 	"supply": 90000000000,
+// 	"price": 0.97689466,
+// 	"quoteUnit": "USD",
+// 	"changeRange": 286.11,
+// 	"owner": "bnb1nf5qjthrmxwxnfct4j0w4ct03fghthq24qt990",
+// 	"mintable": 0,
+// 	"visible": null,
+// 	"description": "",
+// 	"assetCreateTime": 1560404783743,
+// 	"transactions": 1586906,
+// 	"holders": 1067,
+// 	"officialSiteUrl": "https://www.stably.io",
+// 	"contactEmail": "@",
+// 	"mediaList": [
+// 		{
+// 			"mediaName": "Facebook",
+// 			"mediaUrl": "https://www.facebook.com/stablycoin",
+// 			"mediaImg": "2f1f2622872c4b9c80c6546d797606fd"
+// 		},
+// 		{
+// 			"mediaName": "Twitter",
+// 			"mediaUrl": "https://twitter.com/stablycoin",
+// 			"mediaImg": "871bf290593148a2bd2eccaa26ee9808"
+// 		},
+// 		{
+// 			"mediaName": "Medium",
+// 			"mediaUrl": "https://medium.com/stably-blog",
+// 			"mediaImg": "56345f7a9fb744e98b1d72caacd0944c"
+// 		},
+// 		{
+// 			"mediaName": "Instagram",
+// 			"mediaUrl": "https://www.instagram.com/stableusd/",
+// 			"mediaImg": "6ce578a63b14443ab7779a67694e7ccf"
+// 		}
+// 	]
+// }

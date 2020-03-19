@@ -12,7 +12,7 @@ const githubIcon = process.env.PUBLIC_URL + "/assets/icons/footer/github_btn.svg
 const mediumIcon = process.env.PUBLIC_URL + "/assets/icons/footer/medium_btn.svg";
 const telegramIcon = process.env.PUBLIC_URL + "/assets/icons/footer/telegram_btn.svg";
 const emailIcon = process.env.PUBLIC_URL + "/assets/icons/footer/email_btn.svg";
-const cosFooterLogo = process.env.PUBLIC_URL + "/assets/icons/footer/cosmostation_footer_logo.svg";
+// const cosFooterLogo = process.env.PUBLIC_URL + "/assets/icons/footer/cosmostation_footer_logo.svg";
 
 const cx = classNames.bind(styles);
 
@@ -71,10 +71,7 @@ export default function(props) {
 						</li>
 					</ul>
 					<div className={cx("rights")}>
-						<a onClick={e => window.open(consts.LINK.COSMOSTATION)}>
-							<img src={cosFooterLogo} alt='footer' />
-						</a>
-						<div className={cx("footer-copyright")}>© COSMOSTATION 2020</div>
+						<div className={cx("footer-copyright")} onClick={e => window.open(consts.LINK.COSMOSTATION)}>© CØSMOSTATION 2020</div>
 					</div>
 				</div>
 			</div>

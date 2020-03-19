@@ -5,20 +5,27 @@ const {COSMOS, DEX, TOKENS, MISC} = txTypes;
 export default function(txType) {
 	switch (txType) {
 		case DEX.ORDER_NEW:
+		case "NEW_ORDER":
 			return "Place Order";
+
+		case "CANCEL_ORDER":
 		case DEX.ORDER_CANCEL:
 			return "Cancel Order";
 
+		case "TRANSFER":
 		case COSMOS.SEND:
 			return "Transfer";
 
 		case DEX.LIST:
 			return "Listing";
-
+		case "FREEZE_TOKEN":
 		case TOKENS.FREEZE:
 			return "Freeze";
+
+		case "UN_FREEZE_TOKEN":
 		case TOKENS.UNFREEZE:
 			return "Unfreeze";
+
 		case TOKENS.TIME_LOCK:
 			return "Time Lock";
 		case TOKENS.TIME_UNLOCK:
@@ -56,6 +63,6 @@ export default function(txType) {
 		case MISC.ACCOUNTFLAG_SET:
 			return "Set Account Flag";
 		default:
-			return "none";
+			return txType;
 	}
 }

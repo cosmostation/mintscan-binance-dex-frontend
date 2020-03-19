@@ -1,4 +1,4 @@
-import {useState, useEffect, useCallback} from "react";
+import {useState, useEffect} from "react";
 
 export default function useDelayedInput(setFunc = () => {}, timeout = 200) {
 	const [value, setValue] = useState("");

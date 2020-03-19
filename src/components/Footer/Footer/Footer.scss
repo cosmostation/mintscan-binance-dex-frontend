@@ -57,7 +57,7 @@
 				.title {
 					font-family: "Montserrat", serif;
 					font-size: 15px;
-					font-weight: 300;
+					font-weight: 400;
 					line-height: 1.2;
 					color: #cdcdcd;
 					margin-bottom: 10px;
@@ -114,6 +114,9 @@
 						}
 
 						.web-title {
+							font-family: "Open Sans", serif;
+							font-weight: 400;
+							
 							font-size: 14px;
 							color: #fff;
 						}
@@ -126,7 +129,7 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: flex-end;
-			line-height: 1.25;
+			line-height: 1.1;
 
 			.rights {
 				display: grid;
@@ -148,10 +151,12 @@
 				}
 
 				.footer-copyright {
+					cursor: pointer;
 					text-transform: uppercase;
 					font-size: 12px;
 					color: #cdcdcd;
 					font-family: "Montserrat", serif;
+					font-weight: 500;
 				}
 			}
 

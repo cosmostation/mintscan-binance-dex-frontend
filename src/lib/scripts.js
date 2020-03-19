@@ -103,7 +103,7 @@ export const get24Hours = unix => moment(unix).format("HH:mm");
 export const getHours = unix =>
 	moment(unix)
 		.add(30, "minutes")
-		.format("H[h]");
+		.format("H:00");
 
 export const getTime = unix => moment(unix).format("YYYY-MM-DD HH:mm");
 

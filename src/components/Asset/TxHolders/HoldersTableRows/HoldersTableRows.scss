@@ -1,1 +1,61 @@
-@import "src/styles/utils"
+@import "src/styles/utils";
+
+.HoldersTableRows-wrapper {
+	@include tableRow;
+	height: 50px;
+	max-height: 50px;
+	.tablePointerCell {
+		@include tablePointerCell;
+		@include tableElemPadding;
+	}
+	
+	.tablePointerMiniCell {
+		@include tablePointerCellWidth140;
+		@include tableElemPadding;
+	}
+	
+	.tableCell {
+		@include tableCellWidth300;
+		@include tableElemPadding;
+		&.rankPadding {
+			padding: 9px 10px 9px 22px;
+		}
+	}
+	.flexIt {
+		display: flex;
+		align-items: center;
+		:not(:last-child) {
+			margin-right: 7px;
+		}
+	}
+	.rank {
+		height: 30px;
+		width: 30px;
+		border-radius: 30px;
+		border: 15px #e0e1e3 solid;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		span {
+			font-family: "Roboto", serif;
+			font-size: 14px;
+			font-weight: 500;
+			font-stretch: normal;
+			font-style: normal;
+			letter-spacing: normal;
+			text-align: center;
+			color: #222222;
+		}
+	}
+	.highRank {
+		border-color: #f9df67;
+	}
+}
+
+.number-wrapper {
+	@include number-wrapper();
+}
+
+.blueColor {
+	color: #4472de;
+}

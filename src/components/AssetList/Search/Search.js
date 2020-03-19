@@ -8,7 +8,7 @@ import {useDelayedInput} from "src/hooks";
 export default function Search({cx, setSearch}) {
 	const delayedSetValue = useDelayedInput(setSearch, 200);
 
-	const searchFunc = React.useCallback(e => delayedSetValue(_.trim(e.target.value)), [setSearch, delayedSetValue]);
+	const searchFunc = React.useCallback(e => delayedSetValue(_.trim(e.target.value)), [delayedSetValue]);
 
 	return (
 		<div className={cx("search-wrapper")}>

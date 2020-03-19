@@ -1,7 +1,8 @@
 import React, {useCallback, useMemo} from "react";
 import cn from "classnames/bind";
 import styles from "./SubHeader.scss";
-import {NavLink, useHistory} from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import {useHistory} from "src/hooks";
 import consts from "src/constants/consts";
 import svg from "./SubHeaderAssets";
 

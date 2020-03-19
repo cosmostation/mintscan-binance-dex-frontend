@@ -3,6 +3,7 @@
 .blockListtableWrapper {
 	overflow-x: auto;
 	overflow-y: hidden;
+	min-height: 1160px;
 
 	.table {
 		@include media("<table_limit") {

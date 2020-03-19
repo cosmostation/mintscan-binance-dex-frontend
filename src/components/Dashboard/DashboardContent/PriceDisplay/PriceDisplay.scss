@@ -6,11 +6,10 @@
 	display: flex;
 	flex-flow: column;
 	@include media("<medium") {
-		@include card-nopadding-wrapper;
 		margin: 0;
 		max-width: map_get($breakpoints, medium);
 		height: 278px;
-		padding: 20px;
+		padding: 15px;
 	}
 	.iconBlockTime-wrapper {
 		display: flex;
@@ -158,6 +157,9 @@
 		}
 
 		margin-bottom: 17px;
+		@include media("<medium", ">=small") {
+			margin-bottom: 33px;
+		}
 	}
 
 	.CapVolume-wrapper {

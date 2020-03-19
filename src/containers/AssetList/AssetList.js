@@ -23,7 +23,7 @@ export default function(props) {
 	React.useEffect(() => {
 		if(!empty(assets)) return;
 		dispatch(getCryptoAssets());
-	}, [dispatch]);
+	}, [assets, dispatch]);
 	return (
 		<div className={cx("AssetList")}>
 			<TitleWrapper>

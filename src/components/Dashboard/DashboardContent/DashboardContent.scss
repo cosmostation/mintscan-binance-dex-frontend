@@ -17,11 +17,14 @@
 		// 832.7 31.3px 964
 		@include media("<large") {
 			grid-template-columns: 1fr;
-			grid-template-rows: 1fr 157px;
+			grid-template-rows: 1fr 150px;
+		}
+		
+		@include media("<medium") {
+			grid-template-rows: 1fr;
 		}
 
 		@include media("<small") {
-			grid-template-columns: 1fr;
 			grid-template-rows: 1fr $linkWrapperHeight;
 		}
 
@@ -39,10 +42,13 @@
 				grid-column-gap: calc((30 / 894) * 100%);
 			}
 			@include media("<medium") {
-				height: 278px + 15px + 278px;
+				@include card-nopadding-wrapper;
+				height: 278px;
+				grid-column-gap: 0;
+				grid-template-columns: 1fr 1fr;
+			}
+			@include media("<small") {
 				grid-template-columns: 1fr;
-				grid-template-rows: 1fr 1fr;
-				margin-bottom: 10px;
 			}
 		}
 
@@ -56,12 +62,28 @@
 			grid-row-gap: 8px;
 			grid-column-gap: 8px;
 			height: $linkWrapperHeight;
-			@include media("<large", ">small") {
+			@include media("<large", ">=medium") {
 				height: 100%;
 				padding: 12px 15px;
 				grid-template-rows: 58px 58px;
 				grid-template-columns: 1fr 1fr;
 			}
+			@include media("<medium", ">=small") {
+				display: none;
+			}
+		}
+		
+		.LinkWrapperInside {
+			display: none;
+			@include media("<medium", ">=small") {
+				display: grid;
+			}
+			padding: 16px 10px 16px 5px;
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr 1fr 1fr 1fr;
+			grid-row-gap: 8px;
+			grid-column-gap: 8px;
 		}
 	}
 
@@ -93,6 +115,7 @@
 	flex-flow: row;
 	align-items: center;
 	justify-content: flex-start;
+	min-width: 280px;
 
 	border-radius: 5px;
 	border: solid 1px #e6e6e6;

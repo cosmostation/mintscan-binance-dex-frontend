@@ -31,3 +31,18 @@
 		width: 100%;
 	}
 }
+
+@mixin number-wrapper {
+	font-family: "Open Sans", serif;
+	font-size: 13px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.15;
+	letter-spacing: normal;
+	text-align: right;
+	color: #4b525d;
+	span {
+		font-size: 11px;
+	}
+}

@@ -1,20 +1,47 @@
-@import "src/styles/utils"
+@import "src/styles/utils";
 
 .TxTable-wrapper {
 	overflow-x: auto;
 	overflow-y: hidden;
-	
-	@include media("<table_limit") {
-		display: none;
-	}
-	min-width: 600px;
-	
-	.tableHeaderCell {
-		@include tableHeaderCellWidth300;
-		color: var(--colorMainText);
-	}
-	
-	.txsWidth {
-		width: 100px;
+	width: 100%;
+	min-width: 900px;
+	.table {
+		@include media("<asset_tx_table_limit") {
+			display: none;
+		}
+		
+		.tableHeaderCell {
+			@include tableHeaderCellWidth300;
+			color: var(--colorMainText);
+			@include tableElemPadding;
+		}
+		
+		.header {
+			width: 100%;
+			
+			.txHash {
+				min-width: 145px;
+			}
+			
+			.type {
+				min-width: 140px;
+			}
+			
+			.address {
+				min-width: 280px;
+			}
+			
+			.value {
+				min-width: 140px;
+			}
+			
+			.currency {
+				min-width: 82px;
+			}
+			
+			.time {
+				min-width: 88px;
+			}
+		}
 	}
 }

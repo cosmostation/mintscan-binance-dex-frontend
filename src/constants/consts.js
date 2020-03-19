@@ -8,8 +8,12 @@ export default Object.freeze({
 	GET_LOGO_LINK: (symbol) => `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/binance/assets/${symbol}/logo.png`,
 	NUM: {
 		BASE_MULT: 100000000,
-		REAL_TIME_DELAY_MS: 2000,
-		DASH_REAL_TIME_DELAY_MS: 3000,
+		REAL_TIME_DELAY_MS: 2000, //  real-time refetch interval
+		DASH_REAL_TIME_DELAY_MS: 3000,  //  dashboard refetch interval
+		SPARE_PAGE_CNT: 2,  //  amount of pages to preload in pagination
+		BINACE_API_ROWS_LIMIT: 1000,  //  max rows binance api allows
+		BINANCE_API_PAGES_LIMIT: 100, //  max page binance api allows
+		ASSET_REFETCH_INTERVAL_MS: 10000
 	},
 	API: {
 		STATUS: "/status",
@@ -19,7 +23,8 @@ export default Object.freeze({
 		ASSET_IMAGES: "/assets-images?page=1&rows=1000",
 		ASSETS: "/assets?page=1&rows=1000",
 		ASSET: "/asset?asset=",
-		ASSET_HOLDERS: "/asset-holders?page=1&"
+		ASSET_TXS: "/assets/txs?page=1&rows=20&txAsset=",
+		ASSET_HOLDERS: "/asset-holders?&page=1&rows=20&asset="
 	},
 	NETWORK: {
 		COSMOS: "cosmos-3",

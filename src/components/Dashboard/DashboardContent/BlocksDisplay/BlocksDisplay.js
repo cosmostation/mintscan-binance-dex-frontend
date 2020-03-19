@@ -43,11 +43,11 @@ export default function(props) {
 	}, []);
 	const tableBodyRender = React.useMemo(
 		() => (
-			<TableBody>
+			<>
 				{_.map(data?.data?.data, (v, i) => (
 					<BlockDisplayTableRow key={i} blockData={v} />
 				))}
-			</TableBody>
+			</>
 		),
 		[data]
 	);
@@ -60,7 +60,9 @@ export default function(props) {
 				) : (
 					<Table className={cx("BlocksDisplay-table")}>
 						{tableHeaderRender}
-						{tableBodyRender}
+						<TableBody>
+							{tableBodyRender}
+						</TableBody>
 					</Table>
 				)}
 			</TableWrapper>

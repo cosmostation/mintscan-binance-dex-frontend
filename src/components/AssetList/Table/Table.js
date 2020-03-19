@@ -4,7 +4,7 @@ import classNames from "classnames/bind";
 import {_, searchProperties, compareProperty} from "src/lib/scripts";
 
 //  components
-import {TableBody, InputBase, Table, TableCell, TableHead, TableRow} from "@material-ui/core";
+import {TableBody, Table, TableCell, TableHead, TableRow} from "@material-ui/core";
 import AssetTableRow, {ThinTableRow} from "../TableRow";
 import Search from "../Search";
 
@@ -38,7 +38,7 @@ export default function({assets}) {
 						Market Cap(USD)
 					</TableCell>
 					<TableCell className={cx("tableHeaderCell")} align='right'>
-						Price
+						Price(USD)
 					</TableCell>
 					<TableCell className={cx("tableHeaderCell")} align='right'>
 						Supply

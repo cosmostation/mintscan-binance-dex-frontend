@@ -1,5 +1,5 @@
 import {_, empty} from "src/lib/scripts";
-import {SPARE_PAGE_CNT} from "./useIndexedPagination";
+import consts from "src/constants/consts";
 
 export const initialState = {
 	maxIndex: null,
@@ -44,7 +44,7 @@ export default function(state, action) {
 		}
 		case EXTRA_LOAD: {
 			const defaultParams = {params: {after: null}, maxIndex: action.payload.maxIndex};
-			if (state.params.after === false && action.payload.data.length < state.pageSize * (SPARE_PAGE_CNT + 1)) defaultParams.isNoMore = true;
+			if (state.params.after === false && action.payload.data.length < state.pageSize * (consts.NUM.SPARE_PAGE_CNT + 1)) defaultParams.isNoMore = true;
 			if (!action.payload.loading) {
 				_.assign(defaultParams, {isFront: state.index[0] === 0 && action.payload.data.length < state.pageSize});
 			}

@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {useHistory} from "react-router-dom";
+import {useHistory} from "src/hooks";
 
 import {_} from "src/lib/scripts";
 
@@ -9,7 +9,7 @@ export default function useSearch() {
 	useEffect(() => {
 		if (search === "") return;
 		const type = checkType(search);
-		if (type === "address") history.push(`/address/${search}`);
+		if (type === "address") history.push(`/account/${search}`);
 		else if (type === "block") history.push(`/blocks/${search}`);
 		else if (type === "asset") history.push(`/asset/${search}`);
 		else if (type === "orderId") window.alert("query for tx and display that tx");

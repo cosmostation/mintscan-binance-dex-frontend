@@ -14,6 +14,7 @@ export default function useGetImage(inputArr=[], fallback_img="") {
 	useEffect(() => {
 		if(!empty(linkArr) && image === fallback_img)
 			getImage(linkArr, setImage);
+		// eslint-disable-next-line
 	}, [linkArr, inputArr]);
 
 	return [image ? image : fallback_img, setLinkArr];

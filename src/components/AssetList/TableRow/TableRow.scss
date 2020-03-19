@@ -59,7 +59,8 @@ $tablePadding: 11px 20px 10px 19px;
 }
 
 .section-wrapper {
-	padding: 10.5px 0 9px 0
+	padding: 15.5px 15px 14.5px;
+	background-color: #fbfbfc;
 }
 
 .number-wrapper {
@@ -106,18 +107,15 @@ $tablePadding: 11px 20px 10px 19px;
 		letter-spacing: normal;
 		text-align: left;
 		color: #222222;
-		padding: 5.5px 0;
+		padding: 5.5px 15px;
 	}
-	
-	padding: 0 15px;
 }
 .blueColor {
 	color: #4472de;
 }
 
 .divider {
-	margin-left: -15px;
-	width: calc(100% + 30px);
+	width: 100%;
 	height: 0;
 	border-bottom: solid 1px #e6e6e6;
 }

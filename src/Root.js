@@ -1,13 +1,12 @@
 import React from "react";
 import {BrowserRouter} from "react-router-dom";
-import {RestfulProvider} from "restful-react"; //  Thank you Tejas
+import {RestfulProvider} from "restful-react"; //  Thank you Tejas - I'm not gonna lie, swr looks more juicy these days
+import axios from "axios";
 //  redux
 import {Provider} from "react-redux";
 import configure from "./store/configure";
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
-//  misc
 import consts from "src/constants/consts";
-//  app
 import App from "./App";
 
 const store = configure();
@@ -23,6 +22,13 @@ const theme = createMuiTheme({
 	typography: {
 		useNextVariants: true,
 	},
+	overrides: {
+		MuiTooltip: {
+			tooltip: {
+				fontSize: "0.8em"
+			}
+		}
+	}
 	// xs, extra-small: 0px or larger
 	// sm, small: 600px or larger
 	// md, medium: 960px or larger

@@ -1,7 +1,7 @@
 import * as React from "react";
 import styles from "./TxMessage.scss";
 import cn from "classnames/bind";
-import {NavLink, useHistory} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {divide, multiply} from "src/lib/Big";
 import {_, formatNumber, empty, refineAddress} from "src/lib/scripts";
 
@@ -9,7 +9,7 @@ import {_, formatNumber, empty, refineAddress} from "src/lib/scripts";
 import {useSelector} from "react-redux";
 
 //  hooks
-import {useGetImage} from "src/hooks";
+import {useGetImage, useHistory} from "src/hooks";
 
 //  constants
 import getTxTypeIcon from "src/constants/getTxTypeIcon";
@@ -27,9 +27,9 @@ import {useEffect} from "react";
 const arrowSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_arrow.svg";
 const symbolNone = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
 const detailSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_detail_btn.svg";
-// const bnbSVG = process.env.PUBLIC_URL + "/assets/icons/common/binance_token.svg";
+const bnbSVG = process.env.PUBLIC_URL + "/assets/icons/common/binance_token.svg";
 
-const bnbSVG = "https://static.binance.org/icon/8fedcd202fb549d28b2f313b2bf97033";
+// const bnbSVG = "https://static.binance.org/icon/8fedcd202fb549d28b2f313b2bf97033";
 
 const cx = cn.bind(styles);
 

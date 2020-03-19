@@ -4,7 +4,7 @@ import cn from "classnames/bind";
 
 const cx = cn.bind(styles);
 
-const defaultSVG = `${process.env.PUBLIC_URL}/assets/icons/arrow_ic.svg`;
+const defaultSVG = `${process.env.PUBLIC_URL}/assets/icons/common/arrow_ic.svg`;
 export default function SvgDisplay({svgSrc=defaultSVG, customClass}) {
 	return (
 		<div className={cx("Svg-wrapper", customClass ? customClass : undefined)}>

@@ -1,6 +1,7 @@
 import useFetch from "./useFetch/useFetch";
 import useBetterState from "./useBetterState";
 import useIndexedPagination from "./useIndexedPagination/useIndexedPagination";
+import usePagedPagination from "./usePagedPagination";
 import usePrevious from "./usePrevious";
 import useTimer from "./useTimer";
 import useSearch from "./useSearch";
@@ -9,5 +10,6 @@ import useDelayedInput from "./useDelayedInput";
 import useScroll from "./useScroll";
 import usePreload from "./usePreload";
 import useGetImage from "./useGetImage";
+import {useHistory} from "react-router-dom";
 
-export {useFetch, useBetterState, useIndexedPagination, usePrevious, useTimer, useSearch, useLoadedNumberedPagination, useDelayedInput, useScroll, usePreload, useGetImage};
+export {useFetch, useBetterState, useIndexedPagination, usePagedPagination, usePrevious, useTimer, useSearch, useLoadedNumberedPagination, useDelayedInput, useScroll, usePreload, useGetImage, useHistory};
