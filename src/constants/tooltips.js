@@ -5,5 +5,7 @@ export default Object.freeze({
 	asset_price: "Price(USD)",
 	asset_cap: "Market Cap(USD",
 	asset_supply: "Supply",
-	asset_owner: "Owner of asset"
+	asset_owner: "Owner of asset",
+	tx_timeInforce_GTE: "Good Till Expire: Order persists until price is met",
+	tx_timeInforce_IOC: "Immediate Or Cancel: Order is cancelled immediately if price is not met",
 });

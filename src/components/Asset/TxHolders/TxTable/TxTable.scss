@@ -9,29 +9,30 @@
 		color: var(--colorMainText);
 		@include tableElemPadding;
 	}
-		
+
 	.header {
-		
 		.txHash {
 			min-width: 145px;
 		}
-		
+
 		.type {
 			min-width: 140px;
 		}
-		
+
 		.address {
-			min-width: 280px;
+			min-width: 260px;
+			padding-right: 0;
 		}
-		
+
 		.value {
-			min-width: 140px;
+			min-width: 120px;
+			padding-left: 0;
 		}
-		
+
 		.currency {
 			min-width: 82px;
 		}
-		
+
 		.time {
 			min-width: 88px;
 		}

@@ -3,10 +3,7 @@
 $widthCardTxMarginRight: 1.25%;
 $widthSelected: 84%;
 
-.TxHolders-wrapper-thin {
-	@include media(">=asset_details_table_limit") {
-		display: none;
-	}
+.TxHolders-wrapper {
 	.Tabs {
 		height: 62px;
 		display: flex;
@@ -16,13 +13,13 @@ $widthSelected: 84%;
 			@include media("<small") {
 				width: 150px;
 			}
-			
+
 			height: 100%;
 			display: flex;
 			justify-content: center;
 			align-items: flex-end;
 			padding-bottom: 10px;
-			
+
 			font-family: "Montserrat", serif;
 			font-size: 15px;
 			font-weight: 500;
@@ -32,8 +29,10 @@ $widthSelected: 84%;
 			letter-spacing: normal;
 			text-align: left;
 			color: #b2b6bc;
-			
+			cursor: pointer;
+
 			&.selected {
+				cursor: inherit;
 				color: #222222;
 				border-bottom: solid 3px #222222;
 			}
@@ -50,111 +49,111 @@ $widthSelected: 84%;
 		}
 	}
 }
-
-.TxHolders-wrapper {
-	@include media("<asset_details_table_limit") {
-		display: none;
-	}
-	display: flex;
-	flex-flow: row;
-	height: fit-content;
-	min-height: 400px;
-	:first-child {
-		margin-right: $widthCardTxMarginRight;
-	}
-	.Card {
-		position: relative;
-		@include card-nopadding-wrapper;
-		padding: 20px;
-		.grid {
-			width: 100%;
-			.expand {
-				max-height: 0;
-				max-width: 0;
-				> * {
-					position: relative;
-					overflow: hidden;
-				}
-			}
-			.content-wrapper {
-				width: 100%;
-				overflow-x: hidden;
-				.title {
-					font-family: "Montserrat", serif;
-					font-size: var(--fontSizeCardValue);
-					font-weight: 500;
-					color: var(--colorMainText);
-				}
-			}
-		}
-		&.selected {
-			width: $widthSelected;
-			transition: width 0.5s ease, opacity 0.5s ease;
-		}
-		&.unselected {
-			@include card-nopadding-wrapper;
-			transition: width 0.5s ease, opacity 0.5s ease;
-			width: 100% - $widthCardTxMarginRight - $widthSelected;
-			opacity: 0.5;
-			&:hover {
-				&:nth-child(1) {
-					padding: 20px 0 20px 20px;
-				}
-				&:nth-child(2) {
-					padding: 20px 20px 20px 0;
-				}
-				opacity: 1;
-				.grid {
-					display: grid;
-					grid-template-rows: 1fr;
-				}
-				.expand {
-					max-height: 100%;
-					max-width: 100%;
-					display: flex;
-					align-items: center;
-					transition: max-width 0.5s ease;
-					> * {
-						height: 20px;
-						width: 20px;
-					}
-				}
-				.expand-right {
-					height: 100%;
-					grid-template-columns: 80% 21.5%;		//	no idea why but this has to be 21.5% or there's a line left out
-					.expand {
-						margin: -20px 0;
-						min-height: calc(100% + 40px);
-						justify-content: flex-end;
-						background: linear-gradient(to right, rgba(255,255,255,0), #f0f0f0);
-					}
-				}
-				.expand-left {
-					height: 100%;
-					grid-template-columns: 20% 80%;
-					.expand {
-						margin: -20px 0;
-						min-height: calc(100% + 40px);
-						justify-content: flex-start;
-						background: linear-gradient(to left, rgba(255,255,255,0), #f0f0f0);
-					}
-				}
-			}
-		}
-	}
-	margin-bottom: 70px;
-}
-.preventClick {
-	position: absolute;
-	background: none;
-	/*dim the background*/
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	z-index: 10;
-	&.selected {
-		display: none;
-	}
-}
+//
+//.TxHolders-wrapper {
+//	@include media("<asset_details_table_limit") {
+//		display: none;
+//	}
+//	display: flex;
+//	flex-flow: row;
+//	height: fit-content;
+//	min-height: 400px;
+//	:first-child {
+//		margin-right: $widthCardTxMarginRight;
+//	}
+//	.Card {
+//		position: relative;
+//		@include card-nopadding-wrapper;
+//		padding: 20px;
+//		.grid {
+//			width: 100%;
+//			.expand {
+//				max-height: 0;
+//				max-width: 0;
+//				> * {
+//					position: relative;
+//					overflow: hidden;
+//				}
+//			}
+//			.content-wrapper {
+//				width: 100%;
+//				overflow-x: hidden;
+//				.title {
+//					font-family: "Montserrat", serif;
+//					font-size: var(--fontSizeCardValue);
+//					font-weight: 500;
+//					color: var(--colorMainText);
+//				}
+//			}
+//		}
+//		&.selected {
+//			width: $widthSelected;
+//			transition: width 0.5s ease, opacity 0.5s ease;
+//		}
+//		&.unselected {
+//			@include card-nopadding-wrapper;
+//			transition: width 0.5s ease, opacity 0.5s ease;
+//			width: 100% - $widthCardTxMarginRight - $widthSelected;
+//			opacity: 0.5;
+//			&:hover {
+//				&:nth-child(1) {
+//					padding: 20px 0 20px 20px;
+//				}
+//				&:nth-child(2) {
+//					padding: 20px 20px 20px 0;
+//				}
+//				opacity: 1;
+//				.grid {
+//					display: grid;
+//					grid-template-rows: 1fr;
+//				}
+//				.expand {
+//					max-height: 100%;
+//					max-width: 100%;
+//					display: flex;
+//					align-items: center;
+//					transition: max-width 0.5s ease;
+//					> * {
+//						height: 20px;
+//						width: 20px;
+//					}
+//				}
+//				.expand-right {
+//					height: 100%;
+//					grid-template-columns: 80% 21.5%;		//	no idea why but this has to be 21.5% or there's a line left out
+//					.expand {
+//						margin: -20px 0;
+//						min-height: calc(100% + 40px);
+//						justify-content: flex-end;
+//						background: linear-gradient(to right, rgba(255,255,255,0), #f0f0f0);
+//					}
+//				}
+//				.expand-left {
+//					height: 100%;
+//					grid-template-columns: 20% 80%;
+//					.expand {
+//						margin: -20px 0;
+//						min-height: calc(100% + 40px);
+//						justify-content: flex-start;
+//						background: linear-gradient(to left, rgba(255,255,255,0), #f0f0f0);
+//					}
+//				}
+//			}
+//		}
+//	}
+//	margin-bottom: 70px;
+//}
+//.preventClick {
+//	position: absolute;
+//	background: none;
+//	/*dim the background*/
+//	top: 0;
+//	left: 0;
+//	width: 100%;
+//	height: 100%;
+//	text-align: center;
+//	z-index: 10;
+//	&.selected {
+//		display: none;
+//	}
+//}

@@ -9,7 +9,8 @@ import {useHistory} from "src/hooks";
 
 //  components
 import Chart from "src/components/common/Chart/Chart";
-
+import consts from "src/constants/consts";
+import Decimal from "src/components/common/Decimal/Decimal";
 
 const cx = classNames.bind(styles);
 
@@ -24,7 +25,7 @@ export default function({asset, id}) {
 	const [data, setData] = React.useState(null);
 	const history = useHistory();
 	React.useEffect(() => {
-		if(_.isNil(id) || !_.isNil(data)) return;
+		if (_.isNil(id) || !_.isNil(data)) return;
 		const times = getUnixTimes(DAY_IN_MINUTES, "minute", "hour");
 		const cancelToken = axios.CancelToken;
 		const source = cancelToken.source();
@@ -38,11 +39,11 @@ export default function({asset, id}) {
 			});
 		return () => {
 			source.cancel("cleanup cancel");
-		}
+		};
 	}, [data, id]);
 
-
-	const splitPrice = asset?.price ? formatNumber(asset.price).split(".") : ["0", "00000"];
+	const splitPrice = asset?.price ? formatNumber(asset.price).split(".") : ["-"];
+	const splitMarketCap = asset?.marketCap ? formatNumber(asset.marketCap).split(".") : ["-"];
 	const diffPercent = asset?.changeRange ? divide(asset.changeRange, 100, 2) : undefined;
 	return (
 		<div className={cx("statuscard-wrapper")} onClick={() => history.push(`/assets/${asset?.asset}`)}>
@@ -50,7 +51,7 @@ export default function({asset, id}) {
 				<div className={cx("asset-graph-wrapper")}>
 					<div className={cx("asset")}>
 						<img src={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} alt={"none"} />
-						<div className={cx("name")}>{asset?.name ? asset.name : "-"}</div>
+						<div className={cx("name")}>{asset?.mappedAsset ? asset.mappedAsset : "-"}</div>
 					</div>
 					<div className={cx("graph-wrapper")}>
 						{_.isNil(data) ? (
@@ -58,26 +59,44 @@ export default function({asset, id}) {
 						) : empty(data?.[0]) || empty(data?.[0]) ? (
 							<div>Error loading Chart</div>
 						) : (
-							<Chart key={0} options={options} data={data[0]} showAxis={false} displayMax={true}/>
+							<Chart key={0} options={options} data={data[0]} showAxis={false} displayMax={true} />
 						)}
 					</div>
 				</div>
 				<div className={cx("price-percentage-wrapper")}>
 					<div className={cx("price")}>
-						<span>$ {splitPrice[0]}.</span>
-						{splitPrice[1]}
+						{splitPrice[0] === "-" ? (
+							"$ -"
+						) : (
+							<>
+								<span>$ {splitPrice[0]}.</span>
+								{splitPrice[1]}
+							</>
+						)}
 					</div>
 					<div className={cx("percentage")}>
-						{diffPercent ?
+						{diffPercent ? (
 							<>
-								<img src={asset?.changeRange > 0 ? upSVG : downSVG} alt='direc'/>
-								{diffPercent}%
+								<img src={asset?.changeRange > 0 ? upSVG : downSVG} alt='direc' />
+								<>
+									{diffPercent.split(".")[0]}.<span>{diffPercent.split(".")[1]}%</span>
+								</>
 							</>
-							: undefined
-						}
+						) : (
+							undefined
+						)}
 					</div>
 				</div>
-				<div className={cx("market-cap")}>$ {formatNumber(asset?.marketCap)}</div>
+				<div className={cx("market-cap")}>
+					{splitMarketCap[0] === "-" ? (
+						"$ -"
+					) : (
+						<>
+							$ {splitMarketCap[0]}
+							{splitMarketCap[1] ? <span className={cx("decimal")}>.{splitMarketCap[1]}</span> : undefined}
+						</>
+					)}
+				</div>
 			</div>
 		</div>
 	);
@@ -90,10 +109,10 @@ const options = {
 		height: "50px",
 		spacing: [5, 5, 5, 5],
 		renderTo: "container",
-		showAxes: false
+		showAxes: false,
 	},
 	tooltip: {
-		enabled: false
+		enabled: false,
 	},
 	plotOptions: {
 		series: {

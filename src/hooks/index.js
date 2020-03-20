@@ -12,4 +12,18 @@ import usePreload from "./usePreload";
 import useGetImage from "./useGetImage";
 import {useHistory} from "react-router-dom";
 
-export {useFetch, useBetterState, useIndexedPagination, usePagedPagination, usePrevious, useTimer, useSearch, useLoadedNumberedPagination, useDelayedInput, useScroll, usePreload, useGetImage, useHistory};
+export {
+	useFetch,
+	useBetterState,
+	useIndexedPagination,
+	usePagedPagination,
+	usePrevious,
+	useTimer,
+	useSearch,
+	useLoadedNumberedPagination,
+	useDelayedInput,
+	useScroll,
+	usePreload,
+	useGetImage,
+	useHistory,
+};

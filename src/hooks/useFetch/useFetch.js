@@ -4,7 +4,7 @@ import {empty, _} from "src/lib/scripts";
 
 import reducer, {ERROR, FETCHING, initialState, SUCCESS} from "./reducer";
 
-export default function useFetch(inputUrl, method = "get", refineFunction=res=>res.data) {
+export default function useFetch(inputUrl, method = "get", refineFunction = res => res.data) {
 	const [url, setUrl] = useState(inputUrl);
 	const [state, dispatch] = useReducer(reducer, initialState, () => initialState);
 	const [fetch, setFetch] = useState(0);
@@ -21,9 +21,9 @@ export default function useFetch(inputUrl, method = "get", refineFunction=res=>r
 		})
 			.then(res => {
 				if (!unmounted) {
-					const data = refineFunction(res);
+					const data = _.omitBy(refineFunction(res), _.isNil);
 					const keys = _.keys(data);
-					if(!empty(state.data) && _.isEqual(data[keys[0]], state.data[keys[0]])) return;
+					if (!empty(state.data) && _.isEqual(data[keys[0]], state.data[keys[0]])) return;
 					dispatch({type: SUCCESS, payload: {data}});
 				}
 			})

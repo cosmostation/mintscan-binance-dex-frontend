@@ -43,7 +43,7 @@
 			display: none;
 		}
 		.thinTableRows-wrapper {
-			>:nth-child(even) {
+			> :nth-child(even) {
 				background-color: #fbfbfc;
 			}
 		}

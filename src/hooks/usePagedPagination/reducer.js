@@ -5,7 +5,7 @@ export const initialState = {
 	index: [],
 	isNoMore: false,
 	pageSize: null,
-	error: false
+	error: false,
 };
 
 export const INITIAL_LOAD = "INITIAL_LOAD";

@@ -105,9 +105,7 @@
 					}
 
 					.web {
-						@include Flex_center
-
-						.web-icon {
+						@include Flex_center .web-icon {
 							width: unset;
 							height: 16px;
 							margin-right: 8px;
@@ -116,7 +114,7 @@
 						.web-title {
 							font-family: "Open Sans", serif;
 							font-weight: 400;
-							
+
 							font-size: 14px;
 							color: #fff;
 						}

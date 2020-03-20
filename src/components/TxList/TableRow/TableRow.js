@@ -25,7 +25,10 @@ export const TableRowThin = ({blockData}) => {
 				</ul>
 				<ul className={cx("row")}>
 					<li>Address</li>
-					<li className={cx("flexit")}>{pickData(blockData, cx, CELL_TYPES[2])}{pickData(blockData, cx, CELL_TYPES[3])}</li>
+					<li className={cx("flexit")}>
+						{pickData(blockData, cx, CELL_TYPES[2])}
+						{pickData(blockData, cx, CELL_TYPES[3])}
+					</li>
 				</ul>
 				<ul className={cx("row")}>
 					<li>Value</li>
@@ -63,7 +66,8 @@ export default function({blockData}) {
 			<TableCell className={cx("tablePointerCell", "text")}>{pickData(blockData, cx, CELL_TYPES[1])}</TableCell>
 			<TableCell className={cx("tablePointerCell", "text", "addrWidth")} align='left'>
 				<span className={cx("flexit")}>
-					{pickData(blockData, cx, CELL_TYPES[2])}{pickData(blockData, cx, CELL_TYPES[3])}
+					{pickData(blockData, cx, CELL_TYPES[2])}
+					{pickData(blockData, cx, CELL_TYPES[3])}
 				</span>
 			</TableCell>
 			<TableCell className={cx("tableCell", "valueCell", "padding-right10")} align='right'>

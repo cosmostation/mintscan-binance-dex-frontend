@@ -34,8 +34,11 @@ export default function(txType) {
 			return "Time Relock";
 		case TOKENS.ISSUE:
 			return "Issue Asset";
+
+		case "BURN_TOKEN":
 		case TOKENS.BURN:
 			return "Burn";
+
 		case TOKENS.MINT:
 			return "Mint";
 		case TOKENS.HTLT:

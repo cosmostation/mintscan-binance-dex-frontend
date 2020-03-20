@@ -1,1 +1,1 @@
- export {default} from "./HoldersTable";
+export {default} from "./HoldersTable";

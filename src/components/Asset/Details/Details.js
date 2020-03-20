@@ -18,48 +18,44 @@ const cx = cn.bind(style);
 export default function Details({asset}) {
 	const history = useHistory();
 	const mediaList = React.useMemo(() => {
-		if (empty(asset.mediaList)) return null;
+		if (empty(asset.mediaList)) return;
 		const ret = {};
 		_.each(asset.mediaList, v => {
-			ret[v.mediaName] = v.mediaUrl;
+			if (v.mediaName !== "Binance Info") ret[v.mediaName] = v.mediaUrl;
+			else ret.Info = v.mediaUrl;
 		});
-		if(asset.contactEmail !== "@" && asset.contactEmail?.length >= 5)
-			_.assign(ret, {email: asset.contactEmail});
+		if (asset.contactEmail !== "@" && asset.contactEmail?.length >= 5) _.assign(ret, {email: asset.contactEmail});
 		return ret;
-	}, [asset]);
+	}, [asset.mediaList]);
+
 	const formattedPrice = !_.isNil(asset.price) ? formatNumber(fixed(asset.price, 6)).split(".") : undefined;
 	const clickLink = link => window.open(link, "__blank");
 	return (
 		<div className={cx("AssetDetails-wrapper")}>
 			<div className={cx("header")}>
 				<div className={cx("asset")}>
-					<img src={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} alt="asset" />
+					<img src={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} alt='asset' />
 					<div className={cx("text")}>
 						<p>{asset?.mappedAsset}</p>
 						<p className={cx("currency")}>{asset?.name}</p>
 					</div>
 				</div>
 				<div className={cx("clickables")}>
-					{_.isNil(mediaList) ? undefined
-					: _.map(_.keys(mediaList), key => (<img key={key} className={cx(key)} alt={key} onClick={() => clickLink(mediaList[key])}/>))}
+					{_.isNil(mediaList)
+						? undefined
+						: _.map(_.keys(mediaList), key => <img key={key} className={cx(key)} alt={key} onClick={() => clickLink(mediaList[key])} />)}
 				</div>
 			</div>
 			<div className={cx("divider")} />
 			<div className={cx("table")}>
-				<InfoRow label={"Asset Name"}>
-					{asset?.asset}
-				</InfoRow>
+				<InfoRow label={"Asset Name"}>{asset?.asset}</InfoRow>
 				<InfoRow label={"Owner"}>
 					<span className={cx("blueLink")} onClick={() => history.push(`/account/${asset.owner}`)}>
-							{asset?.owner}
+						{asset?.owner}
 					</span>
 				</InfoRow>
-				<InfoRow label={"Supply"}>
-					{formatNumber(asset?.supply)}
-				</InfoRow>
-				<InfoRow label={"Mintable"}>
-					{asset?.mintable !== 1 ? "No" : "Yes"}
-				</InfoRow>
+				<InfoRow label={"Supply"}>{formatNumber(asset?.supply)}</InfoRow>
+				<InfoRow label={"Mintable"}>{asset?.mintable !== 1 ? "No" : "Yes"}</InfoRow>
 				<InfoRow label={"Price"}>
 					{formattedPrice ? (
 						<>
@@ -82,20 +78,19 @@ export default function Details({asset}) {
 				<InfoRow label={"Holders"}>
 					{formatNumber(asset.holders)} Address{asset.holders > 1 ? "es" : ""}
 				</InfoRow>
-				<InfoRow label={"Transactions"}>
-					{formatNumber(asset.transactions)}
-				</InfoRow>
-				{asset.officialSiteUrl ?
+				<InfoRow label={"Transactions"}>{formatNumber(asset.transactions)}</InfoRow>
+				{asset.officialSiteUrl ? (
 					<InfoRow label={"Website"}>
 						<span className={cx("blueLink")} onClick={() => window.open(asset.officialSiteUrl, "__blank")}>
 							{asset.officialSiteUrl}
 						</span>
 					</InfoRow>
-					: undefined
-				}
+				) : (
+					undefined
+				)}
 			</div>
 		</div>
-	)
+	);
 }
 
 // const assetDef = {

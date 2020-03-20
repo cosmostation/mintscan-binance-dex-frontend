@@ -50,7 +50,7 @@
 		:last-child {
 			margin-bottom: 0;
 		}
-		
+
 		.trade-wrapper {
 			margin-left: 209px;
 			width: 465px;
@@ -96,11 +96,11 @@
 						width: 26px;
 						min-width: 26px;
 						height: 26px;
-						
+
 						overflow: hidden;
 						//border: #ffffff 2px solid;
 						border-radius: 36px;
-						
+
 						@include Flex_center();
 						img {
 							width: 100%;
@@ -176,7 +176,7 @@
 		border-radius: 5px;
 		background-color: #f9fafc;
 		@include Flex_LeftRight;
-		
+
 		@include media("<large") {
 			width: 100%;
 		}
@@ -221,10 +221,10 @@
 		.row-content {
 			height: 100%;
 			flex-flow: column;
-			>:nth-child(1) {
+			> :nth-child(1) {
 				align-self: flex-start;
 			}
-			>:nth-child(2) {
+			> :nth-child(2) {
 				align-self: flex-end;
 			}
 		}
@@ -261,5 +261,9 @@
 }
 
 .color-blue {
-	color: #37CC6E
+	color: #37cc6e;
+}
+
+.flexit {
+	display: flex;
 }

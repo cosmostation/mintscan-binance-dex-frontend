@@ -19,10 +19,12 @@ import getTxType from "src/constants/getTxType";
 
 //  components
 import {txCheckOrder, txCheckSend, txGetSide, txGetTimeInforce} from "src/components/Tx/TxData/TxCase";
+import {Fade, Tooltip} from "@material-ui/core";
 import InfoRow from "src/components/common/InfoRow/InfoRow";
 import TxGetFrom from "src/components/Tx/TxData/TxGetFrom/TxGetFrom";
 import {useEffect} from "react";
-
+import tooltips from "src/constants/tooltips";
+import Decimal from "src/components/common/Decimal";
 
 const arrowSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_arrow.svg";
 const symbolNone = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
@@ -37,16 +39,19 @@ export default function({msg, txData}) {
 	const history = useHistory();
 	const {type, value} = msg;
 
-	const clickSymbol = React.useCallback(symbol => {
-		if (_.isNil(symbol)) return;
-		window.open(`${consts.API_BIANCE_DEX}${symbol}`);
-	}, [history]);
+	const clickSymbol = React.useCallback(
+		symbol => {
+			if (_.isNil(symbol)) return;
+			window.open(`${consts.API_BIANCE_DEX}${symbol}`);
+		},
+		[history]
+	);
 
 	const displaySymbol = () => {
-		if(!value.symbol) return "";
+		if (!value.symbol) return "";
 		const split = value.symbol.split("_");
 		return split[0].split("-")[0] + "_" + split[1].split("-")[0];
- 	};
+	};
 	// console.log(txData);
 	return (
 		<div className={cx("grid-wrapper")}>
@@ -85,13 +90,14 @@ export default function({msg, txData}) {
 				)}
 				{txCheckOrder(type) ? (
 					<>
-						{txTypes.DEX.ORDER_NEW === type ?
+						{txTypes.DEX.ORDER_NEW === type ? (
 							<InfoRow label='Side'>
 								<span className={cx({"color-red": value?.side === 2, "color-blue": value?.side === 1})}>{txGetSide[value?.side]} </span>
 								{value?.symbol.split("-")[0]}
 							</InfoRow>
-							: undefined
-						}
+						) : (
+							undefined
+						)}
 						<InfoRow label='Symbol'>
 							<div className={cx("symbol-link")} onClick={() => clickSymbol(value?.symbol)}>
 								<p>{displaySymbol()}</p>
@@ -103,8 +109,8 @@ export default function({msg, txData}) {
 								<TradeDisplay value={value} />
 								<InfoRow label='Price'>
 									{/*{(() => console.log(value))()}*/}
-									<span>
-										{divide(value?.price, consts.NUM.BASE_MULT, 8)} BNB / 1 {_.split(value?.symbol, "-")[0]}
+									<span className={cx("flexit")}>
+										<Decimal fontSizeBase={15} value={divide(value?.price, consts.NUM.BASE_MULT, 8)} /> BNB / 1 {_.split(value?.symbol, "-")[0]}
 									</span>
 								</InfoRow>
 								{/*Removed because only one type is possible ATM*/}
@@ -112,7 +118,15 @@ export default function({msg, txData}) {
 								{/*	<span>{txGetOrderType[value?.ordertype]}</span>*/}
 								{/*</InfoRow>*/}
 								<InfoRow label='Time Inforce'>
-									<span>{txGetTimeInforce[value?.timeinforce]}</span>
+									<Tooltip
+										placement={"right-end"}
+										TransitionComponent={Fade}
+										TransitionProps={{timeout: 300}}
+										title={value?.timeinforce === 1 ? tooltips.tx_timeInforce_GTE : tooltips.tx_timeInforce_IOC}
+										disableFocusListener
+										disableTouchListener>
+										<span>{txGetTimeInforce[value?.timeinforce]}</span>
+									</Tooltip>
 								</InfoRow>
 								<InfoRow label='Order ID'>
 									<span>{value?.id}</span>
@@ -139,35 +153,34 @@ export default function({msg, txData}) {
 const TradeDisplay = ({value}) => {
 	let [left, right] = [{}, {}];
 	[left.symbol, right.symbol] = _.split(value.symbol, "_");
-	[left.value, right.value] = [divide(value?.quantity, consts.NUM.BASE_MULT, 8), divide(multiply(value?.price, value?.quantity), multiply(consts.NUM.BASE_MULT, consts.NUM.BASE_MULT), 8)]
+	[left.value, right.value] = [
+		divide(value?.quantity, consts.NUM.BASE_MULT, 8),
+		divide(multiply(value?.price, value?.quantity), multiply(consts.NUM.BASE_MULT, consts.NUM.BASE_MULT), 8),
+	];
 	// TODO
 	//  set symbol source when backend provides
-	if(value.side === 1) [left, right] = [right, left];
+	if (value.side === 1) [left, right] = [right, left];
 	return (
 		<div className={cx("trade-wrapper")}>
 			<TradeBox symbol={left.symbol} value={left.value} />
 			<div className={cx("symbol-wrapper")}>
 				<img src={arrowSVG} alt='arrow' />
 			</div>
-			<TradeBox
-				symbol={right.symbol}
-				value={right.value}
-			/>
+			<TradeBox symbol={right.symbol} value={right.value} />
 		</div>
 	);
 };
 
 const TradeBox = ({symbol, value}) => {
-	const images = useSelector(state => state.assets.images);
+	const assets = useSelector(state => state.assets.assets);
 	const formattedArr = React.useMemo(() => formatNumber(value).split("."), [value]);
 	const [image, setLinkArr] = useGetImage([], symbolNone);
-
 	useEffect(() => {
-		if(!empty(images) && !_.isNil(symbol) && image === symbolNone) {
-			if(symbol === "BNB") setLinkArr([bnbSVG]);
-			else setLinkArr([consts.GET_LOGO_LINK(symbol), images[symbol]]);
+		if (!empty(assets) && !_.isNil(symbol) && image === symbolNone) {
+			if (symbol === "BNB") setLinkArr([bnbSVG]);
+			else setLinkArr([consts.GET_LOGO_LINK(symbol), _.filter(assets, v => v.asset === symbol)?.[0]?.assetImg]);
 		}
-	}, [images, setLinkArr, symbol, value]);
+	}, [assets, image, setLinkArr, symbol, value]);
 
 	return (
 		<div className={cx("box-wrapper")}>

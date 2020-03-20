@@ -60,9 +60,7 @@ export default function(props) {
 				) : (
 					<Table className={cx("BlocksDisplay-table")}>
 						{tableHeaderRender}
-						<TableBody>
-							{tableBodyRender}
-						</TableBody>
+						<TableBody>{tableBodyRender}</TableBody>
 					</Table>
 				)}
 			</TableWrapper>

@@ -25,10 +25,10 @@ const theme = createMuiTheme({
 	overrides: {
 		MuiTooltip: {
 			tooltip: {
-				fontSize: "0.8em"
-			}
-		}
-	}
+				fontSize: "0.8em",
+			},
+		},
+	},
 	// xs, extra-small: 0px or larger
 	// sm, small: 600px or larger
 	// md, medium: 960px or larger

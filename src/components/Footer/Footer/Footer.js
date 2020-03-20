@@ -71,7 +71,9 @@ export default function(props) {
 						</li>
 					</ul>
 					<div className={cx("rights")}>
-						<div className={cx("footer-copyright")} onClick={e => window.open(consts.LINK.COSMOSTATION)}>© CØSMOSTATION 2020</div>
+						<div className={cx("footer-copyright")} onClick={e => window.open(consts.LINK.COSMOSTATION)}>
+							© CØSMOSTATION 2020
+						</div>
 					</div>
 				</div>
 			</div>

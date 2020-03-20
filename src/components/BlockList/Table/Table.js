@@ -87,12 +87,12 @@ export default function(props) {
 				{_.map(empty(state.pageData) ? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx})) : state.pageData, (v, idx) => {
 					if (v === undefined)
 						return (
-							<li>
+							<li key={idx}>
 								<TableRowThin key={idx} blockData={{}} />
 							</li>
 						);
 					return (
-						<li>
+						<li key={idx}>
 							<TableRowThin key={idx} blockData={v} />
 						</li>
 					);

@@ -5,9 +5,5 @@ import styles from "./Address.scss";
 const cx = cn.bind(styles);
 
 export default function Address(props) {
-	return (
-		<div className={cx("Address-wrapper")}>
-			Address related
-		</div>
-	)
+	return <div className={cx("Address-wrapper")}>Address related</div>;
 }

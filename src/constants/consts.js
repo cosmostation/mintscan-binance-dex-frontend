@@ -3,21 +3,25 @@ import config from "src/config";
 const api = process.env.NODE_ENV === "production" ? config.API_PROD : config.API_DEV;
 
 export default Object.freeze({
-	API_BIANCE_DEX : "https://www.binance.org/en/trade",
+	API_BIANCE_DEX: "https://www.binance.org/en/trade",
 	API_COINGECKO: {
 		BASE: "https://api.coingecko.com/api/v3",
-		GET_MARKET_CHART_RANGE: (id="BNB", from, to) => `/coins/${id}/market_chart/range?vs_currency=usd&from=${from}&to=${to}`
+		GET_MARKET_CHART_RANGE: (id = "BNB", from, to) => `/coins/${id}/market_chart/range?vs_currency=usd&from=${from}&to=${to}`,
 	},
 	NUM: {
 		BASE_MULT: 100000000,
 		REAL_TIME_DELAY_MS: 2000, //  real-time refetch interval
-		DASH_REAL_TIME_DELAY_MS: 3000,  //  dashboard refetch interval
-		SPARE_PAGE_CNT: 2,  //  amount of pages to preload in pagination
-		BINACE_API_ROWS_LIMIT: 1000,  //  max rows binance api allows
+		DASH_REAL_TIME_DELAY_MS: 3000, //  dashboard refetch interval
+		SPARE_PAGE_CNT: 2, //  amount of pages to preload in pagination
+		BINACE_API_ROWS_LIMIT: 1000, //  max rows binance api allows
 		BINANCE_API_PAGES_LIMIT: 100, //  max page binance api allows
-		ASSET_REFETCH_INTERVAL_MS: 10000
+		ASSET_REFETCH_INTERVAL_MS: 10000,
 	},
-	GET_LOGO_LINK: (symbol) => `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/binance/assets/${symbol}/logo.png`,
+	ASSET: {
+		NAME_SEARCH_PROPERTY: ["asset", "mappedAsset", "name"],
+		ORDER_COMPARE: ["mappedAsset", "marketCap", "price", "supply"],
+	},
+	GET_LOGO_LINK: symbol => `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/binance/assets/${symbol}/logo.png`,
 	API_BASE: api,
 	API: {
 		STATUS: "/status",
@@ -29,7 +33,7 @@ export default Object.freeze({
 		ASSET: "/asset?asset=",
 		ASSET_TXS: "/assets/txs?page=1&rows=20&txAsset=",
 		ASSET_HOLDERS: "/asset-holders?&page=1&rows=20&asset=",
-		TOP_ASSETS: "/market/coin/list"
+		TOP_ASSETS: "/market/coin/list",
 	},
 	NETWORK: {
 		COSMOS: "cosmos-3",

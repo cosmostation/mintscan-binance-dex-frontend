@@ -4,20 +4,26 @@
 	@include tableRow;
 	height: 52px;
 	max-height: 52px;
-	
+
 	.tablePointerCell {
 		@include tablePointerCell;
 		@include tableElemPadding;
 	}
-	
+
 	.tablePointerMiniCell {
 		@include tablePointerCellWidth140;
 		@include tableElemPadding;
 	}
-	
+
 	.tableCell {
 		@include tableCellWidth300;
 		@include tableElemPadding;
+		&.address {
+			padding-right: 0;
+		}
+		&.value {
+			padding-left: 0;
+		}
 	}
 	.flexIt {
 		display: flex;
@@ -45,11 +51,11 @@
 	line-height: 1.15;
 	letter-spacing: normal;
 	color: #4b525d;
-	
+
 	&.time {
 		text-align: right;
 	}
-	
+
 	.type {
 		padding: 2px 10px;
 		width: fit-content;

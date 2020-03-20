@@ -2,24 +2,24 @@
 
 $tablePadding: 11px 20px 10px 19px;
 .AssetList-tableRow {
-  @include tableRow;
+	@include tableRow;
 	width: map_get($breakpoints, asset_table_limit);
 
-  .tablePointerCell {
-    @include tablePointerCell;
-    padding: $tablePadding;
-  }
+	.tablePointerCell {
+		@include tablePointerCell;
+		padding: $tablePadding;
+	}
 
-  .tablePointerMiniCell {
-    @include tablePointerCellWidth140;
-    padding: $tablePadding;
-  }
+	.tablePointerMiniCell {
+		@include tablePointerCellWidth140;
+		padding: $tablePadding;
+	}
 
-  .tableCell {
-    @include tableCellWidth300;
-    padding: $tablePadding;
-  }
-	
+	.tableCell {
+		@include tableCellWidth300;
+		padding: $tablePadding;
+	}
+
 	.nameCell {
 		max-width: 250px;
 	}
@@ -28,17 +28,17 @@ $tablePadding: 11px 20px 10px 19px;
 .nameImg-wrapper {
 	width: fit-content;
 	cursor: pointer;
-	
+
 	display: flex;
 	flex-flow: row;
-	
+
 	img {
 		width: 30px;
 		height: 30px;
 		object-fit: contain;
 		margin-right: 10.5px;
 	}
-	
+
 	.name-wrapper {
 		font-family: "Open Sans", serif;
 		font-size: 13px;
@@ -49,7 +49,7 @@ $tablePadding: 11px 20px 10px 19px;
 		letter-spacing: normal;
 		text-align: left;
 		color: #4472de;
-		
+
 		.name {
 			font-size: 11px;
 			line-height: 1.55;
@@ -79,7 +79,7 @@ $tablePadding: 11px 20px 10px 19px;
 }
 .owner {
 	min-width: 150px;
-	
+
 	cursor: pointer;
 	font-family: "Open Sans", serif;
 	font-size: 13px;
@@ -97,7 +97,7 @@ $tablePadding: 11px 20px 10px 19px;
 		width: 100%;
 		height: fit-content;
 		@include Flex_LeftRight;
-		
+
 		font-family: "Open Sans", serif;
 		font-size: 13px;
 		font-weight: normal;

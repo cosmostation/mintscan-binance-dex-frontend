@@ -18,7 +18,7 @@ $customPadding: 11.5px 15px 11.5px 10px;
 	}
 	.height {
 		@include media("<dash_table_limit") {
-			display: none
+			display: none;
 		}
 	}
 

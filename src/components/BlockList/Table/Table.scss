@@ -25,13 +25,13 @@
 			display: none;
 		}
 		.thinTableRows-wrapper {
-			>:nth-child(even) {
+			> :nth-child(even) {
 				background-color: #fbfbfc;
 			}
-			>:first-child {
+			> :first-child {
 				border-top: solid 1px #e6e6e6;
 			}
-			>li {
+			> li {
 				border-bottom: solid 1px #e6e6e6;
 			}
 		}

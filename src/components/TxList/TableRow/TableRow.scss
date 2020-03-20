@@ -12,7 +12,7 @@
 		@include tablePointerCellWidth140;
 		@include tableElemPadding;
 	}
-	
+
 	.addrWidth {
 		min-width: 250px;
 	}
@@ -41,7 +41,7 @@
 	display: flex;
 	align-items: center;
 	height: 17px;
-	>*:not(last-child) {
+	> *:not(last-child) {
 		margin-right: 8px;
 	}
 }

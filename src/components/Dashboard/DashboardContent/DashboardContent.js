@@ -82,4 +82,4 @@ const LinkCardInside = () => (
 			<DashboardCard key={i} {...data} />
 		))}
 	</ul>
-)
+);

@@ -4,7 +4,7 @@ import highcharts from "highcharts";
 
 import {_, formatNumber, getHours, getTime} from "src/lib/scripts";
 
-export default function({options, data, showAxis=true, displayMax=false}) {
+export default function({options, data, showAxis = true, displayMax = false}) {
 	const graphOptions = useMemo(() => {
 		// console.log(data);
 		const [xMax, xMin, yMax, yMin] = [data[data.length - 1][0], data[0][0], _.max(_.map(data, v => v[1])), _.min(_.map(data, v => v[1]))];
@@ -30,10 +30,10 @@ export default function({options, data, showAxis=true, displayMax=false}) {
 				{
 					...yAxis,
 					visible: showAxis,
-					max: displayMax ? yMax : yMax + (yMax + yMin) / 200,
-					min: displayMax ? yMin : yMin - (yMax + yMin) / 200,
+					max: displayMax ? yMax + 0.00000000001 : yMax + (yMax + yMin) / 200,
+					min: displayMax ? yMin - 0.00000000001 : yMin - (yMax + yMin) / 200,
 					tickPixelInterval: 100,
-					tickAmount: displayMax ? 100 : 5
+					tickAmount: displayMax ? 100 : 5,
 				},
 			],
 			xAxis: [

@@ -51,7 +51,7 @@ export default function(blockData, cx, cell) {
 			const address = `${blockData?.messages?.[0]?.value?.outputs?.[0]?.address}`;
 			return (
 				<>
-					<SvgDisplay svgSrc={greenArrowSVG} customClass={"upsideDown"}/>
+					<SvgDisplay svgSrc={greenArrowSVG} customClass={"upsideDown"} />
 					<NavLink className={cx("blueColor")} to={`/account/${refineAddress(address)}`}>
 						<span>{reduceString(refineAddress(address), 6, 6)}</span>
 					</NavLink>

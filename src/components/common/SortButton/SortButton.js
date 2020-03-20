@@ -9,11 +9,14 @@ const cx = cn.bind(styles);
 const arrowBlackSVG = process.env.PUBLIC_URL + "/assets/assets/arrow_bk.svg";
 const arrowGreySVG = process.env.PUBLIC_URL + "/assets/assets/arrow_gr.svg";
 
-export default function SortButton({active=false, asc=false}) {
-	return React.useMemo(() => (
-		<div className={cx("sort-wrapper")}>
-			<img src={active && !asc ? arrowBlackSVG : arrowGreySVG }/>
-			<img src={active && asc ? arrowBlackSVG : arrowGreySVG} className={cx("flip")}/>
-		</div>
-	), [active, asc]);
+export default function SortButton({active = false, asc = false}) {
+	return React.useMemo(
+		() => (
+			<div className={cx("sort-wrapper")}>
+				<img src={active && !asc ? arrowBlackSVG : arrowGreySVG} />
+				<img src={active && asc ? arrowBlackSVG : arrowGreySVG} className={cx("flip")} />
+			</div>
+		),
+		[active, asc]
+	);
 }

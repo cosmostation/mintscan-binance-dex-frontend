@@ -11,7 +11,7 @@ import HoldersTableRows from "../HoldersTableRows";
 
 const cx = cn.bind(styles);
 
-export default function HoldersTable({asset=""}) {
+export default function HoldersTable({asset = ""}) {
 	// TODO
 	//  work on this when API is upgraded to accomodate more
 	// const [fetchState] = usePagedPagination({path: `${consts.API.ASSET_HOLDERS}`});
@@ -19,28 +19,30 @@ export default function HoldersTable({asset=""}) {
 	const [timer] = useTimer(true, consts.NUM.ASSET_REFETCH_INTERVAL_MS);
 
 	React.useEffect(() => {
-		if(empty(asset)) return;
+		if (empty(asset)) return;
 		setUrl(`${consts.API_BASE}${consts.API.ASSET_HOLDERS}${asset}`);
 	}, [asset, setUrl]);
 	const tableBodyRender = React.useMemo(() => {
 		return (
 			<>
-				{empty(state.data) ? _.map(Array.from({length: 20}, () => {}), v => <HoldersTableRows asset={v}/>)
-					: _.map(state.data.addressHolders, (v,i) => <HoldersTableRows rank={i+1} holder={v}/>)}
+				{empty(state.data)
+					? _.map(
+							Array.from({length: 20}, () => {}),
+							(v, i) => <HoldersTableRows key={i} asset={v} />
+					  )
+					: _.map(state.data.addressHolders, (v, i) => <HoldersTableRows key={i} rank={i + 1} holder={v} />)}
 			</>
-		)
+		);
 	}, [state.data]);
 
 	return (
 		<div className={cx("HoldersTable-wrapper")}>
 			<Table>
 				{tableHeaderRender}
-				<TableBody>
-					{tableBodyRender}
-				</TableBody>
+				<TableBody>{tableBodyRender}</TableBody>
 			</Table>
 		</div>
-	)
+	);
 }
 
 const tableHeaderRender = (

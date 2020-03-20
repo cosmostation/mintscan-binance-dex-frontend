@@ -12,7 +12,6 @@ import {fixed} from "src/lib/Big";
 import {Fade, TableCell, TableRow, Tooltip} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
 
-
 //  assets
 const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
 
@@ -24,7 +23,7 @@ const hfScale = new humanFormat.Scale({
 	billion: 1000000000,
 	trillion: 1000000000000,
 	quadrillion: 1000000000000000,
-	Quintillion: 1000000000000000000
+	Quintillion: 1000000000000000000,
 });
 
 export const ThinTableRow = ({asset, displayNone}) => {
@@ -123,12 +122,24 @@ export default function({asset, displayNone}) {
 				)}
 			</TableCell>
 			<TableCell className={cx("tableCell")} component='th' scope='row' align='right'>
-				<Tooltip placement="bottom-end" TransitionComponent={Fade} TransitionProps={{timeout: 300}} title={tooltips.asset_cap} disableFocusListener disableTouchListener>
+				<Tooltip
+					placement='bottom-end'
+					TransitionComponent={Fade}
+					TransitionProps={{timeout: 300}}
+					title={tooltips.asset_cap}
+					disableFocusListener
+					disableTouchListener>
 					{formattedMarketCap ? <div className={cx("number-wrapper")}>{asset.price !== 0 ? `${formattedMarketCap}` : "-"}</div> : <Skeleton />}
 				</Tooltip>
 			</TableCell>
 			<TableCell className={cx("tableCell")} component='th' scope='row' align='right'>
-				<Tooltip placement="bottom-end" TransitionComponent={Fade} TransitionProps={{timeout: 300}} title={tooltips.asset_price} disableFocusListener disableTouchListener>
+				<Tooltip
+					placement='bottom-end'
+					TransitionComponent={Fade}
+					TransitionProps={{timeout: 300}}
+					title={tooltips.asset_price}
+					disableFocusListener
+					disableTouchListener>
 					{formattedPrice ? (
 						<div className={cx("number-wrapper")}>
 							{asset.price !== 0 ? (
@@ -146,7 +157,13 @@ export default function({asset, displayNone}) {
 				</Tooltip>
 			</TableCell>
 			<TableCell className={cx("tableCell")} component='th' scope='row' align='right'>
-				<Tooltip placement="bottom-end" TransitionComponent={Fade} TransitionProps={{timeout: 300}} title={tooltips.asset_supply} disableFocusListener disableTouchListener>
+				<Tooltip
+					placement='bottom-end'
+					TransitionComponent={Fade}
+					TransitionProps={{timeout: 300}}
+					title={tooltips.asset_supply}
+					disableFocusListener
+					disableTouchListener>
 					{formattedSupply ? (
 						<div className={cx("number-wrapper")}>
 							{formattedSupply[0]}
@@ -164,7 +181,13 @@ export default function({asset, displayNone}) {
 				</Tooltip>
 			</TableCell>
 			<TableCell className={cx("tableCell")} component='th' scope='row' align='right'>
-				<Tooltip placement="bottom-end" TransitionComponent={Fade} TransitionProps={{timeout: 300}} title={tooltips.asset_owner} disableFocusListener disableTouchListener>
+				<Tooltip
+					placement='bottom-end'
+					TransitionComponent={Fade}
+					TransitionProps={{timeout: 300}}
+					title={tooltips.asset_owner}
+					disableFocusListener
+					disableTouchListener>
 					<div className={cx("owner")} onClick={() => history.push(`/account/${asset.owner}`)}>
 						{asset.owner ? reduceString(asset.owner, 6, 6) : <Skeleton />}
 					</div>

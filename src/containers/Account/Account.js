@@ -10,7 +10,7 @@ import Address from "src/components/Account/Address";
 
 const cx = cn.bind(style);
 
-export default function Account(props) {;
+export default function Account(props) {
 	return (
 		<div className={cx("Account-wrapper")}>
 			<TitleWrapper>

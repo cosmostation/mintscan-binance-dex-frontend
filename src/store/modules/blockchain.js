@@ -9,9 +9,6 @@ const [GET_BASIC_DATA, GET_STATUS, GET_ASSETS] = ["GET_BASIC_DATA", "GET_STATUS"
 export const getCryptoBasicData = createAction(GET_BASIC_DATA, (id, currency, cancelToken) => api.getBasicData(id, currency, cancelToken));
 export const getCryptoStatus = createAction(GET_STATUS, cancelToken => api.getStatus(cancelToken));
 
-//  sorts assets in order of marketCap first, then by id if it is the same(0)
-export const getCryptoAssets = createAction(GET_ASSETS, cancelToken => api.getAssets(cancelToken));
-
 const initState = {
 	status: {
 		id: "binancecoin",
@@ -23,7 +20,6 @@ const initState = {
 		last_updated_at: null,
 		blockTime: null,
 	},
-	assets: [],
 };
 const round = v => Math.round(100 * v) / 100;
 const handlers = {

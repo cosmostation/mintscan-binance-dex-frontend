@@ -1,7 +1,7 @@
 @import "src/styles/utils";
 
 .statuscard-wrapper {
-  @include card-nopadding-wrapper;
+	@include card-nopadding-wrapper;
 	width: 288.7px;
 	cursor: pointer;
 	@include media("<large") {
@@ -10,103 +10,106 @@
 	@include media("<small") {
 		width: calc((100vw - 30px));
 	}
-  .wrapper {
-    display: flex;
-    flex-flow: column;
+	.wrapper {
+		display: flex;
+		flex-flow: column;
 		justify-content: space-between;
-    height: 124px;
+		height: 124px;
 
-    padding: 16px 21px 15px 20px;
-    .asset-graph-wrapper {
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-      width: 100%;
-      height: fit-content;
-      .asset {
-        display: flex;
-        height: 30px;
+		padding: 16px 21px 15px 20px;
+		.asset-graph-wrapper {
+			display: flex;
+			flex-flow: row;
+			justify-content: space-between;
+			width: 100%;
+			height: fit-content;
+			.asset {
+				display: flex;
+				height: 30px;
 
-        img {
-          object-fit: contain;
-          width: 30px;
-          margin-right: 9px;
-        }
+				img {
+					object-fit: contain;
+					width: 30px;
+					margin-right: 9px;
+				}
 
-        .name {
-          margin: auto 0;
-          height: 22px;
-          font-size: 18px;
-          font-weight: 500;
-          font-stretch: normal;
-          font-style: normal;
-          line-height: 1.22;
-          letter-spacing: normal;
-          text-align: left;
-          color: #222222;
-        }
-      }
-      .graph-wrapper {
-        height: 47px;
-        width: 96px;
-        text-align: center;
-      }
+				.name {
+					margin: auto 0;
+					height: 22px;
+					font-size: 18px;
+					font-weight: 500;
+					font-stretch: normal;
+					font-style: normal;
+					line-height: 1.22;
+					letter-spacing: normal;
+					text-align: left;
+					color: #222222;
+				}
+			}
+			.graph-wrapper {
+				height: 47px;
+				width: 96px;
+				text-align: center;
+			}
 
-      margin-bottom: 7px;
-    }
-    .price-percentage-wrapper {
-      display: flex;
-      justify-content: space-between;
+			margin-bottom: 7px;
+		}
+		.price-percentage-wrapper {
+			display: flex;
+			justify-content: space-between;
 
-      height: 22px;
-      width: 100%;
-      .price {
-        font-size: 15px;
-        font-weight: 500;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.27;
-        letter-spacing: normal;
-        text-align: left;
-        color: #222222;
-        span {
-          font-size: 18px;
-        }
-      }
-      .percentage {
-        height: fit-content;
+			height: 22px;
+			width: 100%;
+			.price {
+				font-size: 15px;
+				font-weight: 500;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.27;
+				letter-spacing: normal;
+				text-align: left;
+				color: #222222;
+				span {
+					font-size: 18px;
+				}
+			}
+			.percentage {
+				height: fit-content;
 				@include Flex_center();
-        flex-flow: row;
+				flex-flow: row;
 				margin-right: 20px;
-        img {
-          height: 16px;
-          width: 16px;
-          object-fit: contain;
-          margin-right: 3px;
-        }
-        span {
-          font-size: 12px;
-          font-weight: 500;
-          font-stretch: normal;
-          font-style: normal;
-          line-height: 1.25;
-          letter-spacing: normal;
-          text-align: left;
-          color: #4b525d;
-        }
-      }
-      margin-bottom: 4px;
-    }
-    .market-cap {
-      height: 16px;
-      font-size: 13px;
-      font-weight: 500;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1.23;
-      letter-spacing: normal;
-      text-align: left;
-      color: #4b525d;
-    }
-  }
+				img {
+					height: 16px;
+					width: 16px;
+					object-fit: contain;
+					margin-right: 3px;
+				}
+				span {
+					font-size: 12px;
+					font-weight: 500;
+					font-stretch: normal;
+					font-style: normal;
+					line-height: 1.25;
+					letter-spacing: normal;
+					text-align: left;
+					color: #4b525d;
+				}
+			}
+			margin-bottom: 4px;
+		}
+	}
+	.market-cap {
+		height: 16px;
+		font-size: 13px;
+		font-weight: 500;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.23;
+		letter-spacing: normal;
+		text-align: left;
+		color: #4b525d;
+		.decimal {
+			font-size: 10px;
+		}
+	}
 }

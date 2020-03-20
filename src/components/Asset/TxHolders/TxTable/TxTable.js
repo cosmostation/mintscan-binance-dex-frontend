@@ -4,54 +4,59 @@ import styles from "./TxTable.scss";
 
 import consts from "src/constants/consts";
 import {empty, _} from "src/lib/scripts";
-import {useFetch, useTimer} from "src/hooks";
+import {useFetch, useHistory, useTimer} from "src/hooks";
 
 //  components
 import TxTableRows from "../TxTableRows";
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 
-
-
 const cx = cn.bind(styles);
 
-export default function TxTable({asset=""}) {
+export default function TxTable({asset = ""}) {
 	// TODO
 	//  work on this when API is upgraded to accomodate more
 	// const [fetchState] = usePagedPagination({path: `${consts.API_BASE}${consts.API.ASSET_TXS}${asset}`});
+	const history = useHistory();
 	const [state, refetch, setUrl] = useFetch("");
 	const [timer] = useTimer(true, consts.NUM.ASSET_REFETCH_INTERVAL_MS);
 
 	React.useEffect(() => {
-		if(empty(asset)) return;
+		if (empty(asset)) return;
 		setUrl(`${consts.API_BASE}${consts.API.ASSET_TXS}${asset}`);
-	}, [asset, setUrl]);
+	}, [asset, setUrl, history.action]);
 
 	React.useEffect(() => {
-		if(empty(asset)) return;
+		if (empty(asset)) return;
 		refetch();
 		// eslint-disable-next-line
 	}, [refetch, timer]);
 
+	React.useEffect(() => {
+		if (history.action !== "PUSH") return;
+		setUrl(`${consts.API_BASE}${consts.API.ASSET_TXS}${asset}`);
+	}, [history.action, asset, setUrl]);
+
 	const tableBodyRender = React.useMemo(() => {
 		return (
 			<>
-				{empty(state.data) ? _.map(Array.from({length: 20}, () => {}), v => <TxTableRows asset={v}/>)
-					: _.map(state.data.txArray, v => <TxTableRows asset={v}/>)}
+				{empty(state.data) || state.loading
+					? _.map(
+							Array.from({length: 20}, () => {}),
+							(v, i) => <TxTableRows key={i} asset={v} />
+					  )
+					: _.map(state.data.txArray, (v, i) => <TxTableRows key={i} asset={v} />)}
 			</>
-		)
+		);
 	}, [state.data]);
-
 
 	return (
 		<div className={cx("TxTable-wrapper")}>
 			<Table>
 				{tableHeaderRender}
-				<TableBody>
-					{tableBodyRender}
-				</TableBody>
+				<TableBody>{tableBodyRender}</TableBody>
 			</Table>
 		</div>
-	)
+	);
 }
 
 const tableHeaderRender = (

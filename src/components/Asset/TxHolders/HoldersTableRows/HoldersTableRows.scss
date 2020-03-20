@@ -8,12 +8,12 @@
 		@include tablePointerCell;
 		@include tableElemPadding;
 	}
-	
+
 	.tablePointerMiniCell {
 		@include tablePointerCellWidth140;
 		@include tableElemPadding;
 	}
-	
+
 	.tableCell {
 		@include tableCellWidth300;
 		@include tableElemPadding;
