@@ -1,5 +1,4 @@
-import {useState, useMemo, useEffect} from "react";
-
+import {useEffect, useMemo, useState} from "react";
 //  hooks
 import usePager from "./usePager";
 

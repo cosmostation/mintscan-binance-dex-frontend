@@ -1,6 +1,5 @@
 import * as React from "react";
 import {_} from "src/lib/scripts";
-
 //  components
 import {InputBase} from "@material-ui/core";
 import {useDelayedInput} from "src/hooks";

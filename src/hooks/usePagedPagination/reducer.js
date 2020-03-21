@@ -1,5 +1,3 @@
-import {_, empty} from "src/lib/scripts";
-
 export const initialState = {
 	allData: [],
 	index: [],

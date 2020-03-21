@@ -5,9 +5,8 @@ import {useHistory} from "src/hooks";
 import tooltips from "src/constants/tooltips";
 import humanFormat from "human-format";
 
-import {_, refineAddress, formatNumber, reduceString} from "src/lib/scripts";
+import {_, formatNumber, reduceString} from "src/lib/scripts";
 import {fixed} from "src/lib/Big";
-
 //  components
 import {Fade, TableCell, TableRow, Tooltip} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";

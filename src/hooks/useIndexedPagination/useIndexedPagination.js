@@ -5,14 +5,13 @@
  * You have been warned
  */
 import {useCallback, useEffect, useMemo, useReducer, useState} from "react";
-
 //  hooks
 // TODO
 //  refactor this to use SWR instead maybe
 //  or just remove it completely and use useFetch
 //  (honestly personally customized custom hooks seem much easier to use)
 import {useGet} from "restful-react";
-import {useFetch, useTimer, useHistory} from "src/hooks";
+import {useFetch, useHistory, useTimer} from "src/hooks";
 
 import queryString from "query-string";
 

@@ -3,11 +3,10 @@ import cn from "classnames/bind";
 import styles from "./HoldersTable.scss";
 import consts from "src/constants/consts";
 import {useFetch, useTimer} from "src/hooks";
-
 //  components
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 import {_, empty} from "src/lib/scripts";
-import HoldersTableRows from "../HoldersTableRows";
+import HoldersTableRows, {ThinTableRows} from "../HoldersTableRows";
 
 const cx = cn.bind(styles);
 
@@ -35,12 +34,26 @@ export default function HoldersTable({asset = ""}) {
 		);
 	}, [state.data]);
 
+	const thinTableRender = React.useMemo(() => {
+		return (
+			<>
+				{empty(state.data)
+					? _.map(
+							Array.from({length: 20}, () => {}),
+							(v, i) => <ThinTableRows key={i} asset={v} />
+					  )
+					: _.map(state.data.addressHolders, (v, i) => <ThinTableRows key={i} rank={i + 1} holder={v} />)}
+			</>
+		);
+	}, [state.data]);
+
 	return (
 		<div className={cx("HoldersTable-wrapper")}>
-			<Table>
+			<Table className={cx("table")}>
 				{tableHeaderRender}
 				<TableBody>{tableBodyRender}</TableBody>
 			</Table>
+			<div className={cx("thinTable")}>{thinTableRender}</div>
 		</div>
 	);
 }

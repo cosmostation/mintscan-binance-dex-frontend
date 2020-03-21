@@ -5,7 +5,6 @@ import {NavLink} from "react-router-dom";
 import txTypes from "src/constants/txTypes";
 import * as Big from "src/lib/Big";
 import getTxType from "src/constants/getTxType";
-
 //  components
 import Skeleton from "react-skeleton-loader";
 import SvgDisplay from "src/components/common/SvgDisplay";
@@ -17,7 +16,7 @@ const BASE_MULT = Math.pow(10, 8);
 
 export default function(blockData, cx, cell) {
 	switch (cell) {
-		case CELL_TYPES[0]:
+		case "Tx Hash":
 			if (!_.isNil(blockData.tx_hash))
 				return (
 					<NavLink className={cx("blueColor")} to={`/txs/${blockData.tx_hash}`}>
@@ -25,10 +24,10 @@ export default function(blockData, cx, cell) {
 					</NavLink>
 				);
 			return <Skeleton />;
-		case CELL_TYPES[1]:
+		case "Type":
 			if (!_.isNil(blockData?.messages?.[0]?.type)) return <span className={cx("type")}>{getTxType(blockData?.messages?.[0]?.type)}</span>;
 			return <Skeleton />;
-		case CELL_TYPES[2]: {
+		case "From": {
 			// TODO
 			//  pretty much divide all the cases
 			let address;
@@ -43,7 +42,7 @@ export default function(blockData, cx, cell) {
 				);
 			return <Skeleton />;
 		}
-		case CELL_TYPES[3]: {
+		case "To": {
 			// TODO
 			//  pretty much divide all the cases
 			if (blockData?.messages?.[0]?.type !== txTypes.COSMOS.SEND) return "";
@@ -58,7 +57,7 @@ export default function(blockData, cx, cell) {
 				</>
 			);
 		}
-		case CELL_TYPES[4]: {
+		case "Value": {
 			let amount;
 			if (!_.isNil(blockData?.messages?.[0].type)) {
 				const type = blockData?.messages?.[0].type;
@@ -77,7 +76,7 @@ export default function(blockData, cx, cell) {
 			}
 			return "-";
 		}
-		case CELL_TYPES[5]: {
+		case "Height": {
 			let ret = "";
 			if (!_.isNil(blockData?.messages?.[0].type)) {
 				if (blockData?.messages?.[0].type === txTypes.DEX.ORDER_NEW) {

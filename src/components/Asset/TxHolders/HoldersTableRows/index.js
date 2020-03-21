@@ -1,1 +1,1 @@
-export {default} from "./HoldersTableRows";
+export {default, ThinTableRows} from "./HoldersTableRows";

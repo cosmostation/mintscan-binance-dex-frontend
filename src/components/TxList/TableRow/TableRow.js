@@ -17,11 +17,11 @@ export const TableRowThin = ({blockData}) => {
 			<div className={cx("TxList-thinTableRow")}>
 				<ul className={cx("row", "text")}>
 					<li>Tx Hash</li>
-					<li>{pickData(blockData, cx, CELL_TYPES[0])}</li>
+					<li>{pickData(blockData, cx, "Tx Hash")}</li>
 				</ul>
 				<ul className={cx("row", "text")}>
 					<li>Type</li>
-					<li>{pickData(blockData, cx, CELL_TYPES[1])}</li>
+					<li>{pickData(blockData, cx, "Type")}</li>
 				</ul>
 				<ul className={cx("row")}>
 					<li>Address</li>

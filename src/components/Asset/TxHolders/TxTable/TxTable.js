@@ -3,11 +3,10 @@ import cn from "classnames/bind";
 import styles from "./TxTable.scss";
 
 import consts from "src/constants/consts";
-import {empty, _} from "src/lib/scripts";
+import {_, empty} from "src/lib/scripts";
 import {useFetch, useHistory, useTimer} from "src/hooks";
-
 //  components
-import TxTableRows from "../TxTableRows";
+import TxTableRows, {ThinTableRow} from "../TxTableRows";
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 
 const cx = cn.bind(styles);
@@ -49,12 +48,26 @@ export default function TxTable({asset = ""}) {
 		);
 	}, [state.data]);
 
+	const thinTableBodyRender = React.useMemo(() => {
+		return (
+			<div className={cx("thinTableWrapper")}>
+				{empty(state.data) || state.loading
+					? _.map(
+							Array.from({length: 20}, () => {}),
+							(v, i) => <ThinTableRow key={i} asset={v} />
+					  )
+					: _.map(state.data.txArray, (v, i) => <ThinTableRow key={i} asset={v} />)}
+			</div>
+		);
+	}, [state.data]);
+
 	return (
 		<div className={cx("TxTable-wrapper")}>
-			<Table>
+			<Table className={cx("table")}>
 				{tableHeaderRender}
 				<TableBody>{tableBodyRender}</TableBody>
 			</Table>
+			{thinTableBodyRender}
 		</div>
 	);
 }

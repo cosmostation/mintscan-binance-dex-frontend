@@ -1,9 +1,7 @@
 import React from "react";
 import cn from "classnames/bind";
 import styles from "./TxHolders.scss";
-
 //  components
-import SvgDisplay from "src/components/common/SvgDisplay";
 import HoldersTable from "./HoldersTable";
 import TxTable from "./TxTable";
 

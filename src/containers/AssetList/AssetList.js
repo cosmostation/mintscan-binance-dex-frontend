@@ -1,13 +1,10 @@
 import React from "react";
 import cn from "classnames/bind";
 import styles from "./AssetList.scss";
-import {empty, _} from "src/lib/scripts";
-import {getTop4Assets} from "src/lib/api";
-
+import {_, empty} from "src/lib/scripts";
 //  redux
-import {useSelector, useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getCryptoAssets} from "src/store/modules/assets";
-
 //  components
 import TitleWrapper from "src/components/common/TitleWrapper";
 import PageTitle from "src/components/common/PageTitle";

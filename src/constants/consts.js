@@ -1,5 +1,6 @@
 // TODO : use this if prod server is ready
 import config from "src/config";
+
 const api = process.env.NODE_ENV === "production" ? config.API_PROD : config.API_DEV;
 
 export default Object.freeze({

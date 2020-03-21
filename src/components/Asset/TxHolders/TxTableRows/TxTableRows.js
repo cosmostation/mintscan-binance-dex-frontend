@@ -4,24 +4,99 @@ import cn from "classnames/bind";
 import {NavLink} from "react-router-dom";
 
 import {_, formatNumber, reduceString, refineAddress, setAgoTime} from "src/lib/scripts";
+import {fixed} from "src/lib/Big";
 import getTxType from "src/constants/getTxType";
-
 //  components
 import {TableCell, TableRow} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
 import SvgDisplay from "src/components/common/SvgDisplay";
-import {fixed} from "src/lib/Big";
 
 //  assets
 const greenArrowSVG = process.env.PUBLIC_URL + "/assets/icons/common/transferarrow_gr.svg";
 
 const cx = cn.bind(styles);
 
-export const thinTableRows = ({asset = {}}) => {
+export const ThinTableRow = ({asset = {}}) => {
+	const formattedValue = !_.isNil(asset.value) ? formatNumber(fixed(asset.value, 6)).split(".") : undefined;
 	return (
-		<div>
-			asdfa
-			<div>asdf</div>
+		<div key={asset.id} className={cx("AssetTxList-thinTableRow")}>
+			<div className={cx("divider")} />
+			<ul className={cx("row")}>
+				<li>Tx Hash</li>
+				{asset.txHash ? (
+					<li>
+						<NavLink className={cx("blueColor")} to={`/txs/${asset.txHash}`}>
+							{reduceString(asset.txHash, 6, 6)}
+						</NavLink>
+					</li>
+				) : (
+					<Skeleton />
+				)}
+			</ul>
+			<ul className={cx("row")}>
+				<li>Type</li>
+				<li className={cx("text")}>
+					{asset.txType ? <span className={cx("type")}>{getTxType(asset.txType, cx)}</span> : <Skeleton width={"80px"} widthRandomness={0} />}
+				</li>
+			</ul>
+			<ul className={cx("row")}>
+				<li className={cx("Address")}>Address</li>
+				<li className={cx("flexIt", {transfer: !_.isNil(asset.toAddr)})}>
+					{asset.fromAddr ? (
+						<>
+							<NavLink className={cx("blueColor")} to={`/account/${refineAddress(asset.fromAddr)}`}>
+								{reduceString(refineAddress(asset.fromAddr), 6, 6)}
+							</NavLink>
+							{asset.txType !== "TRANSFER" ? (
+								undefined
+							) : (
+								<>
+									<SvgDisplay svgSrc={greenArrowSVG} customClass={"upsideDown"} />
+									{asset.toAddr ? (
+										<NavLink className={cx("blueColor")} to={`/account/${refineAddress(asset.toAddr)}`}>
+											{reduceString(refineAddress(asset.toAddr), 6, 6)}
+										</NavLink>
+									) : (
+										undefined
+									)}
+								</>
+							)}
+						</>
+					) : (
+						<Skeleton width={"200px"} widthRandomness={0} />
+					)}
+				</li>
+			</ul>
+			<ul className={cx("row")}>
+				<li>Value</li>
+				<li>
+					{!_.isNil(formattedValue) ? (
+						<span className={cx("flexIt")}>
+							<div className={cx("number-wrapper")}>
+								{formattedValue[0]}
+								{formattedValue[1] ? (
+									<>
+										.<span>{formattedValue[1]}</span>
+									</>
+								) : (
+									undefined
+								)}
+							</div>
+							{!_.isNil(asset?.txAsset) ? (
+								<span className={cx({BNB: asset?.txAsset?.split("-")[0] === "BNB"})}>{asset?.txAsset?.split("-")[0]}</span>
+							) : (
+								undefined
+							)}
+						</span>
+					) : (
+						<Skeleton />
+					)}
+				</li>
+			</ul>
+			<ul className={cx("row")}>
+				<li>Time</li>
+				<li>{asset.timeStamp ? setAgoTime(asset.timeStamp) : <Skeleton width={"50px"} widthRandomness={0} />}</li>
+			</ul>
 		</div>
 	);
 };

@@ -4,7 +4,6 @@ import style from "./Asset.scss";
 import {useFetch, useHistory} from "src/hooks";
 
 import consts from "src/constants/consts";
-
 //  components
 import PageTitle from "src/components/common/PageTitle";
 import TitleWrapper from "src/components/common/TitleWrapper";
@@ -20,7 +19,6 @@ export default function Asset(props) {
 	const [state, , setUrl] = useFetch(`${consts.API_BASE}${consts.API.ASSET}${asset}`);
 
 	React.useEffect(() => {
-		console.log(history.action);
 		if (history.action !== "PUSH") return;
 		setUrl(`${consts.API_BASE}${consts.API.ASSET}${asset}`);
 	}, [asset, history.action, setUrl]);

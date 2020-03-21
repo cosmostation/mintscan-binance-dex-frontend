@@ -1,7 +1,6 @@
 import * as React from "react";
 import cn from "classnames/bind";
 import style from "./Account.scss";
-
 //  components
 import PageTitle from "src/components/common/PageTitle";
 import TitleWrapper from "src/components/common/TitleWrapper";

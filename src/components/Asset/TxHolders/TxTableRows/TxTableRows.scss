@@ -34,6 +34,57 @@
 	}
 }
 
+.AssetTxList-thinTableRow {
+	@include tableRow;
+	padding: 15px;
+	.row {
+		width: 100%;
+		height: fit-content;
+		@include Flex_LeftRight;
+
+		font-family: "Open Sans", serif;
+		font-size: 13px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.38;
+		letter-spacing: normal;
+		text-align: left;
+		color: #222222;
+		&:not(:last-child) {
+			margin-bottom: 11px;
+		}
+		.Address {
+			align-self: flex-start;
+			min-width: 54px;
+		}
+
+		.flexIt {
+			display: flex;
+			align-items: center;
+			:not(:last-child) {
+				margin-right: 7px;
+			}
+			span {
+				line-height: 1.15;
+			}
+			&.transfer {
+				@include media("<420px") {
+					flex-flow: column;
+					> *:first-child {
+						margin-bottom: 5px;
+					}
+					div {
+						img {
+							transform: rotate(-90deg);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 .blueColor {
 	color: #4472de;
 }
@@ -64,7 +115,8 @@
 		background-color: #f9df67;
 		color: #222222;
 	}
-	&.BNB {
-		color: #f0b90b;
-	}
+}
+
+.BNB {
+	color: #f0b90b;
 }

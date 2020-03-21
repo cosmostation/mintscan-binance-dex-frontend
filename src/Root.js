@@ -1,7 +1,6 @@
 import React from "react";
 import {BrowserRouter} from "react-router-dom";
 import {RestfulProvider} from "restful-react"; //  Thank you Tejas - I'm not gonna lie, swr looks more juicy these days
-import axios from "axios";
 //  redux
 import {Provider} from "react-redux";
 import configure from "./store/configure";

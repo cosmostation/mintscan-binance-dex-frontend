@@ -1,11 +1,10 @@
 import * as React from "react";
 import styles from "./Table.scss";
 import classNames from "classnames/bind";
-import {_, searchProperties, compareProperty} from "src/lib/scripts";
+import {_, compareProperty, searchProperties} from "src/lib/scripts";
 import consts from "src/constants/consts";
-
 //  components
-import {TableBody, Table, TableCell, TableHead, TableRow} from "@material-ui/core";
+import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 import SortButton from "src/components/common/SortButton";
 import AssetTableRow, {ThinTableRow} from "../TableRow";
 import Search from "../Search";

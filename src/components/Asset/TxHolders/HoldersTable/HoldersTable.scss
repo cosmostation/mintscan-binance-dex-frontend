@@ -3,25 +3,36 @@
 	overflow-x: auto;
 	overflow-y: hidden;
 	min-width: 300px;
-	.tableHeaderCell {
-		@include tableHeaderCellWidth300;
-		@include tableElemPadding;
-		color: var(--colorMainText);
-	}
-	.rank {
-		min-width: 60px;
-		width: 60px;
-	}
+	.table {
+		@include media("<small") {
+			display: none;
+		}
+		.tableHeaderCell {
+			@include tableHeaderCellWidth300;
+			@include tableElemPadding;
+			color: var(--colorMainText);
+		}
 
-	.address {
-		min-width: 300px;
-	}
+		.rank {
+			min-width: 60px;
+			width: 60px;
+		}
 
-	.quantity {
-		min-width: 131px;
-	}
+		.address {
+			min-width: 300px;
+		}
 
-	.Percentage {
-		min-width: 70px;
+		.quantity {
+			min-width: 131px;
+		}
+
+		.Percentage {
+			min-width: 70px;
+		}
+	}
+	.thinTable {
+		@include media(">=small") {
+			display: none;
+		}
 	}
 }

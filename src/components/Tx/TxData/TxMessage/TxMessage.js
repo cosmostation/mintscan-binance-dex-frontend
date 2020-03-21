@@ -1,28 +1,24 @@
 import * as React from "react";
+import {useEffect} from "react";
 import styles from "./TxMessage.scss";
 import cn from "classnames/bind";
 import {NavLink} from "react-router-dom";
 import {divide, multiply} from "src/lib/Big";
-import {_, formatNumber, empty, refineAddress, reduceString} from "src/lib/scripts";
-
+import {_, empty, formatNumber, reduceString, refineAddress} from "src/lib/scripts";
 //  redux
 import {useSelector} from "react-redux";
-
 //  hooks
 import {useGetImage, useHistory} from "src/hooks";
-
 //  constants
 import getTxTypeIcon from "src/constants/getTxTypeIcon";
 import consts from "src/constants/consts";
 import txTypes from "src/constants/txTypes";
 import getTxType from "src/constants/getTxType";
-
 //  components
 import {txCheckOrder, txCheckSend, txGetSide, txGetTimeInforce} from "src/components/Tx/TxData/TxCase";
 import {Fade, Tooltip} from "@material-ui/core";
 import InfoRow from "src/components/common/InfoRow/InfoRow";
 import TxGetFrom from "src/components/Tx/TxData/TxGetFrom/TxGetFrom";
-import {useEffect} from "react";
 import tooltips from "src/constants/tooltips";
 import Decimal from "src/components/common/Decimal";
 

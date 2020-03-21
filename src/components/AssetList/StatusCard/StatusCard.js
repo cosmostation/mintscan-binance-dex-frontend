@@ -6,11 +6,8 @@ import {divide} from "src/lib/Big";
 import {getGeckoMarketChartRange} from "src/lib/api";
 import axios from "axios";
 import {useHistory} from "src/hooks";
-
 //  components
 import Chart from "src/components/common/Chart/Chart";
-import consts from "src/constants/consts";
-import Decimal from "src/components/common/Decimal/Decimal";
 
 const cx = classNames.bind(styles);
 

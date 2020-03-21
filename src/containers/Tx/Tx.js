@@ -19,13 +19,14 @@ export default function(props) {
 	const txHash = props.match.params?.tx;
 	const [data, , setUrl] = useFetch(txHash === "test" ? "" : `${baseURL}/${txHash}`);
 	// script that will query data when data is here
-	if (data?.data?.height === 0) {
-		return <NotFound />;
-	}
 
 	React.useEffect(() => {
 		setUrl(`${baseURL}/${txHash}`);
 	}, [txHash, setUrl]);
+
+	if (data?.data?.height === 0) {
+		return <NotFound />;
+	}
 
 	return (
 		<div className={cx("Tx-wrapper")}>

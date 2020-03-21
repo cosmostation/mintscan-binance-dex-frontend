@@ -1,9 +1,7 @@
 import React from "react";
 import cn from "classnames/bind";
 import styles from "./SortButton.scss";
-
 //  components
-import SvgDisplay from "src/components/common/SvgDisplay";
 
 const cx = cn.bind(styles);
 const arrowBlackSVG = process.env.PUBLIC_URL + "/assets/assets/arrow_bk.svg";

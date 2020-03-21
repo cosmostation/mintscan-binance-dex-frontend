@@ -4,9 +4,8 @@ import style from "./Details.scss";
 
 import {useHistory} from "src/hooks";
 //  utils
-import {_, formatNumber, empty} from "src/lib/scripts";
+import {_, empty, formatNumber} from "src/lib/scripts";
 import {fixed} from "src/lib/Big";
-
 //  components
 import InfoRow from "src/components/common/InfoRow";
 import Skeleton from "react-skeleton-loader";

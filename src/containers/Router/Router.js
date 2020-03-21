@@ -4,7 +4,6 @@ import {Route, Switch} from "react-router-dom";
 import styles from "./Router.scss";
 //  component
 import Loading from "src/components/common/Loading";
-
 //  hooks
 import {usePreload} from "src/hooks";
 
