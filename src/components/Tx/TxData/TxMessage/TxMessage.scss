@@ -264,6 +264,15 @@
 	color: #37cc6e;
 }
 
-.flexit {
+.flexIt {
 	display: flex;
+	align-items: flex-end;
+	.currency {
+		font-size: 14px;
+		&.BNB {
+			color: #f0b90b;
+		}
+	}
 }
+
+

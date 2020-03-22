@@ -32,6 +32,8 @@ export default function(txType) {
 			return "Time Unlock";
 		case TOKENS.TIME_RELOCK:
 			return "Time Relock";
+
+		case "ISSUE_TOKEN":
 		case TOKENS.ISSUE:
 			return "Issue Asset";
 

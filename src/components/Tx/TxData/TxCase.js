@@ -129,3 +129,19 @@ const timeUnlock = {
 		},
 	],
 };
+
+const vote = {
+	height: 74111485,
+	result: true,
+	tx_hash: "0066DD91D7759AB234FF71E2361C5BAD89CE1CF1D2C6B6EA486BB22D75488894",
+	messages: [
+		{
+			type: "cosmos-sdk/MsgVote",
+			value: {
+				voter: "bnb1kdx4xkktr35j2mpxncvtsshswj5gq577me7lx4",
+				option: "Yes",
+				proposal_id: "266",
+			},
+		},
+	],
+};

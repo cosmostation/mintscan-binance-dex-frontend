@@ -2,6 +2,7 @@ import React from "react";
 import cn from "classnames/bind";
 import style from "./Asset.scss";
 import {useFetch, useHistory} from "src/hooks";
+import {empty} from "src/lib/scripts";
 
 import consts from "src/constants/consts";
 //  components
@@ -19,8 +20,11 @@ export default function Asset(props) {
 	const [state, , setUrl] = useFetch(`${consts.API_BASE}${consts.API.ASSET}${asset}`);
 
 	React.useEffect(() => {
-		if (history.action !== "PUSH") return;
-		setUrl(`${consts.API_BASE}${consts.API.ASSET}${asset}`);
+		console.log("action", history.action);
+		if (history.action === "PUSH" || (history.action === "POP" && !empty(state.data))) {
+			console.log("entered url hit");
+			setUrl(`${consts.API_BASE}${consts.API.ASSET}${asset}`);
+		}
 	}, [asset, history.action, setUrl]);
 	if ((!state.loading && state?.data?.asset === "") || asset === "notFound") return <NotFound />;
 	return (

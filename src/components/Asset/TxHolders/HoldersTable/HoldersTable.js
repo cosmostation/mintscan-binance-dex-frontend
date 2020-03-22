@@ -14,7 +14,7 @@ export default function HoldersTable({asset = ""}) {
 	// TODO
 	//  work on this when API is upgraded to accomodate more
 	// const [fetchState] = usePagedPagination({path: `${consts.API.ASSET_HOLDERS}`});
-	const [state, refetch, setUrl] = useFetch(`${consts.API_BASE}${consts.API.ASSET_HOLDERS}`);
+	const [state, refetch, setUrl] = useFetch("");
 	const [timer] = useTimer(true, consts.NUM.ASSET_REFETCH_INTERVAL_MS);
 
 	React.useEffect(() => {

@@ -90,7 +90,8 @@
 }
 
 .section-wrapper {
-	@include Flex_LeftRight padding: 15.5px 15px 14.5px;
+	@include Flex_LeftRight;
+	padding: 15.5px 15px 14.5px;
 	background-color: #fbfbfc;
 	height: 50px;
 }

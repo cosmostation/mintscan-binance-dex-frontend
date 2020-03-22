@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import styles from "./TxMessage.scss";
 import cn from "classnames/bind";
 import {NavLink} from "react-router-dom";
-import {divide, multiply} from "src/lib/Big";
+import {divide, multiply, fixed} from "src/lib/Big";
 import {_, empty, formatNumber, reduceString, refineAddress} from "src/lib/scripts";
 //  redux
 import {useSelector} from "react-redux";
@@ -15,7 +15,7 @@ import consts from "src/constants/consts";
 import txTypes from "src/constants/txTypes";
 import getTxType from "src/constants/getTxType";
 //  components
-import {txCheckOrder, txCheckSend, txGetSide, txGetTimeInforce} from "src/components/Tx/TxData/TxCase";
+import {txCheckOrder, txCheckSend, txCheckFUBM, txGetSide, txGetTimeInforce} from "src/components/Tx/TxData/TxCase";
 import {Fade, Tooltip} from "@material-ui/core";
 import InfoRow from "src/components/common/InfoRow/InfoRow";
 import TxGetFrom from "src/components/Tx/TxData/TxGetFrom/TxGetFrom";
@@ -72,14 +72,26 @@ export default function({msg, txData}) {
 								<ul className={cx("value-wrapper")}>
 									<li className={cx("label")}>Value</li>
 									<li className={cx("value")}>
+										{/*<span>{formatNumber(split[0])}</span>.<span className={cx("decimal")}>{split[1]}</span>*/}
 										<span>
-											{/*<span>{formatNumber(split[0])}</span>.<span className={cx("decimal")}>{split[1]}</span>*/}
 											{divide(msg?.value?.inputs?.[0]?.coins?.[0]?.amount, consts.NUM.BASE_MULT)} {msg?.value?.inputs?.[0]?.coins?.[0]?.denom}
 										</span>
 									</li>
 								</ul>
 							</div>
 						</div>
+					</>
+				) : (
+					undefined
+				)}
+				{txCheckFUBM(type) ? (
+					<>
+						<InfoRow label='Value'>
+							<span className={cx("flexIt")}>
+								<Decimal fontSizeBase={15} value={divide(value?.amount, consts.NUM.BASE_MULT)} />
+								<span className={cx("currency", {BNB: value.symbol === "BNB"})}>{value?.symbol?.split("-")[0]}</span>
+							</span>
+						</InfoRow>
 					</>
 				) : (
 					undefined
@@ -105,7 +117,7 @@ export default function({msg, txData}) {
 								<TradeDisplay value={value} />
 								<InfoRow label='Price'>
 									{/*{(() => console.log(value))()}*/}
-									<span className={cx("flexit")}>
+									<span className={cx("flexIt")}>
 										<Decimal fontSizeBase={15} value={divide(value?.price, consts.NUM.BASE_MULT, 8)} /> BNB / 1 {_.split(value?.symbol, "-")[0]}
 									</span>
 								</InfoRow>
@@ -135,9 +147,49 @@ export default function({msg, txData}) {
 				) : (
 					undefined
 				)}
+				{type === txTypes.TOKENS.TIME_UNLOCK ? <InfoRow label={"Lock ID"}>{value.time_lock_id}</InfoRow> : undefined}
+				{type === txTypes.TOKENS.TIME_LOCK ? (
+					<InfoRow label={"Value"}>
+						<span className={cx("flexIt")}>
+							<Decimal fontSizeBase={15} value={divide(value?.amount?.[0]?.amount, consts.NUM.BASE_MULT)} />
+							<span className={cx("currency", {BNB: value?.amount?.[0]?.denom === "BNB"})}>{value?.amount?.[0]?.denom?.split("-")[0]}</span>
+						</span>
+					</InfoRow>
+				) : (
+					undefined
+				)}
+				{type === txTypes.DEX.LIST ? (
+					<>
+						<InfoRow label='fee'>
+							<span className={cx("flexIt")}>
+								<Decimal fontSizeBase={15} value={"1000.000000"} />
+								<span className={cx("currency", "BNB")}>BNB</span>
+							</span>
+						</InfoRow>
+						<InfoRow label={"Initial Price"}>
+							<span className={cx("flexIt")}>
+								<Decimal fontSizeBase={15} value={divide(value?.init_price, consts.NUM.BASE_MULT)} />
+								<span className={cx("currency", "BNB")}>BNB</span>
+							</span>
+						</InfoRow>
+						<InfoRow label={"Symbol"}>
+							<span>{value?.base_asset_symbol?.split("-")[0]}</span>
+						</InfoRow>
+					</>
+				) : (
+					undefined
+				)}
 				<InfoRow label='From'>
 					<TxGetFrom txData={txData} type={type} value={value} cx={cx} />
 				</InfoRow>
+				{type === txTypes.COSMOS.VOTE ? (
+					<>
+						<InfoRow label={"proposal ID"}>{value?.proposal_id}</InfoRow>
+						<InfoRow label={"option"}>{value?.option}</InfoRow>
+					</>
+				) : (
+					undefined
+				)}
 				<InfoRow label='Memo'>
 					<span>{txData.memo === "" ? "-" : txData.memo}</span>
 				</InfoRow>
