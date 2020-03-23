@@ -3,8 +3,6 @@ import cn from "classnames/bind";
 import styles from "./HoldersTableRows.scss";
 
 import {_, formatNumber, reduceString, refineAddress} from "src/lib/scripts";
-//  hooks
-import {useHistory} from "src/hooks";
 //  components
 import {TableCell, TableRow} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
@@ -14,8 +12,6 @@ import {fixed, multiply} from "src/lib/Big";
 const cx = cn.bind(styles);
 
 export const ThinTableRows = ({holder = {}, rank = null}) => {
-	const history = useHistory();
-
 	const formattedQuantity = !_.isNil(holder.quantity) ? formatNumber(fixed(holder.quantity, 2)).split(".") : undefined;
 	const formattedPercentage = !_.isNil(holder.percentage)
 		? holder.percentage === 0

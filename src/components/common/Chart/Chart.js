@@ -47,7 +47,7 @@ export default function({options, data, showAxis = true, displayMax = false}) {
 			],
 			...options,
 		};
-	}, [options, data]);
+	}, [options, data, displayMax, showAxis]);
 	// console.log(graphOptions);
 	return <HighchartsReact highcharts={highcharts} options={graphOptions} />;
 }

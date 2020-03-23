@@ -40,26 +40,26 @@ export default function TxTable({asset = ""}) {
 			<>
 				{empty(state.data) || state.loading
 					? _.map(
-							Array.from({length: 20}, () => {}),
+							Array.from({length: 20}, () => ({})),
 							(v, i) => <TxTableRows key={i} asset={v} />
 					  )
 					: _.map(state.data.txArray, (v, i) => <TxTableRows key={i} asset={v} />)}
 			</>
 		);
-	}, [state.data]);
+	}, [state.data, state.loading]);
 
 	const thinTableBodyRender = React.useMemo(() => {
 		return (
 			<div className={cx("thinTableWrapper")}>
 				{empty(state.data) || state.loading
 					? _.map(
-							Array.from({length: 20}, () => {}),
+							Array.from({length: 20}, () => ({})),
 							(v, i) => <ThinTableRow key={i} asset={v} />
 					  )
 					: _.map(state.data.txArray, (v, i) => <ThinTableRow key={i} asset={v} />)}
 			</div>
 		);
-	}, [state.data]);
+	}, [state.data, state.loading]);
 
 	return (
 		<div className={cx("TxTable-wrapper")}>

@@ -2,7 +2,7 @@ import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./Tx.scss";
 
-import {empty} from "src/lib/scripts";
+import {_, empty} from "src/lib/scripts";
 import consts from "src/constants/consts";
 import useFetch from "src/hooks/useFetch/useFetch";
 import MockData from "src/containers/Tx/MockData";
@@ -14,17 +14,21 @@ import PageTitle from "src/components/common/PageTitle";
 import NotFound from "src/components/common/NotFound";
 
 const cx = cn.bind(styles);
-const baseURL = `${consts.API_BASE}${consts.API.TX}`;
 export default function(props) {
 	const txHash = props.match.params?.tx;
-	const [data, , setUrl] = useFetch(txHash === "test" ? "" : `${baseURL}/${txHash}`);
+	const isOrderId = !isNaN(_.toNumber(txHash.split("-")[1]));
+
+	// TODO
+	//  ask api to be changed to return corresponding tx instead
+	const [state, , setUrl] = useFetch(txHash === "test" ? "" : `${consts.API_BASE}${isOrderId ? consts.API.ORDERS : consts.API.TX}/${txHash}`);
 	// script that will query data when data is here
 
 	React.useEffect(() => {
-		setUrl(`${baseURL}/${txHash}`);
-	}, [txHash, setUrl]);
+		//  query by order id
+		if (state.data?.transactionHash) setUrl(`${consts.API_BASE}${consts.API.TX}/${state.data.transactionHash}`);
+	}, [txHash, setUrl, isOrderId, state.data]);
 
-	if (data?.data?.height === 0) {
+	if (state?.data?.height === 0) {
 		return <NotFound />;
 	}
 
@@ -33,12 +37,12 @@ export default function(props) {
 			<TitleWrapper>
 				<PageTitle title={"Transaction details"} />
 			</TitleWrapper>
-			{empty(data.data) && txHash !== "test" ? (
+			{empty(state.data) && txHash !== "test" ? (
 				undefined
 			) : (
 				<>
-					<TxInfo txData={txHash === "test" ? MockData : data.data} />
-					<TxData txData={txHash === "test" ? MockData : data.data} />
+					<TxInfo txData={txHash === "test" ? MockData : state.data} />
+					<TxData txData={txHash === "test" ? MockData : state.data} />
 				</>
 			)}
 		</div>

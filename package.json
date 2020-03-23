@@ -87,6 +87,7 @@
     "postcss-safe-parser": "4.0.1",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
+    "qrcode-react": "^0.1.16",
     "query-string": "^6.10.1",
     "react": "^16.12.0",
     "react-app-polyfill": "^1.0.5",

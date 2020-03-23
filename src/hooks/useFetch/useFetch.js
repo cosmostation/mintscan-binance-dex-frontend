@@ -37,6 +37,7 @@ export default function useFetch(inputUrl, method = "get", refineFunction = res 
 			unmounted = true;
 			source.cancel("Cancel cleanup");
 		};
+		// eslint-disable-next-line
 	}, [fetch, url, method]);
 
 	const requestRefetch = useCallback(() => {

@@ -11,8 +11,8 @@ export default function SortButton({active = false, asc = false}) {
 	return React.useMemo(
 		() => (
 			<div className={cx("sort-wrapper")}>
-				<img src={active && !asc ? arrowBlackSVG : arrowGreySVG} />
-				<img src={active && asc ? arrowBlackSVG : arrowGreySVG} className={cx("flip")} />
+				<img src={active && !asc ? arrowBlackSVG : arrowGreySVG} alt={"up"} />
+				<img src={active && asc ? arrowBlackSVG : arrowGreySVG} className={cx("flip")} alt={"down"} />
 			</div>
 		),
 		[active, asc]

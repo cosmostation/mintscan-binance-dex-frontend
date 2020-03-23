@@ -27,8 +27,10 @@ export default Object.freeze({
 	API: {
 		STATUS: "/status",
 		BLOCKLIST: "/blocks",
+		ACCOUNT: "/account",
 		TXLIST: "/txs",
 		TX: "/txs",
+		ORDERS: "/orders",
 		ASSET_IMAGES: "/assets-images?page=1&rows=1000",
 		ASSETS: "/assets?page=1&rows=1000",
 		ASSET: "/asset?asset=",

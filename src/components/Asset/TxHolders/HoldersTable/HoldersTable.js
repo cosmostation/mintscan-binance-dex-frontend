@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames/bind";
 import styles from "./HoldersTable.scss";
 import consts from "src/constants/consts";
-import {useFetch, useTimer} from "src/hooks";
+import {useFetch} from "src/hooks";
 //  components
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 import {_, empty} from "src/lib/scripts";
@@ -14,8 +14,7 @@ export default function HoldersTable({asset = ""}) {
 	// TODO
 	//  work on this when API is upgraded to accomodate more
 	// const [fetchState] = usePagedPagination({path: `${consts.API.ASSET_HOLDERS}`});
-	const [state, refetch, setUrl] = useFetch("");
-	const [timer] = useTimer(true, consts.NUM.ASSET_REFETCH_INTERVAL_MS);
+	const [state, , setUrl] = useFetch("");
 
 	React.useEffect(() => {
 		if (empty(asset)) return;
@@ -26,7 +25,7 @@ export default function HoldersTable({asset = ""}) {
 			<>
 				{empty(state.data)
 					? _.map(
-							Array.from({length: 20}, () => {}),
+							Array.from({length: 20}, () => ({})),
 							(v, i) => <HoldersTableRows key={i} asset={v} />
 					  )
 					: _.map(state.data.addressHolders, (v, i) => <HoldersTableRows key={i} rank={i + 1} holder={v} />)}
@@ -39,7 +38,7 @@ export default function HoldersTable({asset = ""}) {
 			<>
 				{empty(state.data)
 					? _.map(
-							Array.from({length: 20}, () => {}),
+							Array.from({length: 20}, () => ({})),
 							(v, i) => <ThinTableRows key={i} asset={v} />
 					  )
 					: _.map(state.data.addressHolders, (v, i) => <ThinTableRows key={i} rank={i + 1} holder={v} />)}

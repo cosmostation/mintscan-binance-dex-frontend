@@ -19,12 +19,11 @@ export default function useSearch() {
 			const find = _.find(assets, v => {
 				return searchProperties(v, consts.ASSET.NAME_SEARCH_PROPERTY, search.toUpperCase());
 			});
-
 			history.push(`/assets/${find?.asset ? find.asset : "notFound"}`);
-		} else if (type === "orderId") window.alert("query for tx and display that tx");
-		else history.push(`/txs/${search}`);
+		} else if (type === "orderId") {
+		} else history.push(`/txs/${search}`);
 		setSearch("");
-	}, [search, history]);
+	}, [search, history, assets]);
 
 	return setSearch;
 }

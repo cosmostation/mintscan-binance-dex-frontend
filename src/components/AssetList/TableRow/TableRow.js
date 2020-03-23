@@ -3,27 +3,26 @@ import styles from "./TableRow.scss";
 import cn from "classnames/bind";
 import {useHistory} from "src/hooks";
 import tooltips from "src/constants/tooltips";
-import humanFormat from "human-format";
-
 import {_, formatNumber, reduceString} from "src/lib/scripts";
 import {fixed} from "src/lib/Big";
 //  components
 import {Fade, TableCell, TableRow, Tooltip} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
+// import humanFormat from "human-format";
 
 //  assets
 const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
 
 const cx = cn.bind(styles);
 
-const hfScale = new humanFormat.Scale({
-	k: 1000,
-	million: 1000000,
-	billion: 1000000000,
-	trillion: 1000000000000,
-	quadrillion: 1000000000000000,
-	Quintillion: 1000000000000000000,
-});
+// const hfScale = new humanFormat.Scale({
+// 	k: 1000,
+// 	million: 1000000,
+// 	billion: 1000000000,
+// 	trillion: 1000000000000,
+// 	quadrillion: 1000000000000000,
+// 	Quintillion: 1000000000000000000,
+// });
 
 export const ThinTableRow = ({asset, displayNone}) => {
 	const history = useHistory();
@@ -51,7 +50,7 @@ export const ThinTableRow = ({asset, displayNone}) => {
 			<ul className={cx("row")}>
 				<li>Market Cap(USD)</li>
 				{/*<li className={cx("number-wrapper")}>{formattedMarketCap ? <>{formattedMarketCap}</> : <Skeleton />}</li>*/}
-				<li className={cx("number-wrapper")}>{!_.isNil(asset.marketCap) ? humanFormat(asset.marketCap, {scale: hfScale}) : <Skeleton />}</li>
+				<li className={cx("number-wrapper")}>{!_.isNil(asset.marketCap) ? formatNumber(asset.marketCap) : <Skeleton />}</li>
 			</ul>
 			<ul className={cx("row")}>
 				<li>Price(USD)</li>

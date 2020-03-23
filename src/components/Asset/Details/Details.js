@@ -25,7 +25,7 @@ export default function Details({asset}) {
 		});
 		if (asset.contactEmail !== "@" && asset.contactEmail?.length >= 5) _.assign(ret, {email: asset.contactEmail});
 		return ret;
-	}, [asset.mediaList]);
+	}, [asset]);
 
 	const formattedPrice = !_.isNil(asset.price) ? formatNumber(fixed(asset.price, 6)).split(".") : undefined;
 	const clickLink = link => window.open(link, "__blank");

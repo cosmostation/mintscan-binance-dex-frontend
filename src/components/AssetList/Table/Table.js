@@ -20,11 +20,17 @@ export default function({assets}) {
 
 	const displayAssets = React.useMemo(() => {
 		let filteredAssets = [...assets];
-		if (sort.orderBy === 1) return sort.asc ? _.reverse(filteredAssets) : filteredAssets;
-		else if (_.includes([0, 2, 3], sort.orderBy))
-			return filteredAssets.sort((a, b) => compareProperty(a, b, consts.ASSET.ORDER_COMPARE[sort.orderBy], "id", sort.asc));
-		console.error(`orderBy is not a possible value - ${sort.orderBy}`);
-
+		if (sort.orderBy === 1) filteredAssets = sort.asc ? _.reverse(filteredAssets) : filteredAssets;
+		else if (_.includes([0, 2, 3], sort.orderBy)) {
+			filteredAssets.sort((a, b) => compareProperty(a, b, consts.ASSET.ORDER_COMPARE[sort.orderBy], "id", sort.asc));
+			if (sort.orderBy === 0) {
+				//  CAS goes to the bottom of the list when alphabetically ordered in either direction because you confused me for hours by showing up first when doing so
+				//  for reasons unknown to me.
+				//  Use the proper English alphabet next time mate.
+				const CAS = _.remove(filteredAssets, v => v.id === 51);
+				filteredAssets.push(...CAS);
+			}
+		} else console.error(`orderBy is not a possible value - ${sort.orderBy}`);
 		return filteredAssets;
 	}, [assets, sort]);
 
@@ -89,7 +95,7 @@ export default function({assets}) {
 				})}
 			</TableBody>
 		);
-	}, [displayAssets, search, sort]);
+	}, [displayAssets, search]);
 
 	const thinTableBodyRender = React.useMemo(() => {
 		return (
@@ -105,7 +111,7 @@ export default function({assets}) {
 				</div>
 			</div>
 		);
-	}, [displayAssets, search, sort]);
+	}, [displayAssets, search]);
 
 	return (
 		<div className={cx("AssetsTable-wrapper")}>

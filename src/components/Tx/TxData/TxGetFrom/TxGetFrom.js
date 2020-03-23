@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import {_, refineAddress} from "src/lib/scripts";
-import {txCheckOrder, txCheckSend, txCheckFUBM} from "../TxCase";
+import {txCheckFUBM, txCheckOrder, txCheckSend} from "../TxCase";
 import {NavLink} from "react-router-dom";
 
 import txTypes from "src/constants/txTypes";

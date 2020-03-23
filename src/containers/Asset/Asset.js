@@ -25,7 +25,7 @@ export default function Asset(props) {
 			console.log("entered url hit");
 			setUrl(`${consts.API_BASE}${consts.API.ASSET}${asset}`);
 		}
-	}, [asset, history.action, setUrl]);
+	}, [asset, history.action, setUrl, state.data]);
 	if ((!state.loading && state?.data?.asset === "") || asset === "notFound") return <NotFound />;
 	return (
 		<div className={cx("Asset-wrapper")}>
