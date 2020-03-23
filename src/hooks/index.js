@@ -11,6 +11,7 @@ import useScroll from "./useScroll";
 import usePreload from "./usePreload";
 import useGetImage from "./useGetImage";
 import {useHistory} from "react-router-dom";
+import useGetPrices from "./useGetPrices";
 
 export {
 	useFetch,
@@ -26,4 +27,5 @@ export {
 	usePreload,
 	useGetImage,
 	useHistory,
+	useGetPrices,
 };

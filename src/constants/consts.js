@@ -17,6 +17,7 @@ export default Object.freeze({
 		BINACE_API_ROWS_LIMIT: 1000, //  max rows binance api allows
 		BINANCE_API_PAGES_LIMIT: 100, //  max page binance api allows
 		ASSET_REFETCH_INTERVAL_MS: 10000,
+		BASIC_DATA_FETCH_INTERVAL_MS: 40000, // 40 seconds
 	},
 	ASSET: {
 		NAME_SEARCH_PROPERTY: ["asset", "mappedAsset", "name"],
@@ -33,6 +34,7 @@ export default Object.freeze({
 		ORDERS: "/orders",
 		ASSET_IMAGES: "/assets-images?page=1&rows=1000",
 		ASSETS: "/assets?page=1&rows=1000",
+		ASSET_PRICES: "/assets?page=1&rows=1000&only_price=true",
 		ASSET: "/asset?asset=",
 		ASSET_TXS: "/assets/txs?page=1&rows=20&txAsset=",
 		ASSET_HOLDERS: "/asset-holders?&page=1&rows=20&asset=",

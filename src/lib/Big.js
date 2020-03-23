@@ -19,6 +19,14 @@ export const add = (input1 = "0", input2 = "0", places = DEFAULT_DECIMALS) => {
 	return new B(input1).plus(input2).toFixed(places);
 };
 
+export const sumArray = (inputArray = [], places = DEFAULT_DECIMALS) => {
+	let sum = 0;
+	_.each(inputArray, v => {
+		sum = add(sum, v);
+	});
+	return sum;
+};
+
 export const minus = (input1 = "0", input2 = "0", places = DEFAULT_DECIMALS) => {
 	return new B(input1).minus(input2).toFixed(places);
 };

@@ -21,15 +21,15 @@ export default function(props) {
 	const status = useSelector(state => state.blockchain.status);
 	const dispatch = useDispatch();
 
-	React.useEffect(() => {
-		const cancelToken = axios.CancelToken;
-		const source = cancelToken.source();
-		dispatch(getCryptoBasicData("binancecoin", "usd", source.token));
-		dispatch(getCryptoStatus(source.token));
-		return () => {
-			source.cancel("cleanup cancel");
-		};
-	}, [dispatch]);
+	// React.useEffect(() => {
+	// 	const cancelToken = axios.CancelToken;
+	// 	const source = cancelToken.source();
+	// 	dispatch(getCryptoBasicData("binancecoin", "usd", source.token));
+	// 	dispatch(getCryptoStatus(source.token));
+	// 	return () => {
+	// 		source.cancel("cleanup cancel");
+	// 	};
+	// }, [dispatch]);
 	return React.useMemo(
 		() => (
 			<div className={cx("PriceDisplay")}>

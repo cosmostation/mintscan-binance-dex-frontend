@@ -1,0 +1,22 @@
+@import "src/styles/utils";
+
+.AssetTableRows-wrapper {
+	@include tableRow;
+	height: 52px;
+	max-height: 52px;
+	
+	.tablePointerCell {
+		@include tablePointerCell;
+		@include tableElemPadding;
+	}
+	
+	.tablePointerMiniCell {
+		@include tablePointerCellWidth140;
+		@include tableElemPadding;
+	}
+	
+	.tableCell {
+		@include tableCellWidth300;
+		@include tableElemPadding;
+	}
+}

@@ -26,8 +26,11 @@ export default function(txType) {
 		case TOKENS.UNFREEZE:
 			return "Unfreeze";
 
+		case "TIME_LOCK":
 		case TOKENS.TIME_LOCK:
 			return "Time Lock";
+
+		case "TIME_UNLOCK":
 		case TOKENS.TIME_UNLOCK:
 			return "Time Unlock";
 		case TOKENS.TIME_RELOCK:

@@ -27,7 +27,7 @@ const handlers = {
 		type: GET_BASIC_DATA,
 		onSuccess: (state, action) => {
 			const {data} = action.payload;
-			console.log("basicData>>", data);
+			// console.log("basicData>>", data);
 			return {
 				...state,
 				status: {
@@ -50,7 +50,7 @@ const handlers = {
 		type: GET_STATUS,
 		onSuccess: (state, action) => {
 			const {data} = action.payload;
-			console.log("status>>", data);
+			// console.log("status>>", data);
 			return {
 				...state,
 				status: {
