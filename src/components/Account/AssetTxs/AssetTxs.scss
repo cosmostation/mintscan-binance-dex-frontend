@@ -40,9 +40,10 @@
 	.Card {
 		position: relative;
 		@include card-nopadding-wrapper;
-		padding: 10px 20px;
+		padding: 10px 20px 30px;
 		.unselected {
 			display: none;
 		}
 	}
+	margin-bottom: 70px;
 }

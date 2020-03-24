@@ -9,16 +9,16 @@ import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/cor
 
 const cx = cn.bind(styles);
 
-export default function({balances = []}) {
+export default function({balances = [], prices = []}) {
 	const tableBodyRender = React.useMemo(
 		() => (
 			<>
 				{_.map(balances, (v, i) => (
-					<AssetsTableRows key={i} asset={v} />
+					<AssetsTableRows key={i} asset={v} price={prices[i]} />
 				))}
 			</>
 		),
-		[balances]
+		[balances, prices]
 	);
 
 	const thinTableBodyRender = React.useMemo(
@@ -35,7 +35,7 @@ export default function({balances = []}) {
 	return (
 		<div className={cx("AssetsTable-wrapper")}>
 			{empty(balances) ? (
-				<div>NONE!</div>
+				<div>Loading or none</div>
 			) : (
 				<>
 					<Table className={cx("table")}>
@@ -55,17 +55,20 @@ const tableHeaderRender = (
 			<TableCell className={cx("tableHeaderCell", "asset")} align='left'>
 				Assets
 			</TableCell>
-			<TableCell className={cx("tableHeaderCell", "totalBal")} align='right'>
+			<TableCell className={cx("tableHeaderCell", "generalDecimals")} align='right'>
 				Total Balance
 			</TableCell>
 			<TableCell className={cx("tableHeaderCell", "estValue")} align='right'>
-				Estimated Value
+				Estimated Value(USD)
 			</TableCell>
-			<TableCell className={cx("tableHeaderCell", "available")} align='right'>
+			<TableCell className={cx("tableHeaderCell", "generalDecimals")} align='right'>
 				Available
 			</TableCell>
-			<TableCell className={cx("tableHeaderCell", "freeze")} align='right'>
+			<TableCell className={cx("tableHeaderCell", "generalDecimals")} align='right'>
 				Freeze
+			</TableCell>
+			<TableCell className={cx("tableHeaderCell", "generalDecimals")} align='right'>
+				In Order
 			</TableCell>
 		</TableRow>
 	</TableHead>

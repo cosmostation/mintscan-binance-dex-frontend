@@ -15,29 +15,15 @@
 		
 		.header {
 			.asset {
-				min-width: 145px;
+				min-width: 230px;
 			}
 			
-			.type {
-				min-width: 140px;
-			}
-			
-			.address {
-				min-width: 260px;
-				padding-right: 0;
-			}
-			
-			.value {
+			.estValue {
 				min-width: 120px;
-				padding-left: 0;
 			}
 			
-			.currency {
-				min-width: 82px;
-			}
-			
-			.time {
-				min-width: 88px;
+			.generalDecimals {
+				min-width: 130px;
 			}
 		}
 	}
@@ -45,5 +31,8 @@
 		@include media(">=medium") {
 			display: none;
 		}
+		width: 100%;
+		height: fit-content;
+		padding: 16px 0;
 	}
 }

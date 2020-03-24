@@ -1,6 +1,7 @@
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import penderMiddleware from "redux-pender";
 import {createLogger} from "redux-logger";
+import {_} from "src/lib/scripts";
 
 import * as modules from "./modules";
 
@@ -9,7 +10,11 @@ const reducers = combineReducers(modules);
 const middlewares = [penderMiddleware()];
 const isDev = process.env.NODE_ENV === "development";
 if (isDev) {
-	const logger = createLogger({collapsed: true, level: "log"});
+	const logger = createLogger({
+		collapsed: true,
+		level: "log",
+		predicate: (getState, action) => !(_.includes(action.type, "pender") || _.includes(action.type, "PENDING")), //  hide pender from logger
+	});
 	middlewares.push(logger);
 }
 // use dev tools only in dev

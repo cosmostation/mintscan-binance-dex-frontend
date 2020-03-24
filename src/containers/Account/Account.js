@@ -2,11 +2,7 @@ import React from "react";
 import cn from "classnames/bind";
 import style from "./Account.scss";
 import consts from "src/constants/consts";
-import {sumArray, multiply} from "src/lib/Big";
 import {empty, _} from "src/lib/scripts";
-
-//  reduxy
-import {useSelector} from "react-redux";
 
 //  components
 import AssetTxs from "src/components/Account/AssetTxs";
@@ -25,15 +21,26 @@ export default function Account(props) {
 	const {history} = props;
 	const account = props.match.params.account;
 
-	const [state, , setUrl] = useFetch(`${baseURL}${account}`);
-	const [prices, setTargetAssets] = useGetPrices(500000);
+	const [state, refetch, setUrl] = useFetch(`${baseURL}${account}`);
+	const [prices, setTargetAssets] = useGetPrices(consts.NUM.ASSET_REFETCH_PRICE_INTERVAL_MS);
+
+	// TODO
+	//  attempt at keeping account data up-to-date
+	//  fix this to work in the future
+	// React.useEffect(() => {
+	// 	if (!account) return;
+	// 	const interval = setInterval(() => {
+	// 		console.log(`refetch - ${account}`);
+	// 		refetch();
+	// 	}, consts.NUM.ACCOUNT_REFETCH_INTERVAL_MS);
+	// 	return () => clearInterval(interval);
+	// }, [account, refetch]);
 
 	React.useEffect(() => {
 		if (history.action === "PUSH" || (history.action === "POP" && !empty(state.data) && state.data.address !== account)) {
-			console.log("entered url hit");
 			setUrl(`${baseURL}${account}`);
 		}
-	}, [account, history.action, setUrl, state.data]);
+	}, [account, history.action, refetch, setUrl, state.data]);
 
 	//  when data from address arrives, set the useGetPrice hook to start
 	React.useEffect(() => {
@@ -41,17 +48,30 @@ export default function Account(props) {
 		setTargetAssets(_.map(state.data.balances, v => v.symbol));
 	}, [state.data, setTargetAssets]);
 
+	const assetTxs = React.useMemo(() => <AssetTxs prices={prices} address={account} balances={state.data?.balances ? state.data?.balances : []} />, [
+		prices,
+		account,
+		state.data,
+	]);
+
+	const displayAddress = React.useMemo(() => <Address account={state.data ? state.data : {}} prices={prices} />, [state.data, prices]);
+
+	const render = React.useMemo(
+		() => (
+			<div className={cx("Account-wrapper")}>
+				<TitleWrapper>
+					<PageTitle title={"Account Details"} />
+				</TitleWrapper>
+				{displayAddress}
+				{assetTxs}
+			</div>
+		),
+		[displayAddress, assetTxs]
+	);
+
 	if ((!state.loading && (state?.data?.address === "" || state?.data?.error_code)) || account === "notFound") return <NotFound />;
 
-	return (
-		<div className={cx("Account-wrapper")}>
-			<TitleWrapper>
-				<PageTitle title={"Account Details"} />
-			</TitleWrapper>
-			<Address account={state.data ? state.data : {}} prices={prices} />
-			<AssetTxs address={account} balances={state.data?.balances ? state.data?.balances : []} />
-		</div>
-	);
+	return render;
 }
 
 const exAccount = {

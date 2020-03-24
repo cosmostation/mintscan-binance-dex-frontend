@@ -1,22 +1,124 @@
 @import "src/styles/utils";
 
+
+$custompadding: 8px 20px 9px 19px;
+$balancepadding: 16px 20px 17px 0;
 .AssetTableRows-wrapper {
 	@include tableRow;
 	height: 52px;
 	max-height: 52px;
 	
-	.tablePointerCell {
-		@include tablePointerCell;
-		@include tableElemPadding;
+	.tableCell-asset {
+		@include tableCellWidth300;
+		padding: $custompadding;
 	}
-	
-	.tablePointerMiniCell {
-		@include tablePointerCellWidth140;
-		@include tableElemPadding;
-	}
-	
 	.tableCell {
 		@include tableCellWidth300;
-		@include tableElemPadding;
+		padding: $balancepadding;
+		font-family: "Open Sans", serif;
+		font-size: 13px;
+		font-weight: normal;
+		line-height: 1.15;
+		color: #4b525d;
+		.num-wrapper {
+			width: fit-content;
+			margin-left: auto;
+			display: flex;
+		}
 	}
+	
+	
+}
+
+.assetDisplay-wrapper {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	img {
+		width: 30px;
+		height: 30px;
+		object-fit: fill;
+		margin-right: 10.5px;
+	}
+	.text-wrapper {
+		font-family: "Open Sans", serif;
+		font-weight: normal;
+		line-height: 1.31;
+		letter-spacing: normal;
+		
+		
+		height: 100%;
+		display: flex;
+		flex-flow: column;
+		justify-content: space-between;
+		.title {
+			color: #4472de;
+			font-size: 13px;
+		}
+		.content {
+			font-size: 11px;
+			color: #89909b;
+		}
+	}
+}
+
+.Asset-thinTableRow {
+	.section-wrapper {
+		padding: 15.5px 15px 14.5px;
+		background-color: #fbfbfc;
+		.nameImg-wrapper {
+			width: fit-content;
+			cursor: pointer;
+			
+			display: flex;
+			flex-flow: row;
+			
+			img {
+				width: 30px;
+				height: 30px;
+				object-fit: contain;
+				margin-right: 10.5px;
+			}
+			
+			.name-wrapper {
+				font-family: "Open Sans", serif;
+				font-size: 13px;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.31;
+				letter-spacing: normal;
+				text-align: left;
+				color: #4472de;
+				
+				.name {
+					font-size: 11px;
+					line-height: 1.55;
+					color: #89909b;
+				}
+			}
+		}
+	}
+	.row {
+		width: 100%;
+		height: fit-content;
+		@include Flex_LeftRight;
+		
+		font-family: "Open Sans", serif;
+		font-size: 13px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.38;
+		letter-spacing: normal;
+		text-align: left;
+		color: #222222;
+		padding: 5.5px 15px;
+	}
+}
+
+.divider {
+	width: 100%;
+	height: 0;
+	border-bottom: solid 1px #e6e6e6;
 }

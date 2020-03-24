@@ -2,16 +2,22 @@
 
 .Address-wrapper {
 	max-width: 1200px;
-	height: 110px;
+	height: fit-content;
 	border-radius: 5px;
 	background-color: #222222;
 
 	color: #ffffff;
 	padding: 24px 30px;
 	@include Flex_LeftRight;
+	@include media("<1080px") {
+		padding: 18px 20px;
+		flex-flow: column;
+		align-items: flex-start;
+	}
 	.qr-address-wrapper {
 		display: flex;
 		padding: 6px 0;
+		align-items: center;
 		.qr-wrapper {
 			@include Flex_center;
 			width: 50.4px;
@@ -43,6 +49,14 @@
 				line-height: 1.71;
 				display: flex;
 				align-items: center;
+				@include media("<small") {
+					.front:after {
+						content: "..."
+					}
+					.remove {
+						display: none;
+					}
+				}
 				
 				p {
 					margin-right: 8px;
@@ -69,13 +83,18 @@
 		font-family: "Open Sans", serif;
 		font-size: 15px;
 		font-weight: 600;
+		
 		> * {
-			&:first-child {
-				border-right: solid 1px #4b525d;
-			}
 			&:not(:last-child) {
 				padding-right: 30.5px;
 				padding-left: 30.5px;
+			}
+			&:first-child {
+				border-right: solid 1px #4b525d;
+				padding-left: 15px;
+				@include media("<1080px") {
+					padding-left: 0;
+				}
 			}
 			>:nth-child(2) {
 				display: flex;
@@ -88,6 +107,31 @@
 				color: #bebebe;
 			}
 		}
+		
+		@include media("<1080px") {
+			padding-left: 0;
+			margin-top: 5px;
+		}
+		@include media("<small") {
+			grid-template-columns: fit-content(100%);
+			grid-template-rows: 1fr 1fr 1fr;
+			
+			> * {
+				&:first-child {
+					border-right: none;
+				}
+				&:not(:last-child) {
+					padding-left: 0
+				}
+				&:not(:first-child) {
+					padding-top: 2px;
+					>:nth-child(3):before {
+						content: "$"
+					}
+				}
+			}
+		}
+		
 		.total-wrapper {
 		
 		}

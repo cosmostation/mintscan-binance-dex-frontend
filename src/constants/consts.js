@@ -11,13 +11,17 @@ export default Object.freeze({
 	},
 	NUM: {
 		BASE_MULT: 100000000,
-		REAL_TIME_DELAY_MS: 2000, //  real-time refetch interval
-		DASH_REAL_TIME_DELAY_MS: 3000, //  dashboard refetch interval
+
 		SPARE_PAGE_CNT: 2, //  amount of pages to preload in pagination
 		BINACE_API_ROWS_LIMIT: 1000, //  max rows binance api allows
 		BINANCE_API_PAGES_LIMIT: 100, //  max page binance api allows
+
+		REAL_TIME_DELAY_MS: 2000, //  real-time refetch interval(for indexedPagination)
+		DASH_REAL_TIME_DELAY_MS: 3000, //  dashboard refetch interval
+		ACCOUNT_REFETCH_INTERVAL_MS: 5000, // TODO : currently not used
 		ASSET_REFETCH_INTERVAL_MS: 10000,
-		BASIC_DATA_FETCH_INTERVAL_MS: 40000, // 40 seconds
+		ASSET_REFETCH_PRICE_INTERVAL_MS: 8000,
+		BASIC_DATA_FETCH_INTERVAL_MS: 30000,
 	},
 	ASSET: {
 		NAME_SEARCH_PROPERTY: ["asset", "mappedAsset", "name"],

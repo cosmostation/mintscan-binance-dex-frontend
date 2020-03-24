@@ -12,9 +12,10 @@ import {useSelector} from "react-redux";
 const qrSVG = process.env.PUBLIC_URL + "/assets/account/qr_code.svg";
 
 const cx = cn.bind(styles);
+const ADDRESS_LENGTH = 42;
+const ADDRESS_CUT_DISPLAY_LENGTH = 6;
 export default function Address({account = {}, prices = []}) {
 	const bnbPrice = useSelector(state => state.blockchain.status?.price);
-	const total_dollars = "1702.30";
 
 	const total = React.useMemo(() => {
 		if (empty(prices)) return;
@@ -33,7 +34,17 @@ export default function Address({account = {}, prices = []}) {
 				<ul className={cx("AddressDisplay-wrapper")}>
 					<li className={cx("label")}>Address</li>
 					<li className={cx("value")}>
-						<p>{account.address ? account.address : "-"}</p>
+						<p>
+							{account.address ? (
+								<>
+									<span className={cx("front")}>{account.address.substr(0, ADDRESS_CUT_DISPLAY_LENGTH)}</span>
+									<span className={cx("remove")}>{account.address.substr(ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH * 2)}</span>
+									{account.address.substr(ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_CUT_DISPLAY_LENGTH)}
+								</>
+							) : (
+								"-"
+							)}
+						</p>
 						<img alt={"copy"} />
 					</li>
 				</ul>
@@ -49,12 +60,12 @@ export default function Address({account = {}, prices = []}) {
 				<ul className={cx("total-wrapper")}>
 					<li>Total</li>
 					{!_.isNil(total?.[0]) ? <Decimal fontSizeBase={18} value={total?.[0]} /> : <span>-</span>}
-					{!_.isNil(total?.[0]) && !_.isNil(bnbPrice) ? <Decimal fontSizeBase={14} value={`${total?.[0] * bnbPrice}`} bottom={2} /> : <span>-</span>}
+					{!_.isNil(total?.[0]) && !_.isNil(bnbPrice) ? <Decimal fontSizeBase={14} value={multiply(total?.[0], bnbPrice, 2)} bottom={2} /> : <span>-</span>}
 				</ul>
 				<ul className={cx("available-wrapper")}>
 					<li>Available</li>
 					{!_.isNil(total?.[1]) ? <Decimal fontSizeBase={18} value={total?.[1]} /> : <span>-</span>}
-					{!_.isNil(total?.[1]) && !_.isNil(bnbPrice) ? <Decimal fontSizeBase={14} value={`${total?.[1] * bnbPrice}`} bottom={2} /> : <span>-</span>}
+					{!_.isNil(total?.[1]) && !_.isNil(bnbPrice) ? <Decimal fontSizeBase={14} value={multiply(total?.[1], bnbPrice, 2)} bottom={2} /> : <span>-</span>}
 				</ul>
 			</div>
 		</div>
