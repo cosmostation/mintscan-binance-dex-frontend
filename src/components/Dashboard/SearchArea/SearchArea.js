@@ -22,7 +22,7 @@ export default function() {
 						<p className={cx("byCosmostation")}>By Cosmostation</p>
 					</div>
 					<div className={cx("search-wrapper")}>
-						<SearchArea cx={cx} />
+						<SearchArea propCx={cx} />
 					</div>
 					<div className={cx("link-wrapper")}>
 						{/* google, appstore, web wallet */}

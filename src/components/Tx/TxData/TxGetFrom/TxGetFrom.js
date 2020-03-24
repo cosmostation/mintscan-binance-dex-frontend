@@ -16,7 +16,7 @@ export default function({type, txData, value, cx}) {
 	else if (txTypes.COSMOS.VOTE === type) from = refineAddress(value.voter);
 	if (_.isString(from))
 		return (
-			<NavLink className={cx("blueColor")} to={`/accounts/${from}`}>
+			<NavLink className={cx("blueColor")} to={`/account/${from}`}>
 				{from}
 			</NavLink>
 		);

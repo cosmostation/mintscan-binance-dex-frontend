@@ -1,0 +1,16 @@
+@import "src/styles/utils";
+
+.Dropdown-wrapper {
+	display: none;
+	margin-top: 5px;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: white;
+	:not(:last-child) {
+		border-bottom: #cacfdc solid 1px;
+	}
+}
+
+.visible {
+	display: block !important;
+}

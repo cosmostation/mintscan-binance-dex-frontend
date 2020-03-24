@@ -60,7 +60,7 @@ export default function({msg, txData}) {
 								<ul className={cx("To-wrapper")}>
 									<li className={cx("label")}>To</li>
 									<li className={cx("value")}>
-										<NavLink className={cx("blueColor")} to={`/accounts/${txData.to}`}>
+										<NavLink className={cx("blueColor")} to={`/account/${txData.to}`}>
 											{reduceString(refineAddress(value.outputs[0].address), 10, 10)}
 										</NavLink>
 									</li>

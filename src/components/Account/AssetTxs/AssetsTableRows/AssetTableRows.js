@@ -38,33 +38,28 @@ export const ThinTableRows = ({asset = {}, price = 1}) => {
 			<div className={cx("divider")} />
 			<ul className={cx("row")}>
 				<li>Total Balance</li>
-				{/*<li className={cx("number-wrapper")}>{formattedMarketCap ? <>{formattedMarketCap}</> : <Skeleton />}</li>*/}
 				<li className={cx("number-wrapper")}>{!_.isNil(assetSum) ? formatNumber(assetSum) : <Skeleton />}</li>
 			</ul>
 			<ul className={cx("row")}>
 				<li>Estimated Value</li>
-				{/*<li className={cx("number-wrapper")}>{formattedMarketCap ? <>{formattedMarketCap}</> : <Skeleton />}</li>*/}
 				<li className={cx("number-wrapper")}>${!_.isNil(assetSum) ? formatNumber(multiply(assetSum, price, 2)) : <Skeleton />}</li>
 			</ul>
 			<ul className={cx("row")}>
 				<li>Available</li>
-				{/*<li className={cx("number-wrapper")}>{formattedMarketCap ? <>{formattedMarketCap}</> : <Skeleton />}</li>*/}
 				<li className={cx("number-wrapper")}>{!_.isNil(asset.free) ? formatNumber(asset.free) : <Skeleton />}</li>
 			</ul>
 			<ul className={cx("row")}>
 				<li>Freeze</li>
-				{/*<li className={cx("number-wrapper")}>{formattedMarketCap ? <>{formattedMarketCap}</> : <Skeleton />}</li>*/}
 				<li className={cx("number-wrapper")}>{!_.isNil(asset.frozen) ? formatNumber(asset.frozen) : <Skeleton />}</li>
 			</ul>
 			<ul className={cx("row")}>
 				<li>In Order</li>
-				{/*<li className={cx("number-wrapper")}>{formattedMarketCap ? <>{formattedMarketCap}</> : <Skeleton />}</li>*/}
 				<li className={cx("number-wrapper")}>{!_.isNil(asset.locked) ? formatNumber(asset.locked) : <Skeleton />}</li>
 			</ul>
 		</div>
 	);
 };
-
+//bnb1z35wusfv8twfele77vddclka9z84ugywug48gn
 export default function({asset, price = 1}) {
 	const history = useHistory();
 	const assetSum = React.useMemo(() => getTotalSum(asset), [asset]);
@@ -101,7 +96,7 @@ export default function({asset, price = 1}) {
 					disableFocusListener
 					disableTouchListener>
 					<div className={cx("num-wrapper")}>
-						<Decimal fontSizeBase={13} value={formatNumber(multiply(assetSum, price, 2))} bottom={0} marginRight={0} />
+						{price ? <Decimal fontSizeBase={13} value={formatNumber(multiply(assetSum, price, 2))} bottom={0} marginRight={0} /> : "(No Price)"}
 					</div>
 				</Tooltip>
 			</TableCell>
@@ -127,7 +122,7 @@ export default function({asset, price = 1}) {
 					disableFocusListener
 					disableTouchListener>
 					<div className={cx("num-wrapper")}>
-						{asset.frozen > 0 ? <Decimal fontSizeBase={13} value={formatNumber(asset.frozen)} bottom={0} marginRight={0} /> : "-"}
+						<Decimal fontSizeBase={13} value={formatNumber(asset.frozen)} bottom={0} marginRight={0} />
 					</div>
 				</Tooltip>
 			</TableCell>
@@ -140,7 +135,7 @@ export default function({asset, price = 1}) {
 					disableFocusListener
 					disableTouchListener>
 					<div className={cx("num-wrapper")}>
-						{asset.locked > 0 ? <Decimal fontSizeBase={13} value={formatNumber(asset.locked)} bottom={0} marginRight={0} /> : "-"}
+						<Decimal fontSizeBase={13} value={formatNumber(asset.locked)} bottom={0} marginRight={0} />
 					</div>
 				</Tooltip>
 			</TableCell>

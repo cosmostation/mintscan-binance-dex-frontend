@@ -1,10 +1,9 @@
 import React from "react";
 import styles from "./StatusCard.scss";
 import classNames from "classnames/bind";
+import moment from "moment";
 import {_, empty, formatNumber, getUnixTimes} from "src/lib/scripts";
 import {divide} from "src/lib/Big";
-import {getGeckoMarketChartRange} from "src/lib/api";
-import axios from "axios";
 import {useHistory} from "src/hooks";
 //  components
 import Chart from "src/components/common/Chart/Chart";
@@ -14,50 +13,32 @@ const cx = classNames.bind(styles);
 const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
 const upSVG = process.env.PUBLIC_URL + "/assets/assets/up_gr.svg";
 const downSVG = process.env.PUBLIC_URL + "/assets/assets/down_rd.svg";
-
-const DAY_IN_MINUTES = 24 * 60;
-const DATA_COUNT_DENOM = 16;
-
-export default function({asset, id}) {
-	const [data, setData] = React.useState(null);
+export default function({asset = {}}) {
 	const history = useHistory();
-	React.useEffect(() => {
-		if (_.isNil(id) || !_.isNil(data)) return;
-		const times = getUnixTimes(DAY_IN_MINUTES, "minute", "hour");
-		const cancelToken = axios.CancelToken;
-		const source = cancelToken.source();
-		getGeckoMarketChartRange(id, "usd", times[0], times[1], source.token)
-			.then(res => {
-				const mapped = _.map(_.initial(_.keys(res.data)), key => _.map(res.data[key], v => [v[0], Math.round(v[1] * 100) / 100]));
-				setData(_.map(mapped, arr => _.filter(arr, (v, idx) => idx % DATA_COUNT_DENOM === 0 || idx === 0 || idx === mapped.length - 1)));
-			})
-			.catch(ex => {
-				console.log("exception querying coinGecko", ex);
-			});
-		return () => {
-			source.cancel("cleanup cancel");
-		};
-	}, [data, id]);
+	if (!_.isNil(asset)) console.log(asset);
 
-	const splitPrice = asset?.price ? formatNumber(asset.price).split(".") : ["-"];
-	const splitMarketCap = asset?.marketCap ? formatNumber(asset.marketCap).split(".") : ["-"];
-	const diffPercent = asset?.changeRange ? divide(asset.changeRange, 100, 2) : undefined;
+	const splitPrice = React.useMemo(() => (asset?.current_price ? formatNumber(asset.current_price).split(".") : ["-"]), [asset]);
+	const splitMarketCap = React.useMemo(() => (asset?.marketcap ? formatNumber(asset.marketcap).split(".") : ["-"]), [asset]);
+	const diffPercent = React.useMemo(() => (asset?.change_range ? divide(asset.change_range, 100, 2) : undefined), [asset]);
+
+	const chartValues = React.useMemo(() => {
+		if (empty(asset.prices)) return [];
+		return _.map(asset.prices, v => {
+			const arr = _.reverse(_.valuesIn(v));
+			arr[0] = new moment(arr[0]).valueOf();
+			return arr;
+		});
+	}, [asset.prices]);
 	return (
 		<div className={cx("statuscard-wrapper")} onClick={() => history.push(`/assets/${asset?.asset}`)}>
 			<div className={cx("wrapper")}>
 				<div className={cx("asset-graph-wrapper")}>
 					<div className={cx("asset")}>
-						<img src={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} alt={"none"} />
-						<div className={cx("name")}>{asset?.mappedAsset ? asset.mappedAsset : "-"}</div>
+						<img src={asset?.asset_img ? asset?.asset_img : symbolNoneSVG} alt={"none"} />
+						<div className={cx("name")}>{asset?.mapped_asset ? asset.mapped_asset : "-"}</div>
 					</div>
 					<div className={cx("graph-wrapper")}>
-						{_.isNil(data) ? (
-							undefined
-						) : empty(data?.[0]) || empty(data?.[0]) ? (
-							<div>Error loading Chart</div>
-						) : (
-							<Chart key={0} options={options} data={data[0]} showAxis={false} displayMax={true} />
-						)}
+						{empty(chartValues) ? undefined : <Chart key={0} options={options} data={chartValues} showAxis={false} displayMax={true} />}
 					</div>
 				</div>
 				<div className={cx("price-percentage-wrapper")}>

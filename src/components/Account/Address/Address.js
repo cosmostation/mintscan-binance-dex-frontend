@@ -49,25 +49,23 @@ export default function Address({account = {}, prices = []}) {
 					</li>
 				</ul>
 			</div>
-			<div className={cx("statistics-wrapper")}>
-				<ul className={cx("price-wrapper")}>
-					<li>Binance Token</li>
-					<li>
-						1<span className={cx("BNB")}>BNB</span>
-					</li>
-					<li>${!_.isNil(bnbPrice) ? <Decimal fontSizeBase={14} value={`${bnbPrice}`} bottom={2} /> : "-"}</li>
-				</ul>
-				<ul className={cx("total-wrapper")}>
-					<li>Total</li>
-					{!_.isNil(total?.[0]) ? <Decimal fontSizeBase={18} value={total?.[0]} /> : <span>-</span>}
-					{!_.isNil(total?.[0]) && !_.isNil(bnbPrice) ? <Decimal fontSizeBase={14} value={multiply(total?.[0], bnbPrice, 2)} bottom={2} /> : <span>-</span>}
-				</ul>
-				<ul className={cx("available-wrapper")}>
-					<li>Available</li>
-					{!_.isNil(total?.[1]) ? <Decimal fontSizeBase={18} value={total?.[1]} /> : <span>-</span>}
-					{!_.isNil(total?.[1]) && !_.isNil(bnbPrice) ? <Decimal fontSizeBase={14} value={multiply(total?.[1], bnbPrice, 2)} bottom={2} /> : <span>-</span>}
-				</ul>
-			</div>
+			<ul className={cx("total-wrapper")}>
+				<li>Total Assets</li>
+				<li className={cx("dollars")}>
+					${!_.isNil(total?.[0]) && !_.isNil(bnbPrice) ? <Decimal fontSizeBase={18} value={multiply(total?.[0], bnbPrice, 2)} bottom={1} /> : <span>-</span>}
+				</li>
+				<li className={cx("compareBNB")}>
+					⇋
+					{!_.isNil(total?.[0]) ? (
+						<>
+							<Decimal fontSizeBase={14} value={total?.[0]} bottom={2} />
+							<span className={cx("BNB")}>BNB</span>
+						</>
+					) : (
+						<span>-</span>
+					)}
+				</li>
+			</ul>
 		</div>
 	);
 }

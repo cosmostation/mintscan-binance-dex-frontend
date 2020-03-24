@@ -76,74 +76,32 @@
 			}
 		}
 	}
-	.statistics-wrapper {
-		display: grid;
-		grid-template-columns: fit-content(100%) fit-content(100%) fit-content(100%);
-		grid-template-rows: 1fr;
+	.total-wrapper {
 		font-family: "Open Sans", serif;
 		font-size: 15px;
 		font-weight: 600;
-		
-		> * {
-			&:not(:last-child) {
-				padding-right: 30.5px;
-				padding-left: 30.5px;
-			}
-			&:first-child {
-				border-right: solid 1px #4b525d;
-				padding-left: 15px;
-				@include media("<1080px") {
-					padding-left: 0;
-				}
-			}
-			>:nth-child(2) {
-				display: flex;
-				font-size: 18px;
-				font-weight: normal;
-			}
-			>:nth-child(3) {
-				display: flex;
-				font-size: 14px;
-				color: #bebebe;
-			}
+		font-stretch: normal;
+		font-style: normal;
+		letter-spacing: normal;
+		text-align: left;
+		color: #ffffff;
+		.dollars {
+			display: flex;
+			font-size: 18px;
 		}
-		
-		@include media("<1080px") {
-			padding-left: 0;
-			margin-top: 5px;
-		}
-		@include media("<small") {
-			grid-template-columns: fit-content(100%);
-			grid-template-rows: 1fr 1fr 1fr;
+		.compareBNB {
+			display: flex;
+			font-size: 14px;
+			.BNB {
+				color: #f0b90b;
+			}
 			
-			> * {
-				&:first-child {
-					border-right: none;
-				}
-				&:not(:last-child) {
-					padding-left: 0
-				}
-				&:not(:first-child) {
-					padding-top: 2px;
-					>:nth-child(3):before {
-						content: "$"
-					}
-				}
-			}
-		}
-		
-		.total-wrapper {
-		
-		}
-		.available-wrapper {
-		
 		}
 	}
 }
 
 .BNB {
 	color: #f0b90b;
-	margin-left: 5px;
 }
 
 .flexIt {

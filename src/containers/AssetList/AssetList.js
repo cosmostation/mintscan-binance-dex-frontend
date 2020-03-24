@@ -11,6 +11,8 @@ import PageTitle from "src/components/common/PageTitle";
 import StatusCard from "src/components/AssetList/StatusCard/StatusCard";
 import Table from "src/components/AssetList/Table";
 import ScrollTop from "src/components/common/ScrollTop";
+import {useFetch} from "src/hooks";
+import consts from "src/constants/consts";
 
 const cx = cn.bind(styles);
 
@@ -21,6 +23,7 @@ export default function(props) {
 	const dispatch = useDispatch();
 	const [topAssets, setTopAssets] = React.useState([]);
 	const assets = useSelector(state => state.assets.assets);
+	const [charts, refetch] = useFetch(`${consts.API_BASE}${consts.API.CHARTS}`);
 
 	React.useEffect(() => {
 		if (!empty(assets)) return;
@@ -37,10 +40,9 @@ export default function(props) {
 				<PageTitle title={"Assets"} />
 			</TitleWrapper>
 			<div className={cx("StatusCard-grid")}>
-				<StatusCard asset={topAssets?.[0]} id={geckoTop[0]} />
-				<StatusCard asset={topAssets?.[1]} id={geckoTop[1]} />
-				<StatusCard asset={topAssets?.[2]} id={geckoTop[2]} />
-				<StatusCard asset={topAssets?.[3]} id={geckoTop[3]} />
+				{_.times(4, v => (
+					<StatusCard asset={charts.data?.[v]} key={v} />
+				))}
 			</div>
 			<Table assets={assets} />
 			<ScrollTop />

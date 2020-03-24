@@ -13,15 +13,17 @@ export default function useSearch() {
 	useEffect(() => {
 		if (search === "") return;
 		const type = checkType(search);
-		if (type === "address") history.push(`/account/${search}`);
-		else if (type === "block") history.push(`/blocks/${search}`);
+		const trimmedSearch = _.trim(search);
+		if (type === "address") history.push(`/account/${trimmedSearch}`);
+		else if (type === "block") history.push(`/blocks/${trimmedSearch}`);
 		else if (type === "asset") {
 			const find = _.find(assets, v => {
-				return searchProperties(v, consts.ASSET.NAME_SEARCH_PROPERTY, search.toUpperCase());
+				return searchProperties(v, consts.ASSET.NAME_SEARCH_PROPERTY, trimmedSearch.toUpperCase());
 			});
 			history.push(`/assets/${find?.asset ? find.asset : "notFound"}`);
 		} else if (type === "orderId") {
-		} else history.push(`/txs/${search}`);
+			history.push(`/txs/${trimmedSearch}`);
+		} else history.push(`/txs/${trimmedSearch}`);
 		setSearch("");
 	}, [search, history, assets]);
 
