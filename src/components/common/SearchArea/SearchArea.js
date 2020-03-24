@@ -51,23 +51,26 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 	const onChange = React.useCallback(e => {
 		setInput(e.target.value);
 	}, []);
-	return (
-		<div className={propCx("search")}>
-			<div className={cx("SearchArea-wrapper")} ref={SearchRef}>
-				<InputBase
-					className={propCx("input")}
-					placeholder='Search by Block, transaction, asset, address or orderid...'
-					onKeyPress={onKeyPress}
-					onChange={onChange}
-					value={input}
-					onFocus={() => setShowDropdown(true)}
-					onBlur={() => setShowDropdown(false)}
-				/>
-				<Dropdown width={interactiveWidth ? widthDropdown : null} show={showDropdown} customStyles={dropdownStyle} value={input} />
+	return React.useMemo(
+		() => (
+			<div className={propCx("search")}>
+				<div className={cx("SearchArea-wrapper")} ref={SearchRef}>
+					<InputBase
+						className={propCx("input")}
+						placeholder='Search by Block, transaction, asset, address or orderid...'
+						onKeyPress={onKeyPress}
+						onChange={onChange}
+						value={input}
+						onFocus={() => setShowDropdown(true)}
+						onBlur={() => setShowDropdown(false)}
+					/>
+					<Dropdown width={interactiveWidth ? widthDropdown : null} show={showDropdown} customStyles={dropdownStyle} value={input} />
+				</div>
+				<button className={propCx("searchBtn")} onClick={clickSearch}>
+					<SearchIcon style={{color: "#fff"}} />
+				</button>
 			</div>
-			<button className={propCx("searchBtn")} onClick={clickSearch}>
-				<SearchIcon style={{color: "#fff"}} />
-			</button>
-		</div>
+		),
+		[clickSearch, dropdownStyle, input, interactiveWidth, onChange, onKeyPress, propCx, showDropdown, widthDropdown]
 	);
 }

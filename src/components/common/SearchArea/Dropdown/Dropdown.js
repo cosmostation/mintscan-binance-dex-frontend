@@ -30,7 +30,7 @@ export default function({customStyles = {}, value = "", show = false, width = nu
 		() => (
 			<>
 				{_.map(foundAssets, v => (
-					<li>
+					<li key={v.asset}>
 						{v.mappedAsset} / {v.asset} / {v.name}
 					</li>
 				))}
