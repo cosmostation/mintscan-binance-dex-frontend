@@ -40,7 +40,11 @@ export default function({customStyles = {}, value = "", show = false}) {
 	);
 
 	return (
-		<ul className={cx("Dropdown-wrapper", {visible: show && !empty(foundAssets)})} style={customStyles}>
+		<ul className={cx("Dropdown-wrapper", {visible: show && (inputSearch.length >= 3 || !empty(foundAssets))})} style={customStyles}>
+			<li className={cx("defaultText", {visible: inputSearch.length >= 3 && foundAssets.length === 0})}>
+				<span>Search for:</span>
+				<span>{inputSearch}</span>
+			</li>
 			{dropdownList}
 		</ul>
 	);
