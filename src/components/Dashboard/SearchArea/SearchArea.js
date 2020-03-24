@@ -5,6 +5,7 @@ import styles from "./SearchArea.scss";
 import SearchArea from "src/components/common/SearchArea";
 import consts from "src/constants/consts";
 import LinkCard from "src/components/Dashboard/LinkCard";
+import useWindowSize from "src/hooks/useWindowSize";
 
 const iosIcon = process.env.PUBLIC_URL + "/assets/dashboard/appstore_img.svg";
 const googleIcon = process.env.PUBLIC_URL + "/assets/dashboard/playstore.svg";
@@ -22,7 +23,7 @@ export default function() {
 						<p className={cx("byCosmostation")}>By Cosmostation</p>
 					</div>
 					<div className={cx("search-wrapper")}>
-						<SearchArea propCx={cx} />
+						<SearchArea propCx={cx} dropdownStyle={{position: "fixed", zIndex: 15}} interactiveWidth={true} />;
 					</div>
 					<div className={cx("link-wrapper")}>
 						{/* google, appstore, web wallet */}

@@ -9,7 +9,7 @@ import {_, empty, searchProperties} from "src/lib/scripts";
 
 const cx = cn.bind(styles);
 
-export default function({customStyles = {}, value = "", show = false}) {
+export default function({customStyles = {}, value = "", show = false, width = null}) {
 	const assets = useSelector(state => state.assets.assets);
 	const [inputSearch, setInputSearch] = React.useState("");
 	const delayedSetValue = useDelayedInput(setInputSearch, 200);
@@ -39,8 +39,13 @@ export default function({customStyles = {}, value = "", show = false}) {
 		[foundAssets]
 	);
 
+	const finalStyle = React.useMemo(() => {
+		if (_.isNil(width)) return customStyles;
+		return {...customStyles, width};
+	}, [customStyles, width]);
+
 	return (
-		<ul className={cx("Dropdown-wrapper", {visible: show && (inputSearch.length >= 3 || !empty(foundAssets))})} style={customStyles}>
+		<ul className={cx("Dropdown-wrapper", {visible: show && (inputSearch.length >= 3 || !empty(foundAssets))})} style={finalStyle}>
 			<li className={cx("defaultText", {visible: inputSearch.length >= 3 && foundAssets.length === 0})}>
 				<span>Search for:</span>
 				<span>{inputSearch}</span>
