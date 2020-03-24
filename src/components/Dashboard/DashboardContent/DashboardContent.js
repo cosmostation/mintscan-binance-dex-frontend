@@ -46,10 +46,10 @@ const cardData = Object.freeze([
 		link: "https://www.binance.org/",
 	},
 	{
-		svg: process.env.PUBLIC_URL + "/assets/dashboard/academy_ic.svg",
-		title: "Academy",
-		content: "Blockchain and crypto education",
-		link: "https://www.binance.vision/",
+		svg: process.env.PUBLIC_URL + "/assets/dashboard/jex_ic.svg",
+		title: "Binance JEX",
+		content: "Bitcoin futures & Crypto options",
+		link: "https://www.jex.com/",
 	},
 	{
 		svg: process.env.PUBLIC_URL + "/assets/dashboard/launchpad_ic.svg",
