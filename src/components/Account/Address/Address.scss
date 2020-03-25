@@ -9,7 +9,7 @@
 	color: #ffffff;
 	padding: 24px 30px;
 	@include Flex_LeftRight;
-	@include media("<1080px") {
+	@include media("<medium") {
 		padding: 18px 20px;
 		flex-flow: column;
 		align-items: flex-start;
@@ -26,6 +26,9 @@
 			border: solid 1px #e6e6e6;
 			background-color: #ffffff;
 			cursor: pointer;
+			&:hover {
+				background-color: #f1f1f1;
+			}
 			
 			img {
 				object-fit: fill;
@@ -35,18 +38,16 @@
 		}
 		
 		.AddressDisplay-wrapper {
-			@include Flex-UpDown;
 			font-family: "Open Sans", serif;
-			padding: 5px 0;
 			.label {
+				height: 28px;
 				font-size: 15px;
 				font-weight: 600;
-				line-height: 1.6;
 			}
 			.value {
+				height: 28px;
 				font-size: 14px;
 				font-weight: normal;
-				line-height: 1.71;
 				display: flex;
 				align-items: center;
 				@include media("<small") {
@@ -76,26 +77,63 @@
 			}
 		}
 	}
-	.total-wrapper {
+	.statistics-wrapper {
+		display: flex;
 		font-family: "Open Sans", serif;
 		font-size: 15px;
-		font-weight: 600;
+		font-weight: 400;
 		font-stretch: normal;
 		font-style: normal;
 		letter-spacing: normal;
 		text-align: left;
 		color: #ffffff;
-		.dollars {
-			display: flex;
-			font-size: 18px;
+		@include media("<medium") {
+			margin-top: 5px;
 		}
-		.compareBNB {
-			display: flex;
-			font-size: 14px;
-			.BNB {
-				color: #f0b90b;
+		.total-wrapper {
+			.currency {
+				margin-right: 3px;
 			}
-			
+			.value {
+				@include media("<small") {
+					.front:after {
+						content: "."
+					}
+					.remove {
+						display: none;
+					}
+				}
+			}
+			.dollars {
+				height: 40px;
+				display: flex;
+				font-size: 25px;
+			}
+			padding-right: 20px;
+			border-right: solid 1px #4b525d;
+			margin-right: 20px;
+		}
+		.compare-wrapper {
+			.compareBNB {
+				height: 40px;
+				display: flex;
+				font-size: 20px;
+				:first-child {
+					@include media("<small") {
+						span {
+							max-width: 20px;
+							overflow-x: hidden;
+						}
+					}
+				}
+				.BNB {
+					align-self: flex-end;
+					color: #f0b90b;
+					font-size: 16px;
+					margin-bottom: 2px;
+				}
+				padding-bottom: 2px;
+			}
 		}
 	}
 }

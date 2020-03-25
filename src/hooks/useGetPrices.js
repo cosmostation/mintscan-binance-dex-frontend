@@ -39,7 +39,7 @@ export default function useGetPrices(interval = 3000) {
 	}, [assets, targetAssets]);
 
 	const returnPrices = useMemo(() => {
-		if (empty(prices)) return [];
+		if (empty(prices)) return null;
 		return prices;
 	}, [prices]);
 

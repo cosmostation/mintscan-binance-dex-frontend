@@ -1,25 +1,24 @@
 import _ from "lodash";
 import B from "big.js";
+import consts from "src/constants/consts";
 
 B.NE = -10;
 B.PE = 100;
-
-const DEFAULT_DECIMALS = 6;
 
 export const big = input => {
 	const ret = new B(input);
 	return ret ? ret : new B("0");
 };
 
-export const fixed = (input = "0", places = DEFAULT_DECIMALS) => {
+export const fixed = (input = "0", places = consts.NUM.DEFAULT_DECIMALS) => {
 	return new B(input).toFixed(places);
 };
 
-export const add = (input1 = "0", input2 = "0", places = DEFAULT_DECIMALS) => {
+export const add = (input1 = "0", input2 = "0", places = consts.NUM.DEFAULT_DECIMALS) => {
 	return new B(input1).plus(input2).toFixed(places);
 };
 
-export const sumArray = (inputArray = [], places = DEFAULT_DECIMALS) => {
+export const sumArray = (inputArray = [], places = consts.NUM.DEFAULT_DECIMALS) => {
 	let sum = 0;
 	_.each(inputArray, v => {
 		sum = add(sum, v);
@@ -27,15 +26,15 @@ export const sumArray = (inputArray = [], places = DEFAULT_DECIMALS) => {
 	return sum;
 };
 
-export const minus = (input1 = "0", input2 = "0", places = DEFAULT_DECIMALS) => {
+export const minus = (input1 = "0", input2 = "0", places = consts.NUM.DEFAULT_DECIMALS) => {
 	return new B(input1).minus(input2).toFixed(places);
 };
 
-export const multiply = (input1 = "0", input2 = "0", places = DEFAULT_DECIMALS) => {
+export const multiply = (input1 = "0", input2 = "0", places = consts.NUM.DEFAULT_DECIMALS) => {
 	return new B(input1).times(input2).toFixed(places);
 };
 
-export const divide = (input1 = "0", input2 = "0.1", places = DEFAULT_DECIMALS) => {
+export const divide = (input1 = "0", input2 = "0.1", places = consts.NUM.DEFAULT_DECIMALS) => {
 	if (!_.isFinite(Number(input2)) || input2 === "0") return "NaN";
 	return new B(input1).div(input2).toFixed(places);
 };

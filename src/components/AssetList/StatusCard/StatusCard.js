@@ -15,7 +15,6 @@ const upSVG = process.env.PUBLIC_URL + "/assets/assets/up_gr.svg";
 const downSVG = process.env.PUBLIC_URL + "/assets/assets/down_rd.svg";
 export default function({asset = {}}) {
 	const history = useHistory();
-	if (!_.isNil(asset)) console.log(asset);
 
 	const splitPrice = React.useMemo(() => (asset?.current_price ? formatNumber(asset.current_price).split(".") : ["-"]), [asset]);
 	const splitMarketCap = React.useMemo(() => (asset?.marketcap ? formatNumber(asset.marketcap).split(".") : ["-"]), [asset]);

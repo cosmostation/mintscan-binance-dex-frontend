@@ -12,7 +12,7 @@ import AssetsTable from "src/components/Account/AssetTxs/AssetsTable";
 
 const cx = cn.bind(styles);
 
-export default function({balances = [], address = "", prices = []}) {
+export default function({balances = [], prices = [], txData = []}) {
 	const assets = useSelector(state => state.assets.assets);
 	const [mappedAssets, setMappedAssets] = React.useState([]);
 	const [selected, setSelected] = React.useState(true);
@@ -33,7 +33,7 @@ export default function({balances = [], address = "", prices = []}) {
 		setMappedAssets(tempAssets);
 	}, [assets, balances, mappedAssets]);
 
-	const txTable = React.useMemo(() => <TxTable address={address ? address : ""} />, [address]);
+	const txTable = React.useMemo(() => <TxTable txData={txData} />, [txData]);
 	const assetTable = React.useMemo(() => <AssetsTable balances={mappedAssets ? mappedAssets : []} prices={prices} />, [mappedAssets, prices]);
 
 	return (

@@ -1,11 +1,11 @@
 import React from "react";
 import cn from "classnames/bind";
 import styles from "./Address.scss";
-import {_, empty} from "src/lib/scripts";
+import {_, empty, formatNumber} from "src/lib/scripts";
 
 //  components
 import Decimal from "src/components/common/Decimal";
-import {multiply, sumArray} from "src/lib/Big";
+import {multiply, divide, sumArray, fixed} from "src/lib/Big";
 import {useSelector} from "react-redux";
 
 //  assets
@@ -20,6 +20,7 @@ export default function Address({account = {}, prices = []}) {
 	const total = React.useMemo(() => {
 		if (empty(prices)) return;
 		const {balances} = account;
+		//  dollars
 		const totalAssets = _.map(balances, (v, i) => multiply(getTotalSum(v), prices[i]));
 		const freeAssets = _.map(balances, (v, i) => multiply(getFreeSum(v), prices[i]));
 		return [sumArray(totalAssets), sumArray(freeAssets)];
@@ -49,23 +50,37 @@ export default function Address({account = {}, prices = []}) {
 					</li>
 				</ul>
 			</div>
-			<ul className={cx("total-wrapper")}>
-				<li>Total Assets</li>
-				<li className={cx("dollars")}>
-					${!_.isNil(total?.[0]) && !_.isNil(bnbPrice) ? <Decimal fontSizeBase={18} value={multiply(total?.[0], bnbPrice, 2)} bottom={1} /> : <span>-</span>}
-				</li>
-				<li className={cx("compareBNB")}>
-					⇋
-					{!_.isNil(total?.[0]) ? (
-						<>
-							<Decimal fontSizeBase={14} value={total?.[0]} bottom={2} />
-							<span className={cx("BNB")}>BNB</span>
-						</>
-					) : (
-						<span>-</span>
-					)}
-				</li>
-			</ul>
+			<div className={cx("statistics-wrapper")}>
+				<ul className={cx("total-wrapper")}>
+					<li className={cx("value")}>
+						<span className={cx("front")}>Est</span>
+						<span className={cx("remove")}>imated</span> Value
+					</li>
+					<li className={cx("dollars")}>
+						<span className={cx("currency")}>$</span>
+						{!_.isNil(total?.[0]) && !_.isNil(bnbPrice) ? (
+							<span style={{fontSize: "25px"}}>{formatNumber(fixed(total?.[0] ? total?.[0] : 0, 0))}</span>
+						) : (
+							<span>-</span>
+						)}
+					</li>
+				</ul>
+				<ul className={cx("compare-wrapper")}>
+					<li style={{color: "#cfcfcf"}}>
+						$<span>{fixed(!_.isNil(bnbPrice) ? bnbPrice : 0, 2)}</span> / BNB
+					</li>
+					<li className={cx("compareBNB")}>
+						{!_.isNil(total?.[0]) ? (
+							<>
+								<span style={{fontSize: "25px", marginRight: "3px"}}>{formatNumber(divide(total?.[0], bnbPrice, 0))}</span>
+								<span className={cx("BNB")}>BNB</span>
+							</>
+						) : (
+							<span>-</span>
+						)}
+					</li>
+				</ul>
+			</div>
 		</div>
 	);
 }

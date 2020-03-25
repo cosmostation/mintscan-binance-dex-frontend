@@ -12,7 +12,7 @@ import Address from "src/components/Account/Address";
 import NotFound from "src/components/common/NotFound";
 
 //  hooks
-import {useFetch, useGetPrices} from "src/hooks";
+import {useFetch, useGetPrices, useMultiFetch} from "src/hooks";
 
 const cx = cn.bind(style);
 
@@ -21,11 +21,17 @@ export default function Account(props) {
 	const {history} = props;
 	const account = props.match.params.account;
 
-	const [state, refetch, setUrl] = useFetch(`${baseURL}${account}`);
-	const [prices, setTargetAssets] = useGetPrices(consts.NUM.ASSET_REFETCH_PRICE_INTERVAL_MS);
-
 	// TODO
-	//  attempt at keeping account data up-to-date
+	//  need to create multiFetch hook
+	//  that will hit multiple APIs at once
+	//  will return each seperate result as they arrive
+	const urlList = React.useMemo(() => [`${baseURL}${account}`, `${consts.API_BASE}${consts.API.ACCOUNT_TXS(account)}`], [account]);
+	const [state, refetch2, setUrls] = useMultiFetch(urlList);
+	const [assetData, txData] = [state.data?.[0], state.data?.[1]?.txArray];
+
+	const [prices, setTargetAssets] = useGetPrices(consts.NUM.ASSET_REFETCH_PRICE_INTERVAL_MS);
+	// TODO
+	//  attempt at keeping account data up-to-date(refetch every x seconds)
 	//  fix this to work in the future
 	// React.useEffect(() => {
 	// 	if (!account) return;
@@ -36,25 +42,26 @@ export default function Account(props) {
 	// 	return () => clearInterval(interval);
 	// }, [account, refetch]);
 
-	React.useEffect(() => {
-		if (history.action === "PUSH" || (history.action === "POP" && !empty(state.data) && state.data.address !== account)) {
-			setUrl(`${baseURL}${account}`);
-		}
-	}, [account, history.action, refetch, setUrl, state.data]);
+	// React.useEffect(() => {
+	// 	if (history.action === "PUSH" || (history.action === "POP" && !empty(state.data) && state.data.address !== account)) {
+	// 		setUrl(`${baseURL}${account}`);
+	// 	}
+	// }, [account, history.action, refetch, setUrl, state.data]);
 
 	//  when data from address arrives, set the useGetPrice hook to start
 	React.useEffect(() => {
-		if (empty(state.data?.balances)) return;
-		setTargetAssets(_.map(state.data.balances, v => v.symbol));
-	}, [state.data, setTargetAssets]);
+		if (empty(assetData?.balances)) return;
+		setTargetAssets(_.map(assetData.balances, v => v.symbol));
+	}, [setTargetAssets, assetData]);
 
-	const assetTxs = React.useMemo(() => <AssetTxs prices={prices} address={account} balances={state.data?.balances ? state.data?.balances : []} />, [
+	const assetTxs = React.useMemo(() => <AssetTxs prices={prices} balances={assetData?.balances ? assetData?.balances : []} txData={txData} />, [
 		prices,
 		account,
-		state.data,
+		assetData,
+		txData,
 	]);
 
-	const displayAddress = React.useMemo(() => <Address account={state.data ? state.data : {}} prices={prices} />, [state.data, prices]);
+	const displayAddress = React.useMemo(() => <Address account={assetData ? assetData : {}} prices={prices} />, [assetData, prices]);
 
 	const render = React.useMemo(
 		() => (
@@ -68,9 +75,7 @@ export default function Account(props) {
 		),
 		[displayAddress, assetTxs]
 	);
-
-	if ((!state.loading && (state?.data?.address === "" || state?.data?.error_code)) || account === "notFound") return <NotFound />;
-
+	if ((!state.loading && (assetData?.address === "" || assetData?.error_code)) || account === "notFound") return <NotFound />;
 	return render;
 }
 

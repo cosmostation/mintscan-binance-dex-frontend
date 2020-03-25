@@ -9,12 +9,12 @@ import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/cor
 
 const cx = cn.bind(styles);
 
-export default function({balances = [], prices = []}) {
+export default function({balances = [], prices = null}) {
 	const tableBodyRender = React.useMemo(
 		() => (
 			<>
 				{_.map(balances, (v, i) => (
-					<AssetsTableRows key={i} asset={v} price={prices[i]} />
+					<AssetsTableRows key={i} asset={v} price={prices?.[i]} />
 				))}
 			</>
 		),
@@ -23,7 +23,7 @@ export default function({balances = [], prices = []}) {
 
 	const thinTableBodyRender = React.useMemo(
 		() => (
-			<div className={cx("thinTableWrapper")}>
+			<div className={cx("thinTable")}>
 				{_.map(balances, (v, i) => (
 					<ThinTableRows key={i} asset={v} />
 				))}
@@ -59,7 +59,7 @@ const tableHeaderRender = (
 				Total Balance
 			</TableCell>
 			<TableCell className={cx("tableHeaderCell", "estValue")} align='right'>
-				Estimated Value(USD)
+				Estimated Value($)
 			</TableCell>
 			<TableCell className={cx("tableHeaderCell", "generalDecimals")} align='right'>
 				Available

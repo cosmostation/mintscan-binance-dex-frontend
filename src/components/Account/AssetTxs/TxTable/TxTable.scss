@@ -1,0 +1,45 @@
+@import "src/styles/utils";
+
+.TxTable-wrapper {
+	overflow-x: auto;
+	overflow-y: hidden;
+	.table {
+		@include media("<medium") {
+			display: none;
+		}
+		.tableHeaderCell {
+			@include tableHeaderCellWidth300;
+			color: var(--colorMainText);
+			@include tableElemPadding;
+		}
+		
+		.padding-right10 {
+			padding-right: 10px;
+		}
+		.padding-left10 {
+			padding-left: 10px;
+		}
+		
+		.header {
+			.asset {
+				min-width: 230px;
+			}
+			
+			.estValue {
+				min-width: 120px;
+			}
+			
+			.generalDecimals {
+				min-width: 130px;
+			}
+		}
+	}
+	.thinTableWrapper {
+		@include media(">=medium") {
+			display: none;
+		}
+		width: 100%;
+		height: fit-content;
+		padding: 16px 0;
+	}
+}

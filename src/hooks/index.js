@@ -12,9 +12,11 @@ import usePreload from "./usePreload";
 import useGetImage from "./useGetImage";
 import {useHistory} from "react-router-dom";
 import useGetPrices from "./useGetPrices";
+import useMultiFetch from "./useMultiFetch";
 
 export {
 	useFetch,
+	useMultiFetch,
 	useBetterState,
 	useIndexedPagination,
 	usePagedPagination,

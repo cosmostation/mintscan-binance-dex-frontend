@@ -102,8 +102,8 @@ export default function({asset, displayNone}) {
 	const history = useHistory();
 
 	const formattedMarketCap = !_.isNil(asset.marketCap) ? formatNumber(Math.round(asset.marketCap)) : undefined;
-	const formattedPrice = !_.isNil(asset.price) ? formatNumber(fixed(asset.price, 6)).split(".") : undefined;
-	const formattedSupply = !_.isNil(asset.supply) ? formatNumber(fixed(asset.supply, 6)).split(".") : undefined;
+	const formattedPrice = !_.isNil(asset.price) ? formatNumber(fixed(asset.price)).split(".") : undefined;
+	const formattedSupply = !_.isNil(asset.supply) ? formatNumber(fixed(asset.supply)).split(".") : undefined;
 	return (
 		<TableRow className={cx("AssetList-tableRow", {invisible: displayNone})} key={asset.id}>
 			<TableCell className={cx("tableCell", "nameCell")} component='th' scope='row' alignt='left'>

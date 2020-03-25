@@ -12,12 +12,15 @@ import {sumArray, multiply} from "src/lib/Big";
 import Decimal from "src/components/common/Decimal";
 import tooltips from "src/constants/tooltips";
 import Skeleton from "react-skeleton-loader";
+import {useSelector} from "react-redux";
 
 const cx = cn.bind(styles);
 const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
 
 export const ThinTableRows = ({asset = {}, price = 1}) => {
 	const history = useHistory();
+	const bnbPrice = useSelector(state => state.blockchain.status?.price);
+
 	const assetSum = React.useMemo(() => getTotalSum(asset), [asset]);
 	return (
 		<div className={cx("Asset-thinTableRow")}>
@@ -62,6 +65,7 @@ export const ThinTableRows = ({asset = {}, price = 1}) => {
 //bnb1z35wusfv8twfele77vddclka9z84ugywug48gn
 export default function({asset, price = 1}) {
 	const history = useHistory();
+	const bnbPrice = useSelector(state => state.blockchain.status?.price);
 	const assetSum = React.useMemo(() => getTotalSum(asset), [asset]);
 	return (
 		<TableRow className={cx("AssetTableRows-wrapper")} hover={true}>
@@ -83,7 +87,8 @@ export default function({asset, price = 1}) {
 					disableFocusListener
 					disableTouchListener>
 					<div className={cx("num-wrapper")}>
-						<Decimal fontSizeBase={13} value={formatNumber(assetSum)} bottom={0} marginRight={0} />
+						{assetSum <= 0 ? <span className={cx("smaller")}>{"＜"}</span> : undefined}
+						<Decimal fontSizeBase={13} value={formatNumber(returnSmaller(assetSum))} bottom={0} marginRight={0} />
 					</div>
 				</Tooltip>
 			</TableCell>
@@ -96,7 +101,14 @@ export default function({asset, price = 1}) {
 					disableFocusListener
 					disableTouchListener>
 					<div className={cx("num-wrapper")}>
-						{price ? <Decimal fontSizeBase={13} value={formatNumber(multiply(assetSum, price, 2))} bottom={0} marginRight={0} /> : "(No Price)"}
+						{price ? (
+							<>
+								{assetSum <= 0 ? <span className={cx("smaller")}>{"＜"}</span> : undefined}
+								<Decimal fontSizeBase={13} value={formatNumber(returnSmaller(multiply(assetSum, price, 2), 2))} bottom={0} marginRight={0} />
+							</>
+						) : (
+							"Not Applicable"
+						)}
 					</div>
 				</Tooltip>
 			</TableCell>
@@ -146,3 +158,5 @@ export default function({asset, price = 1}) {
 const getTotalSum = asset => {
 	return sumArray([asset.free, asset.locked, asset.frozen]);
 };
+
+const returnSmaller = (v, places = 8) => (v <= 0 ? `0.${_.times(places - 1, v => "0").join("")}1` : v);

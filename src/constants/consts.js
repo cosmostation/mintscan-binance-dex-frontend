@@ -11,6 +11,8 @@ export default Object.freeze({
 	},
 	NUM: {
 		BASE_MULT: 100000000,
+		DEFAULT_DECIMALS: 8,
+		PAGE_SIZE: 20,
 
 		SPARE_PAGE_CNT: 2, //  amount of pages to preload in pagination
 		BINACE_API_ROWS_LIMIT: 1000, //  max rows binance api allows
@@ -33,6 +35,7 @@ export default Object.freeze({
 		STATUS: "/status",
 		BLOCKLIST: "/blocks",
 		ACCOUNT: "/account",
+		ACCOUNT_TXS: acc => `/account/txs/${acc}?page=1&rows=20`,
 		TXLIST: "/txs",
 		TX: "/txs",
 		ORDERS: "/orders",

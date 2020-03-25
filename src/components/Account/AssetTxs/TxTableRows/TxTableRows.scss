@@ -1,0 +1,105 @@
+@import "src/styles/utils";
+
+.TxTableRow-wrapper {
+	@include tableRow;
+	
+	.tablePointerCell {
+		@include tablePointerCell;
+		@include tableElemPadding;
+	}
+	
+	.tablePointerMiniCell {
+		@include tablePointerCellWidth140;
+		@include tableElemPadding;
+	}
+	
+	.addrWidth {
+		min-width: 250px;
+	}
+	
+	.txCell {
+		min-width: 110px;
+	}
+	
+	.valueCell {
+		min-width: 150px;
+	}
+	
+	.tableCell {
+		@include tableCellWidth300;
+		@include tableElemPadding;
+	}
+	.padding-right10 {
+		padding-right: 10px;
+	}
+	.padding-left10 {
+		padding-left: 10px;
+	}
+}
+
+.flexit {
+	display: flex;
+	align-items: center;
+	height: 17px;
+	> *:not(last-child) {
+		margin-right: 8px;
+	}
+}
+
+.text {
+	font-family: "Open Sans", serif;
+	font-size: 13px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.15;
+	letter-spacing: normal;
+	color: #4b525d;
+	
+	.type {
+		padding: 2px 10px;
+		width: fit-content;
+		height: 22px;
+		border-radius: 100px;
+		background-color: #f9df67;
+		color: #222222;
+	}
+}
+
+.blueColor {
+	color: #4472de;
+}
+
+.decimal {
+	font-size: var(--fontSizeDecimal);
+}
+
+.BNB {
+	font-size: 13px;
+	color: #f0b90b;
+}
+
+.currency {
+	font-size: 13px;
+}
+
+.TxList-thinTableRow {
+	.row {
+		width: 100%;
+		height: fit-content;
+		@include Flex_LeftRight;
+		
+		font-family: "Open Sans", serif;
+		font-size: 13px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.38;
+		letter-spacing: normal;
+		text-align: left;
+		color: #222222;
+		padding: 5.5px 0;
+	}
+	
+	padding: 4px 15px;
+}
