@@ -2,7 +2,6 @@ import React from "react";
 import cn from "classnames/bind";
 import styles from "./AssetTable.scss";
 import {_, empty} from "src/lib/scripts";
-
 //  components
 import AssetsTableRows, {ThinTableRows} from "../AssetsTableRows";
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";

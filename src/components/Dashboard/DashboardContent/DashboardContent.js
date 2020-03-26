@@ -1,6 +1,5 @@
 import React from "react";
 import cn from "classnames/bind";
-import axios from "axios";
 import styles from "./DashboardContent.scss";
 import {_} from "src/lib/scripts";
 //  components

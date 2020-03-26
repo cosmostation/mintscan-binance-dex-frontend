@@ -2,12 +2,10 @@ import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./PriceDisplay.scss";
 import {formatNumber} from "src/lib/scripts";
-import axios from "axios";
 //  component
 import Skeleton from "react-skeleton-loader";
 //  redux
 import {useDispatch, useSelector} from "react-redux";
-import {getCryptoBasicData, getCryptoStatus} from "src/store/modules/blockchain";
 import consts from "src/constants/consts";
 
 const cx = cn.bind(styles);

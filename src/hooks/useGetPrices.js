@@ -1,9 +1,8 @@
 import {useEffect, useMemo, useState} from "react";
 import {_, empty} from "src/lib/scripts";
 //  redux
-import {useSelector, useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getCryptoAssetPrices} from "src/store/modules/assets";
-
 //  hooks
 import {useTimer} from "src/hooks";
 

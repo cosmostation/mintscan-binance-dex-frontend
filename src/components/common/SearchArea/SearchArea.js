@@ -3,7 +3,6 @@ import cn from "classnames/bind";
 import styles from "./SearchArea.scss";
 //  hooks
 import {useSearch} from "src/hooks";
-
 //components
 import {InputBase} from "@material-ui/core";
 import Dropdown from "./Dropdown";

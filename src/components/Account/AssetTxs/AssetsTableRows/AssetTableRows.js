@@ -1,18 +1,15 @@
 import React from "react";
 import cn from "classnames/bind";
 import styles from "./AssetTableRows.scss";
-
 //  hooks
 import {useHistory} from "src/hooks";
-
 //  components
 import {Fade, TableCell, TableRow, Tooltip} from "@material-ui/core";
 import {_, formatNumber} from "src/lib/scripts";
-import {sumArray, multiply} from "src/lib/Big";
+import {multiply, sumArray} from "src/lib/Big";
 import Decimal from "src/components/common/Decimal";
 import tooltips from "src/constants/tooltips";
 import Skeleton from "react-skeleton-loader";
-import {useSelector} from "react-redux";
 
 const cx = cn.bind(styles);
 const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";

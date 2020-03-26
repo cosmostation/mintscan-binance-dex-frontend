@@ -3,7 +3,6 @@ import cn from "classnames/bind";
 import styles from "./TxTable.scss";
 import {_, empty} from "src/lib/scripts";
 import consts from "src/constants/consts";
-
 //  components
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 import TxTableRows from "../TxTableRows";

@@ -2,15 +2,13 @@ import React from "react";
 import cn from "classnames/bind";
 import style from "./Account.scss";
 import consts from "src/constants/consts";
-import {empty, _} from "src/lib/scripts";
-
+import {_, empty} from "src/lib/scripts";
 //  components
 import AssetTxs from "src/components/Account/AssetTxs";
 import PageTitle from "src/components/common/PageTitle";
 import TitleWrapper from "src/components/common/TitleWrapper";
 import Address from "src/components/Account/Address";
 import NotFound from "src/components/common/NotFound";
-
 //  hooks
 import {useGetPrices, useMultiFetch, usePrevious} from "src/hooks";
 
@@ -23,7 +21,10 @@ export default function Account(props) {
 	const prevAccount = usePrevious(account);
 	const urlList = React.useMemo(() => [`${consts.API_BASE}${consts.API.ACCOUNT_TXS(account)}`, `${baseURL}${account}`], [account]);
 	const [state, refetch, setUrls] = useMultiFetch(urlList);
-	const [txData, assetData] = [state.data?.[0]?.txArray ? state.data?.[0]?.txArray : defaultArr, state.data?.[1] ? state.data?.[1] : defaultArr];
+	const [txData, assetData] = [
+		state.data?.[0]?.txArray && !state.loading[0] ? state.data?.[0]?.txArray : defaultArr,
+		state.data?.[1] && !state.loading[1] ? state.data?.[1] : defaultArr,
+	];
 
 	const [prices, setTargetAssets] = useGetPrices(consts.NUM.ASSET_REFETCH_PRICE_INTERVAL_MS);
 	// TODO

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./StatusCard.scss";
 import classNames from "classnames/bind";
 import moment from "moment";
-import {_, empty, formatNumber, getUnixTimes} from "src/lib/scripts";
+import {_, empty, formatNumber} from "src/lib/scripts";
 import {divide, fixed} from "src/lib/Big";
 import {useHistory} from "src/hooks";
 //  components

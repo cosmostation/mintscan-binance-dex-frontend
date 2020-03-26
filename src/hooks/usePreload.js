@@ -2,13 +2,10 @@ import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import axios from "axios";
 import consts from "src/constants/consts";
-
 //  reduxy
 import {getCryptoAssets} from "src/store/modules/assets";
 import {getCryptoBasicData, getCryptoStatus} from "src/store/modules/blockchain";
-
 //  hooks
-import {useHistory} from "src/hooks";
 
 export default function usePreload() {
 	const dispatch = useDispatch();

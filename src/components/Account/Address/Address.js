@@ -2,10 +2,8 @@ import React from "react";
 import cn from "classnames/bind";
 import styles from "./Address.scss";
 import {_, empty, formatNumber} from "src/lib/scripts";
-
 //  components
-import Decimal from "src/components/common/Decimal";
-import {multiply, divide, sumArray, fixed} from "src/lib/Big";
+import {divide, fixed, multiply, sumArray} from "src/lib/Big";
 import {useSelector} from "react-redux";
 
 //  assets

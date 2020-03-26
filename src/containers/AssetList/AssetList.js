@@ -17,13 +17,12 @@ import consts from "src/constants/consts";
 const cx = cn.bind(styles);
 
 const top = ["TUSDB", "USDSB", "BTCB", "IRIS"];
-const geckoTop = ["true-usd", "stableusd", "bitcoin-bep2", "iris-network"];
 
 export default function(props) {
 	const dispatch = useDispatch();
 	const [topAssets, setTopAssets] = React.useState([]);
 	const assets = useSelector(state => state.assets.assets);
-	const [charts, refetch] = useFetch(`${consts.API_BASE}${consts.API.CHARTS}`);
+	const [charts] = useFetch(`${consts.API_BASE}${consts.API.CHARTS}`);
 
 	React.useEffect(() => {
 		if (!empty(assets)) return;

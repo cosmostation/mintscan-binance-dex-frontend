@@ -2,8 +2,7 @@ import React from "react";
 import axios from "axios";
 import {_, empty} from "src/lib/scripts";
 
-import reducer, {INIT, FETCHING_ALL, FETCHING_SELECTIVE, SUCCESS, initialState, FINISHED, ERROR} from "./reducer";
-
+import reducer, {ERROR, FETCHING_ALL, FINISHED, initialState, SUCCESS} from "./reducer";
 //  hooks
 import {usePrevious} from "src/hooks/index";
 

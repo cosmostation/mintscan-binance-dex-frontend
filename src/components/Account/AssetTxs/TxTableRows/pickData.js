@@ -1,10 +1,9 @@
 import React from "react";
 import txTypes from "src/constants/txTypes";
-import {_, reduceString, formatNumber, refineAddress} from "src/lib/scripts";
+import {_, formatNumber, reduceString, refineAddress} from "src/lib/scripts";
 import {fixed} from "src/lib/Big";
 import getTxType from "src/constants/getTxType";
 import {NavLink} from "react-router-dom";
-
 //  components
 import Skeleton from "react-skeleton-loader";
 import Decimal from "src/components/common/Decimal";
