@@ -12,16 +12,18 @@ export default function useMultiFetch(inputUrls = [], method = "get") {
 	const [state, dispatch] = React.useReducer(reducer, initialState, () => initialState);
 	const [fetch, setFetch] = React.useState(Array.from({length: inputUrls.length}, (v, i) => 0));
 	const previousFetch = usePrevious(fetch);
-	const previousUrls = usePrevious(urls);
+	// const previousUrls = usePrevious(urls);
 
-	//  initial load of each url - will only happen once
+	// TODO
+	//  initial load of each url + for setUrl
+	//  change this to only initial load when refetch urls by index is finished
 	React.useEffect(() => {
 		//  each and every url is not empty
 		if (!_.every(inputUrls, url => !empty(url))) {
 			console.warn("initial fetch did not happen - account");
 			return;
 		}
-
+		console.count("multiFetch");
 		let unmounted = false;
 		const promiseList = [];
 		const sourceList = [];
@@ -58,7 +60,9 @@ export default function useMultiFetch(inputUrls = [], method = "get") {
 		};
 	}, [inputUrls, method]);
 
-	//  refetch a single url by index
+	// TODO
+	//  refetch urls by index
+	//  Don't need this yet, maybe in the future
 	React.useEffect(() => {
 		//  do nothing if each value in fetch is the same
 		if (_.isEqual(fetch, previousFetch)) return;

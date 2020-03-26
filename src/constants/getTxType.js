@@ -16,6 +16,7 @@ export default function(txType) {
 		case COSMOS.SEND:
 			return "Transfer";
 
+		case "LIST_TOKEN":
 		case DEX.LIST:
 			return "Listing";
 		case "FREEZE_TOKEN":
@@ -57,10 +58,12 @@ export default function(txType) {
 
 		case COSMOS.DEPOSIT:
 			return "Deposit";
+		case "PROPOSAL":
 		case COSMOS.PROPOSAL_SUBMIT:
 			return "Proposal Submit";
 		case COSMOS.VALIDATOR_PROPOSAL:
 			return "Validator Proposal";
+		case "VOTE":
 		case COSMOS.VOTE:
 			return "Vote";
 		case COSMOS.VALIDATOR_CREATE:

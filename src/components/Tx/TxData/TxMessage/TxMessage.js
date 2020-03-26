@@ -56,24 +56,29 @@ export default function({msg, txData}) {
 					<>
 						<div className={cx("toValue-row")}>
 							<div className={cx("row-label")}>To / Value</div>
-							<div className={cx("row-content")}>
-								<ul className={cx("To-wrapper")}>
-									<li className={cx("label")}>To</li>
-									<li className={cx("value")}>
-										<NavLink className={cx("blueColor")} to={`/account/${txData.to}`}>
-											{reduceString(refineAddress(value.outputs[0].address), 10, 10)}
-										</NavLink>
-									</li>
-								</ul>
-								<ul className={cx("value-wrapper")}>
-									<li className={cx("label")}>Value</li>
-									<li className={cx("value")}>
-										{/*<span>{formatNumber(split[0])}</span>.<span className={cx("decimal")}>{split[1]}</span>*/}
-										<span>
-											{divide(msg?.value?.inputs?.[0]?.coins?.[0]?.amount, consts.NUM.BASE_MULT)} {msg?.value?.inputs?.[0]?.coins?.[0]?.denom}
-										</span>
-									</li>
-								</ul>
+							<div className={cx("row-content-wrapper")}>
+								<div className={cx("row-content")}>
+									<ul className={cx("To-wrapper")}>
+										<li className={cx("label")}>To</li>
+										<li className={cx("value")}>
+											{_.map(value.outputs, v => (
+												<NavLink key={v.address} className={cx("blueColor")} to={`/account/${refineAddress(v.address)}`}>
+													{reduceString(refineAddress(v.addrss), 10, 10)}
+												</NavLink>
+											))}
+										</li>
+									</ul>
+									<ul className={cx("value-wrapper")}>
+										<li className={cx("label")}>Value</li>
+										<li className={cx("value")}>
+											{_.map(value.outputs, v => (
+												<span key={v.address}>
+													{divide(v?.coins?.[0]?.amount, consts.NUM.BASE_MULT)} {v?.coins?.[0]?.denom}
+												</span>
+											))}
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</>

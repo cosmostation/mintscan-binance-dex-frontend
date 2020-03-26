@@ -3,7 +3,7 @@ import styles from "./StatusCard.scss";
 import classNames from "classnames/bind";
 import moment from "moment";
 import {_, empty, formatNumber, getUnixTimes} from "src/lib/scripts";
-import {divide} from "src/lib/Big";
+import {divide, fixed} from "src/lib/Big";
 import {useHistory} from "src/hooks";
 //  components
 import Chart from "src/components/common/Chart/Chart";
@@ -16,17 +16,18 @@ const downSVG = process.env.PUBLIC_URL + "/assets/assets/down_rd.svg";
 export default function({asset = {}}) {
 	const history = useHistory();
 
-	const splitPrice = React.useMemo(() => (asset?.current_price ? formatNumber(asset.current_price).split(".") : ["-"]), [asset]);
+	const splitPrice = React.useMemo(() => (asset?.current_price ? formatNumber(fixed(asset.current_price, 8)).split(".") : ["-"]), [asset]);
 	const splitMarketCap = React.useMemo(() => (asset?.marketcap ? formatNumber(asset.marketcap).split(".") : ["-"]), [asset]);
 	const diffPercent = React.useMemo(() => (asset?.change_range ? divide(asset.change_range, 100, 2) : undefined), [asset]);
 
 	const chartValues = React.useMemo(() => {
 		if (empty(asset.prices)) return [];
-		return _.map(asset.prices, v => {
+		const values = _.map(asset.prices, v => {
 			const arr = _.reverse(_.valuesIn(v));
 			arr[0] = new moment(arr[0]).valueOf();
 			return arr;
 		});
+		return values.sort((a, b) => (a[0] <= b[0] ? -1 : 1));
 	}, [asset.prices]);
 	return (
 		<div className={cx("statuscard-wrapper")} onClick={() => history.push(`/assets/${asset?.asset}`)}>
@@ -64,16 +65,7 @@ export default function({asset = {}}) {
 						)}
 					</div>
 				</div>
-				<div className={cx("market-cap")}>
-					{splitMarketCap[0] === "-" ? (
-						"$ -"
-					) : (
-						<>
-							$ {splitMarketCap[0]}
-							{splitMarketCap[1] ? <span className={cx("decimal")}>.{splitMarketCap[1]}</span> : undefined}
-						</>
-					)}
-				</div>
+				<div className={cx("market-cap")}>{splitMarketCap[0] === "-" ? "$ -" : <>$ {splitMarketCap[0]}</>}</div>
 			</div>
 		</div>
 	);

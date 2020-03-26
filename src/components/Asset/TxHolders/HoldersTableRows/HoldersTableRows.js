@@ -106,8 +106,8 @@ export default function HoldersTableRows({holder = {}, rank = null}) {
 			</TableCell>
 			<TableCell className={cx("tableCell", "text")} component='th' scope='row'>
 				{holder.address ? (
-					<NavLink className={cx("blueColor")} to={`/account/${holder.address}`}>
-						{reduceString(holder.address, 6, 6)}
+					<NavLink className={cx("blueColor")} to={`/account/${refineAddress(holder.address)}`}>
+						{reduceString(refineAddress(holder.address), 6, 6)}
 					</NavLink>
 				) : (
 					<Skeleton width={"80px"} widthRandomness={0} />

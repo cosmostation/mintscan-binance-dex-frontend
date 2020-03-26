@@ -10,6 +10,7 @@ import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/cor
 const cx = cn.bind(styles);
 
 export default function({balances = [], prices = null}) {
+	console.log(balances);
 	const tableBodyRender = React.useMemo(
 		() => (
 			<>
@@ -25,11 +26,11 @@ export default function({balances = [], prices = null}) {
 		() => (
 			<div className={cx("thinTable")}>
 				{_.map(balances, (v, i) => (
-					<ThinTableRows key={i} asset={v} />
+					<ThinTableRows key={i} asset={v} price={prices?.[i]} />
 				))}
 			</div>
 		),
-		[balances]
+		[balances, prices]
 	);
 
 	return (

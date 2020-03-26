@@ -19,7 +19,6 @@ const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none
 
 export const ThinTableRows = ({asset = {}, price = 1}) => {
 	const history = useHistory();
-	const bnbPrice = useSelector(state => state.blockchain.status?.price);
 
 	const assetSum = React.useMemo(() => getTotalSum(asset), [asset]);
 	return (
@@ -65,7 +64,6 @@ export const ThinTableRows = ({asset = {}, price = 1}) => {
 //bnb1z35wusfv8twfele77vddclka9z84ugywug48gn
 export default function({asset, price = 1}) {
 	const history = useHistory();
-	const bnbPrice = useSelector(state => state.blockchain.status?.price);
 	const assetSum = React.useMemo(() => getTotalSum(asset), [asset]);
 	return (
 		<TableRow className={cx("AssetTableRows-wrapper")} hover={true}>

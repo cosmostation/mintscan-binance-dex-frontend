@@ -3,13 +3,8 @@
 .TxTableRow-wrapper {
 	@include tableRow;
 	
-	.tablePointerCell {
-		@include tablePointerCell;
-		@include tableElemPadding;
-	}
-	
-	.tablePointerMiniCell {
-		@include tablePointerCellWidth140;
+	.tableCell {
+		@include tableCellWidth300;
 		@include tableElemPadding;
 	}
 	
@@ -25,10 +20,7 @@
 		min-width: 150px;
 	}
 	
-	.tableCell {
-		@include tableCellWidth300;
-		@include tableElemPadding;
-	}
+	
 	.padding-right10 {
 		padding-right: 10px;
 	}
@@ -65,7 +57,22 @@
 		color: #222222;
 	}
 }
-
+.NavLink {
+	color: #4472de;
+	display: flex;
+	height: 18px;
+	align-items: center;
+	:first-child {
+		margin-right: 6px;
+	}
+	img {
+		
+		object-fit: fill;
+		height: 18px;
+		width: 18px;
+		transform: rotate(180deg);
+	}
+}
 .blueColor {
 	color: #4472de;
 }
@@ -81,6 +88,11 @@
 
 .currency {
 	font-size: 13px;
+}
+
+.number-display {
+	display: flex;
+	justify-content: flex-end;
 }
 
 .TxList-thinTableRow {

@@ -10,16 +10,16 @@ import TxTableRows from "../TxTableRows";
 
 const cx = cn.bind(styles);
 
-export default function({txData = []}) {
+export default function({txData = [], account = ""}) {
 	const tableBodyRender = useMemo(() => {
 		return (
 			<TableBody>
 				{_.map(empty(txData) ? Array.from({length: consts.NUM.PAGE_SIZE}, (z, idx) => ({id: idx})) : txData, (v, idx) => (
-					<TxTableRows data={v} key={idx} />
+					<TxTableRows data={v} key={idx} account={account} />
 				))}
 			</TableBody>
 		);
-	}, [txData]);
+	}, [txData, account]);
 
 	return (
 		<div className={cx("TxTable-wrapper")}>

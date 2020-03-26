@@ -17,7 +17,7 @@ const greenArrowSVG = process.env.PUBLIC_URL + "/assets/icons/common/transferarr
 const cx = cn.bind(styles);
 
 export const ThinTableRow = ({asset = {}}) => {
-	const formattedValue = !_.isNil(asset.value) ? formatNumber(fixed(asset.value, 6)).split(".") : undefined;
+	const formattedValue = !_.isNil(asset.value) ? formatNumber(fixed(asset.value)).split(".") : undefined;
 	return (
 		<div key={asset.id} className={cx("AssetTxList-thinTableRow")}>
 			<div className={cx("divider")} />
@@ -102,7 +102,7 @@ export const ThinTableRow = ({asset = {}}) => {
 };
 
 export default function TxTableRows({asset = {}}) {
-	const formattedValue = !_.isNil(asset.value) ? formatNumber(fixed(asset.value, 6)).split(".") : undefined;
+	const formattedValue = !_.isNil(asset.value) ? formatNumber(fixed(asset.value)).split(".") : undefined;
 	return (
 		<TableRow className={cx("TxTableRows-wrapper")} hover={true} key={asset.txHash}>
 			<TableCell className={cx("tableCell", "text")} component='th' scope='row'>

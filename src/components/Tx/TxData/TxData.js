@@ -9,6 +9,7 @@ import TxMessage from "./TxMessage";
 const cx = cn.bind(styles);
 
 export default function({txData}) {
+	console.log(txData);
 	return (
 		<div className={cx("MsgList-wrapper")}>
 			<h2 className={cx("title")}>Msgs</h2>

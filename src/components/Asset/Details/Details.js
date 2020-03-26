@@ -4,7 +4,7 @@ import style from "./Details.scss";
 
 import {useHistory} from "src/hooks";
 //  utils
-import {_, empty, formatNumber} from "src/lib/scripts";
+import {_, empty, formatNumber, refineAddress} from "src/lib/scripts";
 import {fixed} from "src/lib/Big";
 //  components
 import InfoRow from "src/components/common/InfoRow";
@@ -49,7 +49,7 @@ export default function Details({asset}) {
 			<div className={cx("table")}>
 				<InfoRow label={"Asset Name"}>{asset?.asset}</InfoRow>
 				<InfoRow label={"Owner"}>
-					<span className={cx("blueLink")} onClick={() => history.push(`/account/${asset.owner}`)}>
+					<span className={cx("blueLink")} onClick={() => history.push(`/account/${refineAddress(asset.owner)}`)}>
 						{asset?.owner}
 					</span>
 				</InfoRow>

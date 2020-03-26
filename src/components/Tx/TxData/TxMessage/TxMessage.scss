@@ -73,7 +73,7 @@
 
 			.box-wrapper {
 				width: 200px;
-				height: 90px;
+				height: fit-content;
 				border-radius: 5px;
 				border: solid 1px #e6e6e6;
 				background-color: #f9fafc;
@@ -160,76 +160,100 @@
 	height: fit-content;
 	@include Flex_LeftRight();
 	align-items: flex-start;
+	margin-bottom: 10px;
 	@include media("<large") {
 		flex-flow: column;
 		.row-label {
 			margin-bottom: 10px;
 		}
 	}
+	
 	.row-label {
 		@include gridLabel;
 	}
-	.row-content {
+	
+	.row-content-wrapper {
 		padding: 20px;
-		height: 100%;
+		max-height: 300px;
+		
 		width: calc(100% - 203px);
 		border-radius: 5px;
 		background-color: #f9fafc;
-		@include Flex_LeftRight;
-
-		@include media("<large") {
-			width: 100%;
-		}
-		.To-wrapper {
-			height: fit-content;
-		}
-		.label {
-			height: 18px;
-			font-family: "Open Sans", serif;
-			font-size: 13px;
-			font-weight: normal;
-			font-stretch: normal;
-			font-style: normal;
-			line-height: 2.31;
-			letter-spacing: normal;
-			text-align: left;
-			color: #89909b;
-			margin-bottom: 10px;
-		}
-		.value {
-			@include gridValue;
-			min-width: 50px;
-			height: 20px;
-			color: #222222;
-			word-break: break-word;
-			.decimal {
-				font-size: var(--fontSizeDecimal);
-			}
-			.BNB {
-				font-size: 11px;
-				color: #f0b90b;
-			}
-		}
-		.value-wrapper {
-			> * {
-				text-align: right;
-			}
-		}
-	}
-	@include media("<small") {
-		height: 175px;
 		.row-content {
-			height: 100%;
-			flex-flow: column;
-			> :nth-child(1) {
-				align-self: flex-start;
+			max-height: calc(300px - 55px);
+			overflow-y: auto;
+			
+			@include Flex_LeftRight;
+			align-items: flex-start;
+			@include media("<large") {
+				width: 100%;
 			}
-			> :nth-child(2) {
-				align-self: flex-end;
+			
+			.To-wrapper {
+				height: fit-content;
+			}
+			
+			.label {
+				height: 18px;
+				font-family: "Open Sans", serif;
+				font-size: 13px;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 2.31;
+				letter-spacing: normal;
+				text-align: left;
+				color: #89909b;
+				margin-bottom: 10px;
+			}
+			
+			.value {
+				@include gridValue;
+				min-width: 50px;
+				color: #222222;
+				word-break: break-word;
+				
+				.decimal {
+					font-size: var(--fontSizeDecimal);
+				}
+				
+				.BNB {
+					font-size: 11px;
+					color: #f0b90b;
+				}
+				
+				display: flex;
+				flex-flow: column;
+				
+				> :not(:first-child) {
+					margin-top: 5px;
+				}
+			}
+			
+			.value-wrapper {
+				> * {
+					text-align: right;
+				}
 			}
 		}
+		
+		@include media("<small") {
+			height: 175px;
+			.row-content {
+				height: 100%;
+				flex-flow: column;
+				
+				> :nth-child(1) {
+					align-self: flex-start;
+				}
+				
+				> :nth-child(2) {
+					align-self: flex-end;
+				}
+			}
+		}
+		margin-bottom: 8px;
 	}
-	margin-bottom: 8px;
 }
 
 .symbol-link {

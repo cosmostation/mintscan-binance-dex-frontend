@@ -10,7 +10,7 @@ const aBunch = [txTypes.DEX.LIST, txTypes.TOKENS.TIME_LOCK, txTypes.TOKENS.TIME_
 
 export default function({type, txData, value, cx}) {
 	let from = null;
-	if (txCheckSend(type)) from = refineAddress(value?.outputs?.[0]?.address);
+	if (txCheckSend(type)) from = refineAddress(value?.inputs?.[0]?.address);
 	else if (txCheckOrder(type)) from = refineAddress(value.sender);
 	else if (txCheckFUBM(type) || _.find(aBunch, v => v === type)) from = refineAddress(value.from);
 	else if (txTypes.COSMOS.VOTE === type) from = refineAddress(value.voter);
