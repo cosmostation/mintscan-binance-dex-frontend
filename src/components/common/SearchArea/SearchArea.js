@@ -6,12 +6,12 @@ import {useSearch} from "src/hooks";
 
 //components
 import {InputBase} from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
-import {useSelector} from "react-redux";
 import Dropdown from "./Dropdown";
 import useWindowSize from "src/hooks/useWindowSize";
 
 const cx = cn.bind(styles);
+
+const SearchIcon = process.env.PUBLIC_URL + "/assets/icons/common/search-icon.svg";
 
 // TODO
 //  memoize this one well because of useWindowSize
@@ -67,7 +67,7 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 					<Dropdown width={interactiveWidth ? widthDropdown : null} show={showDropdown} customStyles={dropdownStyle} value={input} />
 				</div>
 				<button className={propCx("searchBtn")} onClick={clickSearch}>
-					<SearchIcon style={{color: "#fff"}} />
+					<img className={propCx("searchIcon")} src={SearchIcon} alt={"search"} />
 				</button>
 			</div>
 		),

@@ -75,10 +75,6 @@ export default function(props) {
 								</div>
 							</div>
 							<SearchArea propCx={cx} dropdownStyle={{position: "fixed", width: "408.92px"}} />
-							{/* hamburger button */}
-							{/*<IconButton className={cx("menuButton")} color='inherit' onClick={props.hamburgerClick}>*/}
-							{/*	<MenuIcon />*/}
-							{/*</IconButton>*/}
 						</div>
 					</Toolbar>
 				</div>

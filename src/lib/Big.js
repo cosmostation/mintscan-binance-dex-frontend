@@ -35,6 +35,9 @@ export const multiply = (input1 = "0", input2 = "0", places = consts.NUM.DEFAULT
 };
 
 export const divide = (input1 = "0", input2 = "0.1", places = consts.NUM.DEFAULT_DECIMALS) => {
-	if (!_.isFinite(Number(input2)) || input2 === "0") return "NaN";
+	if (isZero(input2)) return "NaN";
+	else if (!_.isFinite(Number(input2)) || !_.isFinite(Number(input1))) return "NaN";
 	return new B(input1).div(input2).toFixed(places);
 };
+
+const isZero = v => Number(v) === 0;

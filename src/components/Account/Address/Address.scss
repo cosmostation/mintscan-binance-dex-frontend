@@ -79,6 +79,7 @@
 	}
 	.statistics-wrapper {
 		display: flex;
+		max-width: 100%;
 		font-family: "Open Sans", serif;
 		font-size: 15px;
 		font-weight: 400;
@@ -93,6 +94,9 @@
 		.total-wrapper {
 			.currency {
 				margin-right: 3px;
+				span {
+					font-size: 25px;
+				}
 			}
 			.value {
 				@include media("<small") {
@@ -113,12 +117,22 @@
 			border-right: solid 1px #4b525d;
 			margin-right: 20px;
 		}
+		@include media("<440px") {
+			flex-flow: column;
+			.total-wrapper {
+				border: none;
+				margin-bottom: 10px;
+			}
+		}
+		
 		.compare-wrapper {
 			.compareBNB {
 				height: 40px;
 				display: flex;
 				font-size: 20px;
 				:first-child {
+					font-size: 25px;
+					margin-right: 3px;
 					@include media("<small") {
 						span {
 							max-width: 20px;

@@ -184,14 +184,21 @@
 	}
 
 	.searchBtn {
-		display: block;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
 		cursor: pointer;
 		border: 1px solid var(--colorSearchInput);
 		width: 45px;
 		height: 35px;
 		background: var(--colorSearchInput);
-
-		margin-top: 3px;
+		padding: 0 2px;
+		
+		.searchIcon {
+			width: 24px;
+			height: 24px;
+		}
 	}
 }
 

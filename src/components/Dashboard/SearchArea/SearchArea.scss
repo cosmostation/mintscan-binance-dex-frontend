@@ -181,16 +181,22 @@
 				}
 
 				.searchBtn {
-					display: block;
+					display: flex;
+					justify-content: center;
+					align-items: center;
 					cursor: pointer;
 					border: 1px solid var(--colorSearchInput);
-					padding: 10px 12px;
 					border-radius: 0 5px 5px 0;
 					background: var(--colorSearchInput);
 					outline: var(--colorSearchInput);
+					padding: 0 10.5px;
 
 					@include media("<medium") {
 						padding: 0px 5px;
+					}
+					.searchIcon {
+						width: 32px;
+						height: 32px;
 					}
 				}
 			}

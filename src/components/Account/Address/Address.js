@@ -26,62 +26,61 @@ export default function Address({account = {}, prices = []}) {
 		return [sumArray(totalAssets), sumArray(freeAssets)];
 	}, [account, prices]);
 
-	return (
-		<div className={cx("Address-wrapper")}>
-			<div className={cx("qr-address-wrapper")}>
-				<div className={cx("qr-wrapper")}>
-					<img src={qrSVG} alt={"qr-code"} />
+	return React.useMemo(
+		() => (
+			<div className={cx("Address-wrapper")}>
+				<div className={cx("qr-address-wrapper")}>
+					<div className={cx("qr-wrapper")}>
+						<img src={qrSVG} alt={"qr-code"} />
+					</div>
+					<ul className={cx("AddressDisplay-wrapper")}>
+						<li className={cx("label")}>Address</li>
+						<li className={cx("value")}>
+							<p>
+								{account.address ? (
+									<>
+										<span className={cx("front")}>{account.address.substr(0, ADDRESS_CUT_DISPLAY_LENGTH)}</span>
+										<span className={cx("remove")}>{account.address.substr(ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH * 2)}</span>
+										{account.address.substr(ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_CUT_DISPLAY_LENGTH)}
+									</>
+								) : (
+									"-"
+								)}
+							</p>
+							<img alt={"copy"} />
+						</li>
+					</ul>
 				</div>
-				<ul className={cx("AddressDisplay-wrapper")}>
-					<li className={cx("label")}>Address</li>
-					<li className={cx("value")}>
-						<p>
-							{account.address ? (
+				<div className={cx("statistics-wrapper")}>
+					<ul className={cx("total-wrapper")}>
+						<li className={cx("value")}>
+							<span className={cx("front")}>Est</span>
+							<span className={cx("remove")}>imated</span> Value
+						</li>
+						<li className={cx("dollars")}>
+							<span className={cx("currency")}>$</span>
+							{!_.isNil(total?.[0]) && !_.isNil(bnbPrice) ? <span>{formatNumber(fixed(total?.[0] ? total?.[0] : 0, 0))}</span> : <span>-</span>}
+						</li>
+					</ul>
+					<ul className={cx("compare-wrapper")}>
+						<li style={{color: "#cfcfcf"}}>
+							$<span>{fixed(!_.isNil(bnbPrice) ? bnbPrice : 0, 2)}</span> / BNB
+						</li>
+						<li className={cx("compareBNB")}>
+							{!_.isNil(total?.[0]) ? (
 								<>
-									<span className={cx("front")}>{account.address.substr(0, ADDRESS_CUT_DISPLAY_LENGTH)}</span>
-									<span className={cx("remove")}>{account.address.substr(ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH * 2)}</span>
-									{account.address.substr(ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_CUT_DISPLAY_LENGTH)}
+									<span>{formatNumber(divide(total?.[0], bnbPrice, 0))}</span>
+									<span className={cx("BNB")}>BNB</span>
 								</>
 							) : (
-								"-"
+								<span>-</span>
 							)}
-						</p>
-						<img alt={"copy"} />
-					</li>
-				</ul>
+						</li>
+					</ul>
+				</div>
 			</div>
-			<div className={cx("statistics-wrapper")}>
-				<ul className={cx("total-wrapper")}>
-					<li className={cx("value")}>
-						<span className={cx("front")}>Est</span>
-						<span className={cx("remove")}>imated</span> Value
-					</li>
-					<li className={cx("dollars")}>
-						<span className={cx("currency")}>$</span>
-						{!_.isNil(total?.[0]) && !_.isNil(bnbPrice) ? (
-							<span style={{fontSize: "25px"}}>{formatNumber(fixed(total?.[0] ? total?.[0] : 0, 0))}</span>
-						) : (
-							<span>-</span>
-						)}
-					</li>
-				</ul>
-				<ul className={cx("compare-wrapper")}>
-					<li style={{color: "#cfcfcf"}}>
-						$<span>{fixed(!_.isNil(bnbPrice) ? bnbPrice : 0, 2)}</span> / BNB
-					</li>
-					<li className={cx("compareBNB")}>
-						{!_.isNil(total?.[0]) ? (
-							<>
-								<span style={{fontSize: "25px", marginRight: "3px"}}>{formatNumber(divide(total?.[0], bnbPrice, 0))}</span>
-								<span className={cx("BNB")}>BNB</span>
-							</>
-						) : (
-							<span>-</span>
-						)}
-					</li>
-				</ul>
-			</div>
-		</div>
+		),
+		[account.address, bnbPrice, total]
 	);
 }
 

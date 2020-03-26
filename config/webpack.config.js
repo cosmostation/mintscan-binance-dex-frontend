@@ -139,6 +139,16 @@ module.exports = function(webpackEnv) {
 				},
 			},
 		],
+		[
+			require.resolve("babel-plugin-import"),
+			{
+				libraryName: "@material-ui/core",
+				// Use "'libraryDirectory': ''," if your bundler does not support ES modules
+				libraryDirectory: "esm",
+				camel2DashComponentName: false,
+			},
+			"core",
+		],
 		[require.resolve("@babel/plugin-proposal-throw-expressions")],
 		[require.resolve("@babel/plugin-proposal-optional-chaining")],
 	];
