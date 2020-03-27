@@ -22,9 +22,7 @@
 			display: flex;
 			flex-flow: row;
 			align-items: center;
-			img {
-				width: 40px;
-				height: 40px;
+			> :first-child {
 				margin-right: 15px;
 			}
 			.text {

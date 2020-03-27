@@ -42,7 +42,7 @@ export default function(props) {
 		open => {
 			console.count("rerender");
 			return (
-				<div className={cx("SearchAppBar-root")}>
+				<div className={cx("SearchAppBar-root")} id={"Header-fixed-id"}>
 					<Toolbar className={cx("toolbar")}>
 						<NavLink to='/' onClick={toMain}>
 							<img src={logo} alt={"logo"} />

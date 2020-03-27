@@ -10,6 +10,7 @@ import {multiply, sumArray} from "src/lib/Big";
 import Decimal from "src/components/common/Decimal";
 import tooltips from "src/constants/tooltips";
 import Skeleton from "react-skeleton-loader";
+import DisplayIcon from "src/components/common/DisplayIcon/DisplayIcon";
 
 const cx = cn.bind(styles);
 const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
@@ -24,7 +25,7 @@ export const ThinTableRows = ({asset = {}, price = 1}) => {
 			<div className={cx("section-wrapper")}>
 				{asset.name ? (
 					<div className={cx("nameImg-wrapper")} onClick={() => history.push(`/assets/${asset.asset}`)}>
-						<img src={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} alt={"alt"} />
+						<DisplayIcon image={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} size={30} />
 						<div className={cx("name-wrapper")}>
 							<div>{asset.mappedAsset}</div>
 							<div className={cx("name")}>{asset.name}</div>
@@ -66,7 +67,7 @@ export default function({asset, price = 1}) {
 		<TableRow className={cx("AssetTableRows-wrapper")} hover={true}>
 			<TableCell className={cx("tableCell-asset", "text")} component='th' scope='row'>
 				<div className={cx("assetDisplay-wrapper")} onClick={() => history.push(`/assets/${asset.symbol}`)}>
-					<img src={asset.assetImg ? asset.assetImg : symbolNoneSVG} alt={"assetImg"} />
+					<DisplayIcon image={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} size={30} />
 					<div className={cx("text-wrapper")}>
 						<p className={cx("title")}>{asset.mappedAsset}</p>
 						<p className={cx("content")}>{asset.name}</p>

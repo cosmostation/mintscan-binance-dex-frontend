@@ -9,6 +9,7 @@ import {fixed} from "src/lib/Big";
 //  components
 import InfoRow from "src/components/common/InfoRow";
 import Skeleton from "react-skeleton-loader";
+import DisplayIcon from "src/components/common/DisplayIcon";
 
 const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
 
@@ -33,7 +34,7 @@ export default function Details({asset}) {
 		<div className={cx("AssetDetails-wrapper")}>
 			<div className={cx("header")}>
 				<div className={cx("asset")}>
-					<img src={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} alt='asset' />
+					<DisplayIcon image={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} size={40} />
 					<div className={cx("text")}>
 						<p>{asset?.mappedAsset}</p>
 						<p className={cx("currency")}>{asset?.name}</p>

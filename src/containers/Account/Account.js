@@ -20,7 +20,7 @@ export default function Account(props) {
 	const account = props.match.params.account;
 	const prevAccount = usePrevious(account);
 	const urlList = React.useMemo(() => [`${consts.API_BASE}${consts.API.ACCOUNT_TXS(account)}`, `${baseURL}${account}`], [account]);
-	const [state, refetch, setUrls] = useMultiFetch(urlList);
+	const [state, , setUrls] = useMultiFetch(urlList);
 	const [txData, assetData] = [
 		state.data?.[0]?.txArray && !state.loading[0] ? state.data?.[0]?.txArray : defaultArr,
 		state.data?.[1] && !state.loading[1] ? state.data?.[1] : defaultArr,

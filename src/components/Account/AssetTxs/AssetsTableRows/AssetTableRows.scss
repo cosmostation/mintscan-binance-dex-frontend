@@ -34,10 +34,7 @@ $balancepadding: 16px 20px 17px 0;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
-	img {
-		width: 30px;
-		height: 30px;
-		object-fit: fill;
+	> :first-child {
 		margin-right: 10.5px;
 	}
 	.text-wrapper {
@@ -73,10 +70,7 @@ $balancepadding: 16px 20px 17px 0;
 			display: flex;
 			flex-flow: row;
 			
-			img {
-				width: 30px;
-				height: 30px;
-				object-fit: contain;
+			> :first-child {
 				margin-right: 10.5px;
 			}
 			

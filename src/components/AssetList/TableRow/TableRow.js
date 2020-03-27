@@ -8,6 +8,7 @@ import {fixed} from "src/lib/Big";
 //  components
 import {Fade, TableCell, TableRow, Tooltip} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
+import DisplayIcon from "src/components/common/DisplayIcon";
 // import humanFormat from "human-format";
 
 //  assets
@@ -36,7 +37,7 @@ export const ThinTableRow = ({asset, displayNone}) => {
 			<div className={cx("section-wrapper")}>
 				{asset.name ? (
 					<div className={cx("nameImg-wrapper")} onClick={() => history.push(`/assets/${asset.asset}`)}>
-						<img src={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} alt={"alt"} />
+						<DisplayIcon image={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} size={30} />
 						<div className={cx("name-wrapper")}>
 							<div>{asset.mappedAsset}</div>
 							<div className={cx("name")}>{asset.name}</div>
@@ -109,7 +110,7 @@ export default function({asset, displayNone}) {
 			<TableCell className={cx("tableCell", "nameCell")} component='th' scope='row' alignt='left'>
 				{asset.name ? (
 					<div className={cx("nameImg-wrapper")} onClick={() => history.push(`/assets/${asset.asset}`)}>
-						<img src={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} alt={"alt"} />
+						<DisplayIcon image={asset?.assetImg ? asset?.assetImg : symbolNoneSVG} size={30} />
 						<div className={cx("name-wrapper")}>
 							<div>{asset.mappedAsset}</div>
 							<div className={cx("name")}>{asset.name}</div>

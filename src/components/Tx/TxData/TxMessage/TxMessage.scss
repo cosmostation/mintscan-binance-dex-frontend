@@ -78,56 +78,22 @@
 				display: flex;
 				flex-flow: column;
 				justify-content: space-between;
-
-				.icon-wrapper {
-					align-self: flex-start;
-					width: 90px;
-					height: 28px;
-
-					display: flex;
-					flex-flow: row;
-					align-items: center;
-					.img-wrapper {
-						width: 26px;
-						min-width: 26px;
-						height: 26px;
-
-						overflow: hidden;
-						//border: #ffffff 2px solid;
-						border-radius: 36px;
-
-						@include Flex_center();
-						img {
-							width: 100%;
-							height: 100%;
-							object-fit: contain;
-						}
-						margin-right: 8px;
-					}
-					.icon {
-						font-family: "Montserrat", serif;
-						font-size: 15px;
-						font-weight: 500;
-						font-stretch: normal;
-						font-style: normal;
-						line-height: 1.27;
-						letter-spacing: normal;
-						text-align: left;
-						color: #222222;
+				font-family: "Montserrat", serif;
+				font-weight: 500;
+				line-height: 1.27;
+				color: #222222;
+				>:first-child {
+					font-size: 15px;
+					> :first-child {
+						margin-right: 7px;
 					}
 				}
-
+				
 				.value {
 					align-self: flex-end;
-					font-family: "Montserrat", serif;
 					font-size: 18px;
 					font-weight: 500;
-					font-stretch: normal;
-					font-style: normal;
 					line-height: 1.22;
-					letter-spacing: normal;
-					text-align: left;
-					color: #222222;
 
 					span {
 						font-size: 15px;

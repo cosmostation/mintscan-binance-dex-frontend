@@ -21,6 +21,7 @@ import InfoRow from "src/components/common/InfoRow/InfoRow";
 import TxGetFrom from "src/components/Tx/TxData/TxGetFrom/TxGetFrom";
 import tooltips from "src/constants/tooltips";
 import Decimal from "src/components/common/Decimal";
+import DisplayIcon from "src/components/common/DisplayIcon";
 
 const arrowSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_arrow.svg";
 const symbolNone = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
@@ -230,15 +231,11 @@ const TradeBox = ({symbol, value}) => {
 			else setLinkArr([consts.GET_LOGO_LINK(symbol), _.filter(assets, v => v.asset === symbol)?.[0]?.assetImg]);
 		}
 	}, [assets, image, setLinkArr, symbol, value]);
-
 	return (
 		<div className={cx("box-wrapper")}>
-			<div className={cx("icon-wrapper")}>
-				<div className={cx("img-wrapper")}>
-					<img src={image} alt={"ic"} />
-				</div>
+			<DisplayIcon size={26} image={image}>
 				<div className={cx("icon")}>{symbol.split("-")[0]}</div>
-			</div>
+			</DisplayIcon>
 			<div className={cx("value")}>
 				{formattedArr[0]}
 				{formattedArr[1] ? <span>.{formattedArr[1]}</span> : undefined}

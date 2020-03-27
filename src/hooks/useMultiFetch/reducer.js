@@ -33,8 +33,8 @@ export default function(state, action) {
 		}
 		//  singular success
 		case SUCCESS: {
-			if (state.finished) console.warn(`Logical error, success returned when fetching is finished[id:${idx}] - payload:`, action.payload);
 			const {data, idx} = action.payload;
+			if (state.finished) console.warn(`Logical error, success returned when fetching is finished[id:${idx}] - payload:`, action.payload);
 			const newData = [...state.data];
 			newData[idx] = data;
 

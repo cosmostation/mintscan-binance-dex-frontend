@@ -1,5 +1,4 @@
 import React from "react";
-import txTypes from "src/constants/txTypes";
 import {_, formatNumber, reduceString, refineAddress} from "src/lib/scripts";
 import {fixed} from "src/lib/Big";
 import getTxType from "src/constants/getTxType";
@@ -11,7 +10,6 @@ import Decimal from "src/components/common/Decimal";
 const greenArrowSVG = process.env.PUBLIC_URL + "/assets/icons/common/transferarrow_gr.svg";
 const redArrowSVG = process.env.PUBLIC_URL + "/assets/icons/common/transferarrow_rd.svg";
 
-const {DEX, COSMOS} = txTypes;
 export default function(data, cx, cell, account) {
 	switch (cell) {
 		case "txType": {

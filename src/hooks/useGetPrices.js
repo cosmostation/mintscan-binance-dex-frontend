@@ -35,6 +35,7 @@ export default function useGetPrices(interval = 3000) {
 		if (_.isEqual(prices, newPrices)) return;
 		console.log("newPrices>>");
 		setPrices(newPrices);
+		// eslint-disable-next-line
 	}, [assets, targetAssets]);
 
 	const returnPrices = useMemo(() => {

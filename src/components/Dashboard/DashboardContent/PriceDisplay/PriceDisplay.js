@@ -5,7 +5,7 @@ import {formatNumber} from "src/lib/scripts";
 //  component
 import Skeleton from "react-skeleton-loader";
 //  redux
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import consts from "src/constants/consts";
 
 const cx = cn.bind(styles);
@@ -17,7 +17,6 @@ const blocktimeSVG = process.env.PUBLIC_URL + "/assets/dashboard/blocktime_ic.sv
 
 export default function(props) {
 	const status = useSelector(state => state.blockchain.status);
-	const dispatch = useDispatch();
 
 	// React.useEffect(() => {
 	// 	const cancelToken = axios.CancelToken;

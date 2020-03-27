@@ -18,7 +18,7 @@ export default function useMultiFetch(inputUrls = [], method = "get") {
 	//  change this to only initial load when refetch urls by index is finished
 	React.useEffect(() => {
 		//  each and every url is not empty
-		if (!_.every(inputUrls, url => !empty(url))) {
+		if (!_.every(urls, url => !empty(url))) {
 			console.warn("initial fetch did not happen - account");
 			return;
 		}
@@ -27,7 +27,7 @@ export default function useMultiFetch(inputUrls = [], method = "get") {
 		const promiseList = [];
 		const sourceList = [];
 		dispatch({type: FETCHING_ALL});
-		_.each(inputUrls, (url, idx) => {
+		_.each(urls, (url, idx) => {
 			const source = axios.CancelToken.source();
 			sourceList.push(source);
 			promiseList.push(
@@ -57,7 +57,7 @@ export default function useMultiFetch(inputUrls = [], method = "get") {
 			unmounted = true;
 			_.each(sourceList, source => source.cancel("cancel cleanup"));
 		};
-	}, [inputUrls, method]);
+	}, [urls, method]);
 
 	// TODO
 	//  refetch urls by index
