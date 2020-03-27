@@ -1,0 +1,13 @@
+.spinner-wrapper {
+	display: flex;
+	min-height: 150px;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	.spinner {
+		margin-top: 20px;
+		object-fit: fill;
+		height: 50px;
+		width: 50px;
+	}
+}

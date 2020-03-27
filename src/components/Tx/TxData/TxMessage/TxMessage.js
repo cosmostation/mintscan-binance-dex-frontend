@@ -63,7 +63,7 @@ export default function({msg, txData}) {
 										<li className={cx("value")}>
 											{_.map(value.outputs, v => (
 												<NavLink key={v.address} className={cx("blueColor")} to={`/account/${refineAddress(v.address)}`}>
-													{reduceString(refineAddress(v.addrss), 10, 10)}
+													{reduceString(refineAddress(v.address), 10, 10)}
 												</NavLink>
 											))}
 										</li>

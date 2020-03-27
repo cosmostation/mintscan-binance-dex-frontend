@@ -6,6 +6,7 @@ import consts from "src/constants/consts";
 //  components
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 import TxTableRows from "../TxTableRows";
+import Spinner from "src/components/common/Spinner/Spinner";
 
 const cx = cn.bind(styles);
 
@@ -23,7 +24,7 @@ export default function({txData = [], account = ""}) {
 	return (
 		<div className={cx("TxTable-wrapper")}>
 			{empty(txData) ? (
-				<div>Loading or none</div>
+				<Spinner />
 			) : (
 				<>
 					<Table className={cx("table")}>

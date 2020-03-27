@@ -2,13 +2,13 @@
 
 .loading-wrapper {
 	height: 100vh;
-	background: var(--colorPageBg);
+	//background: var(--colorPageBg);
 	@include Flex_center();
 
 	.loading-img {
-		height: 70px;
-		width: 70px;
-		opacity: 0.8;
+		height: 50px;
+		width: 50px;
+		opacity: 1;
 
 		@include media("<small") {
 			height: 50px;

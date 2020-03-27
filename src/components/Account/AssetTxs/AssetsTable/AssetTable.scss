@@ -3,7 +3,6 @@
 .AssetsTable-wrapper {
 	overflow-x: auto;
 	overflow-y: hidden;
-	min-height: 700px;
 	
 	.table {
 		@include media("<table_limit") {

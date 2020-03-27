@@ -21,20 +21,20 @@ export default function(data, cx, cell, account) {
 		case "address": {
 			if (data?.txType === "TRANSFER") {
 				if (data.fromAddr === "") {
-					return <span className={cx("text")}>Multi send</span>;
+					return <span>Multi send</span>;
 				}
 				const senderIsAcc = data.fromAddr === account;
 				const baseAddr = refineAddress(senderIsAcc ? data.toAddr : data.fromAddr);
 				return (
 					<NavLink className={cx("NavLink")} to={`/account/${baseAddr}`}>
-						<span>{reduceString(baseAddr, 6, 6)}</span>
 						<img src={senderIsAcc ? redArrowSVG : greenArrowSVG} alt={"arrow"} />
+						<span>{reduceString(baseAddr, 6, 6)}</span>
 					</NavLink>
 				);
 			} else {
 				//  No clickable since it's the same address
 				return (
-					<div className={cx("NavLink")}>
+					<div>
 						<span>{reduceString(data.fromAddr, 6, 6)}</span>
 					</div>
 				);

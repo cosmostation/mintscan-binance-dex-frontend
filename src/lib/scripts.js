@@ -5,7 +5,7 @@ import moment from "moment";
 export {_, empty};
 
 //  remove t from bnb address
-export const refineAddress = address => (address.charAt(0) === "t" ? address.substr(1) : address);
+export const refineAddress = address => (_.isString(address) ? (address.charAt(0) === "t" ? address.substr(1) : address) : "-");
 
 export const omitProperty = (arr, valueArray) => _.map(arr, v => _.omit(v, valueArray));
 

@@ -5,6 +5,7 @@ import {_, empty} from "src/lib/scripts";
 //  components
 import AssetsTableRows, {ThinTableRows} from "../AssetsTableRows";
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
+import Spinner from "src/components/common/Spinner";
 
 const cx = cn.bind(styles);
 
@@ -35,7 +36,7 @@ export default function({balances = [], prices = null}) {
 	return (
 		<div className={cx("AssetsTable-wrapper")}>
 			{empty(balances) ? (
-				<div>Loading or none</div>
+				<Spinner />
 			) : (
 				<>
 					<Table className={cx("table")}>

@@ -79,6 +79,7 @@
 	}
 	.statistics-wrapper {
 		display: flex;
+		justify-content: flex-end;
 		max-width: 100%;
 		font-family: "Open Sans", serif;
 		font-size: 15px;
@@ -86,7 +87,7 @@
 		font-stretch: normal;
 		font-style: normal;
 		letter-spacing: normal;
-		text-align: left;
+		text-align: right;
 		color: #ffffff;
 		@include media("<medium") {
 			margin-top: 5px;
@@ -112,6 +113,7 @@
 				height: 40px;
 				display: flex;
 				font-size: 25px;
+				justify-content: flex-end;
 			}
 			padding-right: 20px;
 			border-right: solid 1px #4b525d;
@@ -126,10 +128,16 @@
 		}
 		
 		.compare-wrapper {
+			:first-child {
+				> div {
+					margin-left: 2px;
+				}
+			}
 			.compareBNB {
 				height: 40px;
 				display: flex;
 				font-size: 20px;
+				justify-content: flex-end;
 				:first-child {
 					font-size: 25px;
 					margin-right: 3px;
@@ -143,10 +151,9 @@
 				.BNB {
 					align-self: flex-end;
 					color: #f0b90b;
-					font-size: 16px;
-					margin-bottom: 2px;
+					font-size: 18px;
+					margin-bottom: 3px;
 				}
-				padding-bottom: 2px;
 			}
 		}
 	}
