@@ -36,7 +36,7 @@ export default function({assets}) {
 
 	const clickHeader = React.useCallback(
 		num => {
-			console.log("headerClicked - num", num);
+			// console.log("headerClicked - num", num);
 			if (sort.orderBy === num) setSort(v => ({...v, asc: !sort.asc}));
 			else {
 				setSort({orderBy: num, asc: false});

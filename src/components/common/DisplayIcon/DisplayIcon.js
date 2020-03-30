@@ -2,6 +2,8 @@ import React from "react";
 import cn from "classnames/bind";
 import styles from "./DisplayIcon.scss";
 
+import Img from "src/components/common/Img";
+
 const cx = cn.bind(styles);
 export default function DisplayIcon({size = 26, image = "", children}) {
 	return React.useMemo(
@@ -14,7 +16,7 @@ export default function DisplayIcon({size = 26, image = "", children}) {
 						height: `${size}px`,
 						minWidth: `${size}px`,
 					}}>
-					<img src={image} alt={"ic"} />
+					<Img src={image} alt={"ic"} />
 				</div>
 				{children}
 			</div>

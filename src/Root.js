@@ -7,6 +7,7 @@ import configure from "./store/configure";
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
 import consts from "src/constants/consts";
 import App from "./App";
+import "./firebase";
 
 const store = configure();
 const theme = createMuiTheme({
