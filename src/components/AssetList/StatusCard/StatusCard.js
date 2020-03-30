@@ -7,10 +7,10 @@ import {divide, fixed} from "src/lib/Big";
 import {useHistory} from "src/hooks";
 //  components
 import Chart from "src/components/common/Chart/Chart";
+import DisplayIcon from "src/components/common/DisplayIcon";
 
 const cx = classNames.bind(styles);
 
-const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
 const upSVG = process.env.PUBLIC_URL + "/assets/assets/up_gr.svg";
 const downSVG = process.env.PUBLIC_URL + "/assets/assets/down_rd.svg";
 export default function({asset = {}}) {
@@ -34,7 +34,7 @@ export default function({asset = {}}) {
 			<div className={cx("wrapper")}>
 				<div className={cx("asset-graph-wrapper")}>
 					<div className={cx("asset")}>
-						<img src={asset?.asset_img ? asset?.asset_img : symbolNoneSVG} alt={"none"} />
+						<DisplayIcon image={asset?.asset_img} size={30} />
 						<div className={cx("name")}>{asset?.mapped_asset ? asset.mapped_asset : "-"}</div>
 					</div>
 					<div className={cx("graph-wrapper")}>

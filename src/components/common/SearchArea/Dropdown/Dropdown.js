@@ -28,10 +28,7 @@ export default function({input = "", foundAssets = [], setSelected = () => {}, c
 						ref={i === state.selected ? focusedElement : null}
 						key={v.asset}
 						className={cx({selected: i === state.selected})}
-						onClick={() => {
-							history.push(`assets/${v.asset}`);
-							console.log("click");
-						}}
+						onClick={() => history.replace((!_.includes(history.location.pathname, "assets") ? "assets/" : "") + v.asset)}
 						onMouseEnter={() => setSelected(i)}>
 						<DisplayIcon image={v.assetImg !== "" ? v.assetImg : symbolNoneSVG} size={20} />
 						<div className={cx("content")}>

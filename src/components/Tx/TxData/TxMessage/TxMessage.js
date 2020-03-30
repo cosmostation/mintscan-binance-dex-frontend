@@ -8,7 +8,7 @@ import {_, empty, formatNumber, reduceString, refineAddress} from "src/lib/scrip
 //  redux
 import {useSelector} from "react-redux";
 //  hooks
-import {useGetImage} from "src/hooks";
+import {useGetImage, useHistory} from "src/hooks";
 //  constants
 import getTxTypeIcon from "src/constants/getTxTypeIcon";
 import consts from "src/constants/consts";

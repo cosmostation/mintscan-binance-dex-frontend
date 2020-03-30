@@ -6,12 +6,12 @@ import styles from "./SearchArea.scss";
 import {useSelector} from "react-redux";
 
 //  hooks
-import {useSearch, useDelayedInput} from "src/hooks";
+import {useSearch, useDelayedInput, useHistory} from "src/hooks";
 //components
 import {InputBase} from "@material-ui/core";
 import Dropdown from "./Dropdown";
 import useWindowSize from "src/hooks/useWindowSize";
-import {_, empty, searchProperties} from "src/lib/scripts";
+import {_, compareProperty, empty, searchProperties} from "src/lib/scripts";
 import consts from "src/constants/consts";
 
 const cx = cn.bind(styles);
@@ -21,6 +21,7 @@ const SearchIcon = process.env.PUBLIC_URL + "/assets/icons/common/search-icon.sv
 const PROBABLY_SAFE_REFRESH_INTERVAL_MS = 100;
 
 export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) {
+	const history = useHistory();
 	const assets = useSelector(state => state.assets.assets);
 	const SearchRef = React.useRef(null);
 	const [input, setInput] = React.useState("");
@@ -42,7 +43,7 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 	React.useEffect(() => {
 		delayedSetValue(_.trim(value));
 		setSelected(0);
-	}, [delayedSetValue, value]);
+	}, [delayedSetValue, setSelected, value]);
 
 	React.useEffect(() => {
 		if (!interactiveWidth) return;
@@ -65,9 +66,18 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 	//  return found Assets
 	const foundAssets = React.useMemo(() => {
 		if (empty(input) || empty(assets)) return [];
-		return _.filter(assets, v => searchProperties(v, consts.ASSET.NAME_SEARCH_PROPERTY, input.toUpperCase()));
+		// filter, then sort in alphabetical order
+		const filteredAssets = _.filter(assets, v => searchProperties(v, consts.ASSET.NAME_SEARCH_PROPERTY, input.toUpperCase()));
+		filteredAssets.sort((a, b) => compareProperty(a, b, consts.ASSET.ORDER_COMPARE[0], "id", true));
+		//  CAS goes to the bottom of the list when alphabetically ordered in either direction because you confused me for hours by showing up first when doing so
+		//  for reasons unknown to me.
+		//  Use the proper English alphabet next time mate.
+		const CAS = _.remove(filteredAssets, v => v.id === 51);
+		filteredAssets.push(...CAS);
+		return filteredAssets;
 	}, [input, assets]);
 
+	//  exit and dropdown navigation
 	const onKeyDown = React.useCallback(
 		e => {
 			if (e.key === "ArrowDown" || e.key === "ArrowUp") {
@@ -76,12 +86,18 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 				if (e.key === "ArrowDown" && dropdownState.selected >= foundAssets.length - 1) return;
 				if (e.key === "ArrowDown") setSelected(dropdownState.selected + 1);
 				else setSelected(dropdownState.selected - 1);
+			} else if (e.key === "Enter") {
+				if (dropdownState.selected < foundAssets.length) {
+					e.preventDefault();
+					history.replace((!_.includes(history.location.pathname, "assets") ? "assets/" : "") + foundAssets[dropdownState.selected].asset);
+					setValue("");
+				}
 			} else if (e.key === "Escape") {
 				// e.currentTarget.blur();
 				setValue("");
 			}
 		},
-		[dropdownState.selected, foundAssets.length, setSelected]
+		[dropdownState.selected, foundAssets, setSelected, history]
 	);
 
 	const onKeyPress = React.useCallback(
