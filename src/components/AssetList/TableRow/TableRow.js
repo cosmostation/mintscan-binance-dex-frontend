@@ -101,7 +101,6 @@ export const ThinTableRow = ({asset, displayNone}) => {
 
 export default function({asset, displayNone}) {
 	const history = useHistory();
-
 	const formattedMarketCap = !_.isNil(asset.marketCap) ? formatNumber(Math.round(asset.marketCap)) : undefined;
 	const formattedPrice = !_.isNil(asset.price) ? formatNumber(fixed(asset.price)).split(".") : undefined;
 	const formattedSupply = !_.isNil(asset.supply) ? formatNumber(fixed(asset.supply)).split(".") : undefined;

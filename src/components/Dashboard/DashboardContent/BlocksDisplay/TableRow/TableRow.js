@@ -2,6 +2,7 @@ import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./TableRow.scss";
 import {NavLink} from "react-router-dom";
+import {proposerAddress} from "src/constants/consts";
 //  components
 import {TableCell, TableRow} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
@@ -23,7 +24,7 @@ export default function({blockData}) {
 			</TableCell>
 			<TableCell className={cx("tablePointerCell", "text", "proposer")} align='left'>
 				{blockData.moniker ? (
-					<NavLink className={cx("blueColor")} to={`/validators/${blockData.proposer}`}>
+					<NavLink className={cx("blueColor")} to={`/account/${proposerAddress[blockData.moniker]}`}>
 						{blockData.moniker}
 					</NavLink>
 				) : (

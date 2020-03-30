@@ -36,21 +36,22 @@ export default function useMultiFetch(inputUrls = [], method = "get") {
 						.then(res => {
 							if (!unmounted) {
 								dispatch({type: SUCCESS, payload: {data: res.data, idx}});
-								resolve();
+								resolve("success");
 							}
 						})
 						.catch(ex => {
 							if (!unmounted) {
 								console.warn("error during fetch", ex);
 								dispatch({type: ERROR, payload: {errorMessage: ex.message}});
-								resolve();
+								resolve("fail");
 							}
 						});
 				})
 			);
 		});
-		Promise.all(promiseList).finally(() => {
+		Promise.all(promiseList).then(res => {
 			// console.log("finished all calls");
+			if (!_.every(res, v => v !== "fail")) return;
 			dispatch({type: FINISHED});
 		});
 		return () => {

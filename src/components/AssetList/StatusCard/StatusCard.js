@@ -8,6 +8,7 @@ import {useHistory} from "src/hooks";
 //  components
 import Chart from "src/components/common/Chart/Chart";
 import DisplayIcon from "src/components/common/DisplayIcon";
+import Spinner from "src/components/common/Spinner";
 
 const cx = classNames.bind(styles);
 
@@ -38,7 +39,13 @@ export default function({asset = {}}) {
 						<div className={cx("name")}>{asset?.mapped_asset ? asset.mapped_asset : "-"}</div>
 					</div>
 					<div className={cx("graph-wrapper")}>
-						{empty(chartValues) ? undefined : <Chart key={0} options={options} data={chartValues} showAxis={false} displayMax={true} />}
+						{empty(chartValues) ? (
+							<div className={cx("Spinner-container")}>
+								<Spinner />
+							</div>
+						) : (
+							<Chart key={0} options={options} data={chartValues} showAxis={false} displayMax={true} />
+						)}
 					</div>
 				</div>
 				<div className={cx("price-percentage-wrapper")}>

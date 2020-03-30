@@ -5,6 +5,8 @@ import {_, empty} from "src/lib/scripts";
 //  redux
 import {useDispatch, useSelector} from "react-redux";
 import {getCryptoAssets} from "src/store/modules/assets";
+//  hooks
+import {useIncrementalListLoader} from "src/hooks";
 //  components
 import TitleWrapper from "src/components/common/TitleWrapper";
 import PageTitle from "src/components/common/PageTitle";
@@ -16,13 +18,11 @@ import consts from "src/constants/consts";
 
 const cx = cn.bind(styles);
 
-const top = ["TUSDB", "USDSB", "BTCB", "IRIS"];
-
 export default function(props) {
 	const dispatch = useDispatch();
-	const [topAssets, setTopAssets] = React.useState([]);
 	const assets = useSelector(state => state.assets.assets);
 	const [charts] = useFetch(`${consts.API_BASE}${consts.API.CHARTS}`);
+	const [incrementalAssets, filledAssets, setAssets] = useIncrementalListLoader();
 
 	React.useEffect(() => {
 		if (!empty(assets)) return;
@@ -30,9 +30,10 @@ export default function(props) {
 	}, [assets, dispatch]);
 
 	React.useEffect(() => {
-		if (!empty(topAssets) || empty(assets)) return;
-		setTopAssets(_.filter(assets, v => _.includes(top, v.mappedAsset)));
-	}, [topAssets, assets]);
+		if (filledAssets.length === assets.length || assets.length === 0) return;
+		setAssets(assets);
+	}, [setAssets, assets, filledAssets]);
+
 	return (
 		<div className={cx("AssetList")}>
 			<TitleWrapper>
@@ -43,7 +44,7 @@ export default function(props) {
 					<StatusCard asset={charts.data?.[v]} key={v} />
 				))}
 			</div>
-			<Table assets={assets} />
+			<Table assets={incrementalAssets} />
 			<ScrollTop />
 		</div>
 	);

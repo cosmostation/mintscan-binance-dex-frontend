@@ -13,6 +13,7 @@ import useGetImage from "./useGetImage";
 import {useHistory} from "react-router-dom";
 import useGetPrices from "./useGetPrices";
 import useMultiFetch from "./useMultiFetch";
+import useIncrementalListLoader from "./useIncrementalListLoader";
 
 export {
 	useFetch,
@@ -30,4 +31,5 @@ export {
 	useGetImage,
 	useHistory,
 	useGetPrices,
+	useIncrementalListLoader,
 };

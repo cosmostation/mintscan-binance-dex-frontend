@@ -13,6 +13,8 @@ const cx = classNames.bind(styles);
 
 // TODO
 //  consider using react window if loading speeds are considered slow
+//  it is slow, but we need to not use MUI tables to fix the speed issue.
+//  bloody material UI not making my life any easier
 
 export default function({assets}) {
 	const [search, setSearch] = React.useState("");
@@ -31,6 +33,8 @@ export default function({assets}) {
 				filteredAssets.push(...CAS);
 			}
 		} else console.error(`orderBy is not a possible value - ${sort.orderBy}`);
+		if (assets.length > 0) {
+		}
 		return filteredAssets;
 	}, [assets, sort]);
 
@@ -82,8 +86,15 @@ export default function({assets}) {
 		[sort, clickHeader]
 	);
 	const tableBodyRender = React.useMemo(() => {
+		// const data = _.map(displayAssets, v => ({
+		// 	key: v.id,
+		// 	asset: v,
+		// 	displayNone: search !== "" ? !searchProperties(v, consts.ASSET.NAME_SEARCH_PROPERTY, search.toUpperCase()) : false,
+		// }));
 		return (
 			<TableBody>
+				{/*// TODO : make this work in the future, probably tear out MUI tabels altogether*/}
+				{/*<WindowedList data={data} Comp={AssetTableRow} itemCnt={data.length} />*/}
 				{_.map(displayAssets, asset => {
 					return (
 						<AssetTableRow
@@ -112,15 +123,17 @@ export default function({assets}) {
 			</div>
 		);
 	}, [displayAssets, search]);
-
-	return (
-		<div className={cx("AssetsTable-wrapper")}>
-			<Search setSearch={setSearch} cx={cx} />
-			<Table className={cx("table")}>
-				{tableHeaderRender}
-				{tableBodyRender}
-			</Table>
-			{thinTableBodyRender}
-		</div>
+	return React.useMemo(
+		() => (
+			<div className={cx("AssetsTable-wrapper")}>
+				<Search setSearch={setSearch} cx={cx} />
+				<Table className={cx("table")}>
+					{tableHeaderRender}
+					{tableBodyRender}
+				</Table>
+				{thinTableBodyRender}
+			</div>
+		),
+		[tableBodyRender, tableHeaderRender, thinTableBodyRender]
 	);
 }

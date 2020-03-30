@@ -29,7 +29,7 @@ export default function(props) {
 	}, [txHash, setUrl, isOrderId, state.data]);
 
 	if (state?.data?.height === 0) {
-		return <NotFound />;
+		return <NotFound altText={"Sorry! Tx Not Found"} />;
 	}
 
 	return (

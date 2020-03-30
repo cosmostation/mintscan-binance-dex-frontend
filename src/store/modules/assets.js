@@ -5,7 +5,6 @@ import {_, compareProperty} from "src/lib/scripts";
 import {multiply} from "src/lib/Big";
 
 const [GET_ASSETS, GET_ASSET_PRICES] = ["GET_ASSETS", "UPDATE_ASSET_PRICES"];
-
 //  sorts assets in order of marketCap first, then by id if it is the same(0)
 export const getCryptoAssets = createAction(GET_ASSETS, cancelToken => api.getAssets(cancelToken));
 export const getCryptoAssetPrices = createAction(GET_ASSET_PRICES, cancelToken => api.getAssetPrices(cancelToken));

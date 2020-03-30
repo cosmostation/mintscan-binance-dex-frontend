@@ -6,6 +6,7 @@ import {NavLink} from "react-router-dom";
 import {TableCell, TableRow} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
 import {reduceString, setAgoTime} from "src/lib/scripts";
+import {proposerAddress} from "src/constants/consts";
 
 const cx = classNames.bind(customStyle);
 
@@ -39,7 +40,7 @@ export const TableRowThin = ({blockData}) => {
 				</ul>
 				<ul className={cx("row")}>
 					<li key={1}>Node</li>
-					<li key={2}>{blockData.moniker ? <NavLink to={`/validators/${blockData.proposer}`}>{blockData.moniker}</NavLink> : <Skeleton />}</li>
+					<li key={2}>{blockData.moniker ? <NavLink to={`/account/${proposerAddress[blockData.moniker]}`}>{blockData.moniker}</NavLink> : <Skeleton />}</li>
 				</ul>
 				<ul className={cx("row")}>
 					<li key={1}>Txs</li>
@@ -76,7 +77,7 @@ export default function({blockData}) {
 				)}
 			</TableCell>
 			<TableCell className={cx("tablePointerCell", "text")} align='left'>
-				{blockData.moniker ? <NavLink to={`/validators/${blockData.proposer}`}>{blockData.moniker}</NavLink> : <Skeleton />}
+				{blockData.moniker ? <NavLink to={`/account/${proposerAddress[blockData.moniker]}`}>{blockData.moniker}</NavLink> : <Skeleton />}
 			</TableCell>
 			<TableCell className={cx("tableCell", "text")} align='right'>
 				000,000.<span className={cx("decimal")}>00000</span>

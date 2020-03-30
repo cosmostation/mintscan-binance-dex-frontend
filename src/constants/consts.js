@@ -3,6 +3,20 @@ import config from "src/config";
 
 const api = process.env.NODE_ENV === "production" ? config.API_PROD : config.API_DEV;
 
+export const proposerAddress = Object.freeze({
+	Everest: "bnb19hunw9ps8n9tkrp2j64jvheezgqmfc2eyrxd7a",
+	Ararat: "bnb15hx3frkdu7vajy2eulu80vl97vehnhyavu927v",
+	Carrauntoohil: "bnb1jw9xup8arde2jzarzcs2fv49hh28uad92m4ke0",
+	Scafell: "bnb16k0gajcczwgymfkk0zsysjzl0sxyxdfckplxlr",
+	Seoraksan: "bnb1xaef2agzycsww32fqyggnk5xgqxs8780vfv2kh",
+	Zugspitze: "bnb1jstexazk7zateuwzzwllswu4j3dsllu3dgte4m",
+	Kita: "bnb13m056plt2646zse2mwxfft92xawnky4nmncxc3",
+	Gahinga: "bnb17kfuzeza2kn46yqx4twxxmlw2jk2ywp5x4gze2",
+	Elbrus: "bnb1tpagqqqx36gq09kzw4f5a3a9sk3tq54dpl5ldn",
+	Aconcagua: "bnb1y888axmhzz6yjj464syfy68mkhzy9phlv8fzac",
+	Fuji: "bnb19klje94mnu53wj7pmrk0zmtpwgr0uz8th0fcvw",
+});
+
 export default Object.freeze({
 	API_BIANCE_DEX: "https://www.binance.org/en/trade",
 	API_COINGECKO: {

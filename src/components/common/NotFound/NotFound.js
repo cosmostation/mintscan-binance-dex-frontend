@@ -6,10 +6,10 @@ const cx = classNames.bind(styles);
 
 const notFoundImg = process.env.PUBLIC_URL + "/assets/misc/404_img.svg";
 
-const NotFound = () => (
+const NotFound = ({altText = "Sorry! Page Not Found"}) => (
 	<div className={cx("notFound_wrapper")}>
 		<img src={notFoundImg} alt='not found' />
-		<h2>Sorry! Page Not Found</h2>
+		<h2>{altText}</h2>
 	</div>
 );
 
