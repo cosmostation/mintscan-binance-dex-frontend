@@ -8,14 +8,15 @@ export default function({options, data, showAxis = true, displayMax = false}) {
 	const graphOptions = useMemo(() => {
 		// console.log(data);
 		const [xMax, xMin, yMax, yMin] = [data[data.length - 1][0], data[0][0], _.max(_.map(data, v => v[1])), _.min(_.map(data, v => v[1]))];
+		const size = data.length - 1;
 		const indexes = [
 			0,
-			Math.floor((data.length - 1) / 6) + 1,
-			Math.floor(((data.length - 1) * 2) / 6) + 1,
-			Math.floor(((data.length - 1) * 3) / 6) + 1,
-			Math.floor(((data.length - 1) * 4) / 6) + 1,
-			Math.floor(((data.length - 1) * 5) / 6) + 1,
-			data.length - 1,
+			Math.floor(size / 6) + 1,
+			Math.floor((size * 2) / 6) + 1,
+			Math.floor((size * 3) / 6) + 1,
+			Math.floor((size * 4) / 6) + 1,
+			Math.floor((size * 5) / 6) + 1,
+			size,
 		];
 		const tickPositions = [..._.map(indexes, idx => data[idx][0])];
 		return {
@@ -55,6 +56,7 @@ export default function({options, data, showAxis = true, displayMax = false}) {
 const xAxis = {
 	visible: true,
 	labels: {
+		overflow: "allow",
 		align: "center",
 		formatter: function() {
 			return getHours(this.value);

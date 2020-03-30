@@ -68,7 +68,7 @@ export default function(props) {
 const options = val => ({
 	chart: {
 		type: "areaspline",
-		margin: margin[val],
+		margin: [5, 15, 20, 10],
 		height: "180px",
 		width: null,
 		spacing: [20, 20, 20, 20],

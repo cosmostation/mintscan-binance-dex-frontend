@@ -89,7 +89,7 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 			} else if (e.key === "Enter") {
 				if (dropdownState.selected < foundAssets.length) {
 					e.preventDefault();
-					history.replace((!_.includes(history.location.pathname, "assets") ? "assets/" : "") + foundAssets[dropdownState.selected].asset);
+					history.replace((!_.includes(history.location.pathname, "/assets/") ? "assets/" : "") + foundAssets[dropdownState.selected].asset);
 					setValue("");
 				}
 			} else if (e.key === "Escape") {
