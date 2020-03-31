@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./BlockTitle.scss";
 import classNames from "classnames/bind";
 
-const RightArrowSVG = process.env.PUBLIC_URL + "/assets/icons/common/arrow_ic.svg";
+//  assets
+import RightArrowSVG from "src/assets/common/arrow_ic.svg";
 
 const cx = classNames.bind(styles);
 

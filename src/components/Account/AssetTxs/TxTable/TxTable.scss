@@ -41,5 +41,8 @@
 		width: 100%;
 		height: fit-content;
 		padding: 16px 0;
+		>:nth-of-type(odd) {
+			background-color: var(--colorTableBg);
+		}
 	}
 }

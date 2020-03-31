@@ -9,9 +9,11 @@ import getTxType from "src/constants/getTxType";
 import Skeleton from "react-skeleton-loader";
 import SvgDisplay from "src/components/common/SvgDisplay";
 
+//  assets
+import greenArrowSVG from "src/assets/common/transferarrow_gr.svg";
+
 export const CELL_TYPES = Object.freeze(["Tx Hash", "Type", "From", "To", "Value", "Height", "Time"]);
 
-const greenArrowSVG = process.env.PUBLIC_URL + "/assets/icons/common/transferarrow_gr.svg";
 const BASE_MULT = Math.pow(10, 8);
 
 export default function(blockData, cx, cell) {

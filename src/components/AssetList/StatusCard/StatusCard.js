@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./StatusCard.scss";
 import classNames from "classnames/bind";
-import moment from "moment";
+import Moment from "moment";
 import {_, empty, formatNumber} from "src/lib/scripts";
 import {divide, fixed} from "src/lib/Big";
 import {useHistory} from "src/hooks";
@@ -10,10 +10,11 @@ import Chart from "src/components/common/Chart/Chart";
 import DisplayIcon from "src/components/common/DisplayIcon";
 import Spinner from "src/components/common/Spinner";
 
-const cx = classNames.bind(styles);
+//  assets
+import upSVG from "src/assets/assets/up_gr.svg";
+import downSVG from "src/assets/assets/down_rd.svg";
 
-const upSVG = process.env.PUBLIC_URL + "/assets/assets/up_gr.svg";
-const downSVG = process.env.PUBLIC_URL + "/assets/assets/down_rd.svg";
+const cx = classNames.bind(styles);
 export default function({asset = {}}) {
 	const history = useHistory();
 
@@ -25,11 +26,12 @@ export default function({asset = {}}) {
 		if (empty(asset.prices)) return [];
 		const values = _.map(asset.prices, v => {
 			const arr = _.reverse(_.valuesIn(v));
-			arr[0] = new moment(arr[0]).valueOf();
+			arr[0] = Math.floor(new Moment(arr[0]).valueOf() / 1000);
 			return arr;
 		});
 		return values.sort((a, b) => (a[0] <= b[0] ? -1 : 1));
 	}, [asset.prices]);
+	console.log(chartValues);
 	return (
 		<div className={cx("statuscard-wrapper")} onClick={() => history.push(`/assets/${asset?.asset}`)}>
 			<div className={cx("wrapper")}>
@@ -40,9 +42,7 @@ export default function({asset = {}}) {
 					</div>
 					<div className={cx("graph-wrapper")}>
 						{empty(chartValues) ? (
-							<div className={cx("Spinner-container")}>
-								<Spinner />
-							</div>
+							<Spinner styles={{minHeight: "47px"}} />
 						) : (
 							<Chart key={0} options={options} data={chartValues} showAxis={false} displayMax={true} />
 						)}

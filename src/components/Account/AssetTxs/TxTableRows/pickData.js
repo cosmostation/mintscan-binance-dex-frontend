@@ -7,8 +7,9 @@ import {NavLink} from "react-router-dom";
 import Skeleton from "react-skeleton-loader";
 import Decimal from "src/components/common/Decimal";
 
-const greenArrowSVG = process.env.PUBLIC_URL + "/assets/icons/common/transferarrow_gr.svg";
-const redArrowSVG = process.env.PUBLIC_URL + "/assets/icons/common/transferarrow_rd.svg";
+//  assets
+import greenArrowSVG from "src/assets/common/transferarrow_gr.svg";
+import redArrowSVG from "src/assets/common/transferarrow_rd.svg";
 
 export default function(data, cx, cell, account) {
 	switch (cell) {

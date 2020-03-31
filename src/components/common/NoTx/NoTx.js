@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./NoTx.scss";
 import cn from "classnames/bind";
 
-const listNone = process.env.PUBLIC_URL + "/assets/icons/common/noitem_ic.svg";
+import listNone from "src/assets/misc/noitem_ic.svg";
 const cx = cn.bind(styles);
 
 export default function({text}) {

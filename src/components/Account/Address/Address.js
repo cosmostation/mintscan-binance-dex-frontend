@@ -8,7 +8,7 @@ import {useSelector} from "react-redux";
 import Decimal from "src/components/common/Decimal";
 
 //  assets
-const qrSVG = process.env.PUBLIC_URL + "/assets/account/qr_code.svg";
+import qrSVG from "src/assets/account/qr_code.svg";
 
 const cx = cn.bind(styles);
 const ADDRESS_LENGTH = 42;
@@ -60,21 +60,21 @@ export default function Address({account = {}, prices = []}) {
 							<span className={cx("currency")}>$</span>
 							{!_.isNil(total?.[0]) && !_.isNil(bnbPrice) ? (
 								// <span>{formatNumber(fixed(total?.[0] ? total?.[0] : 0, 2))}</span>
-								<Decimal value={formatNumber(fixed(total?.[0] ? total?.[0] : 0, 2))} fontSizeBase={25} decimalReduce={5} />
+								<Decimal value={formatNumber(fixed(total?.[0] ? total?.[0] : 0, 2))} fontSizeBase={23} decimalReduce={5} bottom={2} />
 							) : (
 								<span>-</span>
 							)}
 						</li>
 					</ul>
 					<ul className={cx("compare-wrapper")}>
-						<li className={cx("flexIt")} style={{color: "#cfcfcf"}}>
+						<li className={cx("flexIt")}>
 							$<Decimal value={fixed(!_.isNil(bnbPrice) ? bnbPrice : 0, 2)} fontSizeBase={15} /> / BNB
 						</li>
 						<li className={cx("compareBNB")}>
 							{!_.isNil(total?.[0]) ? (
 								<>
 									{/*<span>{formatNumber(divide(total?.[0], bnbPrice, 2))}</span>*/}
-									<Decimal value={formatNumber(divide(total?.[0], bnbPrice, 2))} fontSizeBase={25} decimalReduce={5} />
+									<Decimal value={formatNumber(divide(total?.[0], bnbPrice, 2))} fontSizeBase={23} decimalReduce={5} bottom={2} />
 									<span className={cx("BNB")}>BNB</span>
 								</>
 							) : (

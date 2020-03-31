@@ -8,12 +8,12 @@ import Skeleton from "react-skeleton-loader";
 import {useSelector} from "react-redux";
 import consts from "src/constants/consts";
 
-const cx = cn.bind(styles);
-
 //  svgs
-const down_rd = process.env.PUBLIC_URL + "/assets/dashboard/down_rd.svg";
-const up_gr = process.env.PUBLIC_URL + "/assets/dashboard/up_gr.svg";
-const blocktimeSVG = process.env.PUBLIC_URL + "/assets/dashboard/blocktime_ic.svg";
+import down_rd from "src/assets/common/arrow_down.svg";
+import up_gr from "src/assets/common/arrow_up.svg";
+import blocktimeSVG from "src/assets/dashboard/blocktime_ic.svg";
+
+const cx = cn.bind(styles);
 
 export default function(props) {
 	const status = useSelector(state => state.blockchain.status);

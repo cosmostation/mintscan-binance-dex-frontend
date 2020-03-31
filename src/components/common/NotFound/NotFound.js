@@ -2,9 +2,9 @@ import React from "react";
 import styles from "./NotFound.scss";
 import classNames from "classnames/bind";
 
-const cx = classNames.bind(styles);
+import notFoundImg from "src/assets/misc/404_img.svg";
 
-const notFoundImg = process.env.PUBLIC_URL + "/assets/misc/404_img.svg";
+const cx = classNames.bind(styles);
 
 const NotFound = ({altText = "Sorry! Page Not Found"}) => (
 	<div className={cx("notFound_wrapper")}>

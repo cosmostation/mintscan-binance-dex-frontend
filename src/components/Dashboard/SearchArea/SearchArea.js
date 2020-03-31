@@ -6,8 +6,10 @@ import SearchArea from "src/components/common/SearchArea";
 import consts from "src/constants/consts";
 import LinkCard from "src/components/Dashboard/LinkCard";
 
-const iosIcon = process.env.PUBLIC_URL + "/assets/dashboard/appstore_img.svg";
-const googleIcon = process.env.PUBLIC_URL + "/assets/dashboard/playstore.svg";
+//  assets
+import iosIcon from "src/assets/dashboard/appstore_img.svg";
+import googleIcon from "src/assets/dashboard/playstore.svg";
+
 const cx = cn.bind(styles);
 
 export default function() {

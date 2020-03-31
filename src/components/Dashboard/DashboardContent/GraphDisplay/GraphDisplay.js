@@ -58,23 +58,23 @@ export default function(props) {
 				) : empty(data?.[0]) || empty(data?.[0]) ? (
 					<ErrorPage />
 				) : (
-					<Chart key={showPrice} options={options(showPrice ? 0 : 1)} data={data?.[showPrice ? 0 : 1]} />
+					<Chart key={showPrice} options={options} data={data?.[showPrice ? 0 : 1]} />
 				)}
 			</div>
 		</div>
 	);
 }
 
-const options = val => ({
+const options = {
 	chart: {
 		type: "areaspline",
-		margin: [5, 15, 20, 10],
+		margin: [5, 15, 20, 15],
 		height: "180px",
 		width: null,
 		spacing: [20, 20, 20, 20],
 		renderTo: "container",
 	},
-});
+};
 const margin = [
 	[5, 20, 20, 10],
 	[5, 20, 20, 10],

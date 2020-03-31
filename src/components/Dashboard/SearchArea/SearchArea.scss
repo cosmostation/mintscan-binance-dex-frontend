@@ -9,7 +9,7 @@
 
 	background-size: cover;
 
-	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/assets/dashboard/main_img.png") no-repeat fixed center center;
+	background: linear-gradient(rgba(0,0,0, 0.1), rgba(0,0,0, 0.1)), url("../../../assets/dashboard/main_img.png") no-repeat fixed center center;
 	background-position-y: inherit;
 
 	@include media(">1880px") {
@@ -23,7 +23,7 @@
 
 	@include media("<medium") {
 		margin-top: 0;
-		background: #222222;
+		background: #0A0E11;
 		height: 230px;
 		width: calc(100% + 20px);
 		margin-left: -10px;

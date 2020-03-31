@@ -12,7 +12,7 @@ import DisplayIcon from "src/components/common/DisplayIcon";
 // import humanFormat from "human-format";
 
 //  assets
-const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
+import symbolNoneSVG from "src/assets/transactions/symbol_none.svg";
 
 const cx = cn.bind(styles);
 
@@ -93,7 +93,9 @@ export const ThinTableRow = ({asset, displayNone}) => {
 			</ul>
 			<ul className={cx("row")}>
 				<li>Owner</li>
-				<li className={cx("owner")}>{asset.owner ? reduceString(asset.owner, 6, 6) : <Skeleton />}</li>
+				<li className={cx("owner")} onClick={() => history.push(`/account/${asset.owner}`)}>
+					{asset.owner ? reduceString(asset.owner, 6, 6) : <Skeleton />}
+				</li>
 			</ul>
 		</div>
 	);

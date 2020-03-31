@@ -68,10 +68,10 @@
 					object-fit: fill;
 					width: 24px;
 					height: 24px;
-					content: url("/assets/account/copy_btn.svg");
+					content: url("../../../assets/account/copy_btn.svg");
 					
 					&:hover {
-						content: url("/assets/account/copy_btn_over.svg");
+						content: url("../../../assets/account/copy_btn_over.svg");
 					}
 				}
 			}
@@ -91,13 +91,11 @@
 		color: #ffffff;
 		@include media("<medium") {
 			margin-top: 5px;
+			align-self: flex-end;
 		}
 		.total-wrapper {
 			.currency {
 				margin-right: 3px;
-				span {
-					font-size: 25px;
-				}
 			}
 			.value {
 				@include media("<small") {
@@ -112,38 +110,35 @@
 			.dollars {
 				height: 40px;
 				display: flex;
-				font-size: 25px;
+				font-size: 23px;
+				align-items: center;
 				justify-content: flex-end;
 			}
+			
 			padding-right: 20px;
 			border-right: solid 1px #4b525d;
 			margin-right: 20px;
 		}
-		@include media("<440px") {
-			flex-flow: column;
-			.total-wrapper {
-				border: none;
-				margin-bottom: 10px;
-			}
-		}
 		
 		.compare-wrapper {
-			:first-child {
-				> div {
+			.flexIt {
+				>:first-child {
 					margin-left: 2px;
 				}
+				justify-content: flex-end;
 			}
 			.compareBNB {
 				height: 40px;
 				display: flex;
 				font-size: 20px;
 				justify-content: flex-end;
+				align-items: center;
 				:first-child {
-					font-size: 25px;
+					font-size: 23px;
 					margin-right: 3px;
 					@include media("<small") {
 						span {
-							max-width: 20px;
+							max-width: 22px;
 							overflow-x: hidden;
 						}
 					}
@@ -152,7 +147,29 @@
 					align-self: flex-end;
 					color: #f0b90b;
 					font-size: 18px;
-					margin-bottom: 3px;
+					margin-bottom: 4px;
+				}
+			}
+		}
+		@include media("<460px") {
+			flex-flow: column;
+			align-self: flex-start;
+			text-align: left;
+			.total-wrapper {
+				border: none;
+				margin-bottom: 10px;
+				padding-right: 0;
+				margin-right: 0;
+				.dollars {
+					justify-content: flex-start;
+				}
+			}
+			.compare-wrapper {
+				.flexIt {
+					justify-content: flex-start;
+				}
+				.compareBNB {
+					justify-content: flex-start;
 				}
 			}
 		}

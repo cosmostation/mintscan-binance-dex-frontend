@@ -13,47 +13,45 @@ const cx = classNames.bind(customStyle);
 
 export const TableRowThin = ({blockData}) => {
 	return (
-		<>
-			<div className={cx("TxList-thinTableRow")}>
-				<ul className={cx("row", "text")}>
-					<li>Tx Hash</li>
-					<li>{pickData(blockData, cx, "Tx Hash")}</li>
-				</ul>
-				<ul className={cx("row", "text")}>
-					<li>Type</li>
-					<li>{pickData(blockData, cx, "Type")}</li>
-				</ul>
-				<ul className={cx("row")}>
-					<li>Address</li>
-					<li className={cx("flexit")}>
-						{pickData(blockData, cx, CELL_TYPES[2])}
-						{pickData(blockData, cx, CELL_TYPES[3])}
-					</li>
-				</ul>
-				<ul className={cx("row")}>
-					<li>Value</li>
-					<li>
-						{pickData(blockData, cx, CELL_TYPES[4])} {pickData(blockData, cx, CELL_TYPES[5])}
-					</li>
-				</ul>
-				<ul className={cx("row")}>
-					<li>height</li>
-					<li>
-						{blockData.height ? (
-							<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height}`}>
-								{blockData.height}{" "}
-							</NavLink>
-						) : (
-							<Skeleton />
-						)}
-					</li>
-				</ul>
-				<ul className={cx("row")}>
-					<li>Time</li>
-					<li>{blockData.timestamp ? setAgoTime(blockData.timestamp) : <Skeleton />}</li>
-				</ul>
-			</div>
-		</>
+		<div className={cx("TxList-thinTableRow")}>
+			<ul className={cx("row", "text")}>
+				<li>Tx Hash</li>
+				<li>{pickData(blockData, cx, "Tx Hash")}</li>
+			</ul>
+			<ul className={cx("row", "text")}>
+				<li>Type</li>
+				<li>{pickData(blockData, cx, "Type")}</li>
+			</ul>
+			<ul className={cx("row")}>
+				<li>Address</li>
+				<li className={cx("flexit")}>
+					{pickData(blockData, cx, CELL_TYPES[2])}
+					{pickData(blockData, cx, CELL_TYPES[3])}
+				</li>
+			</ul>
+			<ul className={cx("row")}>
+				<li>Value</li>
+				<li>
+					{pickData(blockData, cx, CELL_TYPES[4])} {pickData(blockData, cx, CELL_TYPES[5])}
+				</li>
+			</ul>
+			<ul className={cx("row")}>
+				<li>height</li>
+				<li>
+					{blockData.height ? (
+						<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height}`}>
+							{blockData.height}{" "}
+						</NavLink>
+					) : (
+						<Skeleton />
+					)}
+				</li>
+			</ul>
+			<ul className={cx("row")}>
+				<li>Time</li>
+				<li>{blockData.timestamp ? setAgoTime(blockData.timestamp) : <Skeleton />}</li>
+			</ul>
+		</div>
 	);
 };
 

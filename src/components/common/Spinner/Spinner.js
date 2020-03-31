@@ -2,13 +2,13 @@ import React from "react";
 import cn from "classnames/bind";
 import styles from "./Spinner.scss";
 
+import spinSVG from "src/assets/common/spin.svg";
+
 const cx = cn.bind(styles);
 
-const spinSVG = process.env.PUBLIC_URL + "/assets/icons/common/spin.svg";
-
-export default function Spinner(props) {
+export default function Spinner({styles}) {
 	return (
-		<div className={cx("spinner-wrapper")}>
+		<div className={cx("spinner-wrapper")} style={styles}>
 			<img className={cx("spinner")} src={spinSVG} alt={"SPIN ME ROUND"} />
 		</div>
 	);

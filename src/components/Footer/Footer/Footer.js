@@ -4,15 +4,14 @@ import styles from "./Footer.scss";
 import classNames from "classnames/bind";
 import consts from "src/constants/consts";
 
-const footerLogo = process.env.PUBLIC_URL + "/assets/icons/footer/mintscan_footer_logo.svg";
-const googleIcon = process.env.PUBLIC_URL + "/assets/icons/footer/playstore_btn.svg";
-const iosIcon = process.env.PUBLIC_URL + "/assets/icons/footer/appstore_btn.svg";
-const webWalletIcon = process.env.PUBLIC_URL + "/assets/icons/footer/wallet_btn.svg";
-const githubIcon = process.env.PUBLIC_URL + "/assets/icons/footer/github_btn.svg";
-const mediumIcon = process.env.PUBLIC_URL + "/assets/icons/footer/medium_btn.svg";
-const telegramIcon = process.env.PUBLIC_URL + "/assets/icons/footer/telegram_btn.svg";
-const emailIcon = process.env.PUBLIC_URL + "/assets/icons/footer/email_btn.svg";
-// const cosFooterLogo = process.env.PUBLIC_URL + "/assets/icons/footer/cosmostation_footer_logo.svg";
+import footerLogo from "src/assets/footer/mintscan_footer_logo.svg";
+import googleIcon from "src/assets/footer/playstore_btn.svg";
+import iosIcon from "src/assets/footer/appstore_btn.svg";
+import webWalletIcon from "src/assets/footer/wallet_btn.svg";
+import githubIcon from "src/assets/footer/github_btn.svg";
+import mediumIcon from "src/assets/footer/medium_btn.svg";
+import telegramIcon from "src/assets/footer/telegram_btn.svg";
+import emailIcon from "src/assets/footer/email_btn.svg";
 
 const cx = classNames.bind(styles);
 

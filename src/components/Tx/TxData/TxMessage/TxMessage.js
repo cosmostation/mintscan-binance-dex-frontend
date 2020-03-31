@@ -23,10 +23,11 @@ import tooltips from "src/constants/tooltips";
 import Decimal from "src/components/common/Decimal";
 import DisplayIcon from "src/components/common/DisplayIcon";
 
-const arrowSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_arrow.svg";
-const symbolNone = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
-const detailSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_detail_btn.svg";
-const bnbSVG = process.env.PUBLIC_URL + "/assets/icons/common/binance_token.svg";
+//  assets
+import arrowSVG from "src/assets/transactions/symbol_arrow.svg";
+import symbolNone from "src/assets/transactions/symbol_none.svg";
+import detailSVG from "src/assets/transactions/symbol_detail_btn.svg";
+import bnbSVG from "src/assets/common/binance_token.svg";
 
 // const bnbSVG = "https://static.binance.org/icon/8fedcd202fb549d28b2f313b2bf97033";
 

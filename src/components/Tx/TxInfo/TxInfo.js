@@ -8,8 +8,10 @@ import {setAgoTime} from "src/lib/scripts";
 //  components
 import InfoRow from "src/components/common/InfoRow";
 
-const successSVG = process.env.PUBLIC_URL + "/assets/transactions/success_ic.svg";
-const failSVG = process.env.PUBLIC_URL + "/assets/transactions/fail_ic.svg";
+//  assets
+import failSVG from "src/assets/transactions/fail_ic.svg";
+import successSVG from "src/assets/transactions/success_ic.svg";
+
 const cx = cn.bind(styles);
 
 export default function({txData}) {

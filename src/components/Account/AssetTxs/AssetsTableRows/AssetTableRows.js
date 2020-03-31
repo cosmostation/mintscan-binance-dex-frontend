@@ -12,8 +12,10 @@ import tooltips from "src/constants/tooltips";
 import Skeleton from "react-skeleton-loader";
 import DisplayIcon from "src/components/common/DisplayIcon/DisplayIcon";
 
+//  assets
+import symbolNoneSVG from "src/assets/transactions/symbol_none.svg";
+
 const cx = cn.bind(styles);
-const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
 
 export const ThinTableRows = ({asset = {}, price = 1}) => {
 	const history = useHistory();

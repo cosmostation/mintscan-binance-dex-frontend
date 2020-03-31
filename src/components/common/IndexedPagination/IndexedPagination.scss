@@ -44,14 +44,14 @@
 
 				img {
 					object-fit: fill;
-					content: url("/assets/icons/common/check_box_blank.svg");
+					content: url("../../../assets/common/check_box_blank.svg");
 
 					&:hover {
-						content: url("/assets/icons/common/check_box_blank_hover.svg");
+						content: url("../../../assets/common/check_box_blank_hover.svg");
 					}
 
 					&.clicked {
-						content: url("/assets/icons/common/check_box.svg");
+						content: url("../../../assets/common/check_box.svg");
 					}
 				}
 			}
@@ -117,19 +117,17 @@
 				}
 
 				&.right {
-					content: url("/assets/icons/common/to-next-page.svg");
-
+					content: url("../../../assets/common/to-next-page.svg");
 					&.inactive {
-						content: url("/assets/icons/common/to-next-page_inactive.svg");
+						content: url("../../../assets/common/to-next-page_inactive.svg");
 						cursor: auto;
 					}
 				}
 
 				&.last {
-					content: url("/assets/icons/common/to-last-page.svg");
-
+					content: url("../../../assets/common/to-last-page.svg");
 					&.inactive {
-						content: url("/assets/icons/common/to-last-page_inactive.svg");
+						content: url("../../../assets/common/to-last-page_inactive.svg");
 						cursor: auto;
 					}
 				}

@@ -8,7 +8,40 @@ import PriceDisplay from "./PriceDisplay";
 import BlocksDisplay from "./BlocksDisplay";
 import TxDisplay from "./TxDisplay";
 
+//  assets
+import exchangeSVG from "src/assets/dashboard/exchange_ic.svg";
+import dexSVG from "src/assets/dashboard/dex_ic.svg";
+import jexSVG from "src/assets/dashboard/jex_ic.svg";
+import launchpadSVG from "src/assets/dashboard/launchpad_ic.svg";
+
 const cx = cn.bind(styles);
+
+const cardData = Object.freeze([
+	{
+		svg: exchangeSVG,
+		title: "Exchange",
+		content: "Blockchain and crypto asset exchange",
+		link: "https://www.binance.org/en/trade",
+	},
+	{
+		svg: dexSVG,
+		title: "Binance DEX",
+		content: "decentralized digital asset exchange",
+		link: "https://www.binance.org/",
+	},
+	{
+		svg: jexSVG,
+		title: "Binance JEX",
+		content: "Bitcoin futures & Crypto options",
+		link: "https://www.jex.com/",
+	},
+	{
+		svg: launchpadSVG,
+		title: "Launchpad",
+		content: "Token launch platform",
+		link: "https://launchpad.binance.com/",
+	},
+]);
 
 export default function(props) {
 	return (
@@ -30,33 +63,6 @@ export default function(props) {
 		</div>
 	);
 }
-
-const cardData = Object.freeze([
-	{
-		svg: process.env.PUBLIC_URL + "/assets/dashboard/exchange_ic.svg",
-		title: "Exchange",
-		content: "Blockchain and crypto asset exchange",
-		link: "https://www.binance.org/en/trade",
-	},
-	{
-		svg: process.env.PUBLIC_URL + "/assets/dashboard/dex_ic.svg",
-		title: "Binance DEX",
-		content: "decentralized digital asset exchange",
-		link: "https://www.binance.org/",
-	},
-	{
-		svg: process.env.PUBLIC_URL + "/assets/dashboard/jex_ic.svg",
-		title: "Binance JEX",
-		content: "Bitcoin futures & Crypto options",
-		link: "https://www.jex.com/",
-	},
-	{
-		svg: process.env.PUBLIC_URL + "/assets/dashboard/launchpad_ic.svg",
-		title: "Launchpad",
-		content: "Token launch platform",
-		link: "https://launchpad.binance.com/",
-	},
-]);
 
 const DashboardCard = ({svg, title, content, link}) => (
 	<li className={cx("DashboardCard-wrapper")} onClick={() => window.open(link, "_blank")}>

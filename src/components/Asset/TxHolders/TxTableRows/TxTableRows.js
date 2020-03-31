@@ -12,7 +12,7 @@ import Skeleton from "react-skeleton-loader";
 import SvgDisplay from "src/components/common/SvgDisplay";
 
 //  assets
-const greenArrowSVG = process.env.PUBLIC_URL + "/assets/icons/common/transferarrow_gr.svg";
+import greenArrowSVG from "src/assets/common/transferarrow_gr.svg";
 
 const cx = cn.bind(styles);
 

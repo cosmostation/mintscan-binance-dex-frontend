@@ -7,7 +7,7 @@ import {useHistory} from "src/hooks";
 import {_, empty} from "src/lib/scripts";
 import DisplayIcon from "src/components/common/DisplayIcon";
 
-const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
+import symbolNoneSVG from "src/assets/transactions/symbol_none.svg";
 const cx = cn.bind(styles);
 
 export default function({input = "", foundAssets = [], setSelected = () => {}, customStyles = {}, state = {show: false, selected: 0}, width = null}) {

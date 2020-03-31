@@ -2,10 +2,9 @@ import React from "react";
 import classNames from "classnames/bind";
 
 import styles from "./Loading.scss";
-// import loading from "./loading_bk.gif";
+import spinSVG from "src/assets/common/spin.svg";
 
 const cx = classNames.bind(styles);
-const spinSVG = process.env.PUBLIC_URL + "/assets/icons/common/spin.svg";
 
 const Loading = () => (
 	<div className={cx("loading-wrapper")}>

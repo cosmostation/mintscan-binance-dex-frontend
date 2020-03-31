@@ -32,14 +32,14 @@
 
 		.PriceGraph-wrapper {
 			display: grid;
-			grid-template-columns: 340px 494px;
+			grid-template-columns: 340px 504px;
 			grid-row-gap: 15px;
-			grid-column-gap: 30px;
+			grid-column-gap: 20px;
 			height: 288px;
 			@include media("<large") {
 				min-width: 90vw;
-				grid-template-columns: calc((370 / 894) * 100%) calc((494 / 894) * 100%);
-				grid-column-gap: calc((30 / 894) * 100%);
+				grid-template-columns: calc((360 / 894) * 100%) calc((504 / 894) * 100%);
+				grid-column-gap: calc((20 / 894) * 100%);
 			}
 			@include media("<medium") {
 				@include card-nopadding-wrapper;

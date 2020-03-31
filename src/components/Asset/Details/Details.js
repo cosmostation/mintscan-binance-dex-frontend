@@ -11,7 +11,7 @@ import InfoRow from "src/components/common/InfoRow";
 import Skeleton from "react-skeleton-loader";
 import DisplayIcon from "src/components/common/DisplayIcon";
 
-const symbolNoneSVG = process.env.PUBLIC_URL + "/assets/transactions/symbol_none.svg";
+import symbolNoneSVG from "src/assets/transactions/symbol_none.svg";
 
 const cx = cn.bind(style);
 

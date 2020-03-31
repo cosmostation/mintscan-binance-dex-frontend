@@ -1,7 +1,8 @@
 import txTypes from "src/constants/txTypes";
 import {_} from "src/lib/scripts";
 
-const SVG = Object.freeze(_.times(7, v => process.env.PUBLIC_URL + `/assets/transactions/msgsic_${v + 1}.svg`));
+import binanceSVG from "src/assets/common/binance_token.svg";
+const SVG = Object.freeze(_.times(7, v => require(`src/assets/transactions/msgsic_${v + 1}.svg`)));
 
 const {COSMOS, DEX, TOKENS, MISC} = txTypes;
 export default function(type) {
@@ -12,5 +13,5 @@ export default function(type) {
 	else if (_.find([TOKENS.FREEZE, TOKENS.UNFREEZE], v => type === v)) return SVG[4];
 	else if (_.find([TOKENS.HTLT_DEPOSIT, TOKENS.HTLT_CLAIM, TOKENS.HTLT_REFUND], v => type === v)) return SVG[5];
 	else if (MISC.ACCOUNTFLAG_SET === type) return SVG[6];
-	return process.env.PUBLIC_URL + "/assets/icons/common/binance_token.svg";
+	return binanceSVG;
 }

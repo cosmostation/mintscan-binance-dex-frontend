@@ -10,12 +10,12 @@ import {Toolbar} from "@material-ui/core";
 
 import consts from "src/constants/consts";
 
-const arrowDown = process.env.PUBLIC_URL + "/assets/icons/common/arrow-down.svg";
-const binance = process.env.PUBLIC_URL + "/assets/icons/navigation/chain_ic.svg";
-const iris = process.env.PUBLIC_URL + "/assets/icons/common/iris_token.svg";
-const kava = process.env.PUBLIC_URL + "/assets/icons/common/kava_token.svg";
-const cosmos = process.env.PUBLIC_URL + "/assets/icons/common/atom_token.svg";
-const logo = process.env.PUBLIC_URL + "/assets/icons/common/mintscan_logo.svg";
+import dropdownArrow from "src/assets/common/dropdown_arrow.svg";
+import binance from "src/assets/header/chain_ic.svg";
+import iris from "src/assets/header/iris_token.svg";
+import kava from "src/assets/header/kava_token.svg";
+import cosmos from "src/assets/header/atom_token.svg";
+import logo from "src/assets/header/mintscan_logo.svg";
 
 const cx = cn.bind(styles);
 
@@ -54,7 +54,7 @@ export default function(props) {
 										<div className={cx("net-icon")} style={{backgroundImage: `url(${binance})`}} />
 										{consts.NETWORK.BINANCE}
 									</div>
-									<img className={cx("arrow-icon", {upsideDown: open})} src={arrowDown} alt={"none"} />
+									<img className={cx("arrow-icon", {upsideDown: open})} src={dropdownArrow} alt={"none"} />
 								</button>
 								<div className={cx("select-item-list", {hide: !open})}>
 									{_.map(avaliableNetworks, (network, idx) => (

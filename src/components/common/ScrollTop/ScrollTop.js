@@ -4,9 +4,10 @@ import styles from "./ScrollTop.scss";
 //  hooks
 import {useScroll} from "src/hooks";
 
-const cx = cn.bind(styles);
+//  assets
+import scrollTopSVG from "src/assets/common/scroll_top.svg";
 
-const scrollTopSVG = process.env.PUBLIC_URL + "/assets/icons/common/scroll_top.svg";
+const cx = cn.bind(styles);
 
 export default function ScrollTop(props) {
 	const atScroll = useScroll(100);

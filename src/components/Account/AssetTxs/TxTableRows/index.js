@@ -1,1 +1,1 @@
-export {default} from "./TxTableRows";
+export {default, ThinTableRow} from "./TxTableRows";

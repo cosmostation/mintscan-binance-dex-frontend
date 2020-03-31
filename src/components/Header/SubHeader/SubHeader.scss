@@ -137,6 +137,11 @@
 				font-weight: 600;
 				color: var(--colorMainText) !important;
 			}
+			
+			h2 {
+				font-weight: 600;
+				color: var(--colorMainText) !important;
+			}
 
 			&:hover {
 				h2 {
@@ -146,31 +151,31 @@
 
 				&:nth-child(1) {
 					img {
-						content: url("/assets/icons/navigation/dashboard_ic.svg");
+						content: url("../../../assets/header/dashboard_ic.svg");
 					}
 				}
 
 				&:nth-child(2) {
 					img {
-						content: url("/assets/icons/navigation/blocks_ic.svg");
+						content: url("../../../assets/header/blocks_ic.svg");
 					}
 				}
 
 				&:nth-child(3) {
 					img {
-						content: url("/assets/icons/navigation/transations_ic.svg");
+						content: url("../../../assets/header/transations_ic.svg");
 					}
 				}
 
 				&:nth-child(4) {
 					img {
-						content: url("/assets/icons/navigation/assets_ic.svg");
+						content: url("../../../assets/header/assets_ic.svg");
 					}
 				}
 
 				&:nth-child(5) {
 					img {
-						content: url("/assets/icons/navigation/dex_ic.svg");
+						content: url("../../../assets/header/dex_ic.svg");
 					}
 				}
 			}

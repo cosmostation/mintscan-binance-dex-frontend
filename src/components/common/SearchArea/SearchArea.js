@@ -13,12 +13,12 @@ import Dropdown from "./Dropdown";
 import useWindowSize from "src/hooks/useWindowSize";
 import {_, compareProperty, empty, searchProperties} from "src/lib/scripts";
 import consts from "src/constants/consts";
+//  assests
+import SearchIcon from "src/assets/common/search-icon.svg";
 
 const cx = cn.bind(styles);
 
-const SearchIcon = process.env.PUBLIC_URL + "/assets/icons/common/search-icon.svg";
-
-const PROBABLY_SAFE_REFRESH_INTERVAL_MS = 100;
+const PROBABLY_SAFE_REFRESH_INTERVAL_MS = 150;
 
 export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) {
 	const history = useHistory();
