@@ -4,7 +4,7 @@ import styles from "./Tx.scss";
 
 import {_, empty} from "src/lib/scripts";
 import consts from "src/constants/consts";
-import useFetch from "src/hooks/useFetch/useFetch";
+import {useFetch, usePrevious} from "src/hooks";
 import MockData from "src/containers/Tx/MockData";
 //  components
 import TitleWrapper from "src/components/common/TitleWrapper";
@@ -16,6 +16,7 @@ import NotFound from "src/components/common/NotFound";
 const cx = cn.bind(styles);
 export default function(props) {
 	const txHash = props.match.params?.tx;
+	const prevTxHash = usePrevious(txHash);
 	const isOrderId = !isNaN(_.toNumber(txHash.split("-")[1]));
 
 	// TODO
@@ -27,6 +28,12 @@ export default function(props) {
 		//  query by order id
 		if (state.data?.transactionHash) setUrl(`${consts.API_BASE}${consts.API.TX}/${state.data.transactionHash}`);
 	}, [txHash, setUrl, isOrderId, state.data]);
+
+	React.useEffect(() => {
+		if (txHash !== prevTxHash || _.isNil(txHash) || _.isNil(txHash)) {
+			setUrl(`${consts.API_BASE}${isOrderId ? consts.API.ORDERS : consts.API.TX}/${txHash}`);
+		}
+	}, [txHash, prevTxHash, setUrl, isOrderId]);
 
 	if (state?.data?.height === 0) {
 		return <NotFound altText={"Sorry! Tx Not Found"} />;
