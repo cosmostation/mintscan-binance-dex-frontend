@@ -2,6 +2,7 @@ import React from "react";
 import cn from "classnames/bind";
 import styles from "./Address.scss";
 import {_, empty, formatNumber} from "src/lib/scripts";
+import copy from "copy-to-clipboard";
 //  components
 import {divide, fixed, multiply, sumArray} from "src/lib/Big";
 import {useSelector} from "react-redux";
@@ -17,6 +18,7 @@ const ADDRESS_CUT_DISPLAY_LENGTH = 6;
 export default function Address({account = {}, prices = []}) {
 	const bnbPrice = useSelector(state => state.blockchain.status?.price);
 	const [showModal, setShowModal] = React.useState(false);
+	const [copyClick, setCopyClick] = React.useState(false);
 
 	const total = React.useMemo(() => {
 		if (empty(prices)) return;
@@ -36,8 +38,18 @@ export default function Address({account = {}, prices = []}) {
 		),
 		[account.address, showModal]
 	);
-	const renderAddress = React.useMemo(
-		() => (
+	const renderAddress = React.useMemo(() => {
+		let timeout;
+		const onClick = () => {
+			if (copyClick) return;
+			setCopyClick(true);
+			copy(account.address);
+			clearTimeout(timeout);
+			timeout = setTimeout(() => {
+				setCopyClick(false);
+			}, 1000);
+		};
+		return (
 			<ul className={cx("AddressDisplay-wrapper")}>
 				<li className={cx("label")}>Address</li>
 				<li className={cx("value")}>
@@ -52,12 +64,14 @@ export default function Address({account = {}, prices = []}) {
 							"-"
 						)}
 					</p>
-					<img alt={"copy"} />
+					<img alt={"copy"} onClick={onClick} />
+					<div className={cx("copiedArea")}>
+						<div className={cx("copied", {visible: copyClick})}>copied!</div>
+					</div>
 				</li>
 			</ul>
-		),
-		[account.address]
-	);
+		);
+	}, [account.address, copyClick]);
 
 	const renderStats = React.useMemo(
 		() => (
