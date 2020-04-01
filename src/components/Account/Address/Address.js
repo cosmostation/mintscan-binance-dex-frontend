@@ -9,12 +9,14 @@ import Decimal from "src/components/common/Decimal";
 
 //  assets
 import qrSVG from "src/assets/account/qr_code.svg";
+import QrModal from "../QrModal";
 
 const cx = cn.bind(styles);
 const ADDRESS_LENGTH = 42;
 const ADDRESS_CUT_DISPLAY_LENGTH = 6;
 export default function Address({account = {}, prices = []}) {
 	const bnbPrice = useSelector(state => state.blockchain.status?.price);
+	const [showModal, setShowModal] = React.useState(false);
 
 	const total = React.useMemo(() => {
 		if (empty(prices)) return;
@@ -25,67 +27,88 @@ export default function Address({account = {}, prices = []}) {
 		return [sumArray(totalAssets), sumArray(freeAssets)];
 	}, [account, prices]);
 
+	const renderQr = React.useMemo(
+		() => (
+			<div className={cx("qr-wrapper")} onMouseEnter={() => setShowModal(true)} onMouseLeave={() => setShowModal(false)}>
+				<img src={qrSVG} alt={"qr-code"} />
+				<QrModal address={account.address} show={showModal} />
+			</div>
+		),
+		[account.address, showModal]
+	);
+	const renderAddress = React.useMemo(
+		() => (
+			<ul className={cx("AddressDisplay-wrapper")}>
+				<li className={cx("label")}>Address</li>
+				<li className={cx("value")}>
+					<p>
+						{account.address ? (
+							<>
+								<span className={cx("front")}>{account.address.substr(0, ADDRESS_CUT_DISPLAY_LENGTH)}</span>
+								<span className={cx("remove")}>{account.address.substr(ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH * 2)}</span>
+								{account.address.substr(ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_CUT_DISPLAY_LENGTH)}
+							</>
+						) : (
+							"-"
+						)}
+					</p>
+					<img alt={"copy"} />
+				</li>
+			</ul>
+		),
+		[account.address]
+	);
+
+	const renderStats = React.useMemo(
+		() => (
+			<div className={cx("statistics-wrapper")}>
+				<ul className={cx("total-wrapper")}>
+					<li className={cx("value")}>
+						<span className={cx("front")}>Est</span>
+						<span className={cx("remove")}>imated</span> Value
+					</li>
+					<li className={cx("dollars")}>
+						<span className={cx("currency")}>$</span>
+						{!_.isNil(total?.[0]) && !_.isNil(bnbPrice) ? (
+							// <span>{formatNumber(fixed(total?.[0] ? total?.[0] : 0, 2))}</span>
+							<Decimal value={formatNumber(fixed(total?.[0] ? total?.[0] : 0, 2))} fontSizeBase={23} decimalReduce={5} bottom={2} />
+						) : (
+							<span>-</span>
+						)}
+					</li>
+				</ul>
+				<ul className={cx("compare-wrapper")}>
+					<li className={cx("flexIt")}>
+						$<Decimal value={fixed(!_.isNil(bnbPrice) ? bnbPrice : 0, 2)} fontSizeBase={15} /> / BNB
+					</li>
+					<li className={cx("compareBNB")}>
+						{!_.isNil(total?.[0]) ? (
+							<>
+								{/*<span>{formatNumber(divide(total?.[0], bnbPrice, 2))}</span>*/}
+								<Decimal value={formatNumber(divide(total?.[0], bnbPrice, 2))} fontSizeBase={23} decimalReduce={5} bottom={2} />
+								<span className={cx("BNB")}>BNB</span>
+							</>
+						) : (
+							<span>-</span>
+						)}
+					</li>
+				</ul>
+			</div>
+		),
+		[bnbPrice, total]
+	);
+
 	return React.useMemo(
 		() => (
 			<div className={cx("Address-wrapper")}>
 				<div className={cx("qr-address-wrapper")}>
-					<div className={cx("qr-wrapper")}>
-						<img src={qrSVG} alt={"qr-code"} />
-					</div>
-					<ul className={cx("AddressDisplay-wrapper")}>
-						<li className={cx("label")}>Address</li>
-						<li className={cx("value")}>
-							<p>
-								{account.address ? (
-									<>
-										<span className={cx("front")}>{account.address.substr(0, ADDRESS_CUT_DISPLAY_LENGTH)}</span>
-										<span className={cx("remove")}>{account.address.substr(ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH * 2)}</span>
-										{account.address.substr(ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_CUT_DISPLAY_LENGTH)}
-									</>
-								) : (
-									"-"
-								)}
-							</p>
-							<img alt={"copy"} />
-						</li>
-					</ul>
+					{renderQr}
+					{renderAddress}
 				</div>
-				<div className={cx("statistics-wrapper")}>
-					<ul className={cx("total-wrapper")}>
-						<li className={cx("value")}>
-							<span className={cx("front")}>Est</span>
-							<span className={cx("remove")}>imated</span> Value
-						</li>
-						<li className={cx("dollars")}>
-							<span className={cx("currency")}>$</span>
-							{!_.isNil(total?.[0]) && !_.isNil(bnbPrice) ? (
-								// <span>{formatNumber(fixed(total?.[0] ? total?.[0] : 0, 2))}</span>
-								<Decimal value={formatNumber(fixed(total?.[0] ? total?.[0] : 0, 2))} fontSizeBase={23} decimalReduce={5} bottom={2} />
-							) : (
-								<span>-</span>
-							)}
-						</li>
-					</ul>
-					<ul className={cx("compare-wrapper")}>
-						<li className={cx("flexIt")}>
-							$<Decimal value={fixed(!_.isNil(bnbPrice) ? bnbPrice : 0, 2)} fontSizeBase={15} /> / BNB
-						</li>
-						<li className={cx("compareBNB")}>
-							{!_.isNil(total?.[0]) ? (
-								<>
-									{/*<span>{formatNumber(divide(total?.[0], bnbPrice, 2))}</span>*/}
-									<Decimal value={formatNumber(divide(total?.[0], bnbPrice, 2))} fontSizeBase={23} decimalReduce={5} bottom={2} />
-									<span className={cx("BNB")}>BNB</span>
-								</>
-							) : (
-								<span>-</span>
-							)}
-						</li>
-					</ul>
-				</div>
+				{renderStats}
 			</div>
 		),
-		[account.address, bnbPrice, total]
+		[renderAddress, renderQr, renderStats]
 	);
 }
 

@@ -19,6 +19,7 @@
 		padding: 6px 0;
 		align-items: center;
 		.qr-wrapper {
+			position: relative;
 			@include Flex_center;
 			width: 50.4px;
 			height: 50.4px;

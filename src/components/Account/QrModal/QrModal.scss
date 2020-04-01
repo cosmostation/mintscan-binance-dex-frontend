@@ -1,6 +1,53 @@
+@import "src/styles/utils";
 
 .QrModal-wrapper {
+	position: absolute;
+	z-index: 99;
 	background-color: white;
-	width: 100%;
-	height: 100%;
+	top: calc(100% + 5px);
+	left: 0;
+	padding: 10px;
+	box-shadow: 0 0.125rem 1.25rem 0 rgba(0, 0, 0, 0.2);
+	
+	.arrow {
+		position: absolute;
+		top: -4px;
+		left: 10%;
+		width: 0;
+		height: 0;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-bottom: 5px solid white;
+	}
+	
+	.QrModal-inner {
+		z-index: 100;
+		position: relative;
+		padding: 10px;
+		border: 2px rgb(132, 142, 156) solid;
+		> canvas {
+			z-index: 101;
+			position: relative;
+		}
+		&:before {
+			@include absolute-middle;
+			z-index: 99;
+			content: "";
+			width: calc(100% + 4px);
+			height: calc(90% + 4px);
+			background-color: #ffffff;
+		}
+		&:after {
+			@include absolute-middle;
+			z-index: 99;
+			content: "";
+			width: calc(90% + 4px);
+			height: calc(100% + 4px);
+			background-color: #ffffff;
+		}
+	}
+}
+
+.invisible {
+	display: none;
 }
