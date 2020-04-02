@@ -18,6 +18,7 @@ export const proposerAddress = Object.freeze({
 });
 
 export default Object.freeze({
+	DEFAULT_ARRAY: [],
 	API_BIANCE_DEX: "https://www.binance.org/en/trade",
 	API_COINGECKO: {
 		BASE: "https://api.coingecko.com/api/v3",

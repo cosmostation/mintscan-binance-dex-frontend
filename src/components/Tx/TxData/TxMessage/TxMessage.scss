@@ -103,8 +103,8 @@
 			}
 
 			.symbol-wrapper {
-				width: 26px;
-				height: 22px;
+				width: fit-content;
+				height: fit-content;
 				@include media("<small") {
 					margin: 20.2px auto;
 					img {

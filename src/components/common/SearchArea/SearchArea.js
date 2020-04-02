@@ -6,7 +6,7 @@ import styles from "./SearchArea.scss";
 import {useSelector} from "react-redux";
 
 //  hooks
-import {useSearch, useDelayedInput, useHistory} from "src/hooks";
+import {useSearch, useDelayedInput, useHistory, useCheckOutsideClick} from "src/hooks";
 //components
 import {InputBase} from "@material-ui/core";
 import Dropdown from "./Dropdown";
@@ -18,20 +18,24 @@ import SearchIcon from "src/assets/common/search-icon.svg";
 
 const cx = cn.bind(styles);
 
-const PROBABLY_SAFE_REFRESH_INTERVAL_MS = 150;
-
 export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) {
 	const history = useHistory();
+
+	//  redux
 	const assets = useSelector(state => state.assets.assets);
+
+	//  search related
 	const SearchRef = React.useRef(null);
 	const [input, setInput] = React.useState("");
 	const [value, setValue] = React.useState("");
 	const delayedSetValue = useDelayedInput(setInput, 200);
-
 	const search = useSearch();
-	const [dropdownState, setDropdownState] = React.useState({selected: 0, show: false});
-	const [widthDropdown, setWidthDropdown] = React.useState(0);
 	const windowSize = useWindowSize();
+	const [widthDropdown, setWidthDropdown] = React.useState(0);
+
+	//  dropdown related
+	const [isClickedOutside, setRef] = useCheckOutsideClick();
+	const [dropdownState, setDropdownState] = React.useState({selected: 0, show: false});
 
 	const setSelected = React.useCallback(
 		idx => {
@@ -39,6 +43,11 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 		},
 		[setDropdownState]
 	);
+
+	React.useEffect(() => {
+		if (_.isNil(SearchRef?.current)) return;
+		setRef(SearchRef);
+	}, [setRef, SearchRef]);
 
 	React.useEffect(() => {
 		delayedSetValue(_.trim(value));
@@ -57,7 +66,7 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 
 	//  return found Assets
 	const foundAssets = React.useMemo(() => {
-		if (empty(input) || empty(assets) || !isNaN(Number(input))) return [];
+		if (empty(input) || empty(assets) || !isNaN(Number(input))) return consts.DEFAULT_ARRAY;
 		// filter, then sort in alphabetical order
 		const filteredAssets = _.filter(assets, v => searchProperties(v, consts.ASSET.NAME_SEARCH_PROPERTY, input.toUpperCase()));
 		filteredAssets.sort((a, b) => compareProperty(a, b, consts.ASSET.ORDER_COMPARE[0], "id", true));
@@ -99,7 +108,7 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 			} else if (e.key === "Enter") {
 				if (dropdownState.selected < foundAssets.length) {
 					e.preventDefault();
-					history.replace((!_.includes(history.location.pathname, "/assets/") ? "assets/" : "") + foundAssets[dropdownState.selected].asset);
+					searchFunc(foundAssets[dropdownState.selected].asset, history);
 					setValue("");
 				}
 			} else if (e.key === "Escape") {
@@ -121,54 +130,75 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 		setValue(e.target.value);
 	}, []);
 
-	const onFocus = bool => {
+	const onFocus = React.useCallback(bool => {
 		setDropdownState({show: bool, selected: 0});
 		setValue("");
-	};
+	}, []);
 
+	const onBlur = React.useCallback(() => {
+		setDropdownState({show: false, selected: 0});
+		setValue("");
+	}, []);
+
+	React.useEffect(() => {
+		if (isClickedOutside) onBlur();
+	}, [isClickedOutside, onBlur]);
+
+	const renderInputBase = React.useMemo(
+		() => (
+			<InputBase
+				className={propCx("input")}
+				placeholder='Search by Block, transaction, asset, address or orderid...'
+				onKeyDown={onKeyDown}
+				onKeyPress={onKeyPress}
+				onChange={onChange}
+				value={value}
+				onFocus={() => onFocus(true)}
+			/>
+		),
+		[onChange, onFocus, onKeyDown, onKeyPress, propCx, value]
+	);
+
+	const dropdownRender = React.useMemo(
+		() => (
+			<Dropdown
+				foundAssets={foundAssets}
+				setSelected={setSelected}
+				width={interactiveWidth ? widthDropdown : null}
+				state={dropdownState}
+				customStyles={dropdownStyle}
+				input={input}
+				searchType={searchType}
+				clickSearch={clickSearch}
+			/>
+		),
+		[clickSearch, dropdownState, dropdownStyle, foundAssets, input, interactiveWidth, searchType, setSelected, widthDropdown]
+	);
+
+	const buttonRender = React.useMemo(
+		() => (
+			<button className={propCx("searchBtn")} onClick={clickSearch}>
+				<img className={propCx("searchIcon")} src={SearchIcon} alt={"search"} />
+			</button>
+		),
+		[clickSearch, propCx]
+	);
 	return React.useMemo(
 		() => (
 			<div className={propCx("search")}>
 				<div className={cx("SearchArea-wrapper")} ref={SearchRef}>
-					<InputBase
-						className={propCx("input")}
-						placeholder='Search by Block, transaction, asset, address or orderid...'
-						onKeyDown={onKeyDown}
-						onKeyPress={onKeyPress}
-						onChange={onChange}
-						value={value}
-						onFocus={() => onFocus(true)}
-						onBlur={() => setTimeout(() => onFocus(false), PROBABLY_SAFE_REFRESH_INTERVAL_MS)}
-					/>
-					<Dropdown
-						foundAssets={foundAssets}
-						setSelected={setSelected}
-						width={interactiveWidth ? widthDropdown : null}
-						state={dropdownState}
-						customStyles={dropdownStyle}
-						input={input}
-						searchType={searchType}
-					/>
+					{renderInputBase}
+					{dropdownRender}
 				</div>
-				<button className={propCx("searchBtn")} onClick={clickSearch}>
-					<img className={propCx("searchIcon")} src={SearchIcon} alt={"search"} />
-				</button>
+				{buttonRender}
 			</div>
 		),
-		[
-			propCx,
-			onKeyDown,
-			onKeyPress,
-			onChange,
-			value,
-			foundAssets,
-			setSelected,
-			interactiveWidth,
-			widthDropdown,
-			dropdownState,
-			dropdownStyle,
-			input,
-			clickSearch,
-		]
+		[propCx, renderInputBase, dropdownRender, buttonRender]
 	);
 }
+
+const searchFunc = (search, history) => {
+	if (_.includes(history.location.pathname, "/txs/") || _.includes(history.location.pathname, "/blocks/") || _.includes(history.location.pathname, "/account/"))
+		history.push("/assets/" + search);
+	else history.replace((!_.includes(history.location.pathname, "/assets/") ? "assets/" : "") + search);
+};

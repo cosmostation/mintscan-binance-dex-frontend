@@ -18,6 +18,7 @@ export default function({
 	customStyles = {},
 	state = {show: false, selected: 0},
 	width = null,
+	clickSearch,
 }) {
 	const history = useHistory();
 	const focusedElement = React.useRef(null);
@@ -28,15 +29,24 @@ export default function({
 		focusedElement.current.scrollIntoView({block: "nearest"});
 	}, [focusedElement, state.selected]);
 
-	const dropdownList = React.useMemo(
-		() => (
+	const dropdownList = React.useMemo(() => {
+		const onClick = v => {
+			if (
+				_.includes(history.location.pathname, "/txs/") ||
+				_.includes(history.location.pathname, "/blocks/") ||
+				_.includes(history.location.pathname, "/account/")
+			)
+				history.push("/assets/" + v.asset);
+			else history.replace((!_.includes(history.location.pathname, "/assets/") ? "assets/" : "") + v.asset);
+		};
+		return (
 			<>
 				{_.map(foundAssets, (v, i) => (
 					<li
 						ref={i === state.selected ? focusedElement : null}
 						key={v.asset}
 						className={cx({selected: i === state.selected})}
-						onClick={() => history.replace((!_.includes(history.location.pathname, "/assets/") ? "assets/" : "") + v.asset)}
+						onClick={() => onClick(v)}
 						onMouseEnter={() => setSelected(i)}>
 						<DisplayIcon image={v.assetImg !== "" ? v.assetImg : symbolNoneSVG} size={20} />
 						<div className={cx("content")}>
@@ -46,9 +56,8 @@ export default function({
 					</li>
 				))}
 			</>
-		),
-		[foundAssets, setSelected, state.selected, history]
-	);
+		);
+	}, [foundAssets, setSelected, state.selected, history]);
 
 	const finalStyle = React.useMemo(() => {
 		if (_.isNil(width)) return customStyles;
@@ -57,11 +66,11 @@ export default function({
 
 	return (
 		<ul className={cx("Dropdown-wrapper", {visible: state.show && (input.length >= 3 || !empty(foundAssets) || stringNumCheck(input))})} style={finalStyle}>
-			<div className={cx("defaultText", {visible: empty(foundAssets) || stringNumCheck(input)})}>
+			<div className={cx("defaultText", {showCursor: !!searchType, visible: empty(foundAssets) || stringNumCheck(input)})} onClick={() => clickSearch()}>
 				{searchType ? (
 					<>
 						<span>Search for {searchType}:</span>
-						<span>{input}</span>
+						<span className={cx("input")}>{input}</span>
 					</>
 				) : (
 					<span>

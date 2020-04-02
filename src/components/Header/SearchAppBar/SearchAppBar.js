@@ -40,7 +40,7 @@ export default function(props) {
 
 	const render = useCallback(
 		open => {
-			console.count("rerender");
+			console.count("AppBar rerender");
 			return (
 				<div className={cx("SearchAppBar-root")} id={"Header-fixed-id"}>
 					<Toolbar className={cx("toolbar")}>

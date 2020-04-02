@@ -45,6 +45,10 @@
 	}
 	.defaultText {
 		display: none;
+		.input {
+			font-family: Roboto, serif;
+			font-weight: 400;
+		}
 		span {
 			img {
 				height: 100%;
@@ -57,9 +61,9 @@
 			color: #767f8d;
 			margin-right: 3px;
 		}
-		:last-child {
-			font-weight: 600;
-		}
+	}
+	.showCursor {
+		cursor: pointer;
 	}
 }
 

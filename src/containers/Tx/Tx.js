@@ -4,7 +4,7 @@ import styles from "./Tx.scss";
 
 import {_, empty} from "src/lib/scripts";
 import consts from "src/constants/consts";
-import {useFetch, usePrevious} from "src/hooks";
+import {useFetch, usePrevious, useHistory} from "src/hooks";
 import MockData from "src/containers/Tx/MockData";
 //  components
 import TitleWrapper from "src/components/common/TitleWrapper";
@@ -29,13 +29,14 @@ export default function(props) {
 		if (state.data?.transactionHash) setUrl(`${consts.API_BASE}${consts.API.TX}/${state.data.transactionHash}`);
 	}, [txHash, setUrl, isOrderId, state.data]);
 
+	//  txHash has changed
 	React.useEffect(() => {
-		if (txHash !== prevTxHash || _.isNil(txHash) || _.isNil(txHash)) {
+		if (txHash !== prevTxHash && !_.isNil(txHash) && !_.isNil(prevTxHash)) {
 			setUrl(`${consts.API_BASE}${isOrderId ? consts.API.ORDERS : consts.API.TX}/${txHash}`);
 		}
 	}, [txHash, prevTxHash, setUrl, isOrderId]);
 
-	if (state?.data?.height === 0) {
+	if (state?.data?.height === 0 || (!_.isNil(state?.data) && _.isNil(state?.data?.height))) {
 		return <NotFound altText={"Sorry! Tx Not Found"} />;
 	}
 

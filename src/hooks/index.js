@@ -14,6 +14,7 @@ import {useHistory} from "react-router-dom";
 import useGetPrices from "./useGetPrices";
 import useMultiFetch from "./useMultiFetch";
 import useIncrementalListLoader from "./useIncrementalListLoader";
+import useCheckOutsideClick from "./useCheckOutsideClick";
 
 export {
 	useFetch,
@@ -32,4 +33,5 @@ export {
 	useHistory,
 	useGetPrices,
 	useIncrementalListLoader,
+	useCheckOutsideClick,
 };

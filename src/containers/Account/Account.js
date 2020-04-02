@@ -15,15 +15,14 @@ import {useGetPrices, useMultiFetch, usePrevious} from "src/hooks";
 const cx = cn.bind(style);
 
 const baseURL = `${consts.API_BASE}${consts.API.ACCOUNT}/`;
-const defaultArr = Object.freeze([]);
 export default function Account(props) {
 	const account = props.match.params.account;
 	const prevAccount = usePrevious(account);
 	const urlList = React.useMemo(() => [`${consts.API_BASE}${consts.API.ACCOUNT_TXS(account)}`, `${baseURL}${account}`], [account]);
 	const [state, , setUrls] = useMultiFetch(urlList);
 	const [txData, assetData] = [
-		state.data?.[0]?.txArray && !state.loading[0] ? state.data?.[0]?.txArray : defaultArr,
-		state.data?.[1] && !state.loading[1] ? state.data?.[1] : defaultArr,
+		state.data?.[0]?.txArray && !state.loading[0] ? state.data?.[0]?.txArray : consts.DEFAULT_ARRAY,
+		state.data?.[1] && !state.loading[1] ? state.data?.[1] : consts.DEFAULT_ARRAY,
 	];
 
 	const [prices, setTargetAssets] = useGetPrices(consts.NUM.ASSET_REFETCH_PRICE_INTERVAL_MS);
@@ -63,7 +62,7 @@ export default function Account(props) {
 	}, [urlList, prevAccount, assetData, account, setUrls]);
 
 	const assetTxs = React.useMemo(
-		() => <AssetTxs account={account} prices={prices} balances={assetData?.balances ? assetData.balances : defaultArr} txData={txData} />,
+		() => <AssetTxs account={account} prices={prices} balances={assetData?.balances ? assetData.balances : consts.DEFAULT_ARRAY} txData={txData} />,
 		[prices, assetData, txData, account]
 	);
 
