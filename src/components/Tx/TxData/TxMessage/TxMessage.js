@@ -4,7 +4,7 @@ import styles from "./TxMessage.scss";
 import cn from "classnames/bind";
 import {NavLink} from "react-router-dom";
 import {divide, multiply} from "src/lib/Big";
-import {_, empty, formatNumber, reduceString, refineAddress} from "src/lib/scripts";
+import {_, empty, formatNumber, reduceString, refineAddress, getTotalTime} from "src/lib/scripts";
 //  redux
 import {useSelector} from "react-redux";
 //  hooks
@@ -35,24 +35,13 @@ const cx = cn.bind(styles);
 
 export default function({msg, txData}) {
 	const {type, value} = msg;
-
-	const clickSymbol = React.useCallback(symbol => {
-		if (_.isNil(symbol)) return;
-		window.open(`${consts.API_BIANCE_DEX}${symbol}`);
-	}, []);
-
-	const displaySymbol = () => {
-		if (!value.symbol) return "";
-		const split = value.symbol.split("_");
-		return split[0].split("-")[0] + "_" + split[1].split("-")[0];
-	};
-	// console.log(txData);
-	return (
-		<div className={cx("grid-wrapper")}>
-			<div className={cx("type-wrapper")}>
-				<img className={cx("txType-img")} src={getTxTypeIcon(type)} alt={"icon"} />
-				<span>{getTxType(type)}</span>
-			</div>
+	const MsgGridRender = React.useMemo(() => {
+		const displaySymbol = () => {
+			if (!value.symbol) return "";
+			const split = value.symbol.split("_");
+			return split[0].split("-")[0] + "_" + split[1].split("-")[0];
+		};
+		return (
 			<div className={cx("grid")}>
 				{txCheckSend(type) ? (
 					<>
@@ -121,7 +110,8 @@ export default function({msg, txData}) {
 								<InfoRow label='Price'>
 									{/*{(() => console.log(value))()}*/}
 									<span className={cx("flexIt")}>
-										<Decimal fontSizeBase={15} value={divide(value?.price, consts.NUM.BASE_MULT, 8)} /> BNB / 1 {_.split(value?.symbol, "-")[0]}
+										<Decimal fontSizeBase={15} value={divide(value?.price, consts.NUM.BASE_MULT, 8)} /> {_.split(_.split(value?.symbol, "_")[1], "-")[0]} / 1{" "}
+										{_.split(_.split(value?.symbol, "_")[0], "-")[0]}
 									</span>
 								</InfoRow>
 								{/*Removed because only one type is possible ATM*/}
@@ -182,6 +172,7 @@ export default function({msg, txData}) {
 				) : (
 					undefined
 				)}
+				{type === txTypes.COSMOS.PROPOSAL_SUBMIT ? <TxSubmitProposal txData={txData} value={value} /> : undefined}
 				<InfoRow label='From'>
 					<TxGetFrom txData={txData} type={type} value={value} cx={cx} />
 				</InfoRow>
@@ -197,9 +188,74 @@ export default function({msg, txData}) {
 					<span>{txData.memo === "" ? "-" : txData.memo}</span>
 				</InfoRow>
 			</div>
+		);
+	}, [txData, type, value]);
+
+	// console.log(txData);
+	return (
+		<div className={cx("grid-wrapper")}>
+			<div className={cx("type-wrapper")}>
+				<img className={cx("txType-img")} src={getTxTypeIcon(type)} alt={"icon"} />
+				<span>{getTxType(type)}</span>
+			</div>
+			{MsgGridRender}
 		</div>
 	);
 }
+
+const TxSubmitProposal = ({txData, value}) => {
+	const description = JSON.parse(value.description);
+	const listingSymbol = description?.description?.split(" ")[1].replace("/", "_");
+	const displaySymbol = React.useMemo(() => {
+		if (!listingSymbol) return "";
+		const split = listingSymbol.split("_");
+		return split[0].split("-")[0] + "_" + split[1].split("-")[0];
+	}, [listingSymbol]);
+	const render = React.useMemo(
+		() => (
+			<>
+				<InfoRow label='Symbol'>
+					<div className={cx("symbol-link")} onClick={() => clickSymbol(listingSymbol)}>
+						<p>{displaySymbol}</p>
+						<img src={detailSVG} alt='detail' />
+					</div>
+				</InfoRow>
+				<ListTradingDisplay description={description} value={divide(1, divide(description.init_price, consts.NUM.BASE_MULT))} />
+				<InfoRow label='Price'>
+					<span className={cx("flexIt")}>
+						<Decimal fontSizeBase={15} value={divide(description.init_price, consts.NUM.BASE_MULT)} /> {_.split(_.split(listingSymbol, "_")[1], "-")[0]} / 1{" "}
+						{_.split(_.split(listingSymbol, "_")[0], "-")[0]}
+					</span>
+				</InfoRow>
+				<InfoRow label='Initial Deposit'>
+					<span className={cx("flexIt")}>
+						<Decimal fontSizeBase={15} value={divide(value?.initial_deposit?.[0].amount, consts.NUM.BASE_MULT)} />
+						{/*{"Always BNB anyway"}*/}
+						<span className={cx("BNB")}>BNB</span>
+					</span>
+				</InfoRow>
+				<InfoRow label='Expire Time'>{getTotalTime(description.expire_time)}</InfoRow>
+			</>
+		),
+		[description, displaySymbol, listingSymbol]
+	);
+	if (value.proposal_type !== "ListTradingPair") return <InfoRow label='Type'>{value.proposal_type} - not implemented yet</InfoRow>;
+	return render;
+};
+
+const ListTradingDisplay = ({description, value}) => {
+	// TODO
+	//  switch the arrowSVG to one with arrowheads on both sides
+	return (
+		<div className={cx("trade-wrapper")}>
+			<TradeBox symbol={description.base_asset_symbol} value={value} />
+			<div className={cx("symbol-wrapper")}>
+				<img src={arrowSVG} alt='arrow' />
+			</div>
+			<TradeBox symbol={description.quote_asset_symbol} value={1} />
+		</div>
+	);
+};
 
 const TradeDisplay = ({value}) => {
 	let [left, right] = [{}, {}];
@@ -243,4 +299,9 @@ const TradeBox = ({symbol, value}) => {
 			</div>
 		</div>
 	);
+};
+
+const clickSymbol = symbol => {
+	if (_.isNil(symbol)) return;
+	window.open(`${consts.API_BIANCE_DEX}/${symbol}`);
 };

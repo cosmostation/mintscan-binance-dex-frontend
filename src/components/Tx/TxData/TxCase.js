@@ -145,3 +145,31 @@ export const txCheckFUBM = txType => _.find([TOKENS.BURN, TOKENS.MINT, TOKENS.FR
 // 		},
 // 	],
 // };
+
+// const submitproposal = {
+// 	height: 76333106,
+// 	result: true,
+// 	tx_hash: "8DA8E53F458935C8DDBD0D7B34FD6ED729B34768E16E0F67E0D6BEADF6786376",
+// 	messages: [
+// 		{
+// 			type: "cosmos-sdk/MsgSubmitProposal",
+// 			value: {
+// 				title: "list AVA-645/BUSD-BD1",
+// 				proposer: "tbnb1dm9c7gccgd07td5r69m50u8fg8danfgqz27k6f",
+// 				description:
+// 					'{"base_asset_symbol":"AVA-645","quote_asset_symbol":"BUSD-BD1","init_price":10000000,"description":"list AVA-645/BUSD-BD1","expire_time":"2020-04-20T14:34:17+07:00"}',
+// 				proposal_type: "ListTradingPair",
+// 				voting_period: "604800000000000",
+// 				initial_deposit: [
+// 					{
+// 						denom: "BNB",
+// 						amount: "100000000000",
+// 					},
+// 				],
+// 			},
+// 		},
+// 	],
+// 	memo: "",
+// 	code: 0,
+// 	timestamp: "2020-03-23T03:45:48.800476Z",
+// };
