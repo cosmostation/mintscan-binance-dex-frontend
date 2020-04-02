@@ -8,7 +8,7 @@ import {_, empty, formatNumber, reduceString, refineAddress, getTotalTime} from 
 //  redux
 import {useSelector} from "react-redux";
 //  hooks
-import {useGetImage, useHistory} from "src/hooks";
+import {useGetImage} from "src/hooks";
 //  constants
 import getTxTypeIcon from "src/constants/getTxTypeIcon";
 import consts from "src/constants/consts";
@@ -25,6 +25,7 @@ import DisplayIcon from "src/components/common/DisplayIcon";
 
 //  assets
 import arrowSVG from "src/assets/transactions/symbol_arrow.svg";
+import transferArrowSVG from "src/assets/transactions/transferArrow.svg";
 import symbolNone from "src/assets/transactions/symbol_none.svg";
 import detailSVG from "src/assets/transactions/symbol_detail_btn.svg";
 import bnbSVG from "src/assets/common/binance_token.svg";
@@ -250,7 +251,7 @@ const ListTradingDisplay = ({description, value}) => {
 		<div className={cx("trade-wrapper")}>
 			<TradeBox symbol={description.base_asset_symbol} value={value} />
 			<div className={cx("symbol-wrapper")}>
-				<img src={arrowSVG} alt='arrow' />
+				<img src={transferArrowSVG} alt='arrow' />
 			</div>
 			<TradeBox symbol={description.quote_asset_symbol} value={1} />
 		</div>

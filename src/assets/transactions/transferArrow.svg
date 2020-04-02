@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="33" viewBox="0 0 24 33">
+  <g id="arrow2" transform="translate(-801.5 -758)">
+    <path id="패스_1042" data-name="패스 1042" d="M.354.356a1.207,1.207,0,0,0,0,1.709l4.7,4.7-4.7,4.7a1.208,1.208,0,0,0,1.709,1.709L7.625,7.614a1.207,1.207,0,0,0,0-1.709L2.063.344A1.218,1.218,0,0,0,.354.356Z" transform="translate(815.573 759.696)" fill="#222" stroke="#222" stroke-width="0.5"/>
+    <path id="패스_2179" data-name="패스 2179" d="M.354.356a1.207,1.207,0,0,0,0,1.709l4.7,4.7-4.7,4.7a1.208,1.208,0,0,0,1.709,1.709L7.625,7.614a1.207,1.207,0,0,0,0-1.709L2.063.344A1.218,1.218,0,0,0,.354.356Z" transform="translate(811.979 789.227) rotate(180)" fill="#222" stroke="#222" stroke-width="0.5"/>
+    <path id="패스_2026" data-name="패스 2026" d="M0,0H16.355" transform="translate(821.355 766.387) rotate(180)" fill="none" stroke="#222" stroke-linecap="round" stroke-width="3"/>
+    <path id="패스_2180" data-name="패스 2180" d="M0,0H16.355" transform="translate(806.198 782.536)" fill="none" stroke="#222" stroke-linecap="round" stroke-width="3"/>
+    <rect id="사각형_2038" data-name="사각형 2038" width="24" height="33" transform="translate(801.5 758)" fill="none"/>
+  </g>
+</svg>
