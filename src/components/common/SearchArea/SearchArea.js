@@ -11,7 +11,7 @@ import {useSearch, useDelayedInput, useHistory} from "src/hooks";
 import {InputBase} from "@material-ui/core";
 import Dropdown from "./Dropdown";
 import useWindowSize from "src/hooks/useWindowSize";
-import {_, compareProperty, empty, searchProperties} from "src/lib/scripts";
+import {_, compareProperty, empty, searchProperties, stringNumCheck} from "src/lib/scripts";
 import consts from "src/constants/consts";
 //  assests
 import SearchIcon from "src/assets/common/search-icon.svg";
@@ -55,17 +55,9 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 		if (SearchRef.current?.getBoundingClientRect()?.width !== widthDropdown) setWidthDropdown(SearchRef.current?.getBoundingClientRect()?.width);
 	}, [interactiveWidth, widthDropdown, windowSize.width]);
 
-	const clickSearch = React.useCallback(
-		e => {
-			search(input);
-			setValue("");
-		},
-		[input, search]
-	);
-
 	//  return found Assets
 	const foundAssets = React.useMemo(() => {
-		if (empty(input) || empty(assets)) return [];
+		if (empty(input) || empty(assets) || !isNaN(Number(input))) return [];
 		// filter, then sort in alphabetical order
 		const filteredAssets = _.filter(assets, v => searchProperties(v, consts.ASSET.NAME_SEARCH_PROPERTY, input.toUpperCase()));
 		filteredAssets.sort((a, b) => compareProperty(a, b, consts.ASSET.ORDER_COMPARE[0], "id", true));
@@ -76,6 +68,24 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 		filteredAssets.push(...CAS);
 		return filteredAssets;
 	}, [input, assets]);
+
+	const searchType = React.useMemo(() => {
+		if (!_.isString(input)) return false;
+		else if (stringNumCheck(input)) return "height";
+		else if (input.substring(0, 3).toLowerCase() === "bnb" && input.length === 42) return "address";
+		else if (input.length === 64) return "Tx";
+		else if (stringNumCheck(input.split("-")[1]) && input.split("-")[0].length === 40) return "order id";
+		return false;
+	}, [input]);
+
+	const clickSearch = React.useCallback(
+		e => {
+			if (!searchType) return;
+			search(input);
+			setValue("");
+		},
+		[input, search, searchType]
+	);
 
 	//  exit and dropdown navigation
 	const onKeyDown = React.useCallback(
@@ -137,6 +147,7 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 						state={dropdownState}
 						customStyles={dropdownStyle}
 						input={input}
+						searchType={searchType}
 					/>
 				</div>
 				<button className={propCx("searchBtn")} onClick={clickSearch}>

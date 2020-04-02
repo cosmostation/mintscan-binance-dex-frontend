@@ -31,7 +31,6 @@ export default function({asset = {}}) {
 		});
 		return values.sort((a, b) => (a[0] <= b[0] ? -1 : 1));
 	}, [asset.prices]);
-	console.log(chartValues);
 	return (
 		<div className={cx("statuscard-wrapper")} onClick={() => history.push(`/assets/${asset?.asset}`)}>
 			<div className={cx("wrapper")}>

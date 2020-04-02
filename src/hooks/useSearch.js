@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useHistory} from "src/hooks";
 import {useSelector} from "react-redux";
 
-import {_, searchProperties} from "src/lib/scripts";
+import {_, searchProperties, stringNumCheck} from "src/lib/scripts";
 import consts from "src/constants/consts";
 
 export default function useSearch() {
@@ -33,8 +33,8 @@ export default function useSearch() {
 const checkType = input => {
 	if (!_.isString(input)) return null;
 	if (input.substring(0, 3).toLowerCase() === "bnb" && input.length >= 16) return "address";
-	else if (!isNaN(_.toNumber(input))) return "block";
+	else if (stringNumCheck(input)) return "block";
 	else if (input.length < 20) return "asset";
-	else if (!isNaN(_.toNumber(input.split("-")[1]))) return "orderId";
+	else if (stringNumCheck(input.split("-")[1])) return "orderId";
 	else return "tx";
 };

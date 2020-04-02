@@ -13,6 +13,8 @@ export const nilCheck = arr => !_.every(arr, el => !_.isNil(el));
 
 export const reduceString = (str, from, end) => (str ? str.substring(0, from) + " ... " + str.substring(str.length - end) : "-");
 
+export const stringNumCheck = input => !empty(input) && !isNaN(Number(input));
+
 const removeCommas = str => _.replace(str, new RegExp(",", "g"), "");
 const reverseString = str => removeCommas(_.toString(_.reverse(_.toArray(str))));
 

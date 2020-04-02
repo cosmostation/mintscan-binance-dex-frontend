@@ -45,6 +45,13 @@
 	}
 	.defaultText {
 		display: none;
+		span {
+			img {
+				height: 100%;
+				width: auto;
+				object-fit: fill;
+			}
+		}
 		:first-child {
 			font-weight: 400;
 			color: #767f8d;
