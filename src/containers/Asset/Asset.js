@@ -22,7 +22,6 @@ export default function Asset(props) {
 	// navigation(asset change)
 	React.useEffect(() => {
 		if (nilCheck([asset, prevAsset]) || asset === prevAsset) return;
-		console.log("new asset");
 		setUrl(`${consts.API_BASE}${consts.API.ASSET}${asset}`);
 	}, [asset, prevAsset, setUrl]);
 	//  navigation

@@ -8,7 +8,7 @@ import TxTable from "./TxTable";
 const cx = cn.bind(styles);
 
 export default function TxHolders({asset = ""}) {
-	const [selected, setSelected] = React.useState(true);
+	const [selected, setSelected] = React.useState(false);
 	const onClick = React.useCallback((e, bool) => {
 		e.stopPropagation();
 		e.preventDefault();
@@ -22,11 +22,11 @@ export default function TxHolders({asset = ""}) {
 	return (
 		<div className={cx("TxHolders-wrapper")}>
 			<div className={cx("Tabs")}>
-				<div className={cx("Tab", selected ? "selected" : undefined)} onClick={e => onClick(e, true)}>
-					Transactions
-				</div>
 				<div className={cx("Tab", !selected ? "selected" : undefined)} onClick={e => onClick(e, false)}>
 					Holders
+				</div>
+				<div className={cx("Tab", selected ? "selected" : undefined)} onClick={e => onClick(e, true)}>
+					Transactions
 				</div>
 			</div>
 			<div className={cx("Card")}>
