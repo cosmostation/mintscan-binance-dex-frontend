@@ -20,10 +20,10 @@ export const proposerAddress = Object.freeze({
 export default Object.freeze({
 	DEFAULT_ARRAY: [],
 	API_BIANCE_DEX: "https://www.binance.org/en/trade",
-	API_COINGECKO: {
-		BASE: "https://api.coingecko.com/api/v3",
-		GET_MARKET_CHART_RANGE: (id = "BNB", from, to) => `/coins/${id}/market_chart/range?vs_currency=usd&from=${from}&to=${to}`,
-	},
+	// API_COINGECKO: {
+	// 	BASE: "https://api.coingecko.com/api/v3",
+	// 	GET_MARKET_CHART_RANGE: (id = "BNB", from, to) => `/coins/${id}/market_chart/range?vs_currency=usd&from=${from}&to=${to}`,
+	// },
 	NUM: {
 		BASE_MULT: 100000000,
 		DEFAULT_DECIMALS: 8,
@@ -62,6 +62,8 @@ export default Object.freeze({
 		ASSET_HOLDERS: "/asset-holders?&page=1&rows=20&asset=",
 		TOP_ASSETS: "/market/coin/list",
 		CHARTS: "/stats/assets/chart",
+		FEE: "/fees",
+		VALIDATORS: "/validators",
 	},
 	NETWORK: {
 		COSMOS: "cosmos-3",

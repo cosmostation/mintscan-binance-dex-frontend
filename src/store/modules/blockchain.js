@@ -3,11 +3,14 @@ import {pender} from "redux-pender";
 import * as api from "src/lib/api";
 import {_, compareProperty} from "src/lib/scripts";
 import {multiply} from "src/lib/Big";
+import txTypes from "src/constants/txTypes";
 
-const [GET_BASIC_DATA, GET_STATUS, GET_ASSETS] = ["GET_BASIC_DATA", "GET_STATUS", "GET_ASSETS"];
+const [GET_BASIC_DATA, GET_STATUS, GET_ASSETS, GET_FEES, GET_VALIDATORS] = ["GET_BASIC_DATA", "GET_STATUS", "GET_ASSETS", "GET_FEES", "GET_VALIDATORS"];
 
 export const getCryptoBasicData = createAction(GET_BASIC_DATA, (id, currency, cancelToken) => api.getBasicData(id, currency, cancelToken));
 export const getCryptoStatus = createAction(GET_STATUS, cancelToken => api.getStatus(cancelToken));
+export const getCryptoFees = createAction(GET_FEES, cancelToken => api.getFees(cancelToken));
+export const getCryptoValidators = createAction(GET_VALIDATORS, cancelToken => api.getValidators(cancelToken));
 
 const initState = {
 	status: {
@@ -20,9 +23,55 @@ const initState = {
 		last_updated_at: null,
 		blockTime: null,
 	},
+	validators: [],
+	fees: [],
+	txFees: [],
 };
 const round = v => Math.round(100 * v) / 100;
 const handlers = {
+	...pender({
+		type: GET_FEES,
+		onSuccess: (state, action) => {
+			const {data} = action.payload;
+			const fees = {};
+			const txFees = {};
+			_.each(data, v => {
+				if (_.keys(v)[0] === "msg_type") assignFee(fees, v);
+				else {
+					if (_.isArray(v?.dex_fee_fields)) {
+						_.each(v.dex_fee_fields, dexV => _.assign(txFees, {[dexV.fee_name]: dexV.fee_value}));
+					} else {
+						_.assign(fees, {
+							"cosmos-sdk/Send": {fee: v.fixed_fee_params.fee, feeFor: v.fixed_fee_params.fee_for},
+							"cosmos-sdk/MultiSend": {fee: v.multi_transfer_fee},
+						});
+					}
+				}
+			});
+
+			return {
+				...state,
+				fees,
+				txFees,
+			};
+		},
+		onFailure: state => {
+			return {...state};
+		},
+	}),
+	...pender({
+		type: GET_VALIDATORS,
+		onSuccess: (state, action) => {
+			const {data} = action.payload;
+			return {
+				...state,
+				validators: data,
+			};
+		},
+		onFailure: state => {
+			return {...state};
+		},
+	}),
 	...pender({
 		type: GET_BASIC_DATA,
 		onSuccess: (state, action) => {
@@ -80,6 +129,23 @@ const handlers = {
 			};
 		},
 	}),
+};
+
+const flatTxTypes = Object.freeze({
+	...txTypes.COSMOS,
+	...txTypes.DEX,
+	...txTypes.TOKENS,
+	...txTypes.MISC,
+});
+
+const assignFee = (obj, fee) => {
+	const target = _.camelCase(fee.msg_type).toLowerCase();
+	// console.log(target);
+	// console.log(flatTxTypes);
+	const foundProperty = _.find(_.keys(flatTxTypes), property => {
+		return _.includes(_.camelCase(property).toLowerCase(), target) || _.includes(_.camelCase(flatTxTypes[property]).toLowerCase(), target);
+	});
+	_.assign(obj, {[flatTxTypes[foundProperty]]: {fee: fee.fee, feeFor: fee.fee_for}});
 };
 
 const compareAsset = (a, b) => compareProperty(a, b, "marketCap");

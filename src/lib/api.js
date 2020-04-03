@@ -22,6 +22,14 @@ export const getMarketChartRange = (id, currency, from, to, cancelToken) => {
 	return axios.get(`${consts.API_BASE}/market/chart?id=${id}`, {cancelToken});
 };
 
-export const getGeckoMarketChartRange = (id = "binancecoin", currency = "USD", from, to, cancelToken) => {
-	return axios.get(`${consts.API_COINGECKO.BASE}${consts.API_COINGECKO.GET_MARKET_CHART_RANGE(id, from, to)}`, {cancelToken});
+export const getFees = cancelToken => {
+	return axios.get(`${consts.API_BASE}${consts.API.FEE}`, {cancelToken});
 };
+
+export const getValidators = cancelToken => {
+	return axios.get(`${consts.API_BASE}${consts.API.VALIDATORS}`, {cancelToken});
+};
+
+// export const getGeckoMarketChartRange = (id = "binancecoin", currency = "USD", from, to, cancelToken) => {
+// 	return axios.get(`${consts.API_COINGECKO.BASE}${consts.API_COINGECKO.GET_MARKET_CHART_RANGE(id, from, to)}`, {cancelToken});
+// };

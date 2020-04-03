@@ -22,6 +22,7 @@ import TxGetFrom from "src/components/Tx/TxData/TxGetFrom/TxGetFrom";
 import tooltips from "src/constants/tooltips";
 import Decimal from "src/components/common/Decimal";
 import DisplayIcon from "src/components/common/DisplayIcon";
+import Skeleton from "react-skeleton-loader";
 
 //  assets
 import arrowSVG from "src/assets/transactions/symbol_arrow.svg";
@@ -32,6 +33,18 @@ import bnbSVG from "src/assets/common/binance_token.svg";
 import DisplayLongString from "src/components/common/DisplayLongString";
 
 // const bnbSVG = "https://static.binance.org/icon/8fedcd202fb549d28b2f313b2bf97033";
+
+const OrderStatus = Object.freeze({
+	Ack: "Pending",
+	PartialFill: "Partial Fill",
+	IocNoFill: "Ioc No Fill",
+	FullyFill: "Finished",
+	Canceled: "Canceled",
+	Expired: "Expired",
+	FailedBlocking: "Failed Blocking",
+	FailedMatching: "Failed Matching",
+	IocExpire: "Ioc Expire",
+});
 
 const cx = cn.bind(styles);
 
@@ -93,13 +106,30 @@ export default function({msg, txData}) {
 				{txCheckOrder(type) ? (
 					<>
 						{txTypes.DEX.ORDER_NEW === type ? (
-							<InfoRow label='Side'>
-								<span className={cx({"color-red": value?.side === 2, "color-blue": value?.side === 1})}>{txGetSide[value?.side]} </span>
-								{value?.symbol.split("-")[0]}
-							</InfoRow>
+							<>
+								<InfoRow label='Side'>
+									<span className={cx({"color-red": value?.side === 2, "color-blue": value?.side === 1})}>{txGetSide[value?.side]} </span>
+									{value?.symbol.split("-")[0]}
+								</InfoRow>
+								<InfoRow label='Status'>{txData?.status ? <span className={cx(txData?.status)}>{OrderStatus[txData?.status]}</span> : <Skeleton />}</InfoRow>
+							</>
 						) : (
 							undefined
 						)}
+						<InfoRow label='Fee'>
+							{!_.isNil(txData?.fee) ? (
+								txData.fee === "" ? (
+									"None"
+								) : (
+									<span className={cx("flexIt")}>
+										<Decimal value={`${refineFee(txData?.fee)[1]}`} fontSizeBase={15} />
+										<span className={cx("currency", {BNB: refineFee(txData?.fee)[0].split("-")[0] === "BNB"})}>{refineFee(txData?.fee)[0].split("-")[0]}</span>
+									</span>
+								)
+							) : (
+								<Skeleton />
+							)}
+						</InfoRow>
 						<InfoRow label='Symbol'>
 							<div className={cx("symbol-link")} onClick={() => clickSymbol(value?.symbol)}>
 								<p>{displaySymbol()}</p>
@@ -175,6 +205,15 @@ export default function({msg, txData}) {
 					undefined
 				)}
 				{type === txTypes.COSMOS.PROPOSAL_SUBMIT ? <TxSubmitProposal txData={txData} value={value} /> : undefined}
+				{txData.origTxhash && txTypes.DEX.ORDER_CANCEL === type ? (
+					<InfoRow label='Order Tx'>
+						<NavLink className={cx("blueColor")} to={`/txs/${txData.origTxhash}`}>
+							<DisplayLongString inputString={txData.origTxhash} />
+						</NavLink>
+					</InfoRow>
+				) : (
+					undefined
+				)}
 				<InfoRow label='From'>
 					<TxGetFrom txData={txData} type={type} value={value} cx={cx} />
 				</InfoRow>
@@ -307,3 +346,5 @@ const clickSymbol = symbol => {
 	if (_.isNil(symbol)) return;
 	window.open(`${consts.API_BIANCE_DEX}/${symbol}`);
 };
+
+const refineFee = input => (_.isString(input) ? input.replace(/(#Cxl:[1-9])|(;)/g, "").split(":") : "");

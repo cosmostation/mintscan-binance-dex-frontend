@@ -1,4 +1,4 @@
-const txTypes = {
+export default Object.freeze({
 	//  COSMOS
 	COSMOS: {
 		SEND: "cosmos-sdk/Send",
@@ -28,7 +28,7 @@ const txTypes = {
 		TIME_RELOCK: "tokens/TimeRelockMsg",
 		HTLT: "tokens/HTLTMsg",
 		HTLT_DEPOSIT: "tokens/DepositHTLTMsg",
-		HTLT_CLAIM: "tokens/DepositHTLTMsg",
+		HTLT_CLAIM: "tokens/ClaimHTLTMsg",
 		HTLT_REFUND: "tokens/RefundHTLTMsg",
 		MINT: "tokens/MintMsg",
 	},
@@ -37,6 +37,4 @@ const txTypes = {
 	MISC: {
 		ACCOUNTFLAG_SET: "scripts/SetAccountFlagsMsg",
 	},
-};
-
-export default txTypes;
+});

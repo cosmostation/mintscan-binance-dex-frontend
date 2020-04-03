@@ -4,7 +4,7 @@ import axios from "axios";
 import consts from "src/constants/consts";
 //  reduxy
 import {getCryptoAssets} from "src/store/modules/assets";
-import {getCryptoBasicData, getCryptoStatus} from "src/store/modules/blockchain";
+import {getCryptoBasicData, getCryptoFees, getCryptoStatus, getCryptoValidators} from "src/store/modules/blockchain";
 //  hooks
 
 export default function usePreload() {
@@ -16,6 +16,8 @@ export default function usePreload() {
 		const source = cancelToken.source();
 		dispatch(getCryptoBasicData("binancecoin", "usd", source.token));
 		dispatch(getCryptoStatus(source.token));
+		dispatch(getCryptoFees(source.token));
+		dispatch(getCryptoValidators(source.token));
 		if (window.location.pathname !== "/assets/") dispatch(getCryptoAssets(source.token));
 	}, [dispatch]);
 
