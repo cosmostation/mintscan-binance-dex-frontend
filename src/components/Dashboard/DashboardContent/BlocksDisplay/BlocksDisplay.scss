@@ -3,7 +3,7 @@
 .BlocksDisplay-table {
 	overflow-x: auto;
 	overflow-y: hidden;
-	min-width: 320px;
+	min-width: 310px;
 
 	.tableHeaderCell {
 		@include tableHeaderCellWidth300;

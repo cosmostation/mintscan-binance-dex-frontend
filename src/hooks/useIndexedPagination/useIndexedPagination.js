@@ -54,20 +54,28 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 
 	//  for real time data
 	useEffect(() => {
+		// console.log(recentData, realTime);
+		// TODO - bugfix
+		//  if watch is switched quickly
+		//  the same url is queried and as a result useFetch does not function
 		if (error || empty(state.allData) || realTime === false) return;
 		if (recentData.loading === false && recentData.error === false) {
-			// console.log("[request recent data]");
-			//  DEBUGGING - to prevent realtime data stream
-			// return;
 			if (loading) return;
 			setUrl(`${consts.API_BASE}${path}` + getQueryParams(state.allData, true, pagingProperty, "", limit));
 		}
 		// eslint-disable-next-line
 	}, [watch]);
+
+	//  possible temporary fix by using setTimeout
 	useEffect(() => {
-		if (error) return;
+		let timeout;
+		if (error) return clearTimeout(timeout);
+		timeout = setTimeout(() => {
+			console.log("setting setWatch", realTime);
+			setWatch(realTime);
+		}, 1000);
+		return clearTimeout(timeout);
 		// console.log("setting setWatch", realTime);
-		setWatch(realTime);
 		// eslint-disable-next-line
 	}, [realTime]);
 

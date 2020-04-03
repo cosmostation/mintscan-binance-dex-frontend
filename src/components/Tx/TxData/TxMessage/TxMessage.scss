@@ -123,19 +123,13 @@
 	@include Flex_LeftRight();
 	align-items: flex-start;
 	margin-bottom: 10px;
-	@include media("<large") {
-		flex-flow: column;
-		.row-label {
-			margin-bottom: 10px;
-		}
-	}
 	
 	.row-label {
 		@include gridLabel;
 	}
 	
 	.row-content-wrapper {
-		padding: 20px;
+		padding: 15px 20px;
 		max-height: 300px;
 		
 		width: calc(100% - 203px);
@@ -215,6 +209,16 @@
 			}
 		}
 		margin-bottom: 8px;
+	}
+	
+	@include media("<medium") {
+		flex-flow: column;
+		.row-label {
+			margin-bottom: 10px;
+		}
+		.row-content-wrapper {
+			width: 100%;
+		}
 	}
 }
 

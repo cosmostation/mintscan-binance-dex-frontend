@@ -4,7 +4,7 @@
  * A LOT of refactoring will probably be needed if attempted to fix.
  * You have been warned
  */
-import React, {useEffect, useMemo} from "react";
+import React, {useEffect, useMemo, useCallback} from "react";
 import styles from "./Table.scss";
 import classNames from "classnames/bind";
 //  utils
@@ -109,9 +109,15 @@ export default function(props) {
 		setRealTime(v => !v);
 	};
 
+	const onMouseEnter = useCallback(() => setRealTime(false), [setRealTime]);
+	const onMouseLeave = useCallback(() => {
+		if (!state.isFront || state.maxIndex !== state.pageData?.[0]?.[BASE_PROPERTY]) return;
+		setRealTime(true);
+	}, [setRealTime, state.isFront]);
+
 	return (
 		<div className={cx("blockListtableWrapper")}>
-			<Table className={cx("table")}>
+			<Table className={cx("table")} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
 				{blocksHeaderRender}
 				{tableBodyRender}
 			</Table>
@@ -130,9 +136,6 @@ export const blocksHeaderRender = (
 				<Tooltip TransitionComponent={Fade} TransitionProps={{timeout: 300}} title={tooltips.proposer} disableFocusListener disableTouchListener>
 					<span>Node</span>
 				</Tooltip>
-			</TableCell>
-			<TableCell className={cx("tableHeaderCell")} align='right'>
-				Fee(no-data)
 			</TableCell>
 			<TableCell className={cx("tableHeaderCell", "txsWidth")} align='right'>
 				<Tooltip TransitionComponent={Fade} TransitionProps={{timeout: 300}} title={tooltips.txs} disableFocusListener disableTouchListener>

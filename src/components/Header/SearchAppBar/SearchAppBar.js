@@ -74,7 +74,7 @@ export default function(props) {
 									))}
 								</div>
 							</div>
-							<SearchArea propCx={cx} dropdownStyle={{position: "fixed", width: "408.92px"}} />
+							<SearchArea propCx={cx} dropdownStyle={{position: "fixed", width: "459px"}} />
 						</div>
 					</Toolbar>
 				</div>

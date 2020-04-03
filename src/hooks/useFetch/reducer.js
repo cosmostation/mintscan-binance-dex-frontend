@@ -11,6 +11,7 @@ export const SUCCESS = "SUCCESS";
 export const ERROR = "ERROR";
 
 export default function(state, action) {
+	// console.log("fetchREDUCER", action.type);
 	switch (action.type) {
 		case INIT: {
 			return {...initialState};

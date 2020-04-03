@@ -24,7 +24,7 @@ export default function() {
 						<p className={cx("byCosmostation")}>By Cosmostation</p>
 					</div>
 					<div className={cx("search-wrapper")}>
-						<SearchArea propCx={cx} dropdownStyle={{position: "fixed", zIndex: 15}} interactiveWidth={true} />;
+						<SearchArea propCx={cx} dropdownStyle={{position: "fixed", zIndex: 15}} interactiveWidth={true} />
 					</div>
 					<div className={cx("link-wrapper")}>
 						{/* google, appstore, web wallet */}

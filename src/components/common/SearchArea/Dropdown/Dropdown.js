@@ -69,8 +69,9 @@ export default function({
 			<div className={cx("defaultText", {showCursor: !!searchType, visible: empty(foundAssets) || stringNumCheck(input)})} onClick={() => clickSearch()}>
 				{searchType ? (
 					<>
-						<span>Search for {searchType}:</span>
-						<span className={cx("input")}>{input}</span>
+						<span>
+							Search for <span className={cx("input")}>{searchType}</span>
+						</span>
 					</>
 				) : (
 					<span>

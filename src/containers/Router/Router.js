@@ -5,7 +5,7 @@ import styles from "./Router.scss";
 //  component
 import Loading from "src/components/common/Loading";
 //  hooks
-import {usePreload} from "src/hooks";
+import {useHistory, usePreload} from "src/hooks";
 
 const cx = cn.bind(styles);
 
@@ -26,18 +26,28 @@ export default function(props) {
 	return (
 		<main className={cx("routerContainer")}>
 			<Suspense fallback={<Loading />}>
-				<Switch>
-					<Route exact path='/' render={props => <Dashboard {...props} />} />
-					<Route path='/blocks/:height' render={props => <Block {...props} />} />
-					<Route path='/blocks' render={props => <BlockList {...props} />} />
-					<Route path='/txs/:tx' render={props => <Tx {...props} />} />
-					<Route path='/txs' render={props => <TxList {...props} />} />
-					<Route path='/account/:account' render={props => <Account {...props} />} />
-					<Route path='/assets/:asset' render={props => <Asset {...props} />} />
-					<Route path='/assets' render={props => <AssetList {...props} />} />
-					<Route render={() => <NotFound />} />
-				</Switch>
+				<ScrollToTop>
+					<Switch>
+						<Route exact path='/' render={props => <Dashboard {...props} />} />
+						<Route path='/blocks/:height' render={props => <Block {...props} />} />
+						<Route path='/blocks' render={props => <BlockList {...props} />} />
+						<Route path='/txs/:tx' render={props => <Tx {...props} />} />
+						<Route path='/txs' render={props => <TxList {...props} />} />
+						<Route path='/account/:account' render={props => <Account {...props} />} />
+						<Route path='/assets/:asset' render={props => <Asset {...props} />} />
+						<Route path='/assets' render={props => <AssetList {...props} />} />
+						<Route render={() => <NotFound />} />
+					</Switch>
+				</ScrollToTop>
 			</Suspense>
 		</main>
 	);
 }
+
+const ScrollToTop = props => {
+	const history = useHistory();
+	React.useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [history.location.pathname]);
+	return <>{props.children}</>;
+};

@@ -80,10 +80,10 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 
 	const searchType = React.useMemo(() => {
 		if (!_.isString(input)) return false;
-		else if (stringNumCheck(input)) return "height";
-		else if (input.substring(0, 3).toLowerCase() === "bnb" && input.length === 42) return "address";
-		else if (input.length === 64) return "Tx";
-		else if (stringNumCheck(input.split("-")[1]) && input.split("-")[0].length === 40) return "order id";
+		else if (stringNumCheck(input)) return "Block";
+		else if (input.substring(0, 3).toLowerCase() === "bnb" && input.length === 42) return "Account";
+		else if (input.length === 64) return "Transaction";
+		else if (stringNumCheck(input.split("-")[1]) && input.split("-")[0].length === 40) return "Order Id";
 		return false;
 	}, [input]);
 

@@ -5,6 +5,7 @@ import {txCheckFUBM, txCheckOrder, txCheckSend} from "../TxCase";
 import {NavLink} from "react-router-dom";
 
 import txTypes from "src/constants/txTypes";
+import DisplayLongString from "src/components/common/DisplayLongString";
 
 const aBunch = [txTypes.DEX.LIST, txTypes.TOKENS.TIME_LOCK, txTypes.TOKENS.TIME_UNLOCK, txTypes.TOKENS.TIME_RELOCK];
 
@@ -18,7 +19,7 @@ export default function({type, txData, value, cx}) {
 	if (_.isString(from))
 		return (
 			<NavLink className={cx("blueColor")} to={`/account/${from}`}>
-				{from}
+				<DisplayLongString inputString={from} />
 			</NavLink>
 		);
 	return <>-</>;

@@ -29,6 +29,7 @@ import transferArrowSVG from "src/assets/transactions/transferArrow.svg";
 import symbolNone from "src/assets/transactions/symbol_none.svg";
 import detailSVG from "src/assets/transactions/symbol_detail_btn.svg";
 import bnbSVG from "src/assets/common/binance_token.svg";
+import DisplayLongString from "src/components/common/DisplayLongString";
 
 // const bnbSVG = "https://static.binance.org/icon/8fedcd202fb549d28b2f313b2bf97033";
 
@@ -55,7 +56,7 @@ export default function({msg, txData}) {
 										<li className={cx("value")}>
 											{_.map(value.outputs, v => (
 												<NavLink key={v.address} className={cx("blueColor")} to={`/account/${refineAddress(v.address)}`}>
-													{reduceString(refineAddress(v.address), 10, 10)}
+													<DisplayLongString inputString={refineAddress(v.address)} />
 												</NavLink>
 											))}
 										</li>

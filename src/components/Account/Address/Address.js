@@ -11,6 +11,7 @@ import Decimal from "src/components/common/Decimal";
 //  assets
 import qrSVG from "src/assets/account/qr_code.svg";
 import QrModal from "../QrModal";
+import DisplayLongString from "src/components/common/DisplayLongString";
 
 const cx = cn.bind(styles);
 const ADDRESS_LENGTH = 42;
@@ -56,9 +57,10 @@ export default function Address({account = {}, prices = []}) {
 					<p>
 						{account.address ? (
 							<>
-								<span className={cx("front")}>{account.address.substr(0, ADDRESS_CUT_DISPLAY_LENGTH)}</span>
-								<span className={cx("remove")}>{account.address.substr(ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH * 2)}</span>
-								{account.address.substr(ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_CUT_DISPLAY_LENGTH)}
+								<DisplayLongString inputString={account.address} displayThresh={6} />
+								{/*<span className={cx("front")}>{account.address.substr(0, ADDRESS_CUT_DISPLAY_LENGTH)}</span>*/}
+								{/*<span className={cx("remove")}>{account.address.substr(ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH * 2)}</span>*/}
+								{/*{account.address.substr(ADDRESS_LENGTH - ADDRESS_CUT_DISPLAY_LENGTH, ADDRESS_CUT_DISPLAY_LENGTH)}*/}
 							</>
 						) : (
 							"-"

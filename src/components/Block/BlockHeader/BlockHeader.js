@@ -15,11 +15,6 @@ export default function({blockData, history}) {
 	const onClick = React.useCallback(() => history.replace(`/blocks/${Number(blockData?.height) - 1}`), [blockData, history]);
 
 	return React.useMemo(() => {
-		// TODO
-		//  apply proper fee when applicable
-		const fee = "0.000000(fake)";
-		const split = fee.split(".");
-
 		return (
 			<div className={cx("BlockDetail-wrapper")}>
 				{/*{(() => console.table(blockData))()}*/}
@@ -40,9 +35,6 @@ export default function({blockData, history}) {
 					{/*<InfoRow label={"Block Time"}>*/}
 					{/*	<span className={cx("no-transform")}>in 438 ms</span>*/}
 					{/*</InfoRow>*/}
-					<InfoRow label={"Fee"}>
-						<span>{formatNumber(split[0])}</span>.<span className={cx("decimal")}>{split[1]}</span> <span className={cx("BNB")}>BNB</span>
-					</InfoRow>
 					{/*<div className={cx("rewardRow")}>*/}
 					{/*	<div className={cx("row-label")}>RewardedTo / Fee</div>*/}
 					{/*	<div className={cx("row-content")}>*/}

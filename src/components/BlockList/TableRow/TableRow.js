@@ -79,10 +79,6 @@ export default function({blockData}) {
 			<TableCell className={cx("tablePointerCell", "text")} align='left'>
 				{blockData.moniker ? <NavLink to={`/account/${proposerAddress[blockData.moniker]}`}>{blockData.moniker}</NavLink> : <Skeleton />}
 			</TableCell>
-			<TableCell className={cx("tableCell", "text")} align='right'>
-				000,000.<span className={cx("decimal")}>00000</span>
-				<span className={cx("BNB")}> BNB</span>
-			</TableCell>
 			<TableCell className={cx("tableCell")} align='right'>
 				{blockData.height ? blockData.num_txs ? blockData.num_txs : "0" : <Skeleton />}
 			</TableCell>

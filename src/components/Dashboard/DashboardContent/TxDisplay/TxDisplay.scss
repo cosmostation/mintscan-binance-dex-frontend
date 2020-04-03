@@ -4,7 +4,7 @@ $customPadding: 11.5px 15px 11.5px 10px;
 .TxDisplay-table {
 	overflow-x: auto;
 	overflow-y: hidden;
-	min-width: 320px;
+	min-width: 300px;
 
 	.tableHeaderCell {
 		@include tableHeaderCellWidth300;
@@ -14,7 +14,9 @@ $customPadding: 11.5px 15px 11.5px 10px;
 	}
 
 	.txHashWidth {
-		min-width: 100px;
+		overflow-x: visible;
+		min-width: 90px;
+		padding: 11.5px 5px 11.5px 10px;
 	}
 	.height {
 		@include media("<dash_table_limit") {
@@ -23,10 +25,12 @@ $customPadding: 11.5px 15px 11.5px 10px;
 	}
 
 	.typeWidth {
+		padding: 11.5px 10px 11.5px 5px;
 		min-width: 100px;
 	}
 
 	.timeWidth {
 		min-width: 50px;
+		padding: 11.5px 20px 11.5px 0;
 	}
 }

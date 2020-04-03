@@ -51,14 +51,6 @@
 				font-weight: normal;
 				display: flex;
 				align-items: center;
-				@include media("<small") {
-					.front:after {
-						content: "..."
-					}
-					.remove {
-						display: none;
-					}
-				}
 				
 				p {
 					margin-right: 8px;
@@ -80,6 +72,7 @@
 					width: 50px;
 					height: 30px;
 					position: relative;
+					overflow-x: hidden;
 					.copied {
 						top: 3px;
 						width: 100%;

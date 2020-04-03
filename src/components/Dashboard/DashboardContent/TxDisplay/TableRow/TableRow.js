@@ -14,7 +14,7 @@ const cx = cn.bind(styles);
 export default function({blockData}) {
 	return (
 		<TableRow className={cx("txDisplay-tableRow")} hover={true} key={blockData.id}>
-			<TableCell className={cx("tablePointerCell", "text")} component='th' scope='row'>
+			<TableCell className={cx("tablePointerCell", "text", "txHash")} component='th' scope='row'>
 				{pickData(blockData, cx, CELL_TYPES[0])}
 			</TableCell>
 			<TableCell className={cx("tablePointerCell", "text", "typeWidth")} align='left'>

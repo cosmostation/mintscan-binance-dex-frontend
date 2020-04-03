@@ -45,9 +45,14 @@
 	}
 	.defaultText {
 		display: none;
-		.input {
-			font-family: Roboto, serif;
+		:first-child {
 			font-weight: 400;
+			color: #767f8d;
+			margin-right: 3px;
+		}
+		.input {
+			color: black;
+			font-family: Roboto, serif;
 		}
 		span {
 			img {
@@ -55,11 +60,6 @@
 				width: auto;
 				object-fit: fill;
 			}
-		}
-		:first-child {
-			font-weight: 400;
-			color: #767f8d;
-			margin-right: 3px;
 		}
 	}
 	.showCursor {

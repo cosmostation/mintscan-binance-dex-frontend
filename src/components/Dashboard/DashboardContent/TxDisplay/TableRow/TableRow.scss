@@ -29,19 +29,22 @@ $customPadding: 8px 15px 7px 10px;
 		padding: $customPadding;
 	}
 
-	.typeWidth {
-		min-width: 100px;
-	}
-
 	.time {
 		line-height: 1.38;
 		color: #4b525d;
 		width: 80px;
+		padding: 8px 20px 7px 0;
 	}
 	.height {
 		@include media("<dash_table_limit") {
 			display: none;
 		}
+	}
+	.txHash {
+		padding: 8px 5px 7px 10px;
+	}
+	.typeWidth {
+		padding: 8px 10px 7px 5px;
 	}
 }
 

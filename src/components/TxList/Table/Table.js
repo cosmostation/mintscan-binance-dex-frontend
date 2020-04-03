@@ -4,7 +4,7 @@
  * A LOT of refactoring will probably be needed if attempted to fix.
  * You have been warned
  */
-import React, {useEffect, useMemo} from "react";
+import React, {useCallback, useEffect, useMemo} from "react";
 import styles from "./Table.scss";
 import classNames from "classnames/bind";
 //  utils
@@ -107,9 +107,15 @@ export default function(props) {
 		);
 	}, [state.pageData]);
 
+	const onMouseEnter = useCallback(() => setRealTime(false), [setRealTime]);
+	const onMouseLeave = useCallback(() => {
+		if (!state.isFront || state.maxIndex !== state.pageData?.[0]?.[BASE_PROPERTY]) return;
+		setRealTime(true);
+	}, [setRealTime, state.isFront]);
+
 	return (
 		<div className={cx("txListTableWrapper")}>
-			<Table className={cx("table")}>
+			<Table className={cx("table")} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
 				{txTableHeader}
 				{tableBodyRender}
 			</Table>

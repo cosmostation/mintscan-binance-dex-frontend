@@ -29,13 +29,11 @@ $customPadding: 8px 20px 7px 10px;
 	}
 
 	.time {
-		min-width: 60px;
 		line-height: 1.38;
 		color: #4b525d;
 	}
 
 	.proposer {
-		width: 115px;
 		@include media("<dash_table_limit") {
 			display: none;
 		}

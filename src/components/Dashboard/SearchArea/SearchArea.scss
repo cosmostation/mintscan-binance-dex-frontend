@@ -2,7 +2,7 @@
 
 .SearchArea {
 	width: 100%;
-	height: 344px;
+	height: fit-content;
 
 	position: relative;
 	overflow: hidden;
@@ -16,7 +16,6 @@
 		background-size: cover;
 	}
 	@include media("<large") {
-		height: 290px;
 		width: calc(100% + 30px);
 		margin-left: -15px;
 	}
@@ -24,12 +23,8 @@
 	@include media("<medium") {
 		margin-top: 0;
 		background: #0A0E11;
-		height: 230px;
 		width: calc(100% + 20px);
 		margin-left: -10px;
-	}
-	@include media("<=small") {
-		height: 200px;
 	}
 
 	display: flex;
@@ -59,21 +54,21 @@
 		}
 
 		.title-wrapper {
-			margin: 50px 0 0 0;
+			margin: 40px 0 0 0;
 			display: flex;
 			flex-flow: column;
 			justify-content: space-between;
 
 			@include media("<large") {
-				margin: 28px 0 0 0;
+				margin: 40px 0 0 0;
 			}
 
 			@include media("<medium") {
-				margin: 15px 0 0 0;
+				margin: 30px 0 0 0;
 			}
 
 			@include media("<=small") {
-				margin: 0;
+				margin: 20px 0 0 0;
 			}
 
 			.title {
@@ -82,7 +77,7 @@
 				font-weight: 300;
 				font-stretch: normal;
 				font-style: normal;
-				line-height: 1.22;
+				line-height: 0.8;
 				letter-spacing: normal;
 				text-align: left;
 				color: #f1bd10;
@@ -133,9 +128,15 @@
 		.search-wrapper {
 			margin: 30px 0 0 0;
 			width: 100%;
-
+			height: fit-content;
 			@include media("<medium") {
 				margin: 15px 0 0 0;
+				width: 80%;
+			}
+			
+			@include media("<=small") {
+				width: 100%;
+				padding: 0 25px;
 			}
 
 			.search {
@@ -157,7 +158,6 @@
 				}
 
 				@include media("<=small") {
-					width: 100%;
 					height: 32px;
 				}
 
@@ -197,6 +197,10 @@
 					.searchIcon {
 						width: 32px;
 						height: 32px;
+						@include media("<medium") {
+							width: 24px;
+							height: 24px;
+						}
 					}
 				}
 			}
@@ -208,15 +212,21 @@
 			align-items: center;
 			width: 100%;
 
-			margin: 30px 0 0 0;
+			margin: 40px 0;
 
 			@include media("<medium") {
-				margin: 15px 0 0 0;
+				margin: 25px 0;
+				width: 80%;
+			}
+			@include media("<small") {
+				margin: 15px 0;
+				width: 100%;
+				padding: 0 25px;
 			}
 
 			p {
 				color: #ffffff;
-				font-family: "Montserrat";
+				font-family: "Montserrat", serif;
 				font-size: 18px;
 				margin-bottom: 10px;
 

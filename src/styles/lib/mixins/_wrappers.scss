@@ -8,7 +8,7 @@
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 
 	@include media("<medium") {
-		padding: 10px 12px;
+		padding: 10px 20px;
 	}
 	margin-bottom: $marginBottom;
 }

@@ -4,20 +4,21 @@
 	position: absolute;
 	z-index: 99;
 	background-color: white;
-	top: calc(100% + 5px);
+	top: calc(100% + 10px);
 	left: 0;
 	padding: 10px;
+	border-radius: 5px;
 	box-shadow: 0 0.125rem 1.25rem 0 rgba(0, 0, 0, 0.2);
 	
 	.arrow {
 		position: absolute;
-		top: -4px;
+		top: -6px;
 		left: 10%;
 		width: 0;
 		height: 0;
-		border-left: 5px solid transparent;
-		border-right: 5px solid transparent;
-		border-bottom: 5px solid white;
+		border-left: 7px solid transparent;
+		border-right: 7px solid transparent;
+		border-bottom: 7px solid white;
 	}
 	
 	.QrModal-inner {
@@ -26,6 +27,7 @@
 		padding: 10px;
 		border: 2px rgb(132, 142, 156) solid;
 		> canvas {
+			margin-top: 4px;
 			z-index: 101;
 			position: relative;
 		}
@@ -33,7 +35,7 @@
 			@include absolute-middle;
 			z-index: 99;
 			content: "";
-			width: calc(100% + 4px);
+			width: calc(101% + 4px);
 			height: calc(90% + 4px);
 			background-color: #ffffff;
 		}
@@ -42,7 +44,7 @@
 			z-index: 99;
 			content: "";
 			width: calc(90% + 4px);
-			height: calc(100% + 4px);
+			height: calc(101% + 4px);
 			background-color: #ffffff;
 		}
 	}

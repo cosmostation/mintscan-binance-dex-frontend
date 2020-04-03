@@ -7,6 +7,7 @@ import moment from "moment";
 import {setAgoTime} from "src/lib/scripts";
 //  components
 import InfoRow from "src/components/common/InfoRow";
+import DisplayLongString from "src/components/common/DisplayLongString";
 
 //  assets
 import failSVG from "src/assets/transactions/fail_ic.svg";
@@ -19,7 +20,9 @@ export default function({txData}) {
 		<div className={cx("TxInfo-wrapper")}>
 			<h2 className={cx("title")}>Information</h2>
 			<div className={cx("grid-wrapper")}>
-				<InfoRow label='TxHash'>{txData.tx_hash}</InfoRow>
+				<InfoRow label='TxHash'>
+					<DisplayLongString inputString={txData.tx_hash} long />
+				</InfoRow>
 				<InfoRow label='Status'>
 					<span>
 						<img className={cx("status-img")} src={txData?.result ? successSVG : failSVG} alt={"status"} />
