@@ -6,6 +6,8 @@ import reducer, {ERROR, FETCHING_ALL, FINISHED, initialState, SUCCESS} from "./r
 //  hooks
 import {usePrevious} from "src/hooks/index";
 
+//  hit multiple apis at once and get each response as they arrive into an array
+//  planning on adding functionality for seperate refetches
 export default function useMultiFetch(inputUrls = [], method = "get") {
 	const [urls, setUrls] = React.useState(inputUrls);
 	const [state, dispatch] = React.useReducer(reducer, initialState, () => initialState);

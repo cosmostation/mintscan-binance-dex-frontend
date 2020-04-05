@@ -5,6 +5,9 @@ import consts from "src/constants/consts";
 B.NE = -10;
 B.PE = 100;
 
+//  necessary for decimal precision due to javascript being javascript.
+//  ofc.
+
 export const big = input => {
 	const ret = new B(input);
 	return ret ? ret : new B("0");

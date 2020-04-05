@@ -44,17 +44,13 @@ export default function Account(props) {
 	// 	}
 	// }, [account, history.action, refetch, setUrl, state.data]);
 
-	// TODO
-	//  Assets are not rerendering on history.push
-	//  figure out why and fix it
-
 	//  when data from address arrives, set the useGetPrice hook to start
 	React.useEffect(() => {
 		if (empty(assetData?.balances)) return;
 		setTargetAssets(_.map(assetData.balances, v => v.symbol));
 	}, [setTargetAssets, assetData]);
 
-	//  refetch when account has changed
+	//  refetch when account has changed(url)
 	React.useEffect(() => {
 		if (!empty(assetData) && account !== prevAccount) {
 			setUrls(urlList);

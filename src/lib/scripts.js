@@ -11,6 +11,7 @@ export const omitProperty = (arr, valueArray) => _.map(arr, v => _.omit(v, value
 
 export const nilCheck = arr => !_.every(arr, el => !_.isNil(el));
 
+//  planning on recreating this with css and components in the future(already mostly done)
 export const reduceString = (str, from, end) => (str ? str.substring(0, from) + " ... " + str.substring(str.length - end) : "-");
 
 export const stringNumCheck = input => !empty(input) && !isNaN(Number(input));
@@ -23,6 +24,8 @@ const recursiveReverse = input => {
 	if (_.isString) return reverseString(input);
 	return reverseString(`${input}`);
 };
+
+//  honestly not the brightest implementation, but it works so whatev.
 export const formatNumber = (v = 0, size = 3) => {
 	let str = `${v}`;
 	if (empty(str)) return "NaN";
@@ -38,9 +41,10 @@ export const getPercentage = (num1 = 0, num2 = 100, decimal = 4) => {
 	return `${Math.floor((num1 / num2) * 100 * Math.pow(10, decimal)) / Math.pow(10, decimal)}`;
 };
 
-const phoneRegex = Object.freeze([/Android/i, /BlackBerry/i, /iPhone|iPad|iPod/i, /iPhone|iPad|iPod/i, /Opera Mini/i, /IEMobile/i, /WPDesktop/i]);
-export const isMobile = () => _.find(phoneRegex, regex => window.navigator.userAgent.match(regex)) !== undefined;
-export const isIOS = () => window.navigator.userAgent.match(/iPhone|iPad|iPod/i);
+//  not needed atm but will in the future
+// const phoneRegex = Object.freeze([/Android/i, /BlackBerry/i, /iPhone|iPad|iPod/i, /iPhone|iPad|iPod/i, /Opera Mini/i, /IEMobile/i, /WPDesktop/i]);
+// export const isMobile = () => _.find(phoneRegex, regex => window.navigator.userAgent.match(regex)) !== undefined;
+// export const isIOS = () => window.navigator.userAgent.match(/iPhone|iPad|iPod/i);
 
 export const recursiveGetFirstValue = obj => {
 	if (_.isArray(obj)) return recursiveGetFirstValue(obj[0]);

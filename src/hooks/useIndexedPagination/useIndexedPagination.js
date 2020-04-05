@@ -33,6 +33,7 @@ import reducer, {
 
 export const SPARE_PAGE_CNT = 2; //  how many pages left before a refetch is triggered
 
+//  customized auto fetch + autofetch + pagination.
 export default function({path, pageSize = 20, pagingProperty = "height", limit = 60, resolve = undefined, updateQuery = ""}) {
 	const history = useHistory();
 	const [state, dispatch] = useReducer(reducer, initialState, () => initialState);

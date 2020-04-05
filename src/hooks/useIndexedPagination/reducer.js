@@ -19,10 +19,10 @@ export const INITIAL_LOAD_QUERY = "INITIAL_LOAD_QUERY"; //  initial load from mi
 export const EXTRA_LOAD_INIT = "EXTRA_LOAD_INIT"; //  get ready to load
 export const EXTRA_LOAD = "EXTRA_LOAD"; //  load more
 export const EXTRA_LOAD_FAIL = "EXTRA_LOAD_FAIL"; // load more but null
-export const RECENT_DATA_LOAD = "RECENT_DATA_LOAD";
+export const RECENT_DATA_LOAD = "RECENT_DATA_LOAD"; //  fetch real-time
 export const PAGE_CHANGE = "PAGE_CHANGE";
 export const UPDATE_MAX_HEIGHT = "UPDATE_MAX_HEIGHT";
-export const UPDATE_ISFRONT = "UPDATE_ISFRONT";
+export const UPDATE_ISFRONT = "UPDATE_ISFRONT"; //  indicator whether the current page is the front
 export const RESET = "RESET"; //  reset(to initial initial_load again
 
 export default function(state, action) {

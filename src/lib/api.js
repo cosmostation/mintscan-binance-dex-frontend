@@ -30,6 +30,7 @@ export const getValidators = cancelToken => {
 	return axios.get(`${consts.API_BASE}${consts.API.VALIDATORS}`, {cancelToken});
 };
 
+//  original api using coingecko
 // export const getGeckoMarketChartRange = (id = "binancecoin", currency = "USD", from, to, cancelToken) => {
 // 	return axios.get(`${consts.API_COINGECKO.BASE}${consts.API_COINGECKO.GET_MARKET_CHART_RANGE(id, from, to)}`, {cancelToken});
 // };

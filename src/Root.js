@@ -3,6 +3,7 @@ import {BrowserRouter} from "react-router-dom";
 import {RestfulProvider} from "restful-react"; //  Thank you Tejas - I'm not gonna lie, swr looks more juicy these days
 import consts from "src/constants/consts";
 import App from "./App";
+//  comment this out if you do not plan on using firebase
 import "./firebase";
 
 //  redux

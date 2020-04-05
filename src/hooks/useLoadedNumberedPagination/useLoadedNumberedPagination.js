@@ -2,6 +2,8 @@ import {useEffect, useMemo, useState} from "react";
 //  hooks
 import usePager from "./usePager";
 
+// TODO
+//  work on this depending on how much the site is used
 //  not used due to asset pages not being paginated
 export default function(initValues = []) {
 	const [pager, setCurrentPage, setPageSize, setTotalCnt] = usePager(100, 1, 20);
