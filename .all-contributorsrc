@@ -1,0 +1,95 @@
+{
+  "projectName": "mintscan-binance-dex-frontend",
+  "projectOwner": "Cosmostation",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "eslint",
+  "contributors": [
+    {
+      "login": "fl-y",
+      "name": "fl-y",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/31615341?v=4",
+      "profile": "http://dev.to/fly",
+      "contributions": [
+        "doc",
+        "bug",
+        "code",
+        "ideas",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "minami-choi",
+      "name": "Mina Choi",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/28688788?v=4",
+      "profile": "https://minami-choi.github.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "kogisin",
+      "name": "JayB",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/20435620?v=4",
+      "profile": "https://jaybdev.net",
+      "contributions": [
+        "code",
+        "projectManagement",
+        "question"
+      ]
+    },
+    {
+      "login": "hyeryeong-lim",
+      "name": "hyeryeong-lim",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/63229379?v=4",
+      "profile": "https://github.com/hyeryeong-lim",
+      "contributions": [
+        "design",
+        "question"
+      ]
+    },
+    {
+      "login": "wannabit-dev",
+      "name": "wannabit-dev",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/34641156?v=4",
+      "profile": "https://www.wannabit.io",
+      "contributions": [
+        "userTesting"
+      ]
+    },
+    {
+      "login": "wannabit-mina",
+      "name": "wannabit-mina",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/34847819?v=4",
+      "profile": "https://github.com/wannabit-mina",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "thaidout",
+      "name": "David Park",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/43632038?v=4",
+      "profile": "https://www.cosmostation.io",
+      "contributions": [
+        "business",
+        "fundingFinding"
+      ]
+    },
+    {
+      "login": "binance-exchange",
+      "name": "binance-exchange",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/32770468?v=4",
+      "profile": "https://github.com/binance-exchange",
+      "contributions": [
+        "financial"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

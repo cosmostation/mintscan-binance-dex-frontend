@@ -1,10 +1,14 @@
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">    
-  <a href="https://www.cosmostation.io" target="_blank" rel="noopener noreferrer"><img width="100" src="https://user-images.githubusercontent.com/20435620/55696624-d7df2e00-59f8-11e9-9126-edf9a40b11a8.png" alt="Cosmostation logo"></a>    
-</p>    
-    
+  <a href="https://www.cosmostation.io" target="_blank" rel="noopener noreferrer"><img width="400" src="https://user-images.githubusercontent.com/31615341/78533120-614f5900-7823-11ea-901a-b745880594cf.png" alt="Cosmostation logo"></a>    
+</p>
+
 <h2 align="center">    
   Mintscan Explorer's Frontend for Binance Chain     
-</h2>    
+</h2>
     
 *:star: Developed / Developing by [Cosmostation](https://www.cosmostation.io/)*    
  ## Overview This project is sponsored by [Binance X Fellowship Program](https://binancex.dev/fellowship.html).    
@@ -56,6 +60,38 @@ without your most awaited upon help.
     
 yours sincerely, with a grain of salt *wink*    
 ```    
-## Our Services and Community - [Official Website](https://www.cosmostation.io) - [Mintscan Explorer](https://www.mintscan.io) - [Web Wallet](https://wallet.cosmostation.io) - [Android Wallet](https://bit.ly/2BWex9D) - [iOS Wallet](https://apple.co/2IAM3Xm) - [Telegram - International](https://t.me/cosmostation)    
+## Our Services and Community 
+- [Official Website](https://www.cosmostation.io) 
+- [Mintscan Explorer](https://www.mintscan.io) 
+- [Web Wallet](https://wallet.cosmostation.io) 
+- [Android Wallet](https://bit.ly/2BWex9D) - [iOS Wallet](https://apple.co/2IAM3Xm) 
+- [Telegram - International](https://t.me/cosmostation)    
  ## License    
  Released under the [Apache 2.0 License](https://github.com/cosmostation/mintscan-binance-dex-frontend/LICENSE).
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://dev.to/fly"><img src="https://avatars3.githubusercontent.com/u/31615341?v=4" width="100px;" alt=""/><br /><sub><b>fl-y</b></sub></a><br /><a href="https://github.com/Cosmostation/mintscan-binance-dex-frontend/commits?author=fl-y" title="Documentation">📖</a> <a href="https://github.com/Cosmostation/mintscan-binance-dex-frontend/issues?q=author%3Afl-y" title="Bug reports">🐛</a> <a href="https://github.com/Cosmostation/mintscan-binance-dex-frontend/commits?author=fl-y" title="Code">💻</a> <a href="#ideas-fl-y" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-fl-y" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://minami-choi.github.io/"><img src="https://avatars2.githubusercontent.com/u/28688788?v=4" width="100px;" alt=""/><br /><sub><b>Mina Choi</b></sub></a><br /><a href="https://github.com/Cosmostation/mintscan-binance-dex-frontend/commits?author=minami-choi" title="Code">💻</a></td>
+    <td align="center"><a href="https://jaybdev.net"><img src="https://avatars1.githubusercontent.com/u/20435620?v=4" width="100px;" alt=""/><br /><sub><b>JayB</b></sub></a><br /><a href="https://github.com/Cosmostation/mintscan-binance-dex-frontend/commits?author=kogisin" title="Code">💻</a> <a href="#projectManagement-kogisin" title="Project Management">📆</a> <a href="#question-kogisin" title="Answering Questions">💬</a></td>
+    <td align="center"><a href="https://github.com/hyeryeong-lim"><img src="https://avatars1.githubusercontent.com/u/63229379?v=4" width="100px;" alt=""/><br /><sub><b>hyeryeong-lim</b></sub></a><br /><a href="#design-hyeryeong-lim" title="Design">🎨</a> <a href="#question-hyeryeong-lim" title="Answering Questions">💬</a></td>
+    <td align="center"><a href="https://www.wannabit.io"><img src="https://avatars0.githubusercontent.com/u/34641156?v=4" width="100px;" alt=""/><br /><sub><b>wannabit-dev</b></sub></a><br /><a href="#userTesting-wannabit-dev" title="User Testing">📓</a></td>
+    <td align="center"><a href="https://github.com/wannabit-mina"><img src="https://avatars0.githubusercontent.com/u/34847819?v=4" width="100px;" alt=""/><br /><sub><b>wannabit-mina</b></sub></a><br /><a href="https://github.com/Cosmostation/mintscan-binance-dex-frontend/commits?author=wannabit-mina" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.cosmostation.io"><img src="https://avatars2.githubusercontent.com/u/43632038?v=4" width="100px;" alt=""/><br /><sub><b>David Park</b></sub></a><br /><a href="#business-thaidout" title="Business development">💼</a> <a href="#fundingFinding-thaidout" title="Funding Finding">🔍</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/binance-exchange"><img src="https://avatars2.githubusercontent.com/u/32770468?v=4" width="100px;" alt=""/><br /><sub><b>binance-exchange</b></sub></a><br /><a href="#financial-binance-exchange" title="Financial">💵</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
