@@ -49,6 +49,8 @@ const OrderStatus = Object.freeze({
 const cx = cn.bind(styles);
 
 export default function({msg, txData}) {
+	const fees = useSelector(state => state.blockchain.fees);
+
 	const {type, value} = msg;
 	const MsgGridRender = React.useMemo(() => {
 		const displaySymbol = () => {
@@ -232,11 +234,26 @@ export default function({msg, txData}) {
 		);
 	}, [txData, type, value]);
 
+	const toolTippedImg = React.useMemo(() => {
+		const feeValue = !_.isNil(fees[type]?.fee) ? divide(fees[type].fee, consts.NUM.BASE_MULT) : "none";
+		return (
+			<Tooltip
+				placement='right-start'
+				TransitionComponent={Fade}
+				TransitionProps={{timeout: 300}}
+				title={`Tx Fee: ${feeValue}${feeValue !== "none" ? ` BNB` : ""}`}
+				disableTouchListener
+				disableFocusListener>
+				<img className={cx("txType-img")} src={getTxTypeIcon(type)} alt={"icon"} />
+			</Tooltip>
+		);
+	}, [type, fees]);
+
 	// console.log(txData);
 	return (
 		<div className={cx("grid-wrapper")}>
 			<div className={cx("type-wrapper")}>
-				<img className={cx("txType-img")} src={getTxTypeIcon(type)} alt={"icon"} />
+				{toolTippedImg}
 				<span>{getTxType(type)}</span>
 			</div>
 			{MsgGridRender}

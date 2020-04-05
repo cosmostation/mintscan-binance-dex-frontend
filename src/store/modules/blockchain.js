@@ -28,6 +28,9 @@ const initState = {
 	txFees: [],
 };
 const round = v => Math.round(100 * v) / 100;
+
+// [Ack, PartialFill, IocNoFill, FullyFill, Canceled, Expired, FailedBlocking, FailedMatching, IocExpire]
+
 const handlers = {
 	...pender({
 		type: GET_FEES,
@@ -48,7 +51,7 @@ const handlers = {
 					}
 				}
 			});
-
+			console.log(txFees);
 			return {
 				...state,
 				fees,
