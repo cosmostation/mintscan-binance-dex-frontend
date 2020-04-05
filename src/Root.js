@@ -1,13 +1,16 @@
 import React from "react";
 import {BrowserRouter} from "react-router-dom";
 import {RestfulProvider} from "restful-react"; //  Thank you Tejas - I'm not gonna lie, swr looks more juicy these days
-//  redux
-import {Provider} from "react-redux";
-import configure from "./store/configure";
-import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
 import consts from "src/constants/consts";
 import App from "./App";
 import "./firebase";
+
+//  redux
+import {Provider} from "react-redux";
+import configure from "./store/configure";
+
+//  Mui
+import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
 
 const store = configure();
 const theme = createMuiTheme({
