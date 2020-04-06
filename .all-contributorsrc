@@ -11,6 +11,15 @@
   "commitConvention": "eslint",
   "contributors": [
     {
+      "login": "binance-exchange",
+      "name": "binance-exchange",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/32770468?v=4",
+      "profile": "https://github.com/binance-exchange",
+      "contributions": [
+        "financial"
+      ]
+    },
+    {
       "login": "fl-y",
       "name": "fl-y",
       "avatar_url": "https://avatars3.githubusercontent.com/u/31615341?v=4",
@@ -21,15 +30,6 @@
         "code",
         "ideas",
         "maintenance"
-      ]
-    },
-    {
-      "login": "minami-choi",
-      "name": "Mina Choi",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/28688788?v=4",
-      "profile": "https://minami-choi.github.io/",
-      "contributions": [
-        "code"
       ]
     },
     {
@@ -63,15 +63,6 @@
       ]
     },
     {
-      "login": "wannabit-mina",
-      "name": "wannabit-mina",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/34847819?v=4",
-      "profile": "https://github.com/wannabit-mina",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
       "login": "thaidout",
       "name": "David Park",
       "avatar_url": "https://avatars2.githubusercontent.com/u/43632038?v=4",
@@ -82,14 +73,33 @@
       ]
     },
     {
-      "login": "binance-exchange",
-      "name": "binance-exchange",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/32770468?v=4",
-      "profile": "https://github.com/binance-exchange",
+      "login": "cosmostation-tony",
+      "name": "cosmostation-tony",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/57337630?v=4",
+      "profile": "https://github.com/cosmostation-tony",
       "contributions": [
-        "financial"
+        "ideas",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "wannabit-mina",
+      "name": "wannabit-mina",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/34847819?v=4",
+      "profile": "https://github.com/wannabit-mina",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "minami-choi",
+      "name": "Mina Choi",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/28688788?v=4",
+      "profile": "https://minami-choi.github.io/",
+      "contributions": [
+        "code"
       ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 6
 }
