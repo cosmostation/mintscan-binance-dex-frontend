@@ -72,7 +72,8 @@
 					width: 50px;
 					height: 30px;
 					position: relative;
-					overflow-x: hidden;
+					background-color: transparent;
+					overflow: hidden;
 					.copied {
 						top: 3px;
 						width: 100%;

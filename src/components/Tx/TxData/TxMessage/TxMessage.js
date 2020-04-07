@@ -176,12 +176,16 @@ export default function({msg, txData}) {
 				)}
 				{type === txTypes.TOKENS.TIME_UNLOCK ? <InfoRow label={"Lock ID"}>{value.time_lock_id}</InfoRow> : undefined}
 				{type === txTypes.TOKENS.TIME_LOCK ? (
-					<InfoRow label={"Value"}>
-						<span className={cx("flexIt")}>
-							<Decimal fontSizeBase={15} value={divide(value?.amount?.[0]?.amount, consts.NUM.BASE_MULT)} />
-							<span className={cx("currency", {BNB: value?.amount?.[0]?.denom === "BNB"})}>{value?.amount?.[0]?.denom?.split("-")[0]}</span>
-						</span>
-					</InfoRow>
+					<>
+						<InfoRow label={"Value"}>
+							<span className={cx("flexIt")}>
+								<Decimal fontSizeBase={15} value={divide(value?.amount?.[0]?.amount, consts.NUM.BASE_MULT)} />
+								<span className={cx("currency", {BNB: value?.amount?.[0]?.denom === "BNB"})}>{value?.amount?.[0]?.denom?.split("-")[0]}</span>
+							</span>
+						</InfoRow>
+						<InfoRow label={"Description"}>{value?.description}</InfoRow>
+						<InfoRow label={"Locked until"}>{getTotalTime(Number(value?.lock_time) * 1000)}</InfoRow>
+					</>
 				) : (
 					undefined
 				)}
