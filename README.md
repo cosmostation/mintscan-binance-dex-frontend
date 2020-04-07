@@ -1,4 +1,3 @@
-
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -42,7 +41,8 @@ currently as of writing this README, `yarn dev` and `yarn start` have no specifi
 ## Contributing    
  We encourage and support an active, healthy community of contributors — any contribution, improvements, and suggestions are always welcome! Details are in the [contribution guide](https://github.com/cosmostation/mintscan-binance-dex-frontend/docs/CONTRIBUTING.md)    
     
-### Note before I'm bothered to actually write the guide ```    
+### Note before I'm bothered to actually write the guide 
+```    
 I'm very conscious of how much more work could be done to make this project    
 - a very general term - but just better.    
 A lot of the code (with great reluctance) are even in my possibly abysmal standards    
