@@ -54,7 +54,8 @@ spewing out of this
     
 [complete muck up](https://github.com/cosmostation/mintscan-binance-dex-frontend/blob/master/src/hooks/useIndexedPagination/useIndexedPagination.js)    
     
-###### _Ironically that single monstrosity of a file took up about 30% of the total time that I worked on this project_ ```    
+###### _Ironically that single monstrosity of a file took up about 30% of the total time that I worked on this project_ 
+```    
 Please feel free to help clear up this displeasant stream of code    
 before it becomes the hopeless mess it is most certainly destined to become    
 without your most awaited upon help.    
