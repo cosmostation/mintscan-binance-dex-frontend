@@ -1,7 +1,7 @@
 {
   "name": "mintscan-binance",
-  "version": "0.0.1",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
   "license": "Apache-2.0",
   "licenses": [
     {
@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start": "REACT_APP_BUILD_ENV=prod NODE_ENV=production node scripts/start.js",
+    "start": "REACT_APP_BUILD_ENV=dev NODE_ENV=production node scripts/start.js",
     "dev": "REACT_APP_BUILD_ENV=dev NODE_ENV=development node scripts/start.js",
     "build:dev": "REACT_APP_BUILD_ENV=dev NODE_ENV=development node scripts/build.js && yarn run delete-maps",
     "build:prod": "REACT_APP_BUILD_ENV=prod NODE_ENV=production node scripts/build.js && yarn run delete-maps",
@@ -61,7 +61,7 @@
     "eslint-plugin-react-hooks": "^1.6.1",
     "fast-deep-equal": "^3.1.1",
     "file-loader": "4.3.0",
-    "firebase": "^7.13.1",
+    "firebase": "^7.13.2",
     "fs-extra": "^8.1.0",
     "highcharts": "^8.0.0",
     "highcharts-react-official": "^2.2.2",
@@ -99,6 +99,7 @@
     "react-copy-to-clipboard": "^5.0.2",
     "react-dev-utils": "^10.0.0",
     "react-dom": "^16.12.0",
+    "react-ga": "^2.7.0",
     "react-helmet": "^5.2.1",
     "react-html-parser": "^2.0.2",
     "react-loaders": "^3.0.1",

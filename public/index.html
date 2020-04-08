@@ -18,34 +18,29 @@
     <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
     <link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#5bbad5" />
+    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta name="theme-color" content="#000000" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
     <title>%REACT_APP_SITE_TITLE%</title>
     <meta name="description" content="%REACT_APP_SITE_DESC%" />
     <meta name="keywords" content="%REACT_APP_SITE_KEYWORDS%" />
 
+    <!-- 페이스북 (링크 미리보기)-->
     <meta property="og:url" content="%REACT_APP_SITE_URL%" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="%REACT_APP_SITE_TITLE_FOR_SHARE%" />
     <meta property="og:description" content="%REACT_APP_SITE_DESC%" />
     <meta property="og:image" content="%PUBLIC_URL%/mintscan.png" />
+
+    <!-- 트위터 미리보기 -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="%REACT_APP_SITE_URL%" />
+    <meta name="twitter:title" content="%REACT_APP_SITE_TITLE_FOR_SHARE%" />
+    <meta name="twitter:description" content="%REACT_APP_SITE_DESC%" />
+    <meta name="twitter:image" content="%PUBLIC_URL%/mintscan.png" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

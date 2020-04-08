@@ -1,0 +1,10 @@
+# Disallow everything.
+User-agent: *
+Disallow: /
+
+# Certain social media sites are whitelisted to allow crawlers to access page markup when links to /images are shared. 
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
