@@ -8,7 +8,6 @@ export default function useCheckOutsideClick() {
 	const handleClickOutside = React.useCallback(
 		e => {
 			if (!ref.current.contains(e.target)) {
-				console.log("clicked");
 				setIsClickedOutside(true);
 				setTimeout(() => setIsClickedOutside(false), 0);
 			}

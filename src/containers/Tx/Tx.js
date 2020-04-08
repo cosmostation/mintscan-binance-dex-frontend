@@ -53,8 +53,7 @@ export default function(props) {
 			setUrl(`${consts.API_BASE}${isOrderId ? consts.API.ORDERS : consts.API.TX}/${txHash}`);
 		}
 	}, [txHash, prevTxHash, setUrl, isOrderId]);
-
-	if (txData?.height === 0 || (!empty(txData) && _.isNil(state.data?.orderId) && _.isNil(state.data?.tx_hash))) {
+	if (state.data?.height === 0 || (!empty(txData) && _.isNil(state.data?.orderId) && _.isNil(state.data?.tx_hash))) {
 		return <NotFound altText={"Sorry! Tx Not Found"} />;
 	}
 
