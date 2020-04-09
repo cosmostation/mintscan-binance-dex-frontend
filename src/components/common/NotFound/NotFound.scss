@@ -18,6 +18,10 @@
 		color: var(--colorMainText);
 		margin-top: 20px;
 	}
+	.link {
+		cursor: pointer;
+		color: #4472de;
+	}
 
 	@include media("<medium") {
 		img {

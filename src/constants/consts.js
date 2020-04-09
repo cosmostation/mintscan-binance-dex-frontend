@@ -7,6 +7,9 @@ export default Object.freeze({
 	DEFAULT_ARRAY: [],
 	API_BINANCE_DEX: "https://www.binance.org/en/trade",
 	API_BINANCE_ACCELERATED: ["https://dex-asiapacific.binance.org/api/v1", "https://dex-atlantic.binance.org/api/v1", "https://dex-european.binance.org/api/v1"],
+	BINANCE_API_ENDPOINTS: {
+		TX: tx => `/tx/${tx}?format=json`,
+	},
 	// API_COINGECKO: {
 	// 	BASE: "https://api.coingecko.com/api/v3",
 	// 	GET_MARKET_CHART_RANGE: (id = "BNB", from, to) => `/coins/${id}/market_chart/range?vs_currency=usd&from=${from}&to=${to}`,
