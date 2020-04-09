@@ -45,7 +45,7 @@
 		}
 
 		@include media("<=small") {
-			width: 90%;
+			width: 95%;
 			justify-content: center;
 		}
 
@@ -136,7 +136,7 @@
 			
 			@include media("<=small") {
 				width: 100%;
-				padding: 0 25px;
+				padding: 0 5px;
 			}
 
 			.search {
@@ -221,7 +221,7 @@
 			@include media("<small") {
 				margin: 15px 0;
 				width: 100%;
-				padding: 0 25px;
+				padding: 0 5px;
 			}
 
 			p {
