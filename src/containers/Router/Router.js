@@ -6,6 +6,7 @@ import styles from "./Router.scss";
 import Loading from "src/components/common/Loading";
 //  hooks
 import {useHistory, usePreload} from "src/hooks";
+import ReactGA from "react-ga";
 
 const cx = cn.bind(styles);
 
@@ -47,6 +48,7 @@ export default function(props) {
 const ScrollToTop = props => {
 	const history = useHistory();
 	React.useEffect(() => {
+		ReactGA.pageview(window.location.pathname + window.location.search);
 		window.scrollTo(0, 0);
 	}, [history.location.pathname]);
 	return <>{props.children}</>;
