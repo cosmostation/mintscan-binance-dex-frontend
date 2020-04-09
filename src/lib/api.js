@@ -1,5 +1,6 @@
 import axios from "axios";
 import consts from "src/constants/consts";
+import {_} from "src/lib/scripts";
 
 export const getAssets = cancelToken => {
 	return axios.get(`${consts.API_BASE}${consts.API.ASSETS}`, {cancelToken});
@@ -28,6 +29,23 @@ export const getFees = cancelToken => {
 
 export const getValidators = cancelToken => {
 	return axios.get(`${consts.API_BASE}${consts.API.VALIDATORS}`, {cancelToken});
+};
+
+const pingServer = (api, cancelToken) => {
+	return axios.get(`${api}/ping`, {cancelToken});
+};
+
+export const getFastestNode = (apiArr = []) => {
+	const promiseArr = _.map(
+		apiArr,
+		api =>
+			new Promise((resolve, reject) =>
+				pingServer(api)
+					.then(res => resolve(api))
+					.catch(ex => console.warn(`${api} is unavailable`))
+			)
+	);
+	return Promise.race(promiseArr);
 };
 
 //  original api using coingecko

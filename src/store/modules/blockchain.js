@@ -1,3 +1,4 @@
+import consts from "src/constants/consts";
 import {createAction, handleActions} from "redux-actions";
 import {pender} from "redux-pender";
 import * as api from "src/lib/api";
@@ -5,8 +6,16 @@ import {_, compareProperty} from "src/lib/scripts";
 import {multiply} from "src/lib/Big";
 import txTypes from "src/constants/txTypes";
 
-const [GET_BASIC_DATA, GET_STATUS, GET_ASSETS, GET_FEES, GET_VALIDATORS] = ["GET_BASIC_DATA", "GET_STATUS", "GET_ASSETS", "GET_FEES", "GET_VALIDATORS"];
+const [GET_BASIC_DATA, GET_STATUS, GET_ASSETS, GET_FEES, GET_VALIDATORS, GET_FASTEST_NODE] = [
+	"GET_BASIC_DATA",
+	"GET_STATUS",
+	"GET_ASSETS",
+	"GET_FEES",
+	"GET_VALIDATORS",
+	"GET_FASTEST_NODE",
+];
 
+export const getCyptoAcceleratedNode = createAction(GET_FASTEST_NODE, () => api.getFastestNode(consts.API_BINANCE_ACCELERATED));
 export const getCryptoBasicData = createAction(GET_BASIC_DATA, (id, currency, cancelToken) => api.getBasicData(id, currency, cancelToken));
 export const getCryptoStatus = createAction(GET_STATUS, cancelToken => api.getStatus(cancelToken));
 export const getCryptoFees = createAction(GET_FEES, cancelToken => api.getFees(cancelToken));
@@ -23,6 +32,7 @@ const initState = {
 		last_updated_at: null,
 		blockTime: null,
 	},
+	acceleratedNode: consts.API_BINANCE_ACCELERATED[0],
 	validators: [],
 	fees: [],
 	txFees: [],
@@ -32,6 +42,14 @@ const round = v => Math.round(100 * v) / 100;
 // [Ack, PartialFill, IocNoFill, FullyFill, Canceled, Expired, FailedBlocking, FailedMatching, IocExpire]
 
 const handlers = {
+	...pender({
+		type: GET_FASTEST_NODE,
+		onSuccess: (state, action) => {
+			console.log(action.payload);
+			return {...state, acceleratedNode: action.payload};
+		},
+		onFailure: state => ({...state}),
+	}),
 	...pender({
 		type: GET_FEES,
 		onSuccess: (state, action) => {

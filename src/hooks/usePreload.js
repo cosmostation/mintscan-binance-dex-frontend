@@ -4,7 +4,7 @@ import axios from "axios";
 import consts from "src/constants/consts";
 //  reduxy
 import {getCryptoAssets} from "src/store/modules/assets";
-import {getCryptoBasicData, getCryptoFees, getCryptoStatus, getCryptoValidators} from "src/store/modules/blockchain";
+import {getCryptoBasicData, getCryptoFees, getCryptoStatus, getCryptoValidators, getCyptoAcceleratedNode} from "src/store/modules/blockchain";
 //  hooks
 
 export default function usePreload() {
@@ -14,6 +14,7 @@ export default function usePreload() {
 	useEffect(() => {
 		const cancelToken = axios.CancelToken;
 		const source = cancelToken.source();
+		dispatch(getCyptoAcceleratedNode());
 		dispatch(getCryptoBasicData("binancecoin", "usd", source.token));
 		dispatch(getCryptoStatus(source.token));
 		dispatch(getCryptoFees(source.token));
@@ -23,7 +24,7 @@ export default function usePreload() {
 
 	//  getWithInterval BASIC_DATA_FETCH_INTERVAL_MS
 	useEffect(() => {
-		let interval = setInterval(() => {
+		const interval = setInterval(() => {
 			const cancelToken = axios.CancelToken;
 			const source = cancelToken.source();
 			dispatch(getCryptoBasicData("binancecoin", "usd", source.token));

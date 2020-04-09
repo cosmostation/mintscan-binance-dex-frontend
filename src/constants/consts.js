@@ -5,7 +5,8 @@ const api = process.env.NODE_ENV === "production" ? config.API_PROD : config.API
 
 export default Object.freeze({
 	DEFAULT_ARRAY: [],
-	API_BIANCE_DEX: "https://www.binance.org/en/trade",
+	API_BINANCE_DEX: "https://www.binance.org/en/trade",
+	API_BINANCE_ACCELERATED: ["https://dex-asiapacific.binance.org/api/v1", "https://dex-atlantic.binance.org/api/v1", "https://dex-european.binance.org/api/v1"],
 	// API_COINGECKO: {
 	// 	BASE: "https://api.coingecko.com/api/v3",
 	// 	GET_MARKET_CHART_RANGE: (id = "BNB", from, to) => `/coins/${id}/market_chart/range?vs_currency=usd&from=${from}&to=${to}`,

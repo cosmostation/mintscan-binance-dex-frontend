@@ -365,7 +365,7 @@ const TradeBox = ({symbol, value}) => {
 
 const clickSymbol = symbol => {
 	if (_.isNil(symbol)) return;
-	window.open(`${consts.API_BIANCE_DEX}/${symbol}`);
+	window.open(`${consts.API_BINANCE_DEX}/${symbol}`);
 };
 
 const refineFee = input => (_.isString(input) ? input.replace(/(#Cxl:[1-9])|(;)/g, "").split(":") : "");
