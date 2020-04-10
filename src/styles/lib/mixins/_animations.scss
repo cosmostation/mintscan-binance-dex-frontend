@@ -1,0 +1,18 @@
+
+@mixin springX {
+	animation: springX 0.75s;
+	animation-timing-function: ease;
+	animation-iteration-count: infinite;
+}
+
+@keyframes springX {
+	0% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(8px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}

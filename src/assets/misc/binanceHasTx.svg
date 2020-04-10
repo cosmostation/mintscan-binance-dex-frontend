@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 90 90">
+  <g id="binancetx_img" transform="translate(-915 -387)">
+    <g id="그룹_4245" data-name="그룹 4245" transform="translate(10 -1)">
+      <path id="패스_2186" data-name="패스 2186" d="M5.928,13.127,2.964,16.091,0,13.127l2.964-2.964Zm7.2-7.2L18.208,11l2.964-2.959-5.08-5.081L13.127,0,10.163,2.964,5.08,8.045,8.044,11Zm10.163,4.235-2.964,2.964,2.964,2.964,2.964-2.964ZM13.127,20.327,8.044,15.244,5.08,18.208l5.083,5.083,2.964,2.964,2.964-2.964,5.08-5.083-2.964-2.964Zm0-4.235,2.964-2.964-2.964-2.964-2.964,2.964Z" transform="translate(954.019 420.803)" fill="#f0b90b"/>
+      <g id="타원_227" data-name="타원 227" transform="translate(948 415)" fill="none" stroke="#89909b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
+        <circle cx="19" cy="19" r="19" stroke="none"/>
+        <circle cx="19" cy="19" r="17.75" fill="none"/>
+      </g>
+      <line id="선_301" data-name="선 301" x2="13.273" y2="13.273" transform="translate(979.719 447.057)" fill="none" stroke="#89909b" stroke-linecap="round" stroke-width="2.5"/>
+      <line id="선_302" data-name="선 302" x2="14.583" transform="translate(931.419 424.683)" fill="none" stroke="#89909b" stroke-linecap="round" stroke-width="2.5"/>
+      <line id="선_303" data-name="선 303" x2="17.824" transform="translate(931.419 436.835)" fill="none" stroke="#89909b" stroke-linecap="round" stroke-width="2.5"/>
+      <line id="선_304" data-name="선 304" x2="25.926" transform="translate(931.419 448.988)" fill="none" stroke="#89909b" stroke-linecap="round" stroke-width="2.5"/>
+      <path id="패스_2184" data-name="패스 2184" d="M4965.877,2297.881V2280.8h-38.636l-13.5,13.537v51.642h52.132v-15.661" transform="translate(-3991 -1880)" fill="none" stroke="#89909b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+      <path id="패스_2185" data-name="패스 2185" d="M4914,2294.145h13.147v-13.292" transform="translate(-3990.974 -1879.994)" fill="none" stroke="#89909b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+    </g>
+    <rect id="사각형_2040" data-name="사각형 2040" width="90" height="90" transform="translate(915 387)" fill="none"/>
+  </g>
+</svg>

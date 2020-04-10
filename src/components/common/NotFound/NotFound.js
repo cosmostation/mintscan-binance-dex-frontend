@@ -8,38 +8,56 @@ import {_} from "src/lib/scripts";
 import {useFetch, useSelector} from "src/hooks";
 
 //  assets
-import notFoundImg from "src/assets/misc/404_img.svg";
+import notFoundSVG from "src/assets/misc/404_img.svg";
+import binanceHasTxSVG from "src/assets/misc/binanceHasTx.svg";
+import nextSVG from "src/assets/misc/arrow-next-gr.svg";
+import Loading from "src/components/common/Loading";
 
 const cx = classNames.bind(styles);
 
 const NotFound = ({altText = "Sorry! Page Not Found"}) => {
 	const accelAPI = useSelector(state => state.blockchain.acceleratedNode);
 	const [state, , setUrl] = useFetch("");
-	const [altLink, setAltLink] = React.useState(null);
+	const [altLink, setAltLink] = React.useState("");
+	const [route, data] = React.useMemo(() => getRoute(), []);
 	React.useEffect(() => {
-		if (window.location.pathname.startsWith("/txs")) {
-			setUrl(`${accelAPI}${consts.BINANCE_API_ENDPOINTS.TX(window.location.pathname.split("/txs")[1])}`);
+		if (route === "tx") {
+			setUrl(`${accelAPI}${consts.BINANCE_API_ENDPOINTS.TX(data)}`);
 		}
-	}, [accelAPI, setUrl]);
+	}, [accelAPI, setUrl, route, data]);
 
 	React.useEffect(() => {
-		if (!_.isNil(state.data?.height)) {
+		if (!_.isNil(state.data?.height) && !state.error) {
 			setAltLink(`https://explorer.binance.org/tx${window.location.pathname.split("/txs")[1]}`);
 		}
-	}, [state.data]);
+	}, [state]);
+
+	if (!_.isNil(route) && !state.error && _.isNil(state.data)) return <Loading />;
 
 	return (
-		<div className={cx("notFound_wrapper")}>
-			<img src={notFoundImg} alt='not found' />
-			{altLink ? (
-				<h2 className={cx("link")} onClick={() => window.open(altLink, "__blank")}>
-					Tx can be found in binance explorer
-				</h2>
+		<>
+			{_.isNil(route) || (altLink === "" && !_.isNil(route)) ? (
+				<div className={cx("notFound-wrapper")}>
+					<img src={notFoundSVG} alt='not found' />
+					<h2>{altText}</h2>
+				</div>
 			) : (
-				<h2>{altText}</h2>
+				<div className={cx("notFound_inBinance-wrapper")}>
+					<img src={binanceHasTxSVG} alt='not found' />
+					<h2>Tx can be found in binance explorer</h2>
+					<button onClick={() => window.open(altLink, "__blank")}>
+						<span>BINANCE EXPLORER</span>
+						<img src={nextSVG} alt='next' />
+					</button>
+				</div>
 			)}
-		</div>
+		</>
 	);
+};
+
+const getRoute = () => {
+	if (window.location.pathname.startsWith("/txs")) return ["tx", window.location.pathname.split("/txs")[1]];
+	return [null, ""];
 };
 
 export default NotFound;
