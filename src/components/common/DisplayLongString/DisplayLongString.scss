@@ -23,3 +23,15 @@
 		}
 	}
 }
+
+.DisplayMedium-wrapper {
+	overflow-x: visible;
+	@include media("<medium") {
+		.front:after {
+			content: "..."
+		}
+		.middle {
+			display: none;
+		}
+	}
+}

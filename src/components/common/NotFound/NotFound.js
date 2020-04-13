@@ -12,6 +12,7 @@ import notFoundSVG from "src/assets/misc/404_img.svg";
 import binanceHasTxSVG from "src/assets/misc/binanceHasTx.svg";
 import nextSVG from "src/assets/misc/arrow-next-gr.svg";
 import Loading from "src/components/common/Loading";
+import DisplayLongString from "src/components/common/DisplayLongString";
 
 const cx = classNames.bind(styles);
 
@@ -28,9 +29,9 @@ const NotFound = ({altText = "Sorry! Page Not Found"}) => {
 
 	React.useEffect(() => {
 		if (!_.isNil(state.data?.height) && !state.error) {
-			setAltLink(`https://explorer.binance.org/tx${window.location.pathname.split("/txs")[1]}`);
+			setAltLink(`https://explorer.binance.org/tx/${data}`);
 		}
-	}, [state]);
+	}, [state, data]);
 
 	if (!_.isNil(route) && !state.error && _.isNil(state.data)) return <Loading />;
 
@@ -44,7 +45,13 @@ const NotFound = ({altText = "Sorry! Page Not Found"}) => {
 			) : (
 				<div className={cx("notFound_inBinance-wrapper")}>
 					<img src={binanceHasTxSVG} alt='not found' />
+					<div className={cx("border")}>
+						<p>
+							<DisplayLongString inputString={data} displayThresh={12} medium={true} />
+						</p>
+					</div>
 					<h2>Tx can be found in binance explorer</h2>
+
 					<button onClick={() => window.open(altLink, "__blank")}>
 						<span>BINANCE EXPLORER</span>
 						<img src={nextSVG} alt='next' />
@@ -56,7 +63,7 @@ const NotFound = ({altText = "Sorry! Page Not Found"}) => {
 };
 
 const getRoute = () => {
-	if (window.location.pathname.startsWith("/txs")) return ["tx", window.location.pathname.split("/txs")[1]];
+	if (window.location.pathname.startsWith("/txs")) return ["tx", window.location.pathname.split("/txs/")[1]];
 	return [null, ""];
 };
 

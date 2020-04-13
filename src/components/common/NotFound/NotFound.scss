@@ -47,16 +47,26 @@
 	font-style: normal;
 	letter-spacing: normal;
 	color: #222222;
-	> img {
-		width: 90px;
-		height: 90px;
-		object-fit: fill;
+	.border {
+		border-radius: 5px;
+		padding: 5px 10px;
+		
+		border: 1px solid #D0D2D5;
+		> p {
+			font-size: 13px;
+		}
 		margin-bottom: 15px;
 	}
 	h2 {
 		font-size: 30px;
 		line-height: 1.23;
 		margin-bottom: 40px;
+	}
+	> img {
+		width: 90px;
+		height: 90px;
+		object-fit: fill;
+		margin-bottom: 15px;
 	}
 	> button {
 		display: flex;
@@ -91,6 +101,9 @@
 		}
 	}
 	@include media("<medium") {
+		> img {
+			margin-bottom: 5px;
+		}
 		> h2 {
 			font-size: 18px;
 			margin-bottom: 25px;
