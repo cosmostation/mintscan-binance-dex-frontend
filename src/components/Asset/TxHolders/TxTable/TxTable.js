@@ -4,7 +4,7 @@ import styles from "./TxTable.scss";
 
 import consts from "src/constants/consts";
 import {_, empty} from "src/lib/scripts";
-import {useFetch, useHistory, useTimer} from "src/hooks";
+import {useFetch, useHistory} from "src/hooks";
 //  components
 import TxTableRows, {ThinTableRow} from "../TxTableRows";
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
@@ -29,11 +29,6 @@ export default function TxTable({asset = "", selected}) {
 	// 	refetch();
 	// 	// eslint-disable-next-line
 	// }, [refetch, timer]);
-
-	React.useEffect(() => {
-		if (history.action !== "PUSH") return;
-		setUrl(`${consts.API_BASE}${consts.API.ASSET_TXS}${asset}`);
-	}, [history.action, asset, setUrl]);
 
 	const tableBodyRender = React.useMemo(() => {
 		return (
