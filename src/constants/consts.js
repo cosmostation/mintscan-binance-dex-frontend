@@ -26,8 +26,8 @@ export default Object.freeze({
 		REAL_TIME_DELAY_MS: 2000, //  real-time refetch interval(for indexedPagination)
 		DASH_REAL_TIME_DELAY_MS: 3000, //  dashboard refetch interval
 		ACCOUNT_REFETCH_INTERVAL_MS: 5000, // TODO : currently not used
-		ASSET_REFETCH_INTERVAL_MS: 8000,
-		ASSET_REFETCH_PRICE_INTERVAL_MS: 8000,
+		ASSET_REFETCH_INTERVAL_MS: 80000,
+		ASSET_REFETCH_PRICE_INTERVAL_MS: 80000,
 		BASIC_DATA_FETCH_INTERVAL_MS: 30000,
 	},
 	ASSET: {
