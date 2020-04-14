@@ -12,7 +12,7 @@ export default function useFetch(inputUrl, method = "get", refineFunction = res 
 	useEffect(() => {
 		//  url is not yet set, do nothing
 		if (empty(url)) return;
-		console.log(url);
+		console.log("fetchUrl>>>>", url);
 		let unmounted = false;
 		let source = axios.CancelToken.source();
 		dispatch({type: FETCHING});

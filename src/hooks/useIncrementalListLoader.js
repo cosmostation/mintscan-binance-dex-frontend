@@ -12,7 +12,7 @@ export default function useIncrementalListLoader(listLoadDelay = LIST_LOAD_DELAY
 	//  incremental loading
 	useEffect(() => {
 		if (outputList.length === list.length || empty(list)) return;
-		let timeout = setTimeout(() => {
+		const timeout = setTimeout(() => {
 			setOutputList(v => [...v, ...list.slice(v.length, Math.min(v.length + LIST_LOAD_ITEM_SIZE, list.length))]);
 		}, LIST_LOAD_DELAY_MS);
 		return () => {

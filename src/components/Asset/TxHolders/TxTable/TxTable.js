@@ -11,24 +11,24 @@ import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/cor
 
 const cx = cn.bind(styles);
 
-export default function TxTable({asset = ""}) {
+export default function TxTable({asset = "", selected}) {
 	// TODO
 	//  work on this when API is upgraded to accomodate more
 	// const [fetchState] = usePagedPagination({path: `${consts.API_BASE}${consts.API.ASSET_TXS}${asset}`});
 	const history = useHistory();
-	const [state, refetch, setUrl] = useFetch("");
-	const [timer] = useTimer(true, consts.NUM.ASSET_REFETCH_INTERVAL_MS);
+	const [state, , setUrl] = useFetch("");
+	// const [timer] = useTimer(true, consts.NUM.ASSET_REFETCH_INTERVAL_MS);
 
 	React.useEffect(() => {
-		if (empty(asset)) return;
+		if (empty(asset) || !selected || !empty(state.data)) return;
 		setUrl(`${consts.API_BASE}${consts.API.ASSET_TXS}${asset}`);
-	}, [asset, setUrl, history.action]);
+	}, [asset, setUrl, history.action, selected, state.data]);
 
-	React.useEffect(() => {
-		if (empty(asset)) return;
-		refetch();
-		// eslint-disable-next-line
-	}, [refetch, timer]);
+	// React.useEffect(() => {
+	// 	if (empty(asset)) return;
+	// 	refetch();
+	// 	// eslint-disable-next-line
+	// }, [refetch, timer]);
 
 	React.useEffect(() => {
 		if (history.action !== "PUSH") return;

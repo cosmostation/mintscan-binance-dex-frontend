@@ -15,7 +15,7 @@ export default function TxHolders({asset = ""}) {
 		setSelected(bool);
 	}, []);
 
-	const txTable = React.useMemo(() => <TxTable asset={asset} />, [asset]);
+	const txTable = React.useMemo(() => <TxTable asset={asset} selected={selected} />, [asset, selected]);
 
 	const holdersTable = React.useMemo(() => <HoldersTable asset={asset} />, [asset]);
 

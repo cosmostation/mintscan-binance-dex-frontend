@@ -23,11 +23,8 @@ export default function({fetchAccountTxs = () => {}, balances = [], prices = [],
 	}, []);
 
 	React.useEffect(() => {
-		if (!selected && empty(txData)) {
-			console.log("fetching");
-			fetchAccountTxs();
-		}
-	}, [fetchAccountTxs, selected]);
+		if (!selected && empty(txData)) fetchAccountTxs();
+	}, [fetchAccountTxs, selected, txData]);
 
 	//  pick from the assets, append asset imgSrc and relevent names to balance
 	React.useEffect(() => {
