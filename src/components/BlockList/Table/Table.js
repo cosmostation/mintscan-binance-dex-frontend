@@ -4,7 +4,7 @@
  * A LOT of refactoring will probably be needed if attempted to fix.
  * You have been warned
  */
-import React, {useEffect, useMemo, useCallback} from "react";
+import React, {useCallback, useEffect, useMemo} from "react";
 import styles from "./Table.scss";
 import classNames from "classnames/bind";
 //  utils
@@ -113,6 +113,7 @@ export default function(props) {
 	const onMouseLeave = useCallback(() => {
 		if (!state.isFront || state.maxIndex !== state.pageData?.[0]?.[BASE_PROPERTY]) return;
 		setRealTime(true);
+		// eslint-disable-next-line
 	}, [setRealTime, state.isFront]);
 
 	return (

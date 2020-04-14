@@ -5,7 +5,6 @@ import styles from "./SearchArea.scss";
 import SearchArea from "src/components/common/SearchArea";
 import consts from "src/constants/consts";
 import LinkCard from "src/components/Dashboard/LinkCard";
-
 //  assets
 import iosIcon from "src/assets/dashboard/appstore_img.svg";
 import googleIcon from "src/assets/dashboard/playstore.svg";

@@ -7,7 +7,6 @@ import Skeleton from "react-skeleton-loader";
 //  redux
 import {useSelector} from "react-redux";
 import consts from "src/constants/consts";
-
 //  svgs
 import down_rd from "src/assets/common/arrow_down.svg";
 import up_gr from "src/assets/common/arrow_up.svg";

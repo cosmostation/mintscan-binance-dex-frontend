@@ -8,7 +8,6 @@ import getTxType from "src/constants/getTxType";
 //  components
 import Skeleton from "react-skeleton-loader";
 import SvgDisplay from "src/components/common/SvgDisplay";
-
 //  assets
 import greenArrowSVG from "src/assets/common/transferarrow_gr.svg";
 

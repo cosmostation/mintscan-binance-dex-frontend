@@ -1,12 +1,10 @@
 import React from "react";
 import cn from "classnames/bind";
 import styles from "./SearchArea.scss";
-
 //  redux
 import {useSelector} from "react-redux";
-
 //  hooks
-import {useSearch, useDelayedInput, useHistory, useCheckOutsideClick} from "src/hooks";
+import {useCheckOutsideClick, useDelayedInput, useHistory, useSearch} from "src/hooks";
 //components
 import {InputBase} from "@material-ui/core";
 import Dropdown from "./Dropdown";

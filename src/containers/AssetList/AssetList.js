@@ -6,14 +6,13 @@ import {_, empty} from "src/lib/scripts";
 import {useDispatch, useSelector} from "react-redux";
 import {getCryptoAssets} from "src/store/modules/assets";
 //  hooks
-import {useIncrementalListLoader} from "src/hooks";
+import {useFetch, useIncrementalListLoader} from "src/hooks";
 //  components
 import TitleWrapper from "src/components/common/TitleWrapper";
 import PageTitle from "src/components/common/PageTitle";
 import StatusCard from "src/components/AssetList/StatusCard/StatusCard";
 import Table from "src/components/AssetList/Table";
 import ScrollTop from "src/components/common/ScrollTop";
-import {useFetch} from "src/hooks";
 import consts from "src/constants/consts";
 
 const cx = cn.bind(styles);

@@ -111,6 +111,7 @@ export default function(props) {
 	const onMouseLeave = useCallback(() => {
 		if (!state.isFront || state.maxIndex !== state.pageData?.[0]?.[BASE_PROPERTY]) return;
 		setRealTime(true);
+		// eslint-disable-next-line
 	}, [setRealTime, state.isFront]);
 
 	return (

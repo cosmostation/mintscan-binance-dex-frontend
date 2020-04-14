@@ -7,15 +7,12 @@ import copy from "copy-to-clipboard";
 import {divide, fixed, multiply, sumArray} from "src/lib/Big";
 import {useSelector} from "react-redux";
 import Decimal from "src/components/common/Decimal";
-
 //  assets
 import qrSVG from "src/assets/account/qr_code.svg";
 import QrModal from "../QrModal";
 import DisplayLongString from "src/components/common/DisplayLongString";
 
 const cx = cn.bind(styles);
-const ADDRESS_LENGTH = 42;
-const ADDRESS_CUT_DISPLAY_LENGTH = 6;
 export default function Address({account = {}, prices = []}) {
 	const bnbPrice = useSelector(state => state.blockchain.status?.price);
 	const [showModal, setShowModal] = React.useState(false);

@@ -3,10 +3,8 @@ import styles from "./NotFound.scss";
 import classNames from "classnames/bind";
 import consts from "src/constants/consts";
 import {_} from "src/lib/scripts";
-
 //  hooks
 import {useFetch, useSelector} from "src/hooks";
-
 //  assets
 import notFoundSVG from "src/assets/misc/404_img.svg";
 import binanceHasTxSVG from "src/assets/misc/binanceHasTx.svg";

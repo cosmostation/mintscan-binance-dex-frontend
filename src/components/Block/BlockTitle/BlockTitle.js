@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./BlockTitle.scss";
 import classNames from "classnames/bind";
-
 //  assets
 import RightArrowSVG from "src/assets/common/arrow_ic.svg";
 

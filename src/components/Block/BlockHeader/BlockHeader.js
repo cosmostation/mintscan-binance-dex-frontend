@@ -2,7 +2,7 @@ import * as React from "react";
 import cn from "classnames/bind";
 import styles from "./BlockHeader.scss";
 
-import {_, formatNumber, getTotalTime, setAgoTime} from "src/lib/scripts";
+import {_, getTotalTime, setAgoTime} from "src/lib/scripts";
 //  components
 import InfoRow from "src/components/common/InfoRow";
 import Skeleton from "react-skeleton-loader";
