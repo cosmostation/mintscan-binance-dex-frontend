@@ -1,8 +1,8 @@
 import React from "react";
 import cn from "classnames/bind";
 import style from "./Asset.scss";
-import {useFetch, useHistory, usePrevious} from "src/hooks";
-import {empty, nilCheck} from "src/lib/scripts";
+import {useFetch, usePrevious} from "src/hooks";
+import {nilCheck} from "src/lib/scripts";
 
 import consts from "src/constants/consts";
 //  components

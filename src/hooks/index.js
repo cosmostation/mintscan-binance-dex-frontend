@@ -15,7 +15,7 @@ import useGetPrices from "./useGetPrices";
 import useMultiFetch from "./useMultiFetch";
 import useIncrementalListLoader from "./useIncrementalListLoader";
 import useCheckOutsideClick from "./useCheckOutsideClick";
-import {useSelector, useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 export {
 	useFetch,

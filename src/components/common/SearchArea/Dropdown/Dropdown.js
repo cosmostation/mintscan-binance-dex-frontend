@@ -8,6 +8,7 @@ import DisplayIcon from "src/components/common/DisplayIcon";
 
 import symbolNoneSVG from "src/assets/transactions/symbol_none.svg";
 import failSVG from "src/assets/transactions/fail_ic.svg";
+
 const cx = cn.bind(styles);
 
 export default function({

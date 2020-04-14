@@ -9,7 +9,6 @@ import {useHistory} from "src/hooks";
 import Chart from "src/components/common/Chart/Chart";
 import DisplayIcon from "src/components/common/DisplayIcon";
 import Spinner from "src/components/common/Spinner";
-
 //  assets
 import upSVG from "src/assets/assets/up_gr.svg";
 import downSVG from "src/assets/assets/down_rd.svg";

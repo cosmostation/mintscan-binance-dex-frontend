@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./SvgDisplay.scss";
 import cn from "classnames/bind";
-
 //  assets
 import defaultSVG from "src/assets/common/arrow_ic.svg";
 

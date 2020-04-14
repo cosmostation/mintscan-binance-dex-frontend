@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {_, empty} from "src/lib/scripts";
+import {empty} from "src/lib/scripts";
 
 const LIST_LOAD_DELAY_MS = 100;
 const LIST_LOAD_ITEM_SIZE = 10;

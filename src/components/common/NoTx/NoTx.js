@@ -3,6 +3,7 @@ import styles from "./NoTx.scss";
 import cn from "classnames/bind";
 
 import listNone from "src/assets/misc/noitem_ic.svg";
+
 const cx = cn.bind(styles);
 
 export default function({text}) {

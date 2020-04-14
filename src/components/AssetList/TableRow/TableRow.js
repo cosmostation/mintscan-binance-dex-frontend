@@ -9,10 +9,9 @@ import {fixed} from "src/lib/Big";
 import {Fade, TableCell, TableRow, Tooltip} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
 import DisplayIcon from "src/components/common/DisplayIcon";
-// import humanFormat from "human-format";
-
 //  assets
 import symbolNoneSVG from "src/assets/transactions/symbol_none.svg";
+// import humanFormat from "human-format";
 
 const cx = cn.bind(styles);
 

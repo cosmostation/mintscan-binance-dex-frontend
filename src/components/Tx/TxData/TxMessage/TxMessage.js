@@ -4,7 +4,7 @@ import styles from "./TxMessage.scss";
 import cn from "classnames/bind";
 import {NavLink} from "react-router-dom";
 import {divide, multiply} from "src/lib/Big";
-import {_, empty, formatNumber, reduceString, refineAddress, getTotalTime} from "src/lib/scripts";
+import {_, empty, formatNumber, getTotalTime, refineAddress} from "src/lib/scripts";
 //  redux
 import {useSelector} from "react-redux";
 //  hooks
@@ -23,7 +23,6 @@ import tooltips from "src/constants/tooltips";
 import Decimal from "src/components/common/Decimal";
 import DisplayIcon from "src/components/common/DisplayIcon";
 import Skeleton from "react-skeleton-loader";
-
 //  assets
 import arrowSVG from "src/assets/transactions/symbol_arrow.svg";
 import transferArrowSVG from "src/assets/transactions/transferArrow.svg";
@@ -299,7 +298,7 @@ const TxSubmitProposal = ({txData, value}) => {
 				<InfoRow label='Expire Time'>{getTotalTime(description.expire_time)}</InfoRow>
 			</>
 		),
-		[description, displaySymbol, listingSymbol]
+		[description, displaySymbol, listingSymbol, value]
 	);
 	if (value.proposal_type !== "ListTradingPair") return <InfoRow label='Type'>{value.proposal_type} - not implemented yet</InfoRow>;
 	return render;

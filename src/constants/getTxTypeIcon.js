@@ -2,6 +2,7 @@ import txTypes from "src/constants/txTypes";
 import {_} from "src/lib/scripts";
 
 import binanceSVG from "src/assets/common/binance_token.svg";
+
 const SVG = Object.freeze(_.times(7, v => require(`src/assets/transactions/msgsic_${v + 1}.svg`)));
 
 const {COSMOS, DEX, TOKENS, MISC} = txTypes;

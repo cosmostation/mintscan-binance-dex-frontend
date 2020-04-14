@@ -6,7 +6,6 @@ import {NavLink} from "react-router-dom";
 //  components
 import Skeleton from "react-skeleton-loader";
 import Decimal from "src/components/common/Decimal";
-
 //  assets
 import greenArrowSVG from "src/assets/common/transferarrow_gr.svg";
 import redArrowSVG from "src/assets/common/transferarrow_rd.svg";

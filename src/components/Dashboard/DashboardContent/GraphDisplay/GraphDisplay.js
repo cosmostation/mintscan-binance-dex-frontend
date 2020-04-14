@@ -75,7 +75,3 @@ const options = {
 		renderTo: "container",
 	},
 };
-const margin = [
-	[5, 20, 20, 10],
-	[5, 20, 20, 10],
-];

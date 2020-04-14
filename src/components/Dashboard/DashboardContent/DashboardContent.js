@@ -7,7 +7,6 @@ import GraphDisplay from "./GraphDisplay";
 import PriceDisplay from "./PriceDisplay";
 import BlocksDisplay from "./BlocksDisplay";
 import TxDisplay from "./TxDisplay";
-
 //  assets
 import exchangeSVG from "src/assets/dashboard/exchange_ic.svg";
 import dexSVG from "src/assets/dashboard/dex_ic.svg";

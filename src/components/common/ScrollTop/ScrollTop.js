@@ -3,7 +3,6 @@ import cn from "classnames/bind";
 import styles from "./ScrollTop.scss";
 //  hooks
 import {useScroll} from "src/hooks";
-
 //  assets
 import scrollTopSVG from "src/assets/common/scroll_top.svg";
 

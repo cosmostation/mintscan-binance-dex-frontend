@@ -11,7 +11,6 @@ import Decimal from "src/components/common/Decimal";
 import tooltips from "src/constants/tooltips";
 import Skeleton from "react-skeleton-loader";
 import DisplayIcon from "src/components/common/DisplayIcon/DisplayIcon";
-
 //  assets
 import symbolNoneSVG from "src/assets/transactions/symbol_none.svg";
 
