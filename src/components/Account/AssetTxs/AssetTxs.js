@@ -12,7 +12,7 @@ import AssetsTable from "src/components/Account/AssetTxs/AssetsTable";
 
 const cx = cn.bind(styles);
 
-export default function({balances = [], prices = [], txData = [], account = ""}) {
+export default function({fetchAccountTxs = () => {}, balances = [], prices = [], txData = [], account = ""}) {
 	const assets = useSelector(state => state.assets.assets);
 	const [mappedAssets, setMappedAssets] = React.useState([]);
 	const [selected, setSelected] = React.useState(true);
@@ -21,6 +21,13 @@ export default function({balances = [], prices = [], txData = [], account = ""})
 		e.preventDefault();
 		setSelected(bool);
 	}, []);
+
+	React.useEffect(() => {
+		if (!selected && empty(txData)) {
+			console.log("fetching");
+			fetchAccountTxs();
+		}
+	}, [fetchAccountTxs, selected]);
 
 	//  pick from the assets, append asset imgSrc and relevent names to balance
 	React.useEffect(() => {

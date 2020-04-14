@@ -32,7 +32,7 @@ export default Object.freeze({
 	},
 	ASSET: {
 		NAME_SEARCH_PROPERTY: ["asset", "mappedAsset", "name"],
-		ORDER_COMPARE: ["mappedAsset", "marketCap", "price", "supply"],
+		ORDER_COMPARE: ["mappƒedAsset", "marketCap", "price", "supply"],
 	},
 	GET_LOGO_LINK: symbol => `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/binance/assets/${symbol}/logo.png`,
 	API_BASE: api,

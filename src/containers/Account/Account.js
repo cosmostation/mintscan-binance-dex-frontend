@@ -10,7 +10,7 @@ import TitleWrapper from "src/components/common/TitleWrapper";
 import Address from "src/components/Account/Address";
 import NotFound from "src/components/common/NotFound";
 //  hooks
-import {useGetPrices, useMultiFetch, usePrevious} from "src/hooks";
+import {useGetPrices, usePrevious, useFetch} from "src/hooks";
 
 const cx = cn.bind(style);
 
@@ -18,11 +18,11 @@ const baseURL = `${consts.API_BASE}${consts.API.ACCOUNT}/`;
 export default function Account(props) {
 	const account = props.match.params.account;
 	const prevAccount = usePrevious(account);
-	const urlList = React.useMemo(() => [`${consts.API_BASE}${consts.API.ACCOUNT_TXS(account)}`, `${baseURL}${account}`], [account]);
-	const [state, , setUrls] = useMultiFetch(urlList);
+	const [state1, , setUrl1] = useFetch("");
+	const [state2, , setUrl2] = useFetch(`${baseURL}${account}`);
 	const [txData, assetData] = [
-		state.data?.[0]?.txArray && !state.loading[0] ? state.data?.[0]?.txArray : consts.DEFAULT_ARRAY,
-		state.data?.[1] && !state.loading[1] ? state.data?.[1] : consts.DEFAULT_ARRAY,
+		state1.data?.txArray && !state1.loading ? state1.data.txArray : consts.DEFAULT_ARRAY,
+		state2.data && !state2.loading ? state2.data : consts.DEFAULT_ARRAY,
 	];
 
 	const [prices, setTargetAssets] = useGetPrices(consts.NUM.ASSET_REFETCH_PRICE_INTERVAL_MS);
@@ -50,16 +50,28 @@ export default function Account(props) {
 		setTargetAssets(_.map(assetData.balances, v => v.symbol));
 	}, [setTargetAssets, assetData]);
 
+	const fetchAccountTxs = React.useCallback(() => {
+		setUrl1(`${consts.API_BASE}${consts.API.ACCOUNT_TXS(account)}`);
+	}, [account, setUrl1]);
+
 	//  refetch when account has changed(url)
 	React.useEffect(() => {
 		if (!empty(assetData) && account !== prevAccount) {
-			setUrls(urlList);
+			setUrl2(`${baseURL}${account}`);
 		}
-	}, [urlList, prevAccount, assetData, account, setUrls]);
+	}, [prevAccount, assetData, account, setUrl1, setUrl2]);
 
 	const assetTxs = React.useMemo(
-		() => <AssetTxs account={account} prices={prices} balances={assetData?.balances ? assetData.balances : consts.DEFAULT_ARRAY} txData={txData} />,
-		[prices, assetData, txData, account]
+		() => (
+			<AssetTxs
+				fetchAccountTxs={fetchAccountTxs}
+				account={account}
+				prices={prices}
+				balances={assetData?.balances ? assetData.balances : consts.DEFAULT_ARRAY}
+				txData={txData}
+			/>
+		),
+		[fetchAccountTxs, prices, assetData, txData, account]
 	);
 
 	const displayAddress = React.useMemo(() => <Address account={assetData ? assetData : {}} prices={prices} />, [assetData, prices]);
@@ -70,7 +82,7 @@ export default function Account(props) {
 				<TitleWrapper>
 					<PageTitle title={"Account Details"} />
 				</TitleWrapper>
-				{state.error ? (
+				{state1.error || state2.error ? (
 					<NotFound altText={"Account was not found"} />
 				) : (
 					<>
@@ -80,8 +92,8 @@ export default function Account(props) {
 				)}
 			</div>
 		),
-		[displayAddress, assetTxs, state.error]
+		[displayAddress, assetTxs, state1.error, state2.error]
 	);
-	if ((!state.loading && (assetData?.address === "" || assetData?.error_code)) || account === "notFound") return <NotFound />;
+	if ((!state2.loading && (assetData?.address === "" || assetData?.error_code)) || account === "notFound") return <NotFound />;
 	return render;
 }
