@@ -5,6 +5,7 @@
 	//margin: 0 auto;
 	padding: calc(var(--heightHeader) + var(--heightSubHeader)) 0 0 0;
 	min-height: calc(100vh - var(--heightFooter));
+	min-width: 360px;
 
 	@include media("<large") {
 		padding: calc(var(--heightHeaderInMedium) + var(--heightSubHeader)) 15px 1.8rem;
