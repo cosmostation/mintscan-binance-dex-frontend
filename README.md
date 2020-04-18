@@ -1,6 +1,10 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+<p align="right">
+  <img width="100" src="https://user-images.githubusercontent.com/31615341/79631890-e5e09680-8196-11ea-9a26-e613b30bb968.png" alt="fellowship logo">
+</p>
+
 <p align="center">    
   <a href="https://www.cosmostation.io" target="_blank" rel="noopener noreferrer"><img width="400" src="https://user-images.githubusercontent.com/31615341/78533120-614f5900-7823-11ea-901a-b745880594cf.png" alt="Cosmostation logo"></a>    
 </p>
@@ -8,7 +12,7 @@
 <h2 align="center">    
   Mintscan Explorer's Frontend for Binance Chain     
 </h2>
-    
+
 *:star: Developed / Developing by [Cosmostation](https://www.cosmostation.io/)*    
  ## Overview 
  This project is sponsored by [Binance X Fellowship Program](https://binancex.dev/fellowship.html). The program supports talented developers and researchers in creating free and open-source software that would enable new innovations and businesses in the crypto community.
