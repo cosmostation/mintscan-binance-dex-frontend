@@ -18,7 +18,7 @@ export default function({options, data, showAxis = true, displayMax = false}) {
 			Math.floor((size * 5) / 6) + 1,
 			size,
 		];
-		const tickPositions = [..._.map(indexes, idx => data[idx][0])];
+		const tickPositions = [..._.map(indexes, idx => data[idx]?.[0])];
 		return {
 			...defaultOptions,
 			series: [

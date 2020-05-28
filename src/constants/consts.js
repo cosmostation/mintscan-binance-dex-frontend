@@ -56,7 +56,7 @@ export default Object.freeze({
 		VALIDATORS: "/validators",
 	},
 	NETWORK: {
-		COSMOS: "cosmos-3",
+		COSMOS: "cosmoshub-3",
 		IRIS: "irishub",
 		KAVA: "kava-2",
 		BINANCE: "binance",

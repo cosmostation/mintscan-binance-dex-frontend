@@ -2,9 +2,8 @@ import * as React from "react";
 import styles from "./TxInfo.scss";
 import cn from "classnames/bind";
 import {NavLink} from "react-router-dom";
-import moment from "moment";
 
-import {setAgoTime} from "src/lib/scripts";
+import {getTotalTime, setAgoTime} from "src/lib/scripts";
 //  components
 import InfoRow from "src/components/common/InfoRow";
 import DisplayLongString from "src/components/common/DisplayLongString";
@@ -35,7 +34,7 @@ export default function({txData}) {
 				</InfoRow>
 				<InfoRow label='Time'>
 					<span>
-						{setAgoTime(txData.timestamp)} ( {moment(txData.timestamp).format("YYYY-MM-DD HH:MM:ss")} )
+						{setAgoTime(txData.timestamp)} ( {getTotalTime(txData.timestamp)} )
 					</span>
 				</InfoRow>
 			</div>

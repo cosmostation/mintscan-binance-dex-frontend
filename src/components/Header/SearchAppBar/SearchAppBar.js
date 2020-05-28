@@ -19,8 +19,8 @@ import logo from "src/assets/header/mintscan_logo.svg";
 
 const cx = cn.bind(styles);
 
-const avaliableNetworks = ["cosmos", "kava", "iris"];
-const tokenImg = [cosmos, kava, iris];
+const avaliableNetworks = ["cosmos", "iris", "kava", "binance"];
+const tokenImg = [cosmos, iris, kava, binance];
 
 export default function(props) {
 	const history = useHistory();
@@ -66,6 +66,8 @@ export default function(props) {
 														return consts.NETWORK.IRIS;
 													case "kava":
 														return consts.NETWORK.KAVA;
+													case "binance":
+														return consts.NETWORK.BINANCE;
 													default:
 														return consts.NETWORK.COSMOS;
 												}

@@ -30,38 +30,6 @@
 		}
 	}
 
-	.network-wrapper {
-		display: none;
-		@include media("<large") {
-			display: flex;
-			justify-content: space-between;
-			align-items: flex-start;
-			height: 50px;
-		}
-
-		.network {
-			display: flex;
-			align-items: center;
-			height: 36px;
-			border: 1px solid #222222;
-			border-radius: 5px;
-			padding: 7px 12px;
-			cursor: pointer;
-
-			img {
-				margin-left: 8px;
-				width: 16px;
-				height: 16px;
-
-				@include media("<medium") {
-					margin-left: 4px;
-					width: 8px;
-					height: 8px;
-				}
-			}
-		}
-	}
-
 	.nav-list {
 		width: 1200px;
 		margin: 0 auto;
