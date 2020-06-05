@@ -25,7 +25,7 @@
 			display: none;
 		}
 		.thinTableRows-wrapper {
-			> :nth-child(even) {
+			> :nth-child(odd) {
 				background-color: #fbfbfc;
 			}
 			> :first-child {

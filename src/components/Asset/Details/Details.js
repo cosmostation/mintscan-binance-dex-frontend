@@ -55,7 +55,7 @@ export default function Details({asset}) {
 					</span>
 				</InfoRow>
 				<InfoRow label={"Supply"}>{formatNumber(asset?.supply)}</InfoRow>
-				<InfoRow label={"Mintable"}>{asset?.mintable !== 1 ? "No" : "Yes"}</InfoRow>
+				<InfoRow label={"Mintable"}>{asset?.mintable === 1 ? "No" : "Yes"}</InfoRow>
 				<InfoRow label={"Price"}>
 					{formattedPrice ? (
 						<>
