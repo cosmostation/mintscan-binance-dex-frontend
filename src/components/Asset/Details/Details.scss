@@ -146,6 +146,12 @@
 					content: url("../../../assets/assets/coinmarketcap_btn_hover.svg");
 				}
 			}
+			.Steemit {
+				content: url("../../../assets/assets/steemit_btn.svg");
+				&:hover {
+					content: url("../../../assets/assets/steemit_btn_hover.svg");
+				}
+			}
 		}
 		margin-bottom: 15px;
 	}
