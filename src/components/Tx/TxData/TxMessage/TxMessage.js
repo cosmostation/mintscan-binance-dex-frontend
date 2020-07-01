@@ -15,7 +15,7 @@ import consts from "src/constants/consts";
 import txTypes from "src/constants/txTypes";
 import getTxType from "src/constants/getTxType";
 //  components
-import {txCheckFUBM, txCheckOrder, txCheckSend, txGetSide, txGetTimeInforce} from "src/components/Tx/TxData/TxCase";
+import {txCheckFUBM, txCheckOrder, txCheckSend, txGetSide, txGetTimeInforce, txCheckHTLT} from "src/components/Tx/TxData/TxCase";
 import {Fade, Tooltip} from "@material-ui/core";
 import InfoRow from "src/components/common/InfoRow/InfoRow";
 import TxGetFrom from "src/components/Tx/TxData/TxGetFrom/TxGetFrom";
@@ -30,6 +30,7 @@ import symbolNone from "src/assets/transactions/symbol_none.svg";
 import detailSVG from "src/assets/transactions/symbol_detail_btn.svg";
 import bnbSVG from "src/assets/common/binance_token.svg";
 import DisplayLongString from "src/components/common/DisplayLongString";
+import TxAddressOther from "src/components/Tx/TxData/TxAddressOther";
 
 // const bnbSVG = "https://static.binance.org/icon/8fedcd202fb549d28b2f313b2bf97033";
 
@@ -219,9 +220,69 @@ export default function({msg, txData}) {
 				) : (
 					undefined
 				)}
-				<InfoRow label='From'>
-					<TxGetFrom txData={txData} type={type} value={value} cx={cx} />
-				</InfoRow>
+				{txCheckHTLT(type) ? (
+					<>
+						<InfoRow label={"Value"}>
+							<span className={cx("flexIt")}>
+								<Decimal fontSizeBase={15} value={divide(value?.amount?.[0]?.amount, consts.NUM.BASE_MULT)} />
+								<span className={cx("currency", {BNB: value?.amount?.[0]?.denom === "BNB"})}>{value?.amount?.[0]?.denom?.split("-")[0]}</span>
+							</span>
+						</InfoRow>
+						<InfoRow label={"To"}>
+							<NavLink className={cx("blueColor")} to={`/account/${value?.to}`}>
+								<DisplayLongString inputString={value?.to} />
+							</NavLink>
+						</InfoRow>
+						<InfoRow label={"From"}>
+							<NavLink className={cx("blueColor")} to={`/account/${value?.from}`}>
+								<DisplayLongString inputString={value?.from} />
+							</NavLink>
+						</InfoRow>
+						<InfoRow label={"Timestamp"}>
+							<span className={cx("flexIt")}>
+								<span>{getTotalTime(_.toNumber(value?.timestamp) * 1000)}</span>
+							</span>
+						</InfoRow>
+						<TxAddressOther label={"Sender Other Chain"} addr={value?.sender_other_chain} cx={cx} />
+						<TxAddressOther label={"Recipient Other Chain"} addr={value?.recipient_other_chain} cx={cx} />
+						<InfoRow label={"Random Number Hash"}>
+							<span className={cx("flexIt")}>
+								<DisplayLongString inputString={value?.random_number_hash} />
+							</span>
+						</InfoRow>
+					</>
+				) : (
+					<InfoRow label='From'>
+						<TxGetFrom txData={txData} type={type} value={value} cx={cx} />
+					</InfoRow>
+				)}
+				{type === txTypes.TOKENS.HTLT_CLAIM ? (
+					<>
+						<InfoRow label='Swap Id'>
+							<span className={cx("flexIt")}>
+								<DisplayLongString inputString={value?.swap_id} />
+							</span>
+						</InfoRow>
+						<InfoRow label='Random number'>
+							<span className={cx("flexIt")}>
+								<DisplayLongString inputString={value?.random_number} />
+							</span>
+						</InfoRow>
+					</>
+				) : (
+					undefined
+				)}
+				{type === txTypes.TOKENS.HTLT_REFUND ? (
+					<>
+						<InfoRow label='Swap Id'>
+							<span className={cx("flexIt")}>
+								<DisplayLongString inputString={value?.swap_id} />
+							</span>
+						</InfoRow>
+					</>
+				) : (
+					undefined
+				)}
 				{type === txTypes.COSMOS.VOTE ? (
 					<>
 						<InfoRow label={"proposal ID"}>{value?.proposal_id}</InfoRow>

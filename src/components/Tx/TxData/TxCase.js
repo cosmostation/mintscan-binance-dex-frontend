@@ -11,6 +11,7 @@ export const txGetTimeInforce = Object.freeze([null, "GTE", null, "IOC"]);
 export const txCheckOrder = txType => _.find([DEX.ORDER_NEW, DEX.ORDER_CANCEL], v => v === txType) !== undefined;
 export const txCheckSend = txType => _.find([COSMOS.SEND], v => v === txType) !== undefined;
 export const txCheckFUBM = txType => _.find([TOKENS.BURN, TOKENS.MINT, TOKENS.FREEZE, TOKENS.UNFREEZE], v => v === txType) !== undefined;
+export const txCheckHTLT = txType => _.find([TOKENS.HTLT], v => v === txType) !== undefined;
 //  last deposit tx was on 19/10/28 so not searchable anyway
 // const burn = {
 // 	height: 75405740,

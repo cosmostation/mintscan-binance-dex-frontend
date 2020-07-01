@@ -58,7 +58,7 @@ export default Object.freeze({
 	NETWORK: {
 		COSMOS: "cosmoshub-3",
 		IRIS: "irishub",
-		KAVA: "kava-2",
+		KAVA: "kava-3",
 		BINANCE: "binance",
 	},
 	PREFIX: {

@@ -29,7 +29,7 @@ export default function Address({account = {}, prices = []}) {
 
 	const renderQr = React.useMemo(
 		() => (
-			<div className={cx("qr-wrapper")} onMouseEnter={() => setShowModal(true)} onMouseLeave={() => setShowModal(false)}>
+			<div className={cx("qr-wrapper")} onClick={() => setShowModal(v => !v)} onMouseEnter={() => setShowModal(true)} onMouseLeave={() => setShowModal(false)}>
 				<img src={qrSVG} alt={"qr-code"} />
 				<QrModal address={account.address} show={showModal} />
 			</div>
