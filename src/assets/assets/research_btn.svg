@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
+  <g id="research_btn" transform="translate(8383 -3388)">
+    <g id="타원_226" data-name="타원 226" transform="translate(-8383 3388)" fill="none" stroke="#e6e6e6" stroke-width="1">
+      <circle cx="17.5" cy="17.5" r="17.5" stroke="none"/>
+      <circle cx="17.5" cy="17.5" r="17" fill="none"/>
+    </g>
+    <g id="그룹_4269" data-name="그룹 4269" transform="translate(-8766.667 3149)">
+      <path id="패스_2258" data-name="패스 2258" d="M406,284.829l3.043,1.739,3.043-1.739v-3.043H406Z" transform="translate(-7.556 -18.127)"/>
+      <rect id="사각형_2063" data-name="사각형 2063" width="2.536" height="3.043" transform="translate(400.135 245)"/>
+      <rect id="사각형_2064" data-name="사각형 2064" width="2.536" height="3.043" transform="translate(392.95 248.957) rotate(-45)"/>
+      <rect id="사각형_2065" data-name="사각형 2065" width="3.043" height="2.536" transform="translate(390.667 254.299)"/>
+      <rect id="사각형_2066" data-name="사각형 2066" width="3.043" height="2.536" transform="translate(408.926 254.468)"/>
+      <rect id="사각형_2067" data-name="사각형 2067" width="3.043" height="2.536" transform="translate(405.861 249.435) rotate(-45)"/>
+      <path id="패스_2259" data-name="패스 2259" d="M406.169,254.4l-4.175,1.686-1.76,4.144,1.686,4.175,4.145,1.759,4.175-1.686,1.76-4.145-1.687-4.175Zm2.1,6.977-3.513-3.513,1.614-1.614,3.513,3.513Z" transform="translate(-4.715 -4.633)"/>
+    </g>
+  </g>
+</svg>

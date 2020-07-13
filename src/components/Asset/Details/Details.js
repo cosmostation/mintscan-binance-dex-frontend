@@ -43,7 +43,7 @@ export default function Details({asset}) {
 				<div className={cx("clickables")}>
 					{_.isNil(mediaList)
 						? undefined
-						: _.map(_.keys(mediaList), key => <img key={key} className={cx(key)} alt={key} onClick={() => clickLink(mediaList[key])} />)}
+						: _.map(_.keys(mediaList), key => <img key={key} className={cx(_.camelCase(key))} alt={key} onClick={() => clickLink(mediaList[key])} />)}
 				</div>
 			</div>
 			<div className={cx("divider")} />

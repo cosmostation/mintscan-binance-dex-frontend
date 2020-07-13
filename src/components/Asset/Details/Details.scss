@@ -67,62 +67,69 @@
 					margin-right: 8px;
 				}
 			}
+			
+			.binanceResearch {
+				content: url("../../../assets/assets/research_btn.svg");
+				&:hover {
+					content: url("../../../assets/assets/research_btn_hover.svg");
+				}
+			}
 
-			.Facebook {
+			.facebook {
 				content: url("../../../assets/assets/facebook_btn.svg");
 				&:hover {
 					content: url("../../../assets/assets/facebook_btn_hover.svg");
 				}
 			}
-			.Twitter {
+			.twitter {
 				content: url("../../../assets/assets/twitter_btn.svg");
 				&:hover {
 					content: url("../../../assets/assets/twitter_btn_hover.svg");
 				}
 			}
-			.Medium {
+			.medium {
 				content: url("../../../assets/assets/medium_btn.svg");
 				&:hover {
 					content: url("../../../assets/assets/medium_btn_hover.svg");
 				}
 			}
-			.Instagram {
+			.instagram {
 				content: url("../../../assets/assets/instagram_btn.svg");
 				&:hover {
 					content: url("../../../assets/assets/instagram_btn_hover.svg");
 				}
 			}
-			.Reddit {
+			.reddit {
 				content: url("../../../assets/assets/reddit_btn.svg");
 				&:hover {
 					content: url("../../../assets/assets/reddit_btn_hover.svg");
 				}
 			}
-			.Youtube {
+			.youtube {
 				content: url("../../../assets/assets/youtube_btn.svg");
 				&:hover {
 					content: url("../../../assets/assets/youtube_btn_hover.svg");
 				}
 			}
-			.Telegram {
+			.telegram {
 				content: url("../../../assets/assets/telegram_btn.svg");
 				&:hover {
 					content: url("../../../assets/assets/telegram_btn_hover.svg");
 				}
 			}
-			.Info {
+			.info {
 				content: url("../../../assets/assets/binance_info_btn.svg");
 				&:hover {
 					content: url("../../../assets/assets/binance_info_btn_hover.svg");
 				}
 			}
-			.Linkedin {
+			.linkedin {
 				content: url("../../../assets/assets/linkedin_btn.svg");
 				&:hover {
 					content: url("../../../assets/assets/linkedin_btn_hover.svg");
 				}
 			}
-			.Github {
+			.github {
 				content: url("../../../assets/assets/github_btn.svg");
 				&:hover {
 					content: url("../../../assets/assets/github_btn_hover.svg");
@@ -134,19 +141,19 @@
 					content: url("../../../assets/assets/email_btn_hover.svg");
 				}
 			}
-			.Discord {
+			.discord {
 				content: url("../../../assets/assets/discord_btn.svg");
 				&:hover {
 					content: url("../../../assets/assets/discord_btn_hover.svg");
 				}
 			}
-			.Coinmarketcap {
+			.coinmarketcap {
 				content: url("../../../assets/assets/coinmarketcap_btn.svg");
 				&:hover {
 					content: url("../../../assets/assets/coinmarketcap_btn_hover.svg");
 				}
 			}
-			.Steemit {
+			.steemit {
 				content: url("../../../assets/assets/steemit_btn.svg");
 				&:hover {
 					content: url("../../../assets/assets/steemit_btn_hover.svg");
