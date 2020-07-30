@@ -1,5 +1,6 @@
 // TODO : use this if prod server is ready
 import config from "src/config";
+import _ from "lodash";
 
 const api = process.env.NODE_ENV === "production" ? config.API_PROD : config.API_DEV;
 
@@ -34,7 +35,8 @@ export default Object.freeze({
 		NAME_SEARCH_PROPERTY: ["asset", "mappedAsset", "name"],
 		ORDER_COMPARE: ["mappƒedAsset", "marketCap", "price", "supply"],
 	},
-	GET_LOGO_LINK: symbol => `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/binance/assets/${symbol}/logo.png`,
+	GET_LOGO_LINK: symbol =>
+		_.isString(symbol) ? `https://raw.githubusercontent.com/cosmostation/cosmostation_token_resource/master/thumnail/${_.split(symbol)[0]}}.png` : "",
 	API_BASE: api,
 	API: {
 		STATUS: "/status",

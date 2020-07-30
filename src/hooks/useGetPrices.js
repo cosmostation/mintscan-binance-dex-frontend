@@ -29,7 +29,7 @@ export default function useGetPrices(interval = 3000) {
 	useEffect(() => {
 		if (empty(targetAssets) || empty(assets)) return;
 		const filtered = _.map(targetAssets, assetName => _.find(assets, asset => asset.asset === assetName));
-		const newPrices = _.map(filtered, v => v.price);
+		const newPrices = _.map(filtered, v => v?.price);
 
 		//  value by value comparison
 		if (_.isEqual(prices, newPrices)) return;
