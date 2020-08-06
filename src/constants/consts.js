@@ -33,7 +33,7 @@ export default Object.freeze({
 	},
 	ASSET: {
 		NAME_SEARCH_PROPERTY: ["asset", "mappedAsset", "name"],
-		ORDER_COMPARE: ["mappƒedAsset", "marketCap", "price", "supply"],
+		ORDER_COMPARE: ["mappedAsset", "marketCap", "price", "supply"],
 	},
 	GET_LOGO_LINK: symbol =>
 		_.isString(symbol) ? `https://raw.githubusercontent.com/cosmostation/cosmostation_token_resource/master/thumnail/${_.split(symbol)[0]}}.png` : "",
