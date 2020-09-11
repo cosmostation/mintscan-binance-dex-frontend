@@ -6,6 +6,10 @@ export const getAssets = cancelToken => {
 	return axios.get(`${consts.API_BASE}${consts.API.ASSETS}`, {cancelToken});
 };
 
+export const getBep8Assets = cancelToken => {
+	return axios.get(`${consts.API_BASE}${consts.API.ASSETS_BEP8}`, {cancelToken});
+};
+
 export const getAssetPrices = cancelToken => {
 	return axios.get(`${consts.API_BASE}${consts.API.ASSET_PRICES}`, {cancelToken});
 };

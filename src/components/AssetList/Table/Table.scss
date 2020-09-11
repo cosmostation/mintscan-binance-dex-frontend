@@ -106,3 +106,10 @@
 		padding: 16px 0;
 	}
 }
+
+.hide {
+	visibility: hidden !important;
+	max-height: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}

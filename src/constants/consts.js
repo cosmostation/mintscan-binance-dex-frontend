@@ -48,6 +48,7 @@ export default Object.freeze({
 		ORDERS: "/orders",
 		ASSET_IMAGES: "/assets-images?page=1&rows=1000",
 		ASSETS: "/assets?page=1&rows=1000",
+		ASSETS_BEP8: "/assets/mini-tokens?page=1&rows=1000",
 		ASSET_PRICES: "/assets?page=1&rows=1000&only_price=true",
 		ASSET: "/asset?asset=",
 		ASSET_TXS: "/assets/txs?page=1&rows=20&txAsset=",

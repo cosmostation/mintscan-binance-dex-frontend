@@ -16,7 +16,7 @@ const cx = classNames.bind(styles);
 //  it is slow, but we need to not use MUI tables to fix the speed issue.
 //  bloody material UI not making my life any easier
 
-export default function({assets}) {
+export default function({assets, hide}) {
 	const [search, setSearch] = React.useState("");
 	const [sort, setSort] = React.useState({orderBy: 1, asc: false});
 
@@ -125,7 +125,7 @@ export default function({assets}) {
 	}, [displayAssets, search]);
 	return React.useMemo(
 		() => (
-			<div className={cx("AssetsTable-wrapper")}>
+			<div className={cx("AssetsTable-wrapper", {hide})}>
 				<Search setSearch={setSearch} cx={cx} />
 				<Table className={cx("table")}>
 					{tableHeaderRender}
@@ -134,6 +134,6 @@ export default function({assets}) {
 				{thinTableBodyRender}
 			</div>
 		),
-		[tableBodyRender, tableHeaderRender, thinTableBodyRender]
+		[tableBodyRender, tableHeaderRender, thinTableBodyRender, hide]
 	);
 }

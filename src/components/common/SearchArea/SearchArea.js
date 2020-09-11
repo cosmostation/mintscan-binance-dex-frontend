@@ -20,7 +20,13 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 	const history = useHistory();
 
 	//  redux
-	const assets = useSelector(state => state.assets.assets);
+	const bep2 = useSelector(state => state.assets.assets);
+	const bep8 = useSelector(state => state.assets.bep8);
+
+	const assets = React.useMemo(() => {
+		if (empty(bep2) || empty(bep8)) return null;
+		return [...bep2, ...bep8];
+	}, [bep2, bep8]);
 
 	//  search related
 	const SearchRef = React.useRef(null);

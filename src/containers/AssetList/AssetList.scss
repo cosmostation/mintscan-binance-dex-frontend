@@ -2,6 +2,71 @@
 
 .AssetList {
 	@include page-wrapper;
+	.title-wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 12px;
+		
+		@include media("<medium") {
+			flex-direction: column;
+			align-items: flex-start;
+			margin-bottom: 0;
+		}
+		> h1 {
+			font-family: "Montserrat", serif;
+			font-size: 30px;
+			font-weight: 500;
+			line-height: 1.23;
+			color: var(--colorPageTitle);
+			//color: #999999;
+			text-transform: uppercase;
+			
+			@include media("<large") {
+				font-size: 27px;
+			}
+			
+			@include media("<medium") {
+				font-size: 24px;
+				margin-bottom: 10px;
+			}
+		}
+		.tab-wrapper {
+			width: 594px;
+			@include media("<medium") {
+				width: 100%;
+				margin-bottom: 15px;
+			}
+			height: 35px;
+			border-radius: 5px;
+			border: solid 1px #f4c629;
+			display: flex;
+			flex-flow: row;
+			> button {
+				width: 50%;
+				cursor: pointer;
+				
+				@include Flex_center();
+				> p {
+					font-family: "Montserrat", serif;
+					font-size: 13px;
+					font-weight: 500;
+					line-height: 1.23;
+					letter-spacing: normal;
+					color: #222222;
+				}
+				&.selected {
+					background-color: #f4c629;
+					&:first-child {
+						border-right: solid 1px #f4c629;
+					}
+					&:last-child {
+						border-left: solid 1px #f4c629;
+					}
+				}
+			}
+		}
+	}
 	.StatusCard-grid {
 		width: fit-content;
 		margin: 0 auto 15px;
@@ -18,8 +83,18 @@
 		@include media("<small") {
 			display: none;
 		}
+		&.hide {
+			display: none;
+		}
 	}
 	>:nth-child(3) {
 		margin-bottom: 70px;
 	}
+}
+
+.hide {
+	visibility: hidden !important;
+	max-height: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
 }

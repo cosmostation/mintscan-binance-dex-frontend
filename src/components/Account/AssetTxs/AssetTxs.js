@@ -9,11 +9,18 @@ import {usePrevious} from "src/hooks";
 //  components
 import TxTable from "./TxTable";
 import AssetsTable from "src/components/Account/AssetTxs/AssetsTable";
+import consts from "src/constants/consts";
 
 const cx = cn.bind(styles);
 
 export default function({fetchAccountTxs = () => {}, balances = [], prices = [], txData = [], account = ""}) {
 	const assets = useSelector(state => state.assets.assets);
+	const bep8 = useSelector(state => state.assets.bep8);
+
+	const allAssets = React.useMemo(() => {
+		if (empty(assets) || empty(bep8)) return null;
+		return [...assets, ...bep8];
+	}, [assets, bep8]);
 	const [mappedAssets, setMappedAssets] = React.useState([]);
 	const [selected, setSelected] = React.useState(true);
 	const onClick = React.useCallback((e, bool) => {
@@ -29,11 +36,11 @@ export default function({fetchAccountTxs = () => {}, balances = [], prices = [],
 	//  pick from the assets, append asset imgSrc and relevent names to balance
 	React.useEffect(() => {
 		//  check for new rows
-		if (empty(assets) || _.every(balances, (v, i) => mappedAssets[i]?.symbol === v?.symbol)) return;
+		if (empty(allAssets) || _.every(balances, (v, i) => mappedAssets[i]?.symbol === v?.symbol)) return;
 		console.log("mapping assets");
 		const tempAssets = _.cloneDeep(balances);
 		_.each(tempAssets, v => {
-			const found = _.find(assets, asset => asset.asset === v.symbol);
+			const found = _.find(allAssets, asset => asset.asset === v.symbol);
 			if (found) _.assign(v, {mappedAsset: found.mappedAsset, name: found.name, assetImg: found.assetImg});
 		});
 		setMappedAssets(tempAssets);

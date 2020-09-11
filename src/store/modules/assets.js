@@ -4,13 +4,15 @@ import * as api from "src/lib/api";
 import {_, compareProperty} from "src/lib/scripts";
 import {multiply} from "src/lib/Big";
 
-const [GET_ASSETS, GET_ASSET_PRICES] = ["GET_ASSETS", "UPDATE_ASSET_PRICES"];
+const [GET_ASSETS, GET_BEP8, GET_ASSET_PRICES] = ["GET_ASSETS", "GET_BEP8", "UPDATE_ASSET_PRICES"];
 //  sorts assets in order of marketCap first, then by id if it is the same(0)
 export const getCryptoAssets = createAction(GET_ASSETS, cancelToken => api.getAssets(cancelToken));
+export const getCryptoBep8 = createAction(GET_BEP8, cancelToken => api.getBep8Assets(cancelToken));
 export const getCryptoAssetPrices = createAction(GET_ASSET_PRICES, cancelToken => api.getAssetPrices(cancelToken));
 
 const initState = {
 	assets: [],
+	bep8: [],
 };
 
 const handlers = {
@@ -52,6 +54,17 @@ const handlers = {
 		onFailure: state => {
 			console.warn("get asset price list fail");
 			return {...state};
+		},
+	}),
+	...pender({
+		type: GET_BEP8,
+		onSuccess: (state, action) => {
+			if (!_.isArray(action.payload.data?.assetInfoList)) return {...state};
+			const data = _.map(action.payload.data.assetInfoList, v => ({...v, marketCap: Number(multiply(v?.price, v?.supply, 5))}));
+			return {
+				...state,
+				bep8: data.sort(compareAsset),
+			};
 		},
 	}),
 };
