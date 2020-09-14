@@ -13,6 +13,7 @@ import redArrowSVG from "src/assets/common/transferarrow_rd.svg";
 export default function(data, cx, cell, account) {
 	switch (cell) {
 		case "txType": {
+			console.log(data);
 			if (!_.isNil(data?.txType)) return <span className={cx("type")}>{getTxType(data?.txType)}</span>;
 			return <Skeleton />;
 		}

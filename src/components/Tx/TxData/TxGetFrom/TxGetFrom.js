@@ -18,11 +18,13 @@ const aBunch = [
 
 export default function({type, txData, value, cx}) {
 	let from = null;
+	console.log(type, value);
 	if (txCheckSend(type)) from = refineAddress(value?.inputs?.[0]?.address);
 	else if (txCheckOrder(type)) from = refineAddress(value.sender);
 	else if (txCheckFUBM(type) || _.find(aBunch, v => v === type)) from = refineAddress(value.from);
 	else if (txTypes.COSMOS.VOTE === type) from = refineAddress(value.voter);
-	else if (txTypes.COSMOS.PROPOSAL_SUBMIT) from = refineAddress(value.proposer);
+	else if (txTypes.COSMOS.PROPOSAL_SUBMIT === type) from = refineAddress(value.proposer);
+	else if (txTypes.MISC.ORACLE_CLAIM === type) from = refineAddress(value.validator_address);
 	if (_.isString(from))
 		return (
 			<NavLink className={cx("blueColor")} to={`/account/${from}`}>

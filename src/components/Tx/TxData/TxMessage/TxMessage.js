@@ -256,6 +256,20 @@ export default function({msg, txData}) {
 						<TxGetFrom txData={txData} type={type} value={value} cx={cx} />
 					</InfoRow>
 				)}
+				{type === txTypes.MISC.ORACLE_CLAIM && (
+					<>
+						<InfoRow label='sequence'>
+							<span className={cx("flexIt")}>
+								<DisplayLongString inputString={value?.sequence} />
+							</span>
+						</InfoRow>
+						<InfoRow label='chain_id'>
+							<span className={cx("flexIt")}>
+								<span>{value.chain_id}</span>
+							</span>
+						</InfoRow>
+					</>
+				)}
 				{type === txTypes.TOKENS.HTLT_CLAIM ? (
 					<>
 						<InfoRow label='Swap Id'>

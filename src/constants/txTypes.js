@@ -36,5 +36,6 @@ export default Object.freeze({
 	//  MISC
 	MISC: {
 		ACCOUNTFLAG_SET: "scripts/SetAccountFlagsMsg",
+		ORACLE_CLAIM: "oracle/ClaimMsg",
 	},
 });

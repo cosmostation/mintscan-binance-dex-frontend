@@ -73,6 +73,8 @@ export default function(txType) {
 
 		case MISC.ACCOUNTFLAG_SET:
 			return "Set Account Flag";
+		case MISC.ORACLE_CLAIM:
+			return "Oracle Claim";
 		default:
 			return txType;
 	}
