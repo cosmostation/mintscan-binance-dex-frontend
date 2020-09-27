@@ -15,12 +15,13 @@ import binance from "src/assets/header/chain_ic.svg";
 import iris from "src/assets/header/iris_token.svg";
 import kava from "src/assets/header/kava_token.svg";
 import cosmos from "src/assets/header/atom_token.svg";
+import starname from "src/assets/header/token_starname.svg";
 import logo from "src/assets/header/mintscan_logo.svg";
 
 const cx = cn.bind(styles);
 
-const avaliableNetworks = ["cosmos", "iris", "kava", "binance"];
-const tokenImg = [cosmos, iris, kava, binance];
+const avaliableNetworks = ["cosmos", "iris", "kava", "starname", "binance"];
+const tokenImg = [cosmos, iris, kava, starname, binance];
 
 export default function(props) {
 	const history = useHistory();
@@ -33,6 +34,8 @@ export default function(props) {
 			if (network === "cosmos") window.open(consts.MINTSCAN_URL.COSMOS, "_blank");
 			else if (network === "kava") window.open(consts.MINTSCAN_URL.KAVA, "_blank");
 			else if (network === "iris") window.open(consts.MINTSCAN_URL.IRIS, "_blank");
+			else if (network === "starname") window.open(consts.MINTSCAN_URL.STARNAME, "_blank");
+
 			setOpen(v => !v);
 		},
 		[setOpen]
@@ -68,6 +71,8 @@ export default function(props) {
 														return consts.NETWORK.KAVA;
 													case "binance":
 														return consts.NETWORK.BINANCE;
+													case "starname":
+														return consts.NETWORK.STARNAME;
 													default:
 														return consts.NETWORK.COSMOS;
 												}

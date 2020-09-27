@@ -59,9 +59,10 @@ export default Object.freeze({
 		VALIDATORS: "/validators",
 	},
 	NETWORK: {
-		COSMOS: "cosmoshub-3",
-		IRIS: "irishub",
-		KAVA: "kava-3",
+		COSMOS: "cosmos",
+		IRIS: "iris",
+		KAVA: "kava",
+		STARNAME: "starname",
 		BINANCE: "binance",
 	},
 	PREFIX: {
@@ -72,8 +73,9 @@ export default Object.freeze({
 
 	MINTSCAN_URL: {
 		COSMOS: "https://www.mintscan.io/",
-		KAVA: "https://kava.mintscan.io/",
-		IRIS: "https://irishub.mintscan.io/",
+		KAVA: "https://mintscan.io/kava",
+		IRIS: "https://mintscan.io/iris",
+		STARNAME: "https://mintscan.io/starname",
 	},
 
 	LINK: {
