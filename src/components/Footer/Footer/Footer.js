@@ -36,7 +36,7 @@ export default function(props) {
 									<img src={iosIcon} alt='appstore' />
 								</div>
 							</a>
-							<a href={consts.LINK.IOS} target='_blank' rel='noopener noreferrer'>
+							<a href={consts.LINK.WEB} target='_blank' rel='noopener noreferrer'>
 								<div className={cx("wallet-link-btn", "web")}>
 									<img className={cx("web-icon")} src={webWalletIcon} alt='webwallet' />
 									<span className={cx("web-title")}>Web Wallet</span>
