@@ -20,13 +20,13 @@ const cardData = Object.freeze([
 		svg: exchangeSVG,
 		title: "Exchange",
 		content: "Blockchain and crypto asset exchange",
-		link: "https://www.binance.org/en/trade",
+		link: "https://accounts.binance.com/en/register?ref=39076268",
 	},
 	{
 		svg: dexSVG,
 		title: "Binance DEX",
 		content: "decentralized digital asset exchange",
-		link: "https://www.binance.org/",
+		link: "https://www.binance.org/en/trade/",
 	},
 	{
 		svg: jexSVG,
