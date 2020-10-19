@@ -6,11 +6,11 @@ import {_, empty} from "src/lib/scripts";
 import AssetsTableRows, {ThinTableRows} from "../AssetsTableRows";
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 import Spinner from "src/components/common/Spinner";
+import NoTx from "src/components/common/NoTx";
 
 const cx = cn.bind(styles);
 
-export default function({balances = [], prices = null}) {
-	console.log(balances);
+export default function({balances, prices = null}) {
 	const tableBodyRender = React.useMemo(
 		() => (
 			<>
@@ -35,8 +35,10 @@ export default function({balances = [], prices = null}) {
 
 	return (
 		<div className={cx("AssetsTable-wrapper")}>
-			{empty(balances) ? (
+			{_.isNil(balances) ? (
 				<Spinner />
+			) : empty(balances) ? (
+				<NoTx text={"No assets"} />
 			) : (
 				<>
 					<Table className={cx("table")}>

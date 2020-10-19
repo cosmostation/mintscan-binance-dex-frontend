@@ -46,7 +46,7 @@ export default function Account(props) {
 
 	//  when data from address arrives, set the useGetPrice hook to start
 	React.useEffect(() => {
-		if (empty(assetData?.balances)) return;
+		if (_.isNil(assetData?.balances)) return;
 		setTargetAssets(_.map(assetData.balances, v => v.symbol));
 	}, [setTargetAssets, assetData]);
 
@@ -67,7 +67,7 @@ export default function Account(props) {
 				fetchAccountTxs={fetchAccountTxs}
 				account={account}
 				prices={prices}
-				balances={assetData?.balances ? assetData.balances : consts.DEFAULT_ARRAY}
+				balances={assetData?.balances ? assetData.balances : null}
 				txData={txData}
 			/>
 		),

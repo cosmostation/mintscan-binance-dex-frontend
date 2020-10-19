@@ -13,7 +13,7 @@ import consts from "src/constants/consts";
 
 const cx = cn.bind(styles);
 
-export default function({fetchAccountTxs = () => {}, balances = [], prices = [], txData = [], account = ""}) {
+export default function({fetchAccountTxs = () => {}, balances = null, prices = [], txData = [], account = ""}) {
 	const assets = useSelector(state => state.assets.assets);
 	const bep8 = useSelector(state => state.assets.bep8);
 
