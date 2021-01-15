@@ -4,7 +4,7 @@ import {RestfulProvider} from "restful-react"; //  Thank you Tejas - I'm not gon
 import consts from "src/constants/consts";
 import App from "./App";
 //  comment this out if you do not plan on using firebase
-import "./firebase";
+// import "./firebase";
 //  redux
 import {Provider} from "react-redux";
 import configure from "./store/configure";
