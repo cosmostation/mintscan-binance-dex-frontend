@@ -16,12 +16,14 @@ import iris from "src/assets/header/iris_token.svg";
 import kava from "src/assets/header/kava_token.svg";
 import cosmos from "src/assets/header/atom_token.svg";
 import starname from "src/assets/header/token_starname.svg";
+import akash from "src/assets/header/token_akash.svg";
 import logo from "src/assets/header/mintscan_logo.svg";
 
 const cx = cn.bind(styles);
 
-const avaliableNetworks = ["cosmos", "iris", "kava", "starname", "binance"];
-const tokenImg = [cosmos, iris, kava, starname, binance];
+// const avaliableNetworks = ["cosmos", "iris", "kava", "starname", "binance"];
+const avaliableNetworks = ["cosmos", "kava", "iris", "starname", "akash", "binance"];
+const tokenImg = [cosmos, kava, iris, starname, akash, binance];
 
 export default function(props) {
 	const history = useHistory();
@@ -35,6 +37,7 @@ export default function(props) {
 			else if (network === "kava") window.open(consts.MINTSCAN_URL.KAVA, "_blank");
 			else if (network === "iris") window.open(consts.MINTSCAN_URL.IRIS, "_blank");
 			else if (network === "starname") window.open(consts.MINTSCAN_URL.STARNAME, "_blank");
+			else if (network === "akash") window.open(consts.MINTSCAN_URL.AKASH, "_blank");
 
 			setOpen(v => !v);
 		},
@@ -73,6 +76,8 @@ export default function(props) {
 														return consts.NETWORK.BINANCE;
 													case "starname":
 														return consts.NETWORK.STARNAME;
+													case "akash":
+														return consts.NETWORK.AKASH;	
 													default:
 														return consts.NETWORK.COSMOS;
 												}

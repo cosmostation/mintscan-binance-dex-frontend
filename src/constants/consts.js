@@ -59,10 +59,16 @@ export default Object.freeze({
 		VALIDATORS: "/validators",
 	},
 	NETWORK: {
+		// COSMOS: "cosmos",
+		// IRIS: "iris",
+		// KAVA: "kava",
+		// STARNAME: "starname",
+		// BINANCE: "binance",
 		COSMOS: "cosmos",
-		IRIS: "iris",
 		KAVA: "kava",
+		IRIS: "iris",
 		STARNAME: "starname",
+		AKASH: "akash",
 		BINANCE: "binance",
 	},
 	PREFIX: {
@@ -76,6 +82,7 @@ export default Object.freeze({
 		KAVA: "https://mintscan.io/kava",
 		IRIS: "https://mintscan.io/iris",
 		STARNAME: "https://mintscan.io/starname",
+		AKASH: "https://mintscan.io/akash",
 	},
 
 	LINK: {
