@@ -69,6 +69,8 @@ export default Object.freeze({
 		IRIS: "iris",
 		STARNAME: "starname",
 		AKASH: "akash",
+		SENTINEL: "sentinel",
+		PERSISTENCE: "persistence",
 		BINANCE: "binance",
 	},
 	PREFIX: {
@@ -83,6 +85,8 @@ export default Object.freeze({
 		IRIS: "https://mintscan.io/iris",
 		STARNAME: "https://mintscan.io/starname",
 		AKASH: "https://mintscan.io/akash",
+		SENTINEL: "https://mintscan.io/sentinel",
+		PERSISTENCE: "https://mintscan.io/persistence",
 	},
 
 	LINK: {
