@@ -71,6 +71,9 @@ export default Object.freeze({
 		AKASH: "akash",
 		SENTINEL: "sentinel",
 		PERSISTENCE: "persistence",
+		FETCHAI: "fetch.ai",
+		CRYPTOORG: "crypto.org",
+		SIFCHAIN: "sifchain",
 		BINANCE: "binance",
 	},
 	PREFIX: {
@@ -87,6 +90,9 @@ export default Object.freeze({
 		AKASH: "https://mintscan.io/akash",
 		SENTINEL: "https://mintscan.io/sentinel",
 		PERSISTENCE: "https://mintscan.io/persistence",
+		FETCHAI: "https://mintscan.io/fetchai",
+		CRYPTOORG: "https://mintscan.io/crypto-org",
+		SIFCHAIN: "https://mintscan.io/sifchain",
 	},
 
 	LINK: {

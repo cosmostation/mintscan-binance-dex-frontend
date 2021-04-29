@@ -19,13 +19,16 @@ import starname from "src/assets/header/token_starname.svg";
 import akash from "src/assets/header/token_akash.svg";
 import sentinel from "src/assets/header/token_sentinel.svg";
 import persistence from "src/assets/header/token_persistence.svg";
+import fetchAi from "src/assets/header/token_fetchai.svg";
+import cryptoOrg from "src/assets/header/token_crypto_org.svg";
+import sifchain from "src/assets/header/token_sifchain.svg";
 import logo from "src/assets/header/mintscan_logo.svg";
 
 const cx = cn.bind(styles);
 
 // const avaliableNetworks = ["cosmos", "iris", "kava", "starname", "binance"];
-const avaliableNetworks = ["cosmos", "kava", "iris", "starname", "akash", "sentinel", "persistence", "binance"];
-const tokenImg = [cosmos, kava, iris, starname, akash, sentinel, persistence, binance];
+const avaliableNetworks = ["cosmos", "kava", "iris", "starname", "akash", "sentinel", "persistence", "fetch-ai", "crypto-org", "sifchain", "binance"];
+const tokenImg = [cosmos, kava, iris, starname, akash, sentinel, persistence, fetchAi, cryptoOrg, sifchain, binance];
 
 export default function(props) {
 	const history = useHistory();
@@ -42,6 +45,9 @@ export default function(props) {
 			else if (network === "akash") window.open(consts.MINTSCAN_URL.AKASH, "_blank");
 			else if (network === "sentinel") window.open(consts.MINTSCAN_URL.SENTINEL, "_blank");
 			else if (network === "persistence") window.open(consts.MINTSCAN_URL.PERSISTENCE, "_blank");
+			else if (network === "fetch-ai") window.open(consts.MINTSCAN_URL.FETCHAI, "_blank");
+			else if (network === "crypto-org") window.open(consts.MINTSCAN_URL.CRYPTOORG, "_blank");
+			else if (network === "sifchain") window.open(consts.MINTSCAN_URL.SIFCHAIN, "_blank");
 
 			setOpen(v => !v);
 		},
@@ -86,6 +92,12 @@ export default function(props) {
 														return consts.NETWORK.SENTINEL;
 													case "persistence":
 														return consts.NETWORK.PERSISTENCE;
+													case "crypto-org":
+														return consts.NETWORK.CRYPTOORG;
+													case "fetch-ai":
+														return consts.NETWORK.FETCHAI;
+													case "sifchain":
+														return consts.NETWORK.SIFCHAIN;
 													default:
 														return consts.NETWORK.COSMOS;
 												}
