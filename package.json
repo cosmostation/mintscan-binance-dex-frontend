@@ -15,6 +15,7 @@
     "dev": "REACT_APP_BUILD_ENV=dev NODE_ENV=development node scripts/start.js",
     "build:dev": "REACT_APP_BUILD_ENV=dev NODE_ENV=development node scripts/build.js && yarn run delete-maps",
     "build:prod": "REACT_APP_BUILD_ENV=prod NODE_ENV=production node scripts/build.js && yarn run delete-maps",
+    "deploy:prod": "aws s3 sync --cache-control max-age=604800,public ./build/ s3://binance.mintscan.io && aws cloudfront create-invalidation --distribution-id E2QGX9F1TH921S --paths '/*'",
     "delete-maps": "yarn run delete-references-to-map-files && yarn run delete-map-files",
     "delete-map-files": "find ./build -name '*.map' -delete",
     "delete-references-to-map-files": "find ./build -regex '.*\\.\\(js\\|css\\)' -exec sed -i -E '\\/[\\*\\/]#\\ssourceMappingURL=main(\\.[0-9a-f]+)?\\.(css|js)\\.map(\\*\\/)?/g' {} +",
