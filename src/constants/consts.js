@@ -74,6 +74,7 @@ export default Object.freeze({
 		FETCHAI: "fetch.ai",
 		CRYPTOORG: "crypto.org",
 		SIFCHAIN: "sifchain",
+		KICHAIN: "ki chain",
 		BINANCE: "binance",
 	},
 	PREFIX: {
@@ -93,6 +94,7 @@ export default Object.freeze({
 		FETCHAI: "https://mintscan.io/fetchai",
 		CRYPTOORG: "https://mintscan.io/crypto-org",
 		SIFCHAIN: "https://mintscan.io/sifchain",
+		KICHAIN: "https://www.mintscan.io/ki-chain",
 	},
 
 	LINK: {
