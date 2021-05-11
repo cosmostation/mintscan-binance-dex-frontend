@@ -64,7 +64,7 @@
     "file-loader": "4.3.0",
     "firebase": "^7.13.2",
     "fs-extra": "^8.1.0",
-    "highcharts": "^8.0.0",
+    "highcharts": "^9.0.0",
     "highcharts-react-official": "^2.2.2",
     "html-webpack-plugin": "4.0.0-beta.5",
     "human-format": "^0.10.1",
