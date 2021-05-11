@@ -7,6 +7,7 @@ import Loading from "src/components/common/Loading";
 //  hooks
 import {useHistory, usePreload} from "src/hooks";
 import ReactGA from "react-ga";
+import Maintenance from "src/components/Maintenance";
 
 const cx = cn.bind(styles);
 
@@ -29,7 +30,7 @@ export default function(props) {
 			<Suspense fallback={<Loading />}>
 				<ScrollToTop>
 					<Switch>
-						<Route exact path='/' render={props => <Dashboard {...props} />} />
+						{/* <Route exact path='/' render={props => <Dashboard {...props} />} />
 						<Route path='/blocks/:height' render={props => <Block {...props} />} />
 						<Route path='/blocks' render={props => <BlockList {...props} />} />
 						<Route path='/txs/:tx' render={props => <Tx {...props} />} />
@@ -37,7 +38,8 @@ export default function(props) {
 						<Route path='/account/:account' render={props => <Account {...props} />} />
 						<Route path='/assets/:asset' render={props => <Asset {...props} />} />
 						<Route path='/assets' render={props => <AssetList {...props} />} />
-						<Route render={() => <NotFound />} />
+						<Route render={() => <NotFound />} /> */}
+						<Route render={() => <Maintenance chain='binance' />} />
 					</Switch>
 				</ScrollToTop>
 			</Suspense>
