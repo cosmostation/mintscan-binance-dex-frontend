@@ -23,11 +23,11 @@ import fetchAi from "src/assets/header/token_fetchai.svg";
 import cryptoOrg from "src/assets/header/token_crypto_org.svg";
 import sifchain from "src/assets/header/token_sifchain.svg";
 import kichain from "src/assets/header/token_ki_chain.svg";
+import osmosis from "src/assets/header/token_osmosis.svg";
 import logo from "src/assets/header/mintscan_logo.svg";
 
 const cx = cn.bind(styles);
 
-// const avaliableNetworks = ["cosmos", "iris", "kava", "starname", "binance"];
 const avaliableNetworks = [
 	"cosmos",
 	"kava",
@@ -40,9 +40,10 @@ const avaliableNetworks = [
 	"crypto-org",
 	"sifchain",
 	"ki chain",
+	"osmosis",
 	"binance",
 ];
-const tokenImg = [cosmos, kava, iris, starname, akash, sentinel, persistence, fetchAi, cryptoOrg, sifchain, kichain, binance];
+const tokenImg = [cosmos, kava, iris, starname, akash, sentinel, persistence, fetchAi, cryptoOrg, sifchain, kichain, osmosis, binance];
 
 export default function(props) {
 	const history = useHistory();
@@ -63,6 +64,7 @@ export default function(props) {
 			else if (network === "crypto-org") window.open(consts.MINTSCAN_URL.CRYPTOORG, "_blank");
 			else if (network === "sifchain") window.open(consts.MINTSCAN_URL.SIFCHAIN, "_blank");
 			else if (network === "ki chain") window.open(consts.MINTSCAN_URL.KICHAIN, "_blank");
+			else if (network === "osmosis") window.open(consts.MINTSCAN_URL.OSMOSIS, "_blank");
 
 			setOpen(v => !v);
 		},
@@ -115,6 +117,8 @@ export default function(props) {
 														return consts.NETWORK.SIFCHAIN;
 													case "ki chain":
 														return consts.NETWORK.KICHAIN;
+													case "osmosis":
+														return consts.NETWORK.OSMOSIS;
 													default:
 														return consts.NETWORK.COSMOS;
 												}

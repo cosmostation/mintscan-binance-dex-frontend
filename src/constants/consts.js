@@ -59,11 +59,6 @@ export default Object.freeze({
 		VALIDATORS: "/validators",
 	},
 	NETWORK: {
-		// COSMOS: "cosmos",
-		// IRIS: "iris",
-		// KAVA: "kava",
-		// STARNAME: "starname",
-		// BINANCE: "binance",
 		COSMOS: "cosmos",
 		KAVA: "kava",
 		IRIS: "iris",
@@ -75,6 +70,7 @@ export default Object.freeze({
 		CRYPTOORG: "crypto.org",
 		SIFCHAIN: "sifchain",
 		KICHAIN: "ki chain",
+		OSMOSIS: "osmosis",
 		BINANCE: "binance",
 	},
 	PREFIX: {
@@ -94,6 +90,7 @@ export default Object.freeze({
 		FETCHAI: "https://mintscan.io/fetchai",
 		CRYPTOORG: "https://mintscan.io/crypto-org",
 		SIFCHAIN: "https://mintscan.io/sifchain",
+		OSMOSIS: "https://mintscan.io/osmosis",
 		KICHAIN: "https://www.mintscan.io/ki-chain",
 	},
 
