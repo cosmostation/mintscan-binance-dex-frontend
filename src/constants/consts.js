@@ -1,6 +1,6 @@
+import _ from "lodash";
 // TODO : use this if prod server is ready
 import config from "src/config";
-import _ from "lodash";
 
 const api = process.env.NODE_ENV === "production" ? config.API_PROD : config.API_DEV;
 
@@ -71,6 +71,7 @@ export default Object.freeze({
 		SIFCHAIN: "sifchain",
 		KICHAIN: "ki chain",
 		OSMOSIS: "osmosis",
+		CERTIK: "certik",
 		BINANCE: "binance",
 	},
 	PREFIX: {
@@ -92,6 +93,7 @@ export default Object.freeze({
 		SIFCHAIN: "https://mintscan.io/sifchain",
 		OSMOSIS: "https://mintscan.io/osmosis",
 		KICHAIN: "https://www.mintscan.io/ki-chain",
+		CERTIK: "https://www.mintscan.io/certik",
 	},
 
 	LINK: {

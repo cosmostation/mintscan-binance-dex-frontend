@@ -1,30 +1,30 @@
 import React, {useCallback, useMemo, useState} from "react";
-import cn from "classnames/bind";
-import styles from "./SearchAppBar.scss";
-import _ from "lodash";
+
 import {NavLink} from "react-router-dom";
-import {useHistory} from "src/hooks";
 //  components
 import SearchArea from "src/components/common/SearchArea";
 import {Toolbar} from "@material-ui/core";
-
-import consts from "src/constants/consts";
-
-import dropdownArrow from "src/assets/common/dropdown_arrow.svg";
+import _ from "lodash";
+import akash from "src/assets/header/token_akash.svg";
 import binance from "src/assets/header/chain_ic.svg";
+import certik from "src/assets/header/token_certik.svg";
+import cn from "classnames/bind";
+import consts from "src/constants/consts";
+import cosmos from "src/assets/header/atom_token.svg";
+import cryptoOrg from "src/assets/header/token_crypto_org.svg";
+import dropdownArrow from "src/assets/common/dropdown_arrow.svg";
+import fetchAi from "src/assets/header/token_fetchai.svg";
 import iris from "src/assets/header/iris_token.svg";
 import kava from "src/assets/header/kava_token.svg";
-import cosmos from "src/assets/header/atom_token.svg";
-import starname from "src/assets/header/token_starname.svg";
-import akash from "src/assets/header/token_akash.svg";
-import sentinel from "src/assets/header/token_sentinel.svg";
-import persistence from "src/assets/header/token_persistence.svg";
-import fetchAi from "src/assets/header/token_fetchai.svg";
-import cryptoOrg from "src/assets/header/token_crypto_org.svg";
-import sifchain from "src/assets/header/token_sifchain.svg";
 import kichain from "src/assets/header/token_ki_chain.svg";
-import osmosis from "src/assets/header/token_osmosis.svg";
 import logo from "src/assets/header/mintscan_logo.svg";
+import osmosis from "src/assets/header/token_osmosis.svg";
+import persistence from "src/assets/header/token_persistence.svg";
+import sentinel from "src/assets/header/token_sentinel.svg";
+import sifchain from "src/assets/header/token_sifchain.svg";
+import starname from "src/assets/header/token_starname.svg";
+import styles from "./SearchAppBar.scss";
+import {useHistory} from "src/hooks";
 
 const cx = cn.bind(styles);
 
@@ -41,9 +41,10 @@ const avaliableNetworks = [
 	"sifchain",
 	"ki chain",
 	"osmosis",
+	"certik",
 	"binance",
 ];
-const tokenImg = [cosmos, kava, iris, starname, akash, sentinel, persistence, fetchAi, cryptoOrg, sifchain, kichain, osmosis, binance];
+const tokenImg = [cosmos, kava, iris, starname, akash, sentinel, persistence, fetchAi, cryptoOrg, sifchain, kichain, osmosis, certik, binance];
 
 export default function(props) {
 	const history = useHistory();
@@ -64,6 +65,7 @@ export default function(props) {
 			else if (network === "crypto-org") window.open(consts.MINTSCAN_URL.CRYPTOORG, "_blank");
 			else if (network === "sifchain") window.open(consts.MINTSCAN_URL.SIFCHAIN, "_blank");
 			else if (network === "ki chain") window.open(consts.MINTSCAN_URL.KICHAIN, "_blank");
+			else if (network === "certik") window.open(consts.MINTSCAN_URL.CERTIK, "_blank");
 			else if (network === "osmosis") window.open(consts.MINTSCAN_URL.OSMOSIS, "_blank");
 
 			setOpen(v => !v);
@@ -119,6 +121,8 @@ export default function(props) {
 														return consts.NETWORK.KICHAIN;
 													case "osmosis":
 														return consts.NETWORK.OSMOSIS;
+													case "certik":
+														return consts.NETWORK.CERTIK;
 													default:
 														return consts.NETWORK.COSMOS;
 												}
