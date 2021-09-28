@@ -36,7 +36,7 @@ export default Object.freeze({
 		ORDER_COMPARE: ["mappedAsset", "marketCap", "price", "supply"],
 	},
 	GET_LOGO_LINK: symbol =>
-		_.isString(symbol) ? `https://raw.githubusercontent.com/cosmostation/cosmostation_token_resource/master/thumnail/${_.split(symbol)[0]}}.png` : "",
+		_.isString(symbol) ? `https://raw.githubusercontent.com/cosmostation/cosmostation_token_resource/master/coin_image/binance/${_.split(symbol)[0]}}.png` : "",
 	API_BASE: api,
 	API: {
 		STATUS: "/status",
