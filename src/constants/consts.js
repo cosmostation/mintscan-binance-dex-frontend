@@ -63,6 +63,7 @@ export default Object.freeze({
 		KAVA: "kava",
 		IRIS: "iris",
 		STARNAME: "starname",
+		BAND: "band",
 		AKASH: "akash",
 		SENTINEL: "sentinel",
 		PERSISTENCE: "persistence",
@@ -72,6 +73,7 @@ export default Object.freeze({
 		KICHAIN: "ki chain",
 		OSMOSIS: "osmosis",
 		CERTIK: "certik",
+		EMONEY: "emoney",
 		BINANCE: "binance",
 	},
 	PREFIX: {
@@ -85,6 +87,7 @@ export default Object.freeze({
 		KAVA: "https://mintscan.io/kava",
 		IRIS: "https://mintscan.io/iris",
 		STARNAME: "https://mintscan.io/starname",
+		BAND: "https://mintscan.io/band",
 		AKASH: "https://mintscan.io/akash",
 		SENTINEL: "https://mintscan.io/sentinel",
 		PERSISTENCE: "https://mintscan.io/persistence",
@@ -94,6 +97,7 @@ export default Object.freeze({
 		OSMOSIS: "https://mintscan.io/osmosis",
 		KICHAIN: "https://www.mintscan.io/ki-chain",
 		CERTIK: "https://www.mintscan.io/certik",
+		EMONEY: "https://www.mintscan.io/emoney",
 	},
 
 	LINK: {

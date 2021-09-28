@@ -6,6 +6,7 @@ import SearchArea from "src/components/common/SearchArea";
 import {Toolbar} from "@material-ui/core";
 import _ from "lodash";
 import akash from "src/assets/header/token_akash.svg";
+import band from "src/assets/header/token_band.svg";
 import binance from "src/assets/header/chain_ic.svg";
 import certik from "src/assets/header/token_certik.svg";
 import cn from "classnames/bind";
@@ -13,6 +14,7 @@ import consts from "src/constants/consts";
 import cosmos from "src/assets/header/atom_token.svg";
 import cryptoOrg from "src/assets/header/token_crypto_org.svg";
 import dropdownArrow from "src/assets/common/dropdown_arrow.svg";
+import emoney from "src/assets/header/token_emoney.svg";
 import fetchAi from "src/assets/header/token_fetchai.svg";
 import iris from "src/assets/header/iris_token.svg";
 import kava from "src/assets/header/kava_token.svg";
@@ -33,6 +35,7 @@ const avaliableNetworks = [
 	"kava",
 	"iris",
 	"starname",
+	"band",
 	"akash",
 	"sentinel",
 	"persistence",
@@ -42,9 +45,10 @@ const avaliableNetworks = [
 	"ki chain",
 	"osmosis",
 	"certik",
+	"emoney",
 	"binance",
 ];
-const tokenImg = [cosmos, kava, iris, starname, akash, sentinel, persistence, fetchAi, cryptoOrg, sifchain, kichain, osmosis, certik, binance];
+const tokenImg = [cosmos, kava, iris, starname, band, akash, sentinel, persistence, fetchAi, cryptoOrg, sifchain, kichain, osmosis, certik, emoney, binance];
 
 export default function(props) {
 	const history = useHistory();
@@ -58,6 +62,7 @@ export default function(props) {
 			else if (network === "kava") window.open(consts.MINTSCAN_URL.KAVA, "_blank");
 			else if (network === "iris") window.open(consts.MINTSCAN_URL.IRIS, "_blank");
 			else if (network === "starname") window.open(consts.MINTSCAN_URL.STARNAME, "_blank");
+			else if (network === "band") window.open(consts.MINTSCAN_URL.BAND, "_blank");
 			else if (network === "akash") window.open(consts.MINTSCAN_URL.AKASH, "_blank");
 			else if (network === "sentinel") window.open(consts.MINTSCAN_URL.SENTINEL, "_blank");
 			else if (network === "persistence") window.open(consts.MINTSCAN_URL.PERSISTENCE, "_blank");
@@ -67,6 +72,7 @@ export default function(props) {
 			else if (network === "ki chain") window.open(consts.MINTSCAN_URL.KICHAIN, "_blank");
 			else if (network === "certik") window.open(consts.MINTSCAN_URL.CERTIK, "_blank");
 			else if (network === "osmosis") window.open(consts.MINTSCAN_URL.OSMOSIS, "_blank");
+			else if (network === "emoney") window.open(consts.MINTSCAN_URL.EMONEY, "_blank");
 
 			setOpen(v => !v);
 		},
@@ -105,6 +111,8 @@ export default function(props) {
 														return consts.NETWORK.BINANCE;
 													case "starname":
 														return consts.NETWORK.STARNAME;
+													case "band":
+														return consts.NETWORK.BAND;
 													case "akash":
 														return consts.NETWORK.AKASH;
 													case "sentinel":
@@ -123,6 +131,8 @@ export default function(props) {
 														return consts.NETWORK.OSMOSIS;
 													case "certik":
 														return consts.NETWORK.CERTIK;
+													case "emoney":
+														return consts.NETWORK.EMONEY;
 													default:
 														return consts.NETWORK.COSMOS;
 												}
