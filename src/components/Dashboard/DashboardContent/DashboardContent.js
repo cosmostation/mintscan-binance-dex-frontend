@@ -1,17 +1,18 @@
-import React from "react";
-import cn from "classnames/bind";
-import styles from "./DashboardContent.scss";
-import {_} from "src/lib/scripts";
+import Ad from "src/components/Ad";
+import BlocksDisplay from "./BlocksDisplay";
 //  components
 import GraphDisplay from "./GraphDisplay";
 import PriceDisplay from "./PriceDisplay";
-import BlocksDisplay from "./BlocksDisplay";
+import React from "react";
 import TxDisplay from "./TxDisplay";
+import {_} from "src/lib/scripts";
+import cn from "classnames/bind";
+import dexSVG from "src/assets/dashboard/dex_ic.svg";
 //  assets
 import exchangeSVG from "src/assets/dashboard/exchange_ic.svg";
-import dexSVG from "src/assets/dashboard/dex_ic.svg";
 import jexSVG from "src/assets/dashboard/jex_ic.svg";
 import launchpadSVG from "src/assets/dashboard/launchpad_ic.svg";
+import styles from "./DashboardContent.scss";
 
 const cx = cn.bind(styles);
 
@@ -53,6 +54,7 @@ export default function(props) {
 				</div>
 				<LinkCard />
 			</div>
+			<Ad />
 			<div className={cx("BlockTx-wrapper")}>
 				<BlocksDisplay />
 				<div className={cx("CardFixed")}>

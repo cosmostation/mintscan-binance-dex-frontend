@@ -1,16 +1,18 @@
-import React from "react";
-import cn from "classnames/bind";
-import style from "./Account.scss";
-import consts from "src/constants/consts";
 import {_, empty} from "src/lib/scripts";
+//  hooks
+import {useFetch, useGetPrices, usePrevious} from "src/hooks";
+
+import Ad from "src/components/Ad";
+import Address from "src/components/Account/Address";
 //  components
 import AssetTxs from "src/components/Account/AssetTxs";
-import PageTitle from "src/components/common/PageTitle";
-import TitleWrapper from "src/components/common/TitleWrapper";
-import Address from "src/components/Account/Address";
 import NotFound from "src/components/common/NotFound";
-//  hooks
-import {useGetPrices, usePrevious, useFetch} from "src/hooks";
+import PageTitle from "src/components/common/PageTitle";
+import React from "react";
+import TitleWrapper from "src/components/common/TitleWrapper";
+import cn from "classnames/bind";
+import consts from "src/constants/consts";
+import style from "./Account.scss";
 
 const cx = cn.bind(style);
 
@@ -87,6 +89,7 @@ export default function Account(props) {
 				) : (
 					<>
 						{displayAddress}
+						<Ad />
 						{assetTxs}
 					</>
 				)}

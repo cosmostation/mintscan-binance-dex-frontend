@@ -1,17 +1,19 @@
 import * as React from "react";
-import cn from "classnames/bind";
-import styles from "./Tx.scss";
 
 import {_, empty} from "src/lib/scripts";
-import consts from "src/constants/consts";
 import {useFetch, usePrevious} from "src/hooks";
+
+import Ad from "src/components/Ad";
 import MockData from "src/containers/Tx/MockData";
+import NotFound from "src/components/common/NotFound";
+import PageTitle from "src/components/common/PageTitle";
 //  components
 import TitleWrapper from "src/components/common/TitleWrapper";
-import TxInfo from "src/components/Tx/TxInfo";
 import TxData from "src/components/Tx/TxData";
-import PageTitle from "src/components/common/PageTitle";
-import NotFound from "src/components/common/NotFound";
+import TxInfo from "src/components/Tx/TxInfo";
+import cn from "classnames/bind";
+import consts from "src/constants/consts";
+import styles from "./Tx.scss";
 
 const cx = cn.bind(styles);
 export default function(props) {
@@ -67,6 +69,7 @@ export default function(props) {
 			) : (
 				<>
 					<TxInfo txData={txHash === "test" ? MockData : txData} />
+					<Ad />
 					<TxData txData={txHash === "test" ? MockData : txData} />
 				</>
 			)}

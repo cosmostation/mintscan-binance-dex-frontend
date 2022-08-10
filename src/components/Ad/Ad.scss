@@ -1,0 +1,20 @@
+@import "src/styles/utils";
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 90px;
+	margin: 15px 0;
+
+	@include media(">=980px") {
+		margin: 10px 0 12px;
+	}
+	@include media("<980px", ">=599px") {
+		height: 10vw;
+	}
+	@include media("<599px") {
+		height: 58.23px;
+		margin: 10px 0 12px;
+	}
+}

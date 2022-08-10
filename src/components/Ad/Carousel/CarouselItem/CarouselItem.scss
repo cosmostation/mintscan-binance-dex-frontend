@@ -1,0 +1,17 @@
+@import "src/styles/utils";
+
+.item {
+	cursor: pointer;
+	max-height: 90px;
+	width: 100%;
+
+	img {
+		object-fit: contain;
+		height: auto;
+		width: 100%;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+}

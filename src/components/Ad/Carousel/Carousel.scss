@@ -1,0 +1,36 @@
+@import "src/styles/utils";
+
+@mixin transform-childs($extraY) {
+	@for $i from 1 through 6 {
+		&:nth-child(#{$i}) {
+			transform: translateY($extraY - ($i - 1) * 100%);
+		}
+	}
+}
+
+.container {
+	overflow-y: hidden;
+	height: 100%;
+}
+
+.sliderInner {
+	display: inline-block;
+	position: relative;
+}
+
+.next {
+	@include transform-childs(100%);
+	opacity: 0;
+}
+
+.wipeIn {
+	@include transform-childs(0%);
+	opacity: 1;
+	transition: transform 2s, opacity 3s;
+}
+
+.wipeOut {
+	@include transform-childs(-100%);
+	opacity: 0;
+	transition: transform 1700ms, opacity 2700ms;
+}

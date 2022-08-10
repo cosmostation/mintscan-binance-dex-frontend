@@ -3,6 +3,7 @@
 .TxInfo-wrapper {
 	@include card-wrapper(15px);
 	padding-bottom: 0;
+	margin-bottom: 0;
 	@include media("<medium") {
 		padding-bottom: 0;
 	}
