@@ -18,7 +18,7 @@ const adArray = [
 		},
 		link: {
 			type: "STATIC",
-			base: "https://bnb.pstake.finance/",
+			base: "https://pstake.finance/bnb",
 		},
 	},
 ];
