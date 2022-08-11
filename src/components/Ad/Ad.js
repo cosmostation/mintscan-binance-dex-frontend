@@ -18,7 +18,7 @@ const adArray = [
 		},
 		link: {
 			type: "STATIC",
-			base: "https://pstake.finance/bnb",
+			base: "https://pstake.finance/bnb?utm_source=mintscan&utm_medium=ads&utm_campaign=stkbnb",
 		},
 	},
 ];
