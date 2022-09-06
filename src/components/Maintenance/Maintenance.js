@@ -1,7 +1,7 @@
 import React from "react";
 import bind from "classnames/bind";
-import styles from "./Maintenance.scss";
 import maintenanceSVG from "src/assets/misc/maintenance_img.svg";
+import styles from "./Maintenance.scss";
 
 const cx = bind.bind(styles);
 

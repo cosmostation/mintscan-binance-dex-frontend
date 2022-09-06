@@ -1,15 +1,15 @@
-import React from "react";
-import cn from "classnames/bind";
-import styles from "./AssetTxs.scss";
 import {_, empty} from "src/lib/scripts";
-//  reduxy
-import {useSelector} from "react-redux";
-//  hooks
-import {usePrevious} from "src/hooks";
+
+import AssetsTable from "src/components/Account/AssetTxs/AssetsTable";
+import React from "react";
 //  components
 import TxTable from "./TxTable";
-import AssetsTable from "src/components/Account/AssetTxs/AssetsTable";
-import consts from "src/constants/consts";
+import cn from "classnames/bind";
+import styles from "./AssetTxs.scss";
+//  hooks
+import {usePrevious} from "src/hooks";
+//  reduxy
+import {useSelector} from "react-redux";
 
 const cx = cn.bind(styles);
 
@@ -44,7 +44,7 @@ export default function({fetchAccountTxs = () => {}, balances = null, prices = [
 			if (found) _.assign(v, {mappedAsset: found.mappedAsset, name: found.name, assetImg: found.assetImg});
 		});
 		setMappedAssets(tempAssets);
-	}, [assets, balances, mappedAssets]);
+	}, [allAssets, assets, balances, mappedAssets]);
 
 	const prevBalances = usePrevious(balances);
 	//  if balance has changed, just update that

@@ -2,26 +2,13 @@ import React, {useState} from "react";
 
 import Carousel from "./Carousel";
 import CarouselItem from "./Carousel/CarouselItem";
-import pstake_1200 from "src/assets/banner/pstake/pstake-1200.png";
-import pstake_500 from "src/assets/banner/pstake/pstake-500.png";
-import pstake_850 from "src/assets/banner/pstake/pstake-850.png";
+import clsx from "clsx";
+import {isEmpty} from "lodash";
 import styles from "./Ad.scss";
 import {useEffect} from "react";
 import useWindowSize from "src/hooks/useWindowSize";
 
-const adArray = [
-	{
-		img: {
-			1200: pstake_1200,
-			850: pstake_850,
-			500: pstake_500,
-		},
-		link: {
-			type: "STATIC",
-			base: "https://pstake.finance/bnb?utm_source=mintscan&utm_medium=ads&utm_campaign=stkbnb",
-		},
-	},
-];
+const adArray = [];
 
 if (adArray.length === 2) {
 	adArray.push(...adArray);
@@ -50,12 +37,16 @@ export default function Ad() {
 	}, [itemWidth, windowSize.width]);
 
 	return (
-		<div className={styles.container}>
-			<Carousel>
-				{adArray.map((ad, idx) => (
-					<CarouselItem key={idx} imgSrc={ad.img[itemWidth]} linkObj={ad.link} customLink='' />
-				))}
-			</Carousel>
-		</div>
+		<>
+			{!isEmpty(adArray) && (
+				<div className={styles.container}>
+					<Carousel>
+						{adArray.map((ad, idx) => (
+							<CarouselItem key={idx} imgSrc={ad.img[itemWidth]} linkObj={ad.link} customLink='' />
+						))}
+					</Carousel>
+				</div>
+			)}
+		</>
 	);
 }
